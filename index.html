@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lucas Alves Cabral — Product Designer & Design Engineer</title>
+<meta name="description" content="Product Designer & Design Engineer. Desenho produtos digitais que conectam experiência, operação e implementação — UX, interface, sistemas internos e automação com IA, do problema à solução funcional." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+:root{
+  /* fundo quase preto esverdeado */
+  --bg:#080D0B;
+  --bg-elev:#0E1512;
+  --bg-elev-2:#131E19;
+  --line:rgba(180,255,214,.09);
+  --line-strong:rgba(180,255,214,.18);
+  --line-green:rgba(124,255,178,.22);   /* borda verde discreta */
+  --text:#EFF4F1;
+  --text-soft:#BFC9C3;
+  --muted:#7E8A84;
+  --faint:#54605A;
+  /* jornada recrutadores/equipes — verde premium futurista */
+  --talent:#62EFA6;
+  --talent-2:#2FEA8B;                    /* verde secundário */
+  --talent-deep:#0F2A1F;                 /* verde profundo */
+  --talent-soft:rgba(124,255,178,.14);
+  --glow:rgba(124,255,178,.18);          /* glow verde suave */
+  /* jornada negócios/clientes — champagne/dourado discreto */
+  --client:#E3C68C;
+  --client-2:#D8B26A;
+  --client-soft:rgba(227,198,140,.13);
+  --accent:var(--talent);
+  --accent-2:var(--talent-2);
+  --accent-soft:var(--talent-soft);
+  --radius:16px;
+  --radius-sm:10px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  /* posição do mouse (atualizada via JS) */
+  --mx:50%; --my:18%;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Inter",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.6;
+  font-feature-settings:"cv02","cv03","cv04","ss01";
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{ /* atmosfera verde + profundidade */
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(680px 480px at 10% -8%, rgba(98,239,166,.12), transparent 62%),
+    radial-gradient(620px 460px at 94% 4%, rgba(47,234,139,.07), transparent 60%),
+    radial-gradient(900px 700px at 50% 118%, rgba(15,42,31,.55), transparent 70%);
+  transition:opacity .6s var(--ease);
+}
+body::after{ /* luz que segue o mouse (desktop) */
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;
+  transition:opacity .8s var(--ease);
+  background:radial-gradient(460px circle at var(--mx) var(--my), var(--glow), transparent 60%);
+}
+body.cursor-on::after{opacity:1}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--accent);color:#06070A}
+
+h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;line-height:1.08;letter-spacing:-.02em;font-weight:600}
+.mono{font-family:"JetBrains Mono",monospace;font-weight:500;letter-spacing:.02em}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.kicker{
+  font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:9px;
+}
+.kicker::before{content:"";width:22px;height:1px;background:var(--accent);display:inline-block}
+.eyebrow{color:var(--muted);font-size:13.5px;letter-spacing:.02em}
+
+/* =========================================================
+   NAV
+   ========================================================= */
+header.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  backdrop-filter:blur(14px);background:rgba(10,11,13,.62);
+  border-bottom:1px solid transparent;transition:border-color .4s,background .4s;
+}
+header.nav.scrolled{border-bottom:1px solid var(--line);background:rgba(10,11,13,.86)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk";font-weight:600;font-size:16px;letter-spacing:-.01em}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);transition:background .4s,box-shadow .4s}
+.brand small{display:block;font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.08em;color:var(--muted);font-weight:400;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:14.5px;color:var(--text-soft);position:relative;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:1.5px;width:0;background:var(--accent);transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--text)}
+.nav-cta{padding:9px 16px;border:1px solid var(--line-strong);border-radius:99px;font-size:13.5px;color:var(--text);transition:.25s}
+.nav-cta:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;background:none;border:1px solid var(--line-strong);border-radius:9px;padding:8px 9px;cursor:pointer}
+.burger span{display:block;width:18px;height:2px;background:var(--text);margin:3px 0;transition:.3s}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{padding:160px 0 70px;position:relative}
+.hero h1{font-size:clamp(38px,6.4vw,76px);font-weight:700;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--accent);transition:color .4s}
+.hero .sub{font-size:clamp(17px,2.1vw,21px);color:var(--text-soft);max-width:60ch;margin-top:26px;line-height:1.55}
+.hero .sub b{color:var(--text);font-weight:600}
+.hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-family:"JetBrains Mono";font-size:12px;color:var(--text-soft);border:1px solid var(--line);background:var(--bg-elev);padding:7px 12px;border-radius:99px;transition:border-color .3s,color .3s,background .3s}
+.chip:hover{border-color:var(--line-green);color:var(--accent);background:rgba(124,255,178,.05)}
+
+/* Duas jornadas */
+.journeys{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px}
+.journey{
+  position:relative;border:1px solid var(--line);background:linear-gradient(180deg,var(--bg-elev),rgba(16,18,22,.4));
+  border-radius:var(--radius);padding:26px 26px 22px;cursor:pointer;overflow:hidden;
+  transition:transform .4s var(--ease),border-color .35s,box-shadow .35s;
+}
+.journey::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .4s;background:radial-gradient(400px 200px at 20% 0%,var(--j-soft),transparent 70%)}
+.journey:hover{transform:translateY(-4px);border-color:var(--j-color);box-shadow:0 18px 50px -24px var(--j-color)}
+.journey:hover::before{opacity:1}
+.journey[data-mode="talent"]{--j-color:var(--talent);--j-soft:var(--talent-soft)}
+.journey[data-mode="client"]{--j-color:var(--client);--j-soft:var(--client-soft)}
+.journey .j-tag{font-family:"JetBrains Mono";font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--j-color)}
+.journey h3{font-size:22px;margin:14px 0 8px}
+.journey p{font-size:14.5px;color:var(--muted);line-height:1.5}
+.journey .j-go{margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text);font-weight:500}
+.journey .j-go .arr{transition:transform .3s var(--ease);color:var(--j-color)}
+.journey:hover .j-go .arr{transform:translateX(5px)}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+section{padding:96px 0;position:relative}
+.sec-head{max-width:62ch;margin-bottom:46px}
+.sec-head h2{font-size:clamp(28px,4vw,44px);margin:16px 0 14px;font-weight:600}
+.sec-head p{color:var(--muted);font-size:16.5px}
+
+/* PROJETOS */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{
+  position:relative;isolation:isolate;border:1px solid var(--line);background:var(--bg-elev);
+  border-radius:var(--radius);padding:30px;overflow:hidden;
+  transition:transform .45s var(--ease),border-color .35s,background .35s,box-shadow .45s var(--ease);
+}
+/* glow interno acompanhando o mouse (z-index:-1 = acima do fundo, abaixo do texto) */
+.card::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+  opacity:0;transition:opacity .45s var(--ease);
+  background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%), var(--accent-soft), transparent 58%)}
+.card::after{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),transparent);transition:width .5s var(--ease)}
+.card:hover{transform:translateY(-5px);border-color:var(--line-green);background:var(--bg-elev-2);box-shadow:0 26px 60px -34px var(--glow)}
+.card:hover::before{opacity:1}
+.card:hover::after{width:100%}
+.card .ptype{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-size:25px;margin:13px 0 6px;font-weight:600}
+.card .psum{color:var(--text-soft);font-size:15px;line-height:1.55;margin-bottom:18px}
+.card .plabel{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:9px;font-family:"JetBrains Mono"}
+.card .pblock{margin-bottom:16px}
+.card .pblock p{font-size:14px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tags span{font-size:12px;color:var(--text-soft);border:1px solid var(--line);border-radius:7px;padding:4px 9px;background:rgba(255,255,255,.02)}
+.card .pcta{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--text)}
+.card .pcta .arr{color:var(--accent);transition:transform .3s var(--ease)}
+.card:hover .pcta .arr{transform:translateX(5px)}
+.card .badge-live{position:absolute;top:26px;right:26px;font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.08em;color:#8FE3A8;border:1px solid rgba(143,227,168,.25);background:rgba(143,227,168,.07);padding:4px 9px;border-radius:99px}
+
+/* PROCESSO */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.proc-step{background:var(--bg-elev);padding:26px 22px;transition:background .35s}
+.proc-step:hover{background:var(--bg-elev-2)}
+.proc-step .num{font-family:"JetBrains Mono";font-size:13px;color:var(--accent);margin-bottom:14px}
+.proc-step h4{font-size:16.5px;font-weight:600;margin-bottom:7px;letter-spacing:-.01em}
+.proc-step p{font-size:13.5px;color:var(--muted);line-height:1.5}
+
+/* IA com critério */
+.ia{position:relative;isolation:isolate;overflow:hidden;margin-top:24px;border:1px solid var(--line-green);border-radius:var(--radius);
+  background:linear-gradient(135deg,rgba(47,234,139,.08),rgba(98,239,166,.05) 55%,transparent);
+  padding:40px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.ia::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,30%) var(--my,40%), rgba(47,234,139,.10), transparent 60%)}
+.ia .kicker{color:var(--accent-2)}.ia .kicker::before{background:var(--accent-2)}
+.ia h3{font-size:26px;margin:14px 0 14px;font-weight:600}
+.ia p{color:var(--text-soft);font-size:15.5px;line-height:1.6}
+.ia-list{display:grid;gap:12px}
+.ia-list .row{display:flex;gap:13px;align-items:flex-start;font-size:14.5px;color:var(--text-soft)}
+.ia-list .row .ck{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid rgba(47,234,139,.45);color:var(--accent-2);display:grid;place-items:center;font-size:11px;margin-top:2px}
+
+/* SERVIÇOS */
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.serv{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:var(--bg-elev);transition:transform .4s var(--ease),border-color .35s,box-shadow .45s var(--ease)}
+.serv::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .45s var(--ease);background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), var(--client-soft), transparent 58%)}
+.serv:hover{transform:translateY(-4px);border-color:rgba(227,198,140,.32);box-shadow:0 24px 56px -34px rgba(227,198,140,.4)}
+.serv:hover::before{opacity:1}
+.serv .snum{font-family:"JetBrains Mono";font-size:12px;color:var(--client);margin-bottom:14px}
+.serv h4{font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
+.serv .sdesc{font-size:14px;color:var(--text-soft);line-height:1.5;margin-bottom:16px}
+.serv .smeta{border-top:1px solid var(--line);padding-top:14px;display:grid;gap:8px}
+.serv .smeta .lab{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.serv .smeta .val{font-size:13px;color:var(--muted);line-height:1.45}
+
+/* SOBRE */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
+.about .lead{font-size:clamp(20px,2.6vw,26px);font-family:"Space Grotesk";font-weight:500;line-height:1.35;letter-spacing:-.01em;color:var(--text)}
+.about p{color:var(--text-soft);font-size:15.5px;margin-top:18px;line-height:1.65}
+.rep-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:6px}
+.rep{background:var(--bg-elev);padding:20px}
+.rep .rt{font-size:14.5px;font-weight:600;margin-bottom:4px;font-family:"Space Grotesk"}
+.rep .rd{font-size:12.5px;color:var(--muted);line-height:1.45}
+
+/* CONTATO */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cta-card{border:1px solid var(--line);border-radius:var(--radius);padding:38px;background:var(--bg-elev);position:relative;overflow:hidden;transition:border-color .35s,transform .4s var(--ease)}
+.cta-card:hover{transform:translateY(-4px)}
+.cta-card[data-mode="talent"]:hover{border-color:var(--talent)}
+.cta-card[data-mode="client"]:hover{border-color:var(--client)}
+.cta-card .ctag{font-family:"JetBrains Mono";font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}
+.cta-card[data-mode="talent"] .ctag{color:var(--talent)}
+.cta-card[data-mode="client"] .ctag{color:var(--client)}
+.cta-card h3{font-size:24px;margin:13px 0 10px;font-weight:600}
+.cta-card p{color:var(--muted);font-size:14.5px;margin-bottom:22px;line-height:1.55}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:99px;font-size:14.5px;font-weight:500;transition:.3s;cursor:pointer;border:1px solid transparent}
+.btn-talent{background:var(--talent);color:#06070A}
+.btn-talent:hover{box-shadow:0 12px 34px -12px var(--talent);transform:translateY(-2px)}
+.btn-client{background:var(--client);color:#0A0703}
+.btn-client:hover{box-shadow:0 12px 34px -12px var(--client);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line-strong);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:46px 0 40px;margin-top:30px}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot-inner .fbrand{font-family:"Space Grotesk";font-weight:600;font-size:18px}
+.foot-inner .fmeta{font-size:13px;color:var(--faint)}
+.foot-links{display:flex;gap:22px;font-size:14px;color:var(--text-soft)}
+.foot-links a:hover{color:var(--accent)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* MODE TOGGLE (nav) */
+.mode-pill{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px;background:var(--bg-elev)}
+.mode-pill button{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.04em;padding:6px 11px;border-radius:99px;background:none;border:none;color:var(--muted);cursor:pointer;transition:.25s;white-space:nowrap}
+.mode-pill button.on{color:#06070A}
+.mode-pill button[data-m="talent"].on{background:var(--talent)}
+.mode-pill button[data-m="client"].on{background:var(--client)}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media(max-width:920px){
+  .proc-grid{grid-template-columns:repeat(2,1fr)}
+  .serv-grid{grid-template-columns:repeat(2,1fr)}
+  .ia{grid-template-columns:1fr;gap:28px;padding:30px}
+  .about{grid-template-columns:1fr;gap:34px}
+}
+@media(max-width:760px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:block}
+  header.nav.open .nav-links{
+    display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(10,11,13,.97);border-bottom:1px solid var(--line);padding:8px 0;
+  }
+  header.nav.open .nav-links a{padding:14px 28px}
+  header.nav.open .nav-links a::after{display:none}
+  .hero{padding:130px 0 50px}
+  .journeys{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  section{padding:72px 0}
+  .wrap{padding:0 20px}
+  .nav-inner{padding:14px 20px}
+}
+@media(max-width:520px){
+  .serv-grid{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr}
+  .rep-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+/* =========================================================
+   CARD VISUAL PLACEHOLDER
+   ========================================================= */
+.card-visual{
+  margin:18px 0 14px;
+  border:1px dashed rgba(124,255,178,.15);
+  border-radius:10px;
+  background:rgba(124,255,178,.025);
+  height:138px;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .35s var(--ease),background .35s var(--ease);
+  position:relative;overflow:hidden;
+}
+.card-visual::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(124,255,178,.03) 0%,transparent 60%);
+  pointer-events:none;
+}
+.card:hover .card-visual{
+  border-color:rgba(124,255,178,.28);
+  background:rgba(124,255,178,.045);
+}
+.cv-inner{
+  text-align:center;display:flex;flex-direction:column;
+  align-items:center;gap:8px;
+}
+.cv-icon{
+  width:36px;height:36px;
+  border:1px solid rgba(124,255,178,.2);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(124,255,178,.4);
+  font-size:16px;
+  margin-bottom:2px;
+}
+.cv-badge{
+  font-family:"JetBrains Mono";font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);opacity:.55;
+  border:1px dashed rgba(124,255,178,.18);
+  border-radius:99px;padding:3px 9px;
+}
+.cv-hint{font-size:11.5px;color:var(--faint);margin-top:2px}
+
+/* =========================================================
+   SERVICES INTRO
+   ========================================================= */
+.serv-intro{
+  font-size:15px;color:var(--text-soft);line-height:1.65;
+  margin-bottom:30px;
+  padding:18px 22px;
+  border-left:2px solid rgba(227,198,140,.28);
+  background:rgba(227,198,140,.04);
+  border-radius:0 10px 10px 0;
+}
+
+/* =========================================================
+   CASE SECTION
+   ========================================================= */
+.case-section{
+  background:linear-gradient(180deg,rgba(15,21,17,.8) 0%,var(--bg) 100%);
+  border-top:1px solid var(--line-green);
+  position:relative;
+}
+.case-section::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(700px 400px at 80% -10%, rgba(47,234,139,.06), transparent 60%);
+}
+.case-header{margin-bottom:42px}
+.case-header h2{font-size:clamp(26px,3.6vw,40px);margin:14px 0 10px}
+.case-subtitle{font-size:16px;color:var(--muted);max-width:60ch}
+.case-status{
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  font-family:"JetBrains Mono";font-size:11px;letter-spacing:.08em;
+  color:#8FE3A8;border:1px solid rgba(143,227,168,.25);
+  background:rgba(143,227,168,.07);padding:5px 12px;border-radius:99px;
+}
+.case-status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+.case-body{display:flex;flex-direction:column;gap:16px;position:relative;z-index:1}
+.case-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.case-block{
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;background:var(--bg-elev);
+}
+.case-block-full{
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 28px;background:var(--bg-elev);
+}
+.case-block-label{
+  font-family:"JetBrains Mono";font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:12px;opacity:.8;
+}
+.case-block p,.case-block-full>p{
+  font-size:14.5px;color:var(--text-soft);line-height:1.65;
+}
+.case-decisions{display:flex;flex-direction:column;gap:16px;margin-top:6px}
+.case-decision{display:flex;gap:14px;align-items:flex-start}
+.cd-num{
+  font-family:"JetBrains Mono";font-size:11px;
+  color:var(--accent);background:rgba(124,255,178,.08);
+  border:1px solid rgba(124,255,178,.2);border-radius:7px;
+  width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+  flex:none;margin-top:3px;
+}
+.cd-title{
+  font-size:14.5px;font-weight:600;color:var(--text);
+  margin-bottom:5px;font-family:"Space Grotesk";letter-spacing:-.01em;
+}
+.case-decision p{font-size:13.5px;color:var(--muted);line-height:1.55}
+.case-metrics{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.metric-item{
+  padding:11px 14px;border:1px solid var(--line);
+  border-radius:8px;background:rgba(255,255,255,.015);
+}
+.mi-label{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;font-family:"Space Grotesk"}
+.mi-desc{font-size:12.5px;color:var(--muted);line-height:1.4}
+.case-visual-placeholder{
+  min-height:160px;height:100%;
+  border:1px dashed rgba(124,255,178,.18);border-radius:10px;
+  background:rgba(124,255,178,.025);
+  display:flex;align-items:center;justify-content:center;
+  margin-top:4px;
+}
+.cvp-inner{
+  text-align:center;display:flex;flex-direction:column;
+  align-items:center;gap:10px;color:rgba(124,255,178,.3);
+  padding:20px;
+}
+.cvp-icon{
+  width:42px;height:42px;
+  border:1px dashed rgba(124,255,178,.25);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.cvp-label{
+  font-family:"JetBrains Mono";font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+}
+
+@media(max-width:760px){
+  .case-grid-2{grid-template-columns:1fr}
+  .case-visual-placeholder{min-height:110px}
+  .case-block-full{padding:20px 18px}
+  .card-visual{height:110px}
+  .serv-intro{padding:14px 18px;font-size:14px}
+}
+
+/* =========================================================
+   DYNAMIC MODE — NARRATIVE SWITCHING
+   ========================================================= */
+
+/* Conditional content — CSS-driven via body[data-mode] */
+body[data-mode="talent"] .client-only{display:none!important}
+body[data-mode="client"] .talent-only{display:none!important}
+
+/* HERO CTAs */
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero-cta-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:99px;font-size:14.5px;font-weight:500;
+  text-decoration:none;transition:.3s var(--ease);
+  border:1px solid var(--line-strong);color:var(--text);
+}
+.hero-cta-btn.primary-cta{
+  background:var(--accent);color:#06070A;border-color:transparent;
+}
+.hero-cta-btn.primary-cta:hover{
+  box-shadow:0 12px 32px -10px var(--accent);transform:translateY(-2px);
+}
+.hero-cta-btn.ghost-cta{color:var(--text-soft)}
+.hero-cta-btn.ghost-cta:hover{
+  border-color:var(--accent);color:var(--accent);transform:translateY(-1px);
+}
+body[data-mode="client"] .hero-cta-btn.primary-cta{
+  background:var(--client);color:#0A0703;
+}
+body[data-mode="client"] .hero-cta-btn.primary-cta:hover{
+  box-shadow:0 12px 32px -10px var(--client);
+}
+body[data-mode="client"] .hero-cta-btn.ghost-cta:hover{
+  border-color:var(--client);color:var(--client);
+}
+
+/* MODE INTRO BLOCK */
+.mode-intro-wrap{padding:0 0 32px;position:relative;z-index:1}
+.mode-intro-card{
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 30px;overflow:hidden;
+  transition:border-color .5s var(--ease),background .5s var(--ease);
+}
+body[data-mode="talent"] .mode-intro-card{
+  border-color:rgba(98,239,166,.2);
+  background:linear-gradient(135deg,rgba(15,42,31,.5),rgba(8,13,11,.3));
+}
+body[data-mode="client"] .mode-intro-card{
+  border-color:rgba(227,198,140,.2);
+  background:linear-gradient(135deg,rgba(28,21,8,.45),rgba(8,13,11,.3));
+}
+.mi-tag{
+  font-family:"JetBrains Mono";font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:10px;display:block;
+}
+body[data-mode="talent"] .mi-tag{color:var(--talent)}
+body[data-mode="client"] .mi-tag{color:var(--client)}
+.mi-text{font-size:15px;color:var(--text-soft);line-height:1.65;max-width:78ch;margin:0}
+.mi-text strong{color:var(--text);font-weight:600}
+
+/* SECTION PRIORITY BADGES */
+.sec-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;padding:4px 11px;border-radius:99px;margin-top:12px;
+}
+.sec-badge::before{content:"◆";font-size:7px;opacity:.7}
+.sec-badge.talent-badge{
+  color:var(--talent);border:1px solid rgba(98,239,166,.22);
+  background:rgba(98,239,166,.07);
+}
+.sec-badge.client-badge{
+  color:var(--client);border:1px solid rgba(227,198,140,.22);
+  background:rgba(227,198,140,.07);
+}
+
+/* SECTION HIERARCHY — subtle dimming on secondary sections */
+body[data-mode="talent"] #servicos .sec-head h2,
+body[data-mode="talent"] #servicos .sec-head>p{opacity:.6;transition:opacity .5s var(--ease)}
+body[data-mode="client"] #projetos .sec-head h2,
+body[data-mode="client"] #projetos .sec-head>p,
+body[data-mode="client"] #processo .sec-head h2,
+body[data-mode="client"] #processo .sec-head>p{opacity:.6;transition:opacity .5s var(--ease)}
+body[data-mode="talent"] #projetos .sec-head h2,
+body[data-mode="talent"] #projetos .sec-head>p,
+body[data-mode="talent"] #processo .sec-head h2,
+body[data-mode="talent"] #processo .sec-head>p,
+body[data-mode="client"] #servicos .sec-head h2,
+body[data-mode="client"] #servicos .sec-head>p{opacity:1;transition:opacity .5s var(--ease)}
+
+/* CARD MODE LINE */
+.card-mode-line{
+  font-size:13px;line-height:1.5;font-style:italic;
+  margin-top:-4px;margin-bottom:16px;
+  padding:8px 12px;border-left:2px solid;border-radius:0 7px 7px 0;
+  transition:border-color .4s,background .4s,color .4s;
+}
+body[data-mode="talent"] .card-mode-line{
+  border-left-color:rgba(98,239,166,.22);
+  background:rgba(98,239,166,.04);
+  color:var(--muted);
+}
+body[data-mode="client"] .card-mode-line{
+  border-left-color:rgba(227,198,140,.22);
+  background:rgba(227,198,140,.04);
+  color:var(--text-soft);
+}
+
+/* CONTACT INTRO */
+.contact-intro{margin-bottom:28px;text-align:center}
+.ci-text{font-size:15.5px;color:var(--text-soft);line-height:1.6;max-width:62ch;margin:0 auto}
+.ci-text strong{color:var(--text);font-weight:600}
+
+@media(max-width:760px){
+  .mode-intro-card{padding:20px 18px}
+  .hero-ctas{gap:8px;margin-top:20px}
+  .hero-cta-btn{padding:10px 16px;font-size:13.5px}
+  .contact-intro{margin-bottom:20px}
+}
+</style>
+</head>
+<body data-mode="talent">
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="dot"></span>
+      <span>Lucas Cabral<small>PRODUCT DESIGNER &amp; DESIGN ENGINEER</small></span>
+    </a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#projetos">Projetos</a>
+      <a href="#processo">Processo</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div class="mode-pill" id="modePill" role="group" aria-label="Escolha sua jornada">
+        <button data-m="talent" class="on" aria-pressed="true">Recrutadores</button>
+        <button data-m="client" aria-pressed="false">Negócios</button>
+      </div>
+      <a href="#contato" class="nav-cta">Falar comigo</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker reveal">Product Designer &amp; Design Engineer</span>
+    <h1 class="reveal" style="margin-top:22px">Desenho produtos digitais que conectam <em>experiência, operação e implementação.</em></h1>
+    <p class="sub reveal">
+      <span class="talent-only">Veja como penso, projeto e conduzo produtos digitais dentro de <b>contextos reais</b> — do raciocínio de produto ao funcional, com sistemas em produção e decisões documentadas. Aqui você encontra processo, critério e entrega.</span>
+      <span class="client-only">Veja como posso organizar sua <b>operação, presença digital ou atendimento</b> em uma solução funcional — parto do problema, defino o que entra na solução e entrego com clareza de escopo, sem promessas vagas.</span>
+    </p>
+    <div class="hero-meta reveal">
+      <span class="chip">Product Design</span>
+      <span class="chip">UX/UI</span>
+      <span class="chip">Design Engineering</span>
+      <span class="chip">IA aplicada a produto</span>
+      <span class="chip">Automação</span>
+      <span class="chip">Sistemas internos</span>
+    </div>
+
+    <div class="hero-ctas reveal">
+      <a class="hero-cta-btn primary-cta talent-only" href="#projetos">Ver projetos →</a>
+      <a class="hero-cta-btn ghost-cta talent-only" href="#processo">Ver processo →</a>
+      <a class="hero-cta-btn primary-cta client-only" href="#servicos">Ver serviços →</a>
+      <a class="hero-cta-btn ghost-cta client-only" href="#contato">Falar comigo →</a>
+    </div>
+
+    <!-- DUAS JORNADAS -->
+    <div class="journeys reveal">
+      <a class="journey" data-mode="talent" href="#projetos" data-journey="talent">
+        <span class="j-tag">Para equipes &amp; recrutadores</span>
+        <h3>Entenda meu processo e raciocínio de produto</h3>
+        <p>Portfólio, processo, decisões, colaboração e como atuo dentro de um time — de UX/Product Design a Design Engineering.</p>
+        <span class="j-go">Ver projetos e processo <span class="arr">→</span></span>
+      </a>
+      <a class="journey" data-mode="client" href="#servicos" data-journey="client">
+        <span class="j-tag">Para negócios &amp; clientes</span>
+        <h3>Resolva um problema digital real</h3>
+        <p>Sites, sistemas internos, CRMs, automação de atendimento e soluções funcionais — para organizar processos e tirar ideias do papel.</p>
+        <span class="j-go">Ver serviços <span class="arr">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODE INTRO ================= -->
+<div class="mode-intro-wrap">
+  <div class="wrap">
+    <div class="mode-intro-card reveal">
+      <div class="talent-only">
+        <span class="mi-tag">Para recrutadores &amp; equipes</span>
+        <p class="mi-text">Meu diferencial está no <strong>processo e no repertório por trás de cada decisão</strong>. Aqui você vai ver como eu penso produto, como conduzo implementações com IA mantendo validação humana, como colaboro dentro de um time e como documento decisões para que soluções evoluam — não apenas as telas finais.</p>
+      </div>
+      <div class="client-only">
+        <span class="mi-tag">Para negócios &amp; clientes</span>
+        <p class="mi-text">Se você tem um problema de <strong>atendimento desorganizado, operação manual, presença digital ausente ou sistema interno inexistente</strong>, meu processo começa pelo que precisa funcionar — não pela tela. Mapeio o problema, decido o que entra na solução e entrego funcional, com escopo claro do início ao fim.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PROJETOS ================= -->
+<section id="projetos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">01 — Projetos</span>
+      <h2>Sistemas reais, decisões reais</h2>
+      <p>Quatro projetos que comprovam capacidade de produto, UX, operação e implementação. Veja não só as telas — veja as decisões por trás delas.</p>
+      <span class="sec-badge talent-badge talent-only">Portfólio &amp; raciocínio de produto</span>
+      <span class="sec-badge client-badge client-only">Provas de entrega em produção</span>
+    </div>
+
+    <div class="proj-grid">
+      <!-- Sartec CRM -->
+      <article class="card reveal">
+        <span class="badge-live">EM PRODUÇÃO</span>
+        <span class="ptype">Produto · Sistema interno · UX operacional · Design Engineering</span>
+        <h3>Sartec CRM</h3>
+        <p class="psum">De WhatsApp informal a CRM operacional: organizei atendimento, filas, contexto, fluxos PF/PJ, prioridades e o fluxo comercial de uma papelaria com quase 30 anos.</p>
+        <div class="card-mode-line">
+          <span class="talent-only">Prova de Product Design, UX operacional e decisão sistêmica num sistema em produção.</span>
+          <span class="client-only">Prova de como organizei atendimento, operação e fluxo comercial de um negócio real.</span>
+        </div>
+        <div class="pblock">
+          <div class="plabel">Problema resolvido</div>
+          <p>Mensagens se perdiam, não havia pipeline claro, PF e PJ se misturavam e atendentes respondiam sem contexto — com risco de usar o perfil errado.</p>
+        </div>
+        <div class="pblock">
+          <div class="plabel">Competências</div>
+          <div class="tags"><span>Arquitetura de fluxo</span><span>UX writing</span><span>Design de estados</span><span>Priorização por risco</span><span>Condução de implementação</span></div>
+        </div>
+        <div class="card-visual">
+          <div class="cv-inner">
+            <div class="cv-icon">⊞</div>
+            <div class="cv-badge">Fluxo do produto</div>
+            <div class="cv-hint">Evidências visuais em breve</div>
+          </div>
+        </div>
+        <a class="pcta" href="#case-sartec-crm">Ver case <span class="arr">→</span></a>
+      </article>
+
+      <!-- Agente WhatsApp -->
+      <article class="card reveal">
+        <span class="badge-live">EM PRODUÇÃO</span>
+        <span class="ptype">IA aplicada · Automação · Atendimento</span>
+        <h3>Agente WhatsApp Sartec</h3>
+        <p class="psum">Um agente de atendimento que faz triagem, organiza o contexto e sabe a hora de devolver o controle ao humano — sem poluir o atendimento nem inventar informação.</p>
+        <div class="card-mode-line">
+          <span class="talent-only">Prova de design conversacional, IA aplicada com critério e handoff humano inteligente.</span>
+          <span class="client-only">Prova de automação de atendimento que reduz carga sem abrir mão do controle humano.</span>
+        </div>
+        <div class="pblock">
+          <div class="plabel">Problema resolvido</div>
+          <p>Triagem manual sobrecarregada e risco de resposta incorreta ou alucinada num canal que fala direto com o cliente.</p>
+        </div>
+        <div class="pblock">
+          <div class="plabel">Competências</div>
+          <div class="tags"><span>Design conversacional</span><span>Prompt engineering versionado</span><span>Arquitetura (estado/custo)</span><span>Handoff inteligente</span><span>Integração com CRM</span></div>
+        </div>
+        <div class="card-visual">
+          <div class="cv-inner">
+            <div class="cv-icon">◈</div>
+            <div class="cv-badge">Diagrama da solução</div>
+            <div class="cv-hint">Evidências visuais em breve</div>
+          </div>
+        </div>
+        <a class="pcta" href="#case-agente-whatsapp">Ver case <span class="arr">→</span></a>
+      </article>
+
+      <!-- UNIEDU -->
+      <article class="card reveal">
+        <span class="ptype">UX/UI · Produto educacional · Design System</span>
+        <h3>UNIEDU App</h3>
+        <p class="psum">Produto educacional gamificado com experiência premium, foco em retenção e um design system acessível — gamificação que cria hábito sem infantilizar.</p>
+        <div class="card-mode-line">
+          <span class="talent-only">Prova de UX Research, behavior design e design system para produto educacional premium.</span>
+          <span class="client-only">Prova de produto com retenção como métrica central e UI que não infantiliza o usuário.</span>
+        </div>
+        <div class="pblock">
+          <div class="plabel">Problema resolvido</div>
+          <p>Abandono e baixa retenção em cursos online, e gamificação que torna produtos educacionais infantis demais.</p>
+        </div>
+        <div class="pblock">
+          <div class="plabel">Competências</div>
+          <div class="tags"><span>UX Research</span><span>Behavior design</span><span>Design System AAA</span><span>UI premium</span><span>Responsividade real</span></div>
+        </div>
+        <div class="card-visual">
+          <div class="cv-inner">
+            <div class="cv-icon">▣</div>
+            <div class="cv-badge">Preview de tela</div>
+            <div class="cv-hint">Evidências visuais em breve</div>
+          </div>
+        </div>
+        <a class="pcta" href="#case-uniedu">Ver case <span class="arr">→</span></a>
+      </article>
+
+      <!-- Site Sartec -->
+      <article class="card reveal">
+        <span class="ptype">Presença digital comercial · Front-end</span>
+        <h3>Site Sartec</h3>
+        <p class="psum">Site institucional/comercial para uma papelaria tradicional, estruturado por públicos e orientado para conversão via WhatsApp.</p>
+        <div class="card-mode-line">
+          <span class="talent-only">Prova de arquitetura de informação, copy comercial e implementação front-end responsiva.</span>
+          <span class="client-only">Prova de presença digital para negócio local, organizada por públicos e orientada a conversão.</span>
+        </div>
+        <div class="pblock">
+          <div class="plabel">Problema resolvido</div>
+          <p>Um negócio local real sem ponto de entrada digital claro e sem comunicação organizada da sua oferta.</p>
+        </div>
+        <div class="pblock">
+          <div class="plabel">Competências</div>
+          <div class="tags"><span>Arquitetura de informação</span><span>Copy comercial</span><span>Design responsivo</span><span>Componentização</span></div>
+        </div>
+        <div class="card-visual">
+          <div class="cv-inner">
+            <div class="cv-icon">⟺</div>
+            <div class="cv-badge">Antes / depois</div>
+            <div class="cv-hint">Evidências visuais em breve</div>
+          </div>
+        </div>
+        <a class="pcta" href="#case-site-sartec">Ver case <span class="arr">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE: SARTEC CRM ================= -->
+<section id="case-sartec-crm" class="case-section">
+  <div class="wrap">
+    <div class="case-header reveal">
+      <span class="kicker">Case — Sartec CRM</span>
+      <h2>De WhatsApp informal a CRM operacional</h2>
+      <p class="case-subtitle">Sistema interno de gestão de atendimento para uma papelaria com quase 30 anos de operação — construído para resolver um problema real, com usuários reais.</p>
+      <span class="case-status">EM PRODUÇÃO</span>
+    </div>
+
+    <div class="case-body">
+
+      <!-- Contexto + Problema -->
+      <div class="case-grid-2 reveal">
+        <div class="case-block">
+          <div class="case-block-label">Contexto</div>
+          <p>A Sartec é uma papelaria com operação mista — atendimento presencial e remoto, público PF e PJ, pedidos de portfólio variado. Todo o fluxo de atendimento acontecia via WhatsApp, sem estrutura de pipeline, sem separação de contexto e sem visibilidade sobre demandas em aberto.</p>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">Problema</div>
+          <p>Mensagens se perdiam no histórico, atendentes respondiam sem saber o estágio do cliente, PF e PJ se misturavam no mesmo canal e não havia controle sobre filas. O risco de responder no perfil errado ou com informação desatualizada era concreto e frequente.</p>
+        </div>
+      </div>
+
+      <!-- Meu papel -->
+      <div class="case-block-full reveal">
+        <div class="case-block-label">Meu papel</div>
+        <p>Fui responsável por todo o processo — da descoberta à implementação. Conduzi entrevistas com os operadores, mapeei o fluxo real de atendimento, modelei a arquitetura do sistema, desenhei a experiência (arquitetura, hierarquia, estados, UX writing) e conduzi a implementação com IA até o produto entrar em produção. Não havia time: as decisões foram minhas do início ao fim.</p>
+      </div>
+
+      <!-- Decisões principais -->
+      <div class="case-block-full reveal">
+        <div class="case-block-label">Decisões principais</div>
+        <div class="case-decisions">
+          <div class="case-decision">
+            <div class="cd-num">01</div>
+            <div>
+              <div class="cd-title">Separação estrutural PF/PJ</div>
+              <p>Criei pipelines distintos para pessoa física e jurídica, com campos, estados e regras de operação diferentes — refletindo as necessidades reais de cada perfil em vez de forçar ambos no mesmo fluxo.</p>
+            </div>
+          </div>
+          <div class="case-decision">
+            <div class="cd-num">02</div>
+            <div>
+              <div class="cd-title">Contexto persistente por atendimento</div>
+              <p>Cada cliente carrega histórico visível antes da primeira interação. O atendente entra na conversa sabendo quem está respondendo, em qual estágio está e qual foi o último contato — sem precisar rolar o histórico do WhatsApp.</p>
+            </div>
+          </div>
+          <div class="case-decision">
+            <div class="cd-num">03</div>
+            <div>
+              <div class="cd-title">Priorização por risco, não por ordem de chegada</div>
+              <p>Demandas com prazo crítico ou histórico de escalonamento sobem na fila por critério explícito e visível — não por quem foi mais insistente.</p>
+            </div>
+          </div>
+          <div class="case-decision">
+            <div class="cd-num">04</div>
+            <div>
+              <div class="cd-title">Guardrails contra erro de contexto</div>
+              <p>O sistema sinaliza ativamente quando o atendente está prestes a responder no canal errado ou com informação que pode estar desatualizada — prevenindo o erro antes de acontecer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Métricas + Evidências visuais -->
+      <div class="case-grid-2 reveal">
+        <div class="case-block">
+          <div class="case-block-label">Impacto e métricas a acompanhar</div>
+          <div class="case-metrics">
+            <div class="metric-item">
+              <div class="mi-label">Tempo de primeira resposta</div>
+              <div class="mi-desc">Redução do tempo entre chegada da demanda e primeiro atendimento registrado.</div>
+            </div>
+            <div class="metric-item">
+              <div class="mi-label">Erros de contexto</div>
+              <div class="mi-desc">Incidentes de resposta com perfil errado ou informação desatualizada.</div>
+            </div>
+            <div class="metric-item">
+              <div class="mi-label">Visibilidade de pipeline</div>
+              <div class="mi-desc">Demandas em aberto com estágio visível e responsável definido.</div>
+            </div>
+          </div>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">Evidências visuais</div>
+          <div class="case-visual-placeholder">
+            <div class="cvp-inner">
+              <div class="cvp-icon">⊞</div>
+              <div class="cvp-label">Fluxo do produto &amp; telas em breve</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /case-body -->
+  </div>
+</section>
+
+<!-- ================= PROCESSO ================= -->
+<section id="processo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">02 — Processo</span>
+      <h2>Começo pelo problema, não pela tela</h2>
+      <p>Um modo de trabalhar que transforma operação confusa em experiência digital funcional — e que leva a ideia até o ar com segurança.</p>
+      <span class="sec-badge talent-badge talent-only">Como penso e trabalho</span>
+      <span class="sec-badge client-badge client-only">Como sua solução vai ser construída</span>
+    </div>
+
+    <div class="proc-grid reveal">
+      <div class="proc-step"><div class="num">01</div><h4>Entendo o contexto real</h4><p>Mergulho no negócio antes de desenhar qualquer interface.</p></div>
+      <div class="proc-step"><div class="num">02</div><h4>Mapeio usuários, negócio e operação</h4><p>Personas, jornada e o trabalho real de quem opera.</p></div>
+      <div class="proc-step"><div class="num">03</div><h4>Transformo caos em fluxo</h4><p>Modelo o pipeline, decido o que entra e o que fica de fora.</p></div>
+      <div class="proc-step"><div class="num">04</div><h4>Desenho a experiência</h4><p>Arquitetura, hierarquia, estados, microcopy e responsividade.</p></div>
+      <div class="proc-step"><div class="num">05</div><h4>Uso IA para acelerar a implementação</h4><p>Conduzo a construção com escopo, guardrails e critérios de aceite.</p></div>
+      <div class="proc-step"><div class="num">06</div><h4>Valido no uso real</h4><p>Testo no fluxo real e transformo achados em decisões.</p></div>
+      <div class="proc-step"><div class="num">07</div><h4>Documento decisões</h4><p>Contexto, regras e backlog que mantêm o produto evoluível.</p></div>
+      <div class="proc-step"><div class="num">08</div><h4>Itero com segurança</h4><p>Ciclos curtos, sem regressão, deploy controlado.</p></div>
+    </div>
+
+    <!-- IA com critério -->
+    <div class="ia reveal">
+      <div>
+        <span class="kicker">IA com critério</span>
+        <h3>A IA é uma alavanca, não uma muleta</h3>
+        <p>Uso IA como ferramenta de execução — não como substituto do julgamento. Eu defino o escopo, imponho os limites, valido o resultado e assumo a decisão. A IA me deixa ir do design ao funcional com rapidez; a direção continua sendo minha.</p>
+      </div>
+      <div class="ia-list">
+        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Defino escopo e critérios</b> — o que construir, o que cortar, o que validar.</span></div>
+        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Imponho guardrails</b> — limites explícitos para evitar dano e regressão.</span></div>
+        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Trato o prompt como artefato de design</b> — estruturado e versionado.</span></div>
+        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Valido cada entrega</b> — a decisão final é sempre humana.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVIÇOS ================= -->
+<section id="servicos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker" style="color:var(--client)">03 — Serviços</span>
+      <h2>Soluções digitais que resolvem problemas reais</h2>
+      <p>Se o seu problema é tela, fluxo, operação ou tirar uma ideia do papel — é aqui que eu atuo.</p>
+      <span class="sec-badge client-badge client-only">Seção principal para clientes</span>
+      <span class="sec-badge talent-badge talent-only">Evidência de capacidade de entrega</span>
+    </div>
+
+    <p class="serv-intro reveal">
+      <span class="talent-only">Os serviços abaixo evidenciam a mesma lógica que aplico dentro de times: parto do problema, decido o que entra na solução e entrego com critério. Use como referência da minha capacidade de transformar problemas reais em entregas funcionais.</span>
+      <span class="client-only">Além de atuar em times de produto, aplico esse processo em projetos independentes — para negócios que precisam organizar atendimento, operação, presença digital ou sistemas internos e precisam de alguém que vai do problema ao funcional.</span>
+    </p>
+
+    <div class="serv-grid">
+      <div class="serv reveal">
+        <div class="snum">S1</div><h4>Sites institucionais e comerciais</h4>
+        <p class="sdesc">Sites de apresentação com foco em clareza de oferta e conversão por WhatsApp.</p>
+        <div class="smeta"><div><span class="lab">Dor que resolve</span><div class="val">Negócios que existem mas “não aparecem” no digital.</div></div><div><span class="lab">Cliente ideal</span><div class="val">PMEs e negócios locais.</div></div></div>
+      </div>
+      <div class="serv reveal">
+        <div class="snum">S2</div><h4>UX/UI Design de produtos digitais</h4>
+        <p class="sdesc">Interfaces e experiências completas: arquitetura, hierarquia, estados e design system.</p>
+        <div class="smeta"><div><span class="lab">Dor que resolve</span><div class="val">Produtos confusos, com ruído e baixa retenção.</div></div><div><span class="lab">Cliente ideal</span><div class="val">Times de produto e fundadores.</div></div></div>
+      </div>
+      <div class="serv reveal">
+        <div class="snum">S3</div><h4>Prototipação funcional</h4>
+        <p class="sdesc">Transformo uma ideia em protótipo navegável, próximo de um produto real, pronto para validar.</p>
+        <div class="smeta"><div><span class="lab">Dor que resolve</span><div class="val">Ideias presas em discussão por falta de forma tangível.</div></div><div><span class="lab">Cliente ideal</span><div class="val">Quem valida antes de investir no desenvolvimento.</div></div></div>
+      </div>
+      <div class="serv reveal">
+        <div class="snum">S4</div><h4>Sistemas internos e CRMs</h4>
+        <p class="sdesc">Painéis e ferramentas internas que organizam o trabalho real de uma equipe.</p>
+        <div class="smeta"><div><span class="lab">Dor que resolve</span><div class="val">Operação manual, mensagens perdidas, retrabalho.</div></div><div><span class="lab">Cliente ideal</span><div class="val">Empresas com atendimento/pedidos desorganizados.</div></div></div>
+      </div>
+      <div class="serv reveal">
+        <div class="snum">S5</div><h4>Automação de atendimento</h4>
+        <p class="sdesc">Agentes e fluxos de triagem que filtram e organizam demandas antes do humano.</p>
+        <div class="smeta"><div><span class="lab">Dor que resolve</span><div class="val">Equipe pequena afogada em mensagens, sem triagem.</div></div><div><span class="lab">Cliente ideal</span><div class="val">Negócios sobrecarregados no WhatsApp/chat.</div></div></div>
+      </div>
+      <div class="serv reveal">
+        <div class="snum">S6</div><h4>Design Engineering com IA</h4>
+        <p class="sdesc">Conduzo a implementação de interfaces com IA — escopo, guardrails, validação e controle de regressão.</p>
+        <div class="smeta"><div><span class="lab">Dor que resolve</span><div class="val">A distância entre “design pronto” e “produto no ar”.</div></div><div><span class="lab">Cliente ideal</span><div class="val">Quem precisa sair do design para o funcional sem um time grande.</div></div></div>
+      </div>
+      <div class="serv reveal">
+        <div class="snum">S7</div><h4>Documentação e melhoria de fluxos</h4>
+        <p class="sdesc">Documentação de contexto e decisões + otimização de fluxos existentes para reduzir atrito.</p>
+        <div class="smeta"><div><span class="lab">Dor que resolve</span><div class="val">Conhecimento que vive só na cabeça de uma pessoa; usuários que travam.</div></div><div><span class="lab">Cliente ideal</span><div class="val">Times e produtos que precisam de continuidade e ativação.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOBRE ================= -->
+<section id="sobre">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">04 — Sobre</span>
+    </div>
+    <div class="about">
+      <div class="reveal">
+        <p class="lead">Sou Lucas Alves Cabral. Trabalho no encontro entre design, produto e implementação — e o que me diferencia é o repertório por trás de cada decisão.</p>
+        <p>Venho de uma base prática em operação, atendimento e gestão, combinada com pesquisa, biologia e uma trajetória sólida em design. Esse repertório me deu algo que não se aprende só na tela: entendo como um negócio funciona por dentro, como uma equipe opera no dia a dia e onde o atrito realmente acontece.</p>
+        <p>Hoje aplico isso a produtos digitais. Modelo fluxos, desenho experiências, organizo operação e conduzo a implementação com IA até um nível funcional. Não me posiciono como engenheiro de software tradicional — meu valor está em critério de produto, decisão de design e capacidade de levar uma solução do problema ao ar.</p>
+      </div>
+      <div class="reveal">
+        <div class="rep-grid">
+          <div class="rep"><div class="rt">Operação &amp; atendimento</div><div class="rd">Experiência real de quem esteve na linha de frente.</div></div>
+          <div class="rep"><div class="rt">Pesquisa</div><div class="rd">Decisões baseadas em jornada, usabilidade e dados qualitativos.</div></div>
+          <div class="rep"><div class="rt">Organização de sistemas</div><div class="rd">Pipelines, estados e regras de operação claros.</div></div>
+          <div class="rep"><div class="rt">UX &amp; Product Design</div><div class="rd">Arquitetura, interface, design system e estados.</div></div>
+          <div class="rep"><div class="rt">IA &amp; automação</div><div class="rd">Implementação assistida com escopo e validação.</div></div>
+          <div class="rep"><div class="rt">Visão sistêmica</div><div class="rd">Conecto interface, negócio, operação e implementação.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTATO ================= -->
+<section id="contato">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="kicker" style="justify-content:center">05 — Contato</span>
+      <h2>Vamos resolver o próximo problema</h2>
+      <p style="margin-left:auto;margin-right:auto">Escolha o caminho que faz sentido para você. Respondo com contexto, sem rodeios.</p>
+    </div>
+    <div class="contact-intro reveal">
+      <div class="talent-only">
+        <p class="ci-text">Estou aberto a oportunidades como <strong>Product Designer, UX/UI, Design Engineer</strong> ou funções que combinem essas capacidades — em times que valorizem raciocínio de produto, processo e entrega funcional com critério.</p>
+      </div>
+      <div class="client-only">
+        <p class="ci-text">Se você tem um problema de <strong>operação, atendimento, presença digital, CRM ou automação</strong> — me conta o contexto. Respondo com um caminho claro, sem proposta genérica.</p>
+      </div>
+    </div>
+    <div class="contact">
+      <div class="cta-card reveal" data-mode="talent">
+        <span class="ctag">Oportunidades profissionais</span>
+        <h3>Para recrutadores &amp; equipes</h3>
+        <p>
+          <span class="talent-only">Quer entender meu processo, meu raciocínio de produto e como eu atuo dentro de um time? Estou disponível para vagas de Product Designer, UX/UI, Design Engineer ou áreas próximas. Vamos conversar.</span>
+          <span class="client-only">Quer entender meu processo antes de contratar? Posso mostrar como trabalho — do problema à entrega funcional.</span>
+        </p>
+        <a class="btn btn-talent" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20—%20Product%20Designer%20%26%20Design%20Engineer">Enviar e-mail →</a>
+      </div>
+      <div class="cta-card reveal" data-mode="client">
+        <span class="ctag">Projetos &amp; serviços</span>
+        <h3>Para negócios &amp; clientes</h3>
+        <p>
+          <span class="talent-only">Precisa de alguém para um projeto independente? Trabalho em sites, sistemas internos, CRMs, automação de atendimento e prototipação funcional.</span>
+          <span class="client-only">Tem um problema de operação, site, CRM, automação ou presença digital? Me conta o contexto — começo com um diagnóstico, não com uma proposta genérica.</span>
+        </p>
+        <a class="btn btn-client" href="#" id="waBtn">Falar no WhatsApp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <div class="fbrand">Lucas Cabral</div>
+      <div class="fmeta mono">Product Designer &amp; Design Engineer</div>
+    </div>
+    <div class="foot-links">
+      <a href="#projetos">Projetos</a>
+      <a href="#servicos">Serviços</a>
+      <a href="mailto:lac.lucascabral@gmail.com">E-mail</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- nav scrolled state ---------- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>20)},{passive:true});
+
+/* ---------- mobile menu ---------- */
+const burger=document.getElementById('burger');
+burger.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+/* ---------- audience mode (duas jornadas) ---------- */
+const body=document.body;
+const pill=document.getElementById('modePill');
+function setMode(m){
+  body.dataset.mode=m;
+  document.documentElement.style.setProperty('--accent',m==='client'?'var(--client)':'var(--talent)');
+  document.documentElement.style.setProperty('--accent-soft',m==='client'?'var(--client-soft)':'var(--talent-soft)');
+  pill.querySelectorAll('button').forEach(b=>{
+    const active=b.dataset.m===m;
+    b.classList.toggle('on',active);
+    b.setAttribute('aria-pressed',active?'true':'false');
+  });
+}
+pill.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.m)));
+document.querySelectorAll('[data-journey]').forEach(j=>j.addEventListener('click',()=>setMode(j.dataset.journey)));
+
+/* ---------- WhatsApp placeholder (sem número real ainda) ---------- */
+document.getElementById('waBtn').addEventListener('click',e=>{
+  e.preventDefault();
+  alert('Placeholder: insira o número do WhatsApp na versão final (ex.: https://wa.me/55XXXXXXXXXXX).');
+});
+
+/* ---------- scroll reveal ---------- */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach((en,i)=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- active nav link on scroll ---------- */
+const sections=[...document.querySelectorAll('main section[id]')];
+const links=new Map([...document.querySelectorAll('#navlinks a')].map(a=>[a.getAttribute('href').slice(1),a]));
+const spy=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const l=links.get(en.target.id); if(l)l.classList.add('active');
+    }
+  })
+},{threshold:.4});
+sections.forEach(s=>spy.observe(s));
+
+/* ============================================================
+   POINTER EFFECTS — luz no fundo + glow nos cards
+   Sutil, performático (rAF) e desativado em mobile/reduced-motion
+   ============================================================ */
+(function(){
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!fine || reduce) return;            // mobile/touch: efeito estático
+
+  const root = document.documentElement;
+  const glowEls = document.querySelectorAll('.card, .serv, .ia');
+  let bx=0, by=0, queued=false;
+
+  // 1) luz que segue o mouse no fundo (CSS vars --mx/--my globais)
+  function flushBg(){
+    queued=false;
+    root.style.setProperty('--mx', bx+'%');
+    root.style.setProperty('--my', by+'%');
+  }
+  addEventListener('pointermove',(e)=>{
+    bx=(e.clientX/innerWidth)*100;
+    by=(e.clientY/innerHeight)*100;
+    if(!queued){queued=true;requestAnimationFrame(flushBg);}
+    if(!document.body.classList.contains('cursor-on')) document.body.classList.add('cursor-on');
+  },{passive:true});
+  addEventListener('mouseleave',()=>document.body.classList.remove('cursor-on'));
+
+  // 2) glow interno por card, posição local em px (--mx/--my do próprio elemento)
+  glowEls.forEach(el=>{
+    el.addEventListener('pointermove',(e)=>{
+      const r=el.getBoundingClientRect();
+      el.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      el.style.setProperty('--my',(e.clientY-r.top)+'px');
+    },{passive:true});
+  });
+})();
+</script>
+</body>
+</html>
