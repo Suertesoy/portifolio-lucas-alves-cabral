@@ -358,9 +358,9 @@ section{padding:88px 0;position:relative}
 .card:hover{transform:translateY(-4px);border-color:var(--line-green);box-shadow:0 8px 32px rgba(26,140,78,.1)}
 .card:hover::before{opacity:1}
 .card:hover::after{width:100%}
-.card:hover .img-ph img{transform:scale(1.04)}
-.card:hover .img-ph--crm-video video{transform:scale(1.08)!important}
-.card:hover .img-ph--sartec-site-video video{transform:scale(1.10)!important}
+.card:hover .media-frame img{transform:scale(1.04)}
+.card:hover .media-frame--crm-video video{transform:scale(1.08)!important}
+.card:hover .media-frame--sartec-site-video video{transform:scale(1.10)!important}
 
 /* card content */
 .card .ptype{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent)}
@@ -501,11 +501,11 @@ section{padding:88px 0;position:relative}
 }
 
 /* =========================================================
-   IMAGE PLACEHOLDERS — design system component
+   MEDIA FRAMES — design system component
    ========================================================= */
 
 /* shared base */
-.img-ph{
+.media-frame{
   position:relative;overflow:hidden;
   border-radius:10px;
   border:1px solid rgba(15,50,28,.1);
@@ -515,8 +515,8 @@ section{padding:88px 0;position:relative}
   gap:10px;text-align:center;padding:22px;
   margin-bottom:16px;
 }
-.img-ph img,
-.img-ph video{
+.media-frame img,
+.media-frame video{
   position:absolute;inset:0;
   width:100%;height:100%;
   object-fit:cover;
@@ -524,7 +524,7 @@ section{padding:88px 0;position:relative}
   z-index:2;
   transition:transform 0.4s var(--ease);
 }
-.img-ph--uniedu-video{
+.media-frame--uniedu-video{
   background:#FFFFFF!important;
   aspect-ratio:9/16!important;
   width:100%!important;
@@ -535,7 +535,7 @@ section{padding:88px 0;position:relative}
   border:1px solid rgba(15,50,28,0.08)!important;
   margin:0 auto!important;
 }
-.img-ph--uniedu-video video{
+.media-frame--uniedu-video video{
   position:absolute!important;
   top:50%!important;
   left:50%!important;
@@ -546,19 +546,19 @@ section{padding:88px 0;position:relative}
   object-fit:contain!important;
   background:#FFFFFF!important;
 }
-.img-ph--crm-video{
+.media-frame--crm-video{
   background:#FFFFFF!important;
 }
-.img-ph--crm-video video{
+.media-frame--crm-video video{
   object-fit:cover!important;
   transform:scale(1.05)!important; /* Subtle crop to hide minor borders without clipping interface */
   transform-origin:center center!important;
   background:#FFFFFF!important;
 }
-.img-ph--sartec-site-video{
+.media-frame--sartec-site-video{
   background:#FFFFFF!important;
 }
-.img-ph--sartec-site-video video{
+.media-frame--sartec-site-video video{
   object-fit:cover!important;
   transform:scale(1.06)!important; /* Soft scale to minimize crop while keeping context */
   transform-origin:center center!important;
@@ -600,7 +600,7 @@ section{padding:88px 0;position:relative}
   position: relative;
   z-index: 1;
 }
-.img-ph::before{
+.media-frame::before{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
     repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px),
@@ -608,11 +608,11 @@ section{padding:88px 0;position:relative}
 }
 
 /* aspect ratio variants */
-.img-ph--wide{aspect-ratio:16/9}
-.img-ph--portrait{aspect-ratio:3/4}
+.media-frame--wide{aspect-ratio:16/9}
+.media-frame--portrait{aspect-ratio:3/4}
 
 /* inner text elements */
-/* deleted unused placeholder classes */
+/* deleted unused classes */
 
 /* =========================================================
    ABOUT PHOTO — prepared for real headshot
@@ -901,7 +901,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   .proc-grid{grid-template-columns:repeat(2,1fr)}
   .about{grid-template-columns:1fr;gap:32px}
   .card-featured-inner{grid-template-columns:1fr;gap:24px}
-  .card-featured-inner .img-ph--portrait{aspect-ratio:16/9}
+  .card-featured-inner .media-frame--portrait{aspect-ratio:16/9}
 }
 @media(max-width:760px){
   :root {
@@ -1051,7 +1051,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
             </div>
           </div>
 
-          <!-- placeholder visual — UNIEDU app preview -->
+          <!-- Vídeo demonstrativo — UNIEDU app -->
           <div>
             <!--
               Imagem futura: GIF curto ou MP4 em loop mostrando o app UNIEDU em navegação real,
@@ -1059,7 +1059,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
               Usar formato vertical 9:16 ou mockup mobile, duração entre 3 e 5 segundos,
               otimizado para web.
             -->
-            <div class="img-ph img-ph--uniedu-video">
+            <div class="media-frame media-frame--uniedu-video">
               <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do aplicativo UNIEDU">
                 <source src="GIF APP UNIEDU.mp4" type="video/mp4">
               </video>
@@ -1082,7 +1082,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           ou chat operacional. Usar dados fictícios ou borrar informações sensíveis.
           Preferir crop horizontal 16:9 ou 4:3, com boa nitidez e leitura de interface.
         -->
-        <div class="img-ph img-ph--wide img-ph--crm-video">
+        <div class="media-frame media-frame--wide media-frame--crm-video">
           <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do CRM Sartec">
             <source src="CRM sartec.mp4" type="video/mp4">
           </video>
@@ -1115,7 +1115,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           Sartec, com mensagens fictícias. Mostrar decisão PF/PJ, coleta de contexto e
           encaminhamento para atendimento humano. Não usar dados reais de clientes.
         -->
-        <div class="img-ph img-ph--wide cta-flow-composition">
+        <div class="media-frame media-frame--wide cta-flow-composition">
           <!-- Flow nodes visual built in CSS -->
           <div class="flow-node">Triagem</div>
           <div class="flow-connector"></div>
@@ -1149,7 +1149,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           Imagem futura: print da home do Site Sartec Papelaria mostrando a proposta de lista
           escolar pelo WhatsApp, com visual claro e comercial. Usar crop horizontal 16:9.
         -->
-        <div class="img-ph img-ph--wide img-ph--sartec-site-video">
+        <div class="media-frame media-frame--wide media-frame--sartec-site-video">
           <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do protótipo do site Sartec Papelaria">
             <source src="PROTÓTIPO-SITE SARTEC.mp4" type="video/mp4">
           </video>
@@ -1177,7 +1177,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           Imagem futura: print da landing page Sartec Digital mostrando hero, proposta de valor
           e CTA principal. Usar crop horizontal 16:9, sem poluir o card do portfólio.
         -->
-        <div class="img-ph img-ph--wide">
+        <div class="media-frame media-frame--wide">
           <img src="sartec digital - portifolio.png" alt="Interface da Landing Page Sartec Digital" onerror="this.style.display='none'" />
         </div>
 
