@@ -241,6 +241,13 @@ section{padding:88px 0;position:relative}
   display:block;
   z-index:2;
 }
+.img-ph--video-light{
+  background:#FFFFFF!important;
+}
+.img-ph--video-light video{
+  object-fit:contain!important;
+  background:#FFFFFF!important;
+}
 .img-ph::before{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
@@ -576,7 +583,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
               Usar formato vertical 9:16 ou mockup mobile, duração entre 3 e 5 segundos,
               otimizado para web.
             -->
-            <div class="img-ph img-ph--portrait">
+            <div class="img-ph img-ph--portrait img-ph--video-light">
               <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do aplicativo UNIEDU">
                 <source src="GIF APP UNIEDU.mp4" type="video/mp4">
               </video>
@@ -603,7 +610,9 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           Preferir crop horizontal 16:9 ou 4:3, com boa nitidez e leitura de interface.
         -->
         <div class="img-ph img-ph--wide">
-          <img src="TELA CRM- PORTIFÓLIO.png" alt="Sartec CRM" onerror="this.style.display='none'" />
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do CRM Sartec">
+            <source src="CRM sartec.mp4" type="video/mp4">
+          </video>
           <span class="ph-label">Preview futuro</span>
           <p class="ph-desc">Print recortado do Kanban ou da janela de atendimento do CRM, com dados fictícios ou informações sensíveis ocultas.</p>
           <span class="ph-format">16:9 ou 4:3 · estático · alta resolução</span>
@@ -694,6 +703,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           e CTA principal. Usar crop horizontal 16:9, sem poluir o card do portfólio.
         -->
         <div class="img-ph img-ph--wide">
+          <img src="sartec digital - portifolio.png" alt="Página Sartec Digital no portfólio" onerror="this.style.display='none'" />
           <span class="ph-label">Preview futuro</span>
           <p class="ph-desc">Print da landing page destacando hero e proposta comercial.</p>
           <span class="ph-format">16:9 · print da landing page · foco no hero</span>
