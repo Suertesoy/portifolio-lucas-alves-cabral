@@ -4,39 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lucas Alves Cabral — Product Designer & Design Engineer</title>
-<meta name="description" content="Product Designer & Design Engineer. Desenho produtos digitais que conectam experiência, operação e implementação — UX, interface, sistemas internos e automação com IA, do problema à solução funcional." />
+<meta name="description" content="Product Designer & Design Engineer. Uno UX, produto, operação e implementação assistida por IA para transformar fluxos complexos em experiências claras, funcionais e documentadas." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
 /* =========================================================
-   DESIGN TOKENS
+   DESIGN TOKENS — LIGHT THEME
    ========================================================= */
 :root{
-  --bg:#080D0B;
-  --bg-elev:#0E1512;
-  --bg-elev-2:#131E19;
-  --line:rgba(180,255,214,.09);
-  --line-strong:rgba(180,255,214,.18);
-  --line-green:rgba(124,255,178,.22);
-  --text:#EFF4F1;
-  --text-soft:#BFC9C3;
-  --muted:#7E8A84;
-  --faint:#54605A;
-  --talent:#62EFA6;
-  --talent-2:#2FEA8B;
-  --talent-deep:#0F2A1F;
-  --talent-soft:rgba(124,255,178,.14);
-  --glow:rgba(124,255,178,.18);
-  --client:#E3C68C;
-  --client-2:#D8B26A;
-  --client-soft:rgba(227,198,140,.13);
-  --accent:var(--talent);
-  --accent-2:var(--talent-2);
-  --accent-soft:var(--talent-soft);
-  --radius:16px;
-  --radius-sm:10px;
-  --maxw:1180px;
+  --bg:#F5F7F5;
+  --bg-elev:#FFFFFF;
+  --bg-elev-2:#ECF1EC;
+  --line:rgba(15,50,28,.07);
+  --line-strong:rgba(15,50,28,.14);
+  --line-green:rgba(26,140,78,.18);
+  --text:#0C1B10;
+  --text-soft:#354F3E;
+  --muted:#687D71;
+  --faint:#9EB0A6;
+  --accent:#1A8C4E;
+  --accent-2:#22A85F;
+  --accent-soft:rgba(26,140,78,.08);
+  --glow:rgba(26,140,78,.06);
+  --radius:14px;
+  --radius-sm:9px;
+  --maxw:1140px;
   --ease:cubic-bezier(.22,.61,.36,1);
   --mx:50%; --my:18%;
 }
@@ -45,7 +38,7 @@
    BASE
    ========================================================= */
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
 body{
   background:var(--bg);
   color:var(--text);
@@ -58,367 +51,278 @@ body{
 body::before{
   content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(680px 480px at 10% -8%, rgba(98,239,166,.12), transparent 62%),
-    radial-gradient(620px 460px at 94% 4%, rgba(47,234,139,.07), transparent 60%),
-    radial-gradient(900px 700px at 50% 118%, rgba(15,42,31,.55), transparent 70%);
-  transition:opacity .6s var(--ease);
+    radial-gradient(900px 700px at -4% -6%, rgba(26,140,78,.04), transparent 62%),
+    radial-gradient(700px 500px at 106% 2%, rgba(26,140,78,.03), transparent 60%);
 }
 body::after{
   content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;
   transition:opacity .8s var(--ease);
-  background:radial-gradient(460px circle at var(--mx) var(--my), var(--glow), transparent 60%);
+  background:radial-gradient(420px circle at var(--mx) var(--my), var(--glow), transparent 62%);
 }
 body.cursor-on::after{opacity:1}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
-::selection{background:var(--accent);color:#06070A}
+::selection{background:var(--accent);color:#fff}
 
-h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;line-height:1.08;letter-spacing:-.02em;font-weight:600}
+h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;line-height:1.1;letter-spacing:-.02em;font-weight:600}
 .mono{font-family:"JetBrains Mono",monospace;font-weight:500;letter-spacing:.02em}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
 .kicker{
-  font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.14em;
+  font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:9px;
 }
-.kicker::before{content:"";width:22px;height:1px;background:var(--accent);display:inline-block}
-.eyebrow{color:var(--muted);font-size:13.5px;letter-spacing:.02em}
+.kicker::before{content:"";width:20px;height:1px;background:var(--accent);display:inline-block}
 
 /* =========================================================
    NAV
    ========================================================= */
 header.nav{
   position:fixed;top:0;left:0;right:0;z-index:50;
-  backdrop-filter:blur(14px);background:rgba(10,11,13,.62);
-  border-bottom:1px solid transparent;transition:border-color .4s,background .4s;
+  backdrop-filter:blur(16px);background:rgba(245,247,245,.88);
+  border-bottom:1px solid var(--line);transition:background .4s;
 }
-header.nav.scrolled{border-bottom:1px solid var(--line);background:rgba(10,11,13,.86)}
-.nav-inner{max-width:var(--maxw);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk";font-weight:600;font-size:16px;letter-spacing:-.01em}
-.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);transition:background .4s,box-shadow .4s}
-.brand small{display:block;font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.08em;color:var(--muted);font-weight:400;margin-top:1px}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{font-size:14.5px;color:var(--text-soft);position:relative;transition:color .25s}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:1.5px;width:0;background:var(--accent);transition:width .3s var(--ease)}
+header.nav.scrolled{background:rgba(245,247,245,.96)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:15px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk";font-weight:600;font-size:15.5px;letter-spacing:-.01em}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(26,140,78,.4);transition:background .4s}
+.brand small{display:block;font-family:"JetBrains Mono";font-size:10px;letter-spacing:.08em;color:var(--muted);font-weight:400;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;color:var(--muted);position:relative;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;height:1.5px;width:0;background:var(--accent);transition:width .3s var(--ease)}
 .nav-links a:hover{color:var(--text)}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%}
 .nav-links a.active{color:var(--text)}
-.nav-cta{padding:9px 16px;border:1px solid var(--line-strong);border-radius:99px;font-size:13.5px;color:var(--text);transition:.25s}
+.nav-cta{padding:8px 16px;border:1.5px solid var(--line-strong);border-radius:99px;font-size:13.5px;color:var(--text);transition:.25s;font-weight:500}
 .nav-cta:hover{border-color:var(--accent);color:var(--accent)}
-.burger{display:none;background:none;border:1px solid var(--line-strong);border-radius:9px;padding:8px 9px;cursor:pointer}
+.burger{display:none;background:none;border:1.5px solid var(--line-strong);border-radius:9px;padding:8px 9px;cursor:pointer}
 .burger span{display:block;width:18px;height:2px;background:var(--text);margin:3px 0;transition:.3s}
 
 /* =========================================================
    HERO
    ========================================================= */
-.hero{padding:136px 0 48px;position:relative}
-.hero h1{font-size:clamp(38px,6.4vw,76px);font-weight:700;max-width:16ch}
-.hero h1 em{font-style:normal;color:var(--accent);transition:color .4s}
-.hero .sub{font-size:clamp(17px,2.1vw,21px);color:var(--text-soft);max-width:60ch;margin-top:26px;line-height:1.55}
-.hero .sub b{color:var(--text);font-weight:600}
-.hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
-.chip{font-family:"JetBrains Mono";font-size:12px;color:var(--text-soft);border:1px solid var(--line);background:var(--bg-elev);padding:7px 12px;border-radius:99px;transition:border-color .3s,color .3s,background .3s}
-.chip:hover{border-color:var(--line-green);color:var(--accent);background:rgba(124,255,178,.05)}
-
-/* Duas jornadas */
-.journeys{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
-.journey{
-  position:relative;border:1px solid var(--line);background:linear-gradient(180deg,var(--bg-elev),rgba(16,18,22,.4));
-  border-radius:var(--radius);padding:26px 26px 22px;cursor:pointer;overflow:hidden;
-  transition:transform .4s var(--ease),border-color .35s,box-shadow .35s;
+.hero{padding:136px 0 72px;position:relative}
+.hero h1{font-size:clamp(36px,5.8vw,68px);font-weight:700;max-width:18ch;line-height:1.06}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .sub{
+  font-size:clamp(16px,1.9vw,19px);color:var(--text-soft);
+  max-width:58ch;margin-top:24px;line-height:1.6;
 }
-.journey::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .4s;background:radial-gradient(400px 200px at 20% 0%,var(--j-soft),transparent 70%)}
-.journey:hover{transform:translateY(-4px);border-color:var(--j-color);box-shadow:0 18px 50px -24px var(--j-color)}
-.journey:hover::before{opacity:1}
-.journey[data-mode="talent"]{--j-color:var(--talent);--j-soft:var(--talent-soft)}
-.journey[data-mode="client"]{--j-color:var(--client);--j-soft:var(--client-soft)}
-.journey .j-tag{font-family:"JetBrains Mono";font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--j-color)}
-.journey h3{font-size:22px;margin:14px 0 8px}
-.journey p{font-size:14.5px;color:var(--muted);line-height:1.5}
-.journey .j-go{margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text);font-weight:500}
-.journey .j-go .arr{transition:transform .3s var(--ease);color:var(--j-color)}
-.journey:hover .j-go .arr{transform:translateX(5px)}
+.hero-meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  font-family:"JetBrains Mono";font-size:11.5px;color:var(--muted);
+  border:1px solid var(--line-strong);background:var(--bg-elev);
+  padding:6px 12px;border-radius:99px;
+  transition:border-color .25s,color .25s,background .25s;
+}
+.chip:hover{border-color:var(--line-green);color:var(--accent);background:rgba(26,140,78,.04)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:99px;font-size:14.5px;font-weight:600;
+  background:var(--accent);color:#fff;border:none;
+  transition:.3s var(--ease);cursor:pointer;text-decoration:none;
+}
+.btn-primary:hover{box-shadow:0 8px 28px rgba(26,140,78,.3);transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:99px;font-size:14.5px;font-weight:500;
+  border:1.5px solid var(--line-strong);color:var(--text);
+  transition:.3s var(--ease);cursor:pointer;text-decoration:none;
+}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
 
-/* Journey card — secondary mode dimmed, fully active on hover */
-body[data-mode="talent"] .journey[data-mode="client"]{opacity:.5;transition:opacity .4s var(--ease),transform .4s var(--ease),border-color .35s,box-shadow .35s}
-body[data-mode="talent"] .journey[data-mode="client"]:hover{opacity:.88}
-body[data-mode="client"] .journey[data-mode="talent"]{opacity:.5;transition:opacity .4s var(--ease),transform .4s var(--ease),border-color .35s,box-shadow .35s}
-body[data-mode="client"] .journey[data-mode="talent"]:hover{opacity:.88}
+/* =========================================================
+   INTRO STRIP
+   ========================================================= */
+.intro-strip{
+  padding:48px 0 60px;
+  border-bottom:1px solid var(--line);
+  position:relative;z-index:1;
+}
+.strip-lead{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(17px,2vw,22px);
+  font-weight:500;line-height:1.35;letter-spacing:-.01em;
+  color:var(--text);max-width:60ch;margin-bottom:12px;
+}
+.strip-body{font-size:15.5px;color:var(--muted);max-width:68ch;line-height:1.65}
 
 /* =========================================================
    SECTIONS
    ========================================================= */
-section{padding:96px 0;position:relative}
-.sec-head{max-width:62ch;margin-bottom:46px}
-.sec-head h2{font-size:clamp(28px,4vw,44px);margin:16px 0 14px;font-weight:600}
-.sec-head p{color:var(--muted);font-size:16.5px}
+section{padding:88px 0;position:relative}
+.sec-head{max-width:62ch;margin-bottom:44px}
+.sec-head h2{font-size:clamp(26px,3.6vw,40px);margin:12px 0 12px}
+.sec-head p{color:var(--muted);font-size:16px;line-height:1.6}
 
-/* PROJETOS */
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+/* =========================================================
+   PROJETOS
+   ========================================================= */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .card{
-  position:relative;isolation:isolate;border:1px solid var(--line);background:var(--bg-elev);
-  border-radius:var(--radius);padding:30px;overflow:hidden;
-  transition:transform .45s var(--ease),border-color .35s,background .35s,box-shadow .45s var(--ease);
+  position:relative;isolation:isolate;
+  border:1px solid var(--line);background:var(--bg-elev);
+  border-radius:var(--radius);padding:28px;overflow:hidden;
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
+  transition:transform .4s var(--ease),border-color .3s,box-shadow .4s var(--ease);
 }
-.card::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
-  opacity:0;transition:opacity .45s var(--ease);
-  background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%), var(--accent-soft), transparent 58%)}
-.card::after{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),transparent);transition:width .5s var(--ease)}
-.card:hover{transform:translateY(-5px);border-color:var(--line-green);background:var(--bg-elev-2);box-shadow:0 26px 60px -34px var(--glow)}
+.card::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  border-radius:inherit;pointer-events:none;opacity:0;
+  transition:opacity .4s var(--ease);
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%), var(--accent-soft), transparent 60%);
+}
+.card::after{
+  content:"";position:absolute;left:0;top:0;height:2px;width:0;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  transition:width .5s var(--ease);
+}
+.card:hover{transform:translateY(-4px);border-color:var(--line-green);box-shadow:0 8px 32px rgba(26,140,78,.1)}
 .card:hover::before{opacity:1}
 .card:hover::after{width:100%}
-.card .ptype{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.card h3{font-size:25px;margin:13px 0 6px;font-weight:600}
-.card .psum{color:var(--text-soft);font-size:15px;line-height:1.55;margin-bottom:18px}
-.card .plabel{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:9px;font-family:"JetBrains Mono"}
-.card .pblock{margin-bottom:16px}
-.card .pblock p{font-size:14px;color:var(--muted);line-height:1.5}
-.tags{display:flex;flex-wrap:wrap;gap:7px}
-.tags span{font-size:12px;color:var(--text-soft);border:1px solid var(--line);border-radius:7px;padding:4px 9px;background:rgba(255,255,255,.02)}
-.card .pcta{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--text)}
-.card .pcta .arr{color:var(--accent);transition:transform .3s var(--ease)}
-.card:hover .pcta .arr{transform:translateX(5px)}
-.card .badge-live{position:absolute;top:26px;right:26px;font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.08em;color:#8FE3A8;border:1px solid rgba(143,227,168,.25);background:rgba(143,227,168,.07);padding:4px 9px;border-radius:99px}
+.card .ptype{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-size:22px;margin:10px 0 8px;font-weight:600}
+.card .psum{color:var(--text-soft);font-size:14.5px;line-height:1.55;margin-bottom:14px}
+.card .pdem-label{font-family:"JetBrains Mono";font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+.card .pdem{font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:18px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.tags span{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+.card .pcta{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:14px;font-weight:600;color:var(--accent);
+  text-decoration:none;transition:gap .3s var(--ease);
+}
+.card .pcta:hover{gap:11px}
+.card .pcta .arr{transition:transform .3s var(--ease)}
+.card:hover .pcta .arr{transform:translateX(3px)}
+.card .badge-live{
+  position:absolute;top:24px;right:24px;
+  font-family:"JetBrains Mono";font-size:10px;letter-spacing:.08em;
+  color:var(--accent);border:1px solid rgba(26,140,78,.25);
+  background:rgba(26,140,78,.07);padding:3px 8px;border-radius:99px;
+}
 
-/* PROCESSO */
-.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.proc-step{background:var(--bg-elev);padding:26px 22px;transition:background .35s}
+/* =========================================================
+   PROCESSO
+   ========================================================= */
+.proc-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+}
+.proc-step{background:var(--bg-elev);padding:24px 20px;transition:background .3s}
 .proc-step:hover{background:var(--bg-elev-2)}
-.proc-step .num{font-family:"JetBrains Mono";font-size:13px;color:var(--accent);margin-bottom:14px}
-.proc-step h4{font-size:16.5px;font-weight:600;margin-bottom:7px;letter-spacing:-.01em}
-.proc-step p{font-size:13.5px;color:var(--muted);line-height:1.5}
+.proc-step .num{font-family:"JetBrains Mono";font-size:12px;color:var(--accent);margin-bottom:12px}
+.proc-step h4{font-size:15.5px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
+.proc-step p{font-size:13px;color:var(--muted);line-height:1.5}
+.ia-note{
+  margin-top:18px;padding:16px 22px;
+  border-left:2px solid var(--accent);
+  border-radius:0 10px 10px 0;
+  background:rgba(26,140,78,.04);
+  font-size:14.5px;color:var(--text-soft);line-height:1.6;
+}
+.ia-note b{color:var(--text);font-weight:600}
 
-/* IA com critério */
-.ia{position:relative;isolation:isolate;overflow:hidden;margin-top:24px;border:1px solid var(--line-green);border-radius:var(--radius);
-  background:linear-gradient(135deg,rgba(47,234,139,.08),rgba(98,239,166,.05) 55%,transparent);
-  padding:40px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
-.ia::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,30%) var(--my,40%), rgba(47,234,139,.10), transparent 60%)}
-.ia .kicker{color:var(--accent-2)}.ia .kicker::before{background:var(--accent-2)}
-.ia h3{font-size:26px;margin:14px 0 14px;font-weight:600}
-.ia p{color:var(--text-soft);font-size:15.5px;line-height:1.6}
-.ia-list{display:grid;gap:12px}
-.ia-list .row{display:flex;gap:13px;align-items:flex-start;font-size:14.5px;color:var(--text-soft)}
-.ia-list .row .ck{flex:none;width:20px;height:20px;border-radius:6px;border:1px solid rgba(47,234,139,.45);color:var(--accent-2);display:grid;place-items:center;font-size:11px;margin-top:2px}
-
-/* SERVIÇOS / O QUE POSSO CONSTRUIR */
-.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.serv{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:var(--bg-elev);transition:transform .4s var(--ease),border-color .35s,box-shadow .45s var(--ease)}
-.serv::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .45s var(--ease);background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), var(--client-soft), transparent 58%)}
-.serv:hover{transform:translateY(-4px);border-color:rgba(227,198,140,.32);box-shadow:0 24px 56px -34px rgba(227,198,140,.4)}
-.serv:hover::before{opacity:1}
-.serv .snum{font-family:"JetBrains Mono";font-size:12px;color:var(--client);margin-bottom:14px}
-.serv h4{font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
-.serv .sdesc{font-size:14px;color:var(--text-soft);line-height:1.5;margin-bottom:16px}
-.serv .smeta{border-top:1px solid var(--line);padding-top:14px;display:grid;gap:8px}
-.serv .smeta .lab{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
-.serv .smeta .val{font-size:13px;color:var(--muted);line-height:1.45}
-
-/* SOBRE */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
-.about .lead{font-size:clamp(20px,2.6vw,26px);font-family:"Space Grotesk";font-weight:500;line-height:1.35;letter-spacing:-.01em;color:var(--text)}
-.about p{color:var(--text-soft);font-size:15.5px;margin-top:18px;line-height:1.65}
-.rep-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:6px}
-.rep{background:var(--bg-elev);padding:20px}
-.rep .rt{font-size:14.5px;font-weight:600;margin-bottom:4px;font-family:"Space Grotesk"}
+/* =========================================================
+   SOBRE
+   ========================================================= */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.about .lead{
+  font-size:clamp(18px,2.2vw,23px);font-family:"Space Grotesk";
+  font-weight:500;line-height:1.35;letter-spacing:-.01em;color:var(--text);
+}
+.about p{color:var(--text-soft);font-size:15.5px;margin-top:16px;line-height:1.65}
+.rep-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+}
+.rep{background:var(--bg-elev);padding:20px;transition:background .3s}
+.rep:hover{background:var(--bg-elev-2)}
+.rep .rt{font-size:14px;font-weight:600;margin-bottom:4px;font-family:"Space Grotesk"}
 .rep .rd{font-size:12.5px;color:var(--muted);line-height:1.45}
 
-/* CONTATO */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.cta-card{border:1px solid var(--line);border-radius:var(--radius);padding:38px;background:var(--bg-elev);position:relative;overflow:hidden;transition:border-color .35s,transform .4s var(--ease)}
-.cta-card:hover{transform:translateY(-4px)}
-.cta-card[data-mode="talent"]:hover{border-color:var(--talent)}
-.cta-card[data-mode="client"]:hover{border-color:var(--client)}
-.cta-card .ctag{font-family:"JetBrains Mono";font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}
-.cta-card[data-mode="talent"] .ctag{color:var(--talent)}
-.cta-card[data-mode="client"] .ctag{color:var(--client)}
-.cta-card h3{font-size:24px;margin:13px 0 10px;font-weight:600}
-.cta-card p{color:var(--muted);font-size:14.5px;margin-bottom:22px;line-height:1.55}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:99px;font-size:14.5px;font-weight:500;transition:.3s;cursor:pointer;border:1px solid transparent}
-.btn-talent{background:var(--talent);color:#06070A}
-.btn-talent:hover{box-shadow:0 12px 34px -12px var(--talent);transform:translateY(-2px)}
-.btn-client{background:var(--client);color:#0A0703}
-.btn-client:hover{box-shadow:0 12px 34px -12px var(--client);transform:translateY(-2px)}
-.btn-ghost{border:1px solid var(--line-strong);color:var(--text)}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+/* =========================================================
+   CONTATO
+   ========================================================= */
+.contact-main{
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:40px;background:var(--bg-elev);
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
+  transition:border-color .3s,transform .4s var(--ease);
+  max-width:640px;
+}
+.contact-main:hover{transform:translateY(-3px);border-color:var(--line-green)}
+.contact-main .ctag{
+  font-family:"JetBrains Mono";font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px;
+}
+.contact-main h3{font-size:clamp(20px,2.4vw,26px);margin-bottom:12px;font-weight:600}
+.contact-main p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:24px}
+.contact-btns{display:flex;flex-wrap:wrap;gap:10px}
+.contact-secondary{
+  margin-top:16px;max-width:640px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:14px 20px;border:1px solid var(--line);
+  border-radius:10px;background:var(--bg-elev);font-size:13.5px;color:var(--muted);
+}
+.contact-secondary a{
+  color:var(--accent);font-weight:500;font-size:13.5px;
+  display:inline-flex;align-items:center;gap:6px;
+  transition:opacity .25s;
+}
+.contact-secondary a:hover{opacity:.7}
 
-/* Contact cards — secondary mode dimmed, fully active on hover */
-body[data-mode="talent"] .cta-card[data-mode="client"]{opacity:.5;transition:opacity .4s var(--ease),transform .4s var(--ease),border-color .35s}
-body[data-mode="talent"] .cta-card[data-mode="client"]:hover{opacity:.88}
-body[data-mode="client"] .cta-card[data-mode="talent"]{opacity:.5;transition:opacity .4s var(--ease),transform .4s var(--ease),border-color .35s}
-body[data-mode="client"] .cta-card[data-mode="talent"]:hover{opacity:.88}
-
-/* FOOTER */
-footer{border-top:1px solid var(--line);padding:46px 0 40px;margin-top:30px}
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.foot-inner .fbrand{font-family:"Space Grotesk";font-weight:600;font-size:18px}
-.foot-inner .fmeta{font-size:13px;color:var(--faint)}
-.foot-links{display:flex;gap:22px;font-size:14px;color:var(--text-soft)}
+.foot-inner .fbrand{font-family:"Space Grotesk";font-weight:600;font-size:17px;color:var(--text)}
+.foot-inner .fmeta{font-size:12.5px;color:var(--faint);margin-top:2px}
+.foot-links{display:flex;gap:20px;font-size:14px;color:var(--muted)}
 .foot-links a:hover{color:var(--accent)}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
 .reveal.in{opacity:1;transform:none}
-
-/* MODE TOGGLE (nav) */
-.mode-pill{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px;background:var(--bg-elev)}
-.mode-pill button{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.04em;padding:6px 11px;border-radius:99px;background:none;border:none;color:var(--muted);cursor:pointer;transition:.25s;white-space:nowrap}
-.mode-pill button.on{color:#06070A}
-.mode-pill button[data-m="talent"].on{background:var(--talent)}
-.mode-pill button[data-m="client"].on{background:var(--client)}
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 @media(max-width:920px){
   .proc-grid{grid-template-columns:repeat(2,1fr)}
-  .serv-grid{grid-template-columns:repeat(2,1fr)}
-  .ia{grid-template-columns:1fr;gap:28px;padding:30px}
-  .about{grid-template-columns:1fr;gap:34px}
+  .about{grid-template-columns:1fr;gap:32px}
 }
 @media(max-width:760px){
   .nav-links,.nav-cta{display:none}
   .burger{display:block}
   header.nav.open .nav-links{
     display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
-    background:rgba(10,11,13,.97);border-bottom:1px solid var(--line);padding:8px 0;
+    background:rgba(245,247,245,.98);border-bottom:1px solid var(--line);padding:8px 0;
   }
-  header.nav.open .nav-links a{padding:14px 28px}
+  header.nav.open .nav-links a{padding:13px 28px;color:var(--text)}
   header.nav.open .nav-links a::after{display:none}
-  .hero{padding:130px 0 50px}
-  .journeys{grid-template-columns:1fr}
+  .hero{padding:110px 0 52px}
   .proj-grid{grid-template-columns:1fr}
-  .contact{grid-template-columns:1fr}
-  section{padding:72px 0}
+  section{padding:64px 0}
   .wrap{padding:0 20px}
-  .nav-inner{padding:14px 20px}
+  .nav-inner{padding:13px 20px}
+  .contact-main{padding:28px 22px}
+  .intro-strip{padding:36px 0 44px}
 }
 @media(max-width:520px){
-  .serv-grid{grid-template-columns:1fr}
   .proc-grid{grid-template-columns:1fr}
   .rep-grid{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
-
-/* =========================================================
-   DYNAMIC MODE — NARRATIVE SWITCHING
-   ========================================================= */
-body[data-mode="talent"] .client-only{display:none!important}
-body[data-mode="client"] .talent-only{display:none!important}
-
-/* HERO CTAs */
-.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.hero-cta-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:12px 22px;border-radius:99px;font-size:14.5px;font-weight:500;
-  text-decoration:none;transition:.3s var(--ease);
-  border:1px solid var(--line-strong);color:var(--text);
-}
-.hero-cta-btn.primary-cta{
-  background:var(--accent);color:#06070A;border-color:transparent;
-}
-.hero-cta-btn.primary-cta:hover{
-  box-shadow:0 12px 32px -10px var(--accent);transform:translateY(-2px);
-}
-.hero-cta-btn.ghost-cta{color:var(--text-soft)}
-.hero-cta-btn.ghost-cta:hover{
-  border-color:var(--accent);color:var(--accent);transform:translateY(-1px);
-}
-body[data-mode="client"] .hero-cta-btn.primary-cta{
-  background:var(--client);color:#0A0703;
-}
-body[data-mode="client"] .hero-cta-btn.primary-cta:hover{
-  box-shadow:0 12px 32px -10px var(--client);
-}
-body[data-mode="client"] .hero-cta-btn.ghost-cta:hover{
-  border-color:var(--client);color:var(--client);
-}
-
-/* MODE INTRO BLOCK */
-.mode-intro-wrap{padding:0 0 32px;position:relative;z-index:1}
-.mode-intro-card{
-  border:1px solid var(--line);border-radius:var(--radius);
-  padding:26px 30px;overflow:hidden;
-  transition:border-color .5s var(--ease),background .5s var(--ease);
-}
-body[data-mode="talent"] .mode-intro-card{
-  border-color:rgba(98,239,166,.2);
-  background:linear-gradient(135deg,rgba(15,42,31,.5),rgba(8,13,11,.3));
-}
-body[data-mode="client"] .mode-intro-card{
-  border-color:rgba(227,198,140,.2);
-  background:linear-gradient(135deg,rgba(28,21,8,.45),rgba(8,13,11,.3));
-}
-.mi-tag{
-  font-family:"JetBrains Mono";font-size:11px;letter-spacing:.1em;
-  text-transform:uppercase;margin-bottom:10px;display:block;
-}
-body[data-mode="talent"] .mi-tag{color:var(--talent)}
-body[data-mode="client"] .mi-tag{color:var(--client)}
-.mi-text{font-size:15px;color:var(--text-soft);line-height:1.65;max-width:78ch;margin:0}
-.mi-text strong{color:var(--text);font-weight:600}
-
-/* SECTION PRIORITY BADGES */
-.sec-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.08em;
-  text-transform:uppercase;padding:4px 11px;border-radius:99px;margin-top:12px;
-}
-.sec-badge::before{content:"◆";font-size:7px;opacity:.7}
-.sec-badge.talent-badge{
-  color:var(--talent);border:1px solid rgba(98,239,166,.22);
-  background:rgba(98,239,166,.07);
-}
-.sec-badge.client-badge{
-  color:var(--client);border:1px solid rgba(227,198,140,.22);
-  background:rgba(227,198,140,.07);
-}
-
-/* SECTION HIERARCHY */
-body[data-mode="talent"] #servicos .sec-head h2,
-body[data-mode="talent"] #servicos .sec-head>p{opacity:.6;transition:opacity .5s var(--ease)}
-body[data-mode="client"] #projetos .sec-head h2,
-body[data-mode="client"] #projetos .sec-head>p,
-body[data-mode="client"] #processo .sec-head h2,
-body[data-mode="client"] #processo .sec-head>p{opacity:.6;transition:opacity .5s var(--ease)}
-body[data-mode="talent"] #projetos .sec-head h2,
-body[data-mode="talent"] #projetos .sec-head>p,
-body[data-mode="talent"] #processo .sec-head h2,
-body[data-mode="talent"] #processo .sec-head>p,
-body[data-mode="client"] #servicos .sec-head h2,
-body[data-mode="client"] #servicos .sec-head>p{opacity:1;transition:opacity .5s var(--ease)}
-
-/* CARD MODE LINE */
-.card-mode-line{
-  font-size:13px;line-height:1.5;font-style:italic;
-  margin-top:-4px;margin-bottom:16px;
-  padding:8px 12px;border-left:2px solid;border-radius:0 7px 7px 0;
-  transition:border-color .4s,background .4s,color .4s;
-}
-body[data-mode="talent"] .card-mode-line{
-  border-left-color:rgba(98,239,166,.22);
-  background:rgba(98,239,166,.04);
-  color:var(--muted);
-}
-body[data-mode="client"] .card-mode-line{
-  border-left-color:rgba(227,198,140,.22);
-  background:rgba(227,198,140,.04);
-  color:var(--text-soft);
-}
-
-/* CONTACT INTRO */
-.contact-intro{margin-bottom:28px;text-align:center}
-.ci-text{font-size:15.5px;color:var(--text-soft);line-height:1.6;max-width:62ch;margin:0 auto}
-.ci-text strong{color:var(--text);font-weight:600}
-
-@media(max-width:760px){
-  .mode-intro-card{padding:20px 18px}
-  .hero-ctas{gap:8px;margin-top:20px}
-  .hero-cta-btn{padding:10px 16px;font-size:13.5px}
-  .contact-intro{margin-bottom:20px}
-}
 </style>
 </head>
-<body data-mode="talent">
+<body>
 
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
@@ -433,11 +337,7 @@ body[data-mode="client"] .card-mode-line{
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:14px">
-      <div class="mode-pill" id="modePill" role="group" aria-label="Escolha sua jornada">
-        <button data-m="talent" class="on" aria-pressed="true">Recrutadores</button>
-        <button data-m="client" aria-pressed="false">Negócios</button>
-      </div>
+    <div style="display:flex;align-items:center;gap:12px">
       <a href="#contato" class="nav-cta">Falar comigo</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -450,10 +350,9 @@ body[data-mode="client"] .card-mode-line{
 <section class="hero">
   <div class="wrap">
     <span class="kicker reveal">Product Designer &amp; Design Engineer</span>
-    <h1 class="reveal" style="margin-top:22px">Desenho produtos digitais que conectam <em>experiência, operação e implementação.</em></h1>
+    <h1 class="reveal" style="margin-top:20px">Desenho produtos digitais a partir de <em>problemas reais.</em></h1>
     <p class="sub reveal">
-      <span class="talent-only">Veja como penso, projeto e conduzo produtos digitais dentro de <b>contextos reais</b> — do raciocínio de produto ao funcional, com sistemas em produção e decisões documentadas.</span>
-      <span class="client-only">Atendimento no WhatsApp sem controle? Operação manual? Sem presença digital? Transformo problemas reais em CRMs, sites e fluxos de atendimento que funcionam na prática — do diagnóstico ao funcional.</span>
+      Uno UX, produto, operação e implementação assistida por IA para transformar fluxos complexos em experiências claras, funcionais e documentadas.
     </p>
     <div class="hero-meta reveal">
       <span class="chip">Product Design</span>
@@ -461,49 +360,20 @@ body[data-mode="client"] .card-mode-line{
       <span class="chip">Design Engineering</span>
       <span class="chip">IA aplicada</span>
       <span class="chip">Sistemas internos</span>
-      <span class="chip">Automação</span>
+      <span class="chip">Produtos digitais</span>
     </div>
-
     <div class="hero-ctas reveal">
-      <a class="hero-cta-btn primary-cta talent-only" href="#projetos">Ver projetos →</a>
-      <a class="hero-cta-btn ghost-cta talent-only" href="#processo">Ver processo →</a>
-      <!-- link Sartec Digital — substituir href="#" pela URL quando disponível -->
-      <a class="hero-cta-btn primary-cta client-only" href="#">Conhecer Sartec Digital →</a>
-      <a class="hero-cta-btn ghost-cta client-only" href="#contato">Falar comigo →</a>
-    </div>
-
-    <!-- DUAS JORNADAS -->
-    <div class="journeys reveal">
-      <a class="journey" data-mode="talent" href="#projetos" data-journey="talent">
-        <span class="j-tag">Para equipes &amp; recrutadores</span>
-        <h3>Veja meu processo, decisões e projetos reais</h3>
-        <p>Portfólio com cases de produto, UX, operação e implementação — mostrando como penso, decido e levo soluções do problema ao funcional.</p>
-        <span class="j-go">Ver projetos e processo <span class="arr">→</span></span>
-      </a>
-      <!-- link Sartec Digital — substituir href="#" pela URL quando disponível -->
-      <a class="journey" data-mode="client" href="#" data-journey="client">
-        <span class="j-tag">Para negócios &amp; clientes</span>
-        <h3>Precisa organizar atendimento, site ou automações?</h3>
-        <p>Conheça a Sartec Digital — soluções digitais para pequenos e médios negócios: atendimento, automação, landing pages e métricas.</p>
-        <span class="j-go">Conhecer Sartec Digital <span class="arr">→</span></span>
-      </a>
+      <a class="btn-primary" href="#projetos">Ver projetos →</a>
+      <a class="btn-ghost" href="#processo">Conhecer meu processo →</a>
     </div>
   </div>
 </section>
 
-<!-- ================= MODE INTRO ================= -->
-<div class="mode-intro-wrap">
+<!-- ================= INTRO STRIP ================= -->
+<div class="intro-strip">
   <div class="wrap">
-    <div class="mode-intro-card reveal">
-      <div class="talent-only">
-        <span class="mi-tag">Para recrutadores &amp; equipes</span>
-        <p class="mi-text">Meu diferencial está no <strong>processo e no repertório por trás de cada decisão</strong>. Aqui você vai ver como eu penso produto, como conduzo implementações com IA mantendo validação humana, como colaboro dentro de um time e como documento decisões para que soluções evoluam — não apenas as telas finais.</p>
-      </div>
-      <div class="client-only">
-        <span class="mi-tag">Para negócios &amp; clientes</span>
-        <p class="mi-text">Se você tem um problema de <strong>atendimento desorganizado, operação manual, presença digital ausente ou sistema interno inexistente</strong>, a Sartec Digital é a frente certa — escopo claro, entrega funcional e sem proposta genérica.</p>
-      </div>
-    </div>
+    <p class="strip-lead reveal">Meu diferencial está em conectar pesquisa, decisão de produto e entrega funcional.</p>
+    <p class="strip-body reveal">Meus projetos mostram não só telas finais — mostram raciocínio, critérios, decisões, validações e o caminho para transformar problemas em soluções utilizáveis.</p>
   </div>
 </div>
 
@@ -512,92 +382,98 @@ body[data-mode="client"] .card-mode-line{
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="kicker">01 — Projetos</span>
-      <h2>Sistemas reais, decisões reais</h2>
-      <p>Projetos que comprovam capacidade de produto, UX, operação e implementação. Processo e critério, não só telas.</p>
-      <span class="sec-badge talent-badge talent-only">Portfólio &amp; raciocínio de produto</span>
-      <span class="sec-badge client-badge client-only">Provas de entrega em produção</span>
+      <h2>Cases e produtos reais</h2>
+      <p>Cada projeto documenta raciocínio, decisões e entrega. Veja os casos completos nas páginas externas.</p>
     </div>
 
     <div class="proj-grid">
 
+      <!-- UNIEDU Case Study -->
+      <article class="card reveal">
+        <span class="badge-live">CASE COMPLETO</span>
+        <span class="ptype">UX/UI · Product Strategy · EdTech</span>
+        <h3>UNIEDU Case Study</h3>
+        <p class="psum">Case completo de produto educacional gamificado — pesquisa, estratégia, jornada do usuário, design system, validação e aprendizados documentados.</p>
+        <div class="pdem-label">O que demonstra</div>
+        <p class="pdem">Pesquisa, raciocínio de produto, estruturação de solução e documentação de processo completo.</p>
+        <div class="tags">
+          <span>UX Research</span><span>Design System</span><span>Estratégia de produto</span><span>Gamificação</span>
+        </div>
+        <a class="pcta" href="https://case-app-uniedu.vercel.app" target="_blank" rel="noopener noreferrer">Ver case study <span class="arr">→</span></a>
+      </article>
+
+      <!-- UNIEDU App -->
+      <article class="card reveal">
+        <span class="badge-live">PROTÓTIPO FUNCIONAL</span>
+        <span class="ptype">Protótipo funcional · Produto educacional</span>
+        <h3>UNIEDU App</h3>
+        <p class="psum">Protótipo navegável em formato de app, criado para demonstrar a experiência proposta e a jornada de aprendizado do usuário.</p>
+        <div class="pdem-label">O que demonstra</div>
+        <p class="pdem">Prototipação, UI, fluxo de experiência e produto demonstrável em interação real.</p>
+        <div class="tags">
+          <span>Prototipação</span><span>UI premium</span><span>Fluxo de experiência</span>
+        </div>
+        <a class="pcta" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer">Ver protótipo <span class="arr">→</span></a>
+      </article>
+
       <!-- Sartec CRM -->
       <article class="card reveal">
         <span class="badge-live">EM PRODUÇÃO</span>
-        <span class="ptype">Produto · Sistema interno · UX operacional · Design Engineering</span>
+        <span class="ptype">Sistema interno · Operação · Atendimento</span>
         <h3>Sartec CRM</h3>
-        <p class="psum talent-only">De WhatsApp informal a CRM operacional — arquitetei fluxos PF/PJ, design de estados, priorização por risco e condução de implementação num sistema em produção.</p>
-        <p class="psum client-only">Atendimento desorganizado virou CRM com pipeline, contexto persistente e triagem por prioridade — sem mensagem perdida, sem resposta no perfil errado.</p>
-        <div class="card-mode-line">
-          <span class="talent-only">Prova de Product Design, UX operacional e decisão sistêmica num sistema em produção.</span>
-          <span class="client-only">Prova de como organizei atendimento, operação e fluxo comercial de um negócio real.</span>
+        <p class="psum">CRM operacional criado para organizar atendimentos, estados, prioridades, histórico e fluxo de trabalho de uma operação real com quase 30 anos.</p>
+        <div class="pdem-label">O que demonstra</div>
+        <p class="pdem">Design de sistemas internos, arquitetura de fluxo, estados, regras operacionais e melhoria de rotina real.</p>
+        <div class="tags">
+          <span>Arquitetura de fluxo</span><span>Design de estados</span><span>UX operacional</span>
         </div>
-        <div class="tags" style="margin-bottom:20px">
-          <span>Arquitetura de fluxo</span><span>UX operacional</span><span>Design de estados</span><span>Condução de implementação</span>
-        </div>
-        <!-- link para page de case Sartec CRM — substituir href="#" quando disponível -->
-        <a class="pcta" href="#">Ver case <span class="arr">→</span></a>
+        <!-- TODO: substituir href="#" pela URL do case quando disponível -->
+        <a class="pcta" href="#">Ver resumo do projeto <span class="arr">→</span></a>
       </article>
 
       <!-- Agente WhatsApp -->
       <article class="card reveal">
         <span class="badge-live">EM PRODUÇÃO</span>
-        <span class="ptype">IA aplicada · Automação · Atendimento</span>
+        <span class="ptype">IA aplicada · Atendimento · Triagem</span>
         <h3>Agente WhatsApp Sartec</h3>
-        <p class="psum talent-only">Agente de triagem com design conversacional, prompt engineering versionado e handoff inteligente — IA com critério, sem alucinação no canal do cliente.</p>
-        <p class="psum client-only">Seu time não precisa responder tudo na mão. O agente filtra, organiza contexto e entrega para a pessoa certa, na hora certa — sem perder o controle do atendimento.</p>
-        <div class="card-mode-line">
-          <span class="talent-only">Prova de design conversacional, IA aplicada com critério e handoff humano inteligente.</span>
-          <span class="client-only">Prova de automação de atendimento que reduz carga sem abrir mão do controle humano.</span>
+        <p class="psum">Agente de triagem conectado ao WhatsApp, desenhado para coletar contexto, organizar demandas e encaminhar atendimentos com mais clareza.</p>
+        <div class="pdem-label">O que demonstra</div>
+        <p class="pdem">Design conversacional, prompt engineering, critérios de handoff e integração com operação real.</p>
+        <div class="tags">
+          <span>Design conversacional</span><span>Prompt engineering</span><span>Handoff inteligente</span>
         </div>
-        <div class="tags" style="margin-bottom:20px">
-          <span>Design conversacional</span><span>Prompt engineering</span><span>Handoff inteligente</span><span>Integração com CRM</span>
-        </div>
-        <!-- link para page do projeto — substituir href="#" quando disponível -->
+        <!-- TODO: substituir href="#" pela URL do projeto quando disponível -->
         <a class="pcta" href="#">Ver projeto <span class="arr">→</span></a>
+      </article>
+
+      <!-- Site Sartec Papelaria -->
+      <article class="card reveal">
+        <span class="ptype">Site comercial · Negócio local</span>
+        <h3>Site Sartec Papelaria</h3>
+        <p class="psum">Camada pública da Papelaria Sartec, pensada para transformar presença digital em entrada de atendimento e pedidos.</p>
+        <div class="pdem-label">O que demonstra</div>
+        <p class="pdem">Arquitetura de informação, copy comercial, presença digital local e conexão com operação.</p>
+        <div class="tags">
+          <span>Arquitetura de informação</span><span>Copy comercial</span><span>Front-end</span>
+        </div>
+        <!-- TODO: substituir href="#" pela URL do site da papelaria quando disponível -->
+        <a class="pcta" href="#">Ver site <span class="arr">→</span></a>
       </article>
 
       <!-- Sartec Digital -->
       <article class="card reveal">
-        <span class="ptype">Produto comercial · Landing page · Oferta B2B</span>
+        <span class="ptype">Landing page · Oferta B2B</span>
         <h3>Sartec Digital</h3>
-        <p class="psum talent-only">Frente B2B desenhada do zero — estratégia de posicionamento, arquitetura de oferta, landing page e implementação funcional para pequenos e médios negócios.</p>
-        <p class="psum client-only">Atendimento, automação, site e métricas para o seu negócio — tudo com escopo claro, entrega funcional e sem proposta genérica.</p>
-        <div class="card-mode-line">
-          <span class="talent-only">Prova de estratégia de produto, posicionamento e implementação de oferta B2B.</span>
-          <span class="client-only">A frente comercial de soluções digitais — onde negócios encontram a solução certa.</span>
+        <p class="psum">Página comercial para apresentar soluções digitais baseadas em atendimento, automação, sites e métricas para pequenos e médios negócios.</p>
+        <div class="pdem-label">O que demonstra</div>
+        <p class="pdem">Posicionamento, arquitetura de oferta, estrutura comercial e landing page.</p>
+        <div class="tags">
+          <span>Estratégia de produto</span><span>Landing page</span><span>Oferta B2B</span>
         </div>
-        <div class="tags" style="margin-bottom:20px">
-          <span>Estratégia de produto</span><span>Landing page</span><span>Oferta B2B</span><span>Front-end</span>
-        </div>
-        <!-- link Sartec Digital — substituir href="#" pela URL quando disponível -->
-        <a class="pcta" href="#">Ver página <span class="arr">→</span></a>
-      </article>
-
-      <!-- UNIEDU -->
-      <article class="card reveal">
-        <span class="ptype">UX/UI · Produto educacional · Design System</span>
-        <h3>UNIEDU App</h3>
-        <p class="psum">Produto educacional gamificado com foco em retenção, experiência premium e design system acessível.</p>
-        <div class="card-mode-line">
-          <span class="talent-only">Prova de UX Research, behavior design e design system para produto educacional premium.</span>
-          <span class="client-only">Prova de produto com retenção como métrica central e UI que não infantiliza o usuário.</span>
-        </div>
-        <div class="tags" style="margin-bottom:20px">
-          <span>UX Research</span><span>Behavior design</span><span>Design System</span><span>UI premium</span>
-        </div>
-        <!-- link para page de case UNIEDU — substituir href="#" quando disponível -->
-        <a class="pcta" href="#">Ver case <span class="arr">→</span></a>
+        <a class="pcta" href="https://sartec-digital.vercel.app" target="_blank" rel="noopener noreferrer">Ver página <span class="arr">→</span></a>
       </article>
 
     </div>
-
-    <!-- Outros projetos -->
-    <div class="reveal" style="margin-top:20px;display:flex;align-items:center;gap:22px;padding:16px 0;border-top:1px solid var(--line)">
-      <span style="font-size:11.5px;color:var(--faint);font-family:'JetBrains Mono';letter-spacing:.1em;text-transform:uppercase;flex:none">Ver também</span>
-      <!-- link Site Sartec — substituir href="#" quando disponível -->
-      <a href="#" style="font-size:14px;color:var(--text-soft);display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:color .25s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-soft)'">Site Sartec — presença digital comercial para negócio local <span style="color:var(--accent)">→</span></a>
-    </div>
-
   </div>
 </section>
 
@@ -607,82 +483,35 @@ body[data-mode="client"] .card-mode-line{
     <div class="sec-head reveal">
       <span class="kicker">02 — Processo</span>
       <h2>Começo pelo problema, não pela tela</h2>
-      <p>Meu processo une UX, produto e implementação com IA, sempre partindo do problema antes da tela.</p>
-      <span class="sec-badge talent-badge talent-only">Como penso e trabalho</span>
-      <span class="sec-badge client-badge client-only">Como sua solução vai ser construída</span>
+      <p>Meu jeito de trabalhar, sem virar uma aula extensa.</p>
     </div>
 
     <div class="proc-grid reveal">
-      <div class="proc-step"><div class="num">01</div><h4>Entendo a operação real</h4><p>Mergulho no negócio e na rotina real antes de desenhar qualquer interface.</p></div>
-      <div class="proc-step"><div class="num">02</div><h4>Mapeio usuários, negócio e fluxo</h4><p>Personas, jornada, pipeline e o trabalho real de quem opera.</p></div>
-      <div class="proc-step"><div class="num">03</div><h4>Desenho a experiência</h4><p>Arquitetura, hierarquia, estados, microcopy e responsividade.</p></div>
-      <div class="proc-step"><div class="num">04</div><h4>Implemento, valido e documento</h4><p>Conduzo a construção com IA, valido no uso real e documento as decisões.</p></div>
-    </div>
-
-    <!-- IA com critério -->
-    <div class="ia reveal">
-      <div>
-        <span class="kicker">IA com critério</span>
-        <h3>A IA é uma alavanca, não uma muleta</h3>
-        <p>Uso IA como ferramenta de execução — não como substituto do julgamento. Na prática: defino o escopo antes do primeiro prompt, crio guardrails que evitam regressão, reviso cada entrega contra critérios concretos e documento as decisões. O resultado é produto funcional, não protótipo alucinado.</p>
+      <div class="proc-step">
+        <div class="num">01</div>
+        <h4>Entendo o problema e a operação</h4>
+        <p>Mergulho no contexto real antes de qualquer interface.</p>
       </div>
-      <div class="ia-list">
-        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Defino escopo antes do primeiro prompt</b> — o que entra, o que fica de fora e o critério de aceite.</span></div>
-        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Crio guardrails explícitos</b> — limites que protegem de regressão e desvio de escopo.</span></div>
-        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Reviso com olhar de produto</b> — não só se funciona, mas se resolve o problema certo.</span></div>
-        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Documento decisão, não só resultado</b> — para que o produto possa evoluir depois.</span></div>
+      <div class="proc-step">
+        <div class="num">02</div>
+        <h4>Mapeio usuários, contexto e fluxo</h4>
+        <p>Personas, jornada, pipeline e o trabalho real de quem opera.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= O QUE POSSO CONSTRUIR ================= -->
-<section id="servicos">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="kicker" style="color:var(--client)">03 — O que posso construir</span>
-      <h2>Capacidades que viram produto</h2>
-      <p class="talent-only">Do problema à entrega funcional — as três frentes onde atuo em times de produto e projetos independentes.</p>
-      <p class="client-only">Atendimento, CRM, automação e presença digital — o que construo para negócios que precisam funcionar melhor.</p>
-    </div>
-
-    <div class="serv-grid">
-      <div class="serv reveal">
-        <div class="snum">S1</div>
-        <h4>Produto e UX</h4>
-        <p class="sdesc">Arquitetura de informação, design de estados, design system, UX research e prototipação funcional.</p>
-        <div class="smeta">
-          <div><span class="lab">Entrega</span><div class="val">Interfaces claras, testadas e escaláveis.</div></div>
-          <div><span class="lab">Quem se beneficia</span><div class="val">Times de produto, fundadores e startups.</div></div>
-        </div>
+      <div class="proc-step">
+        <div class="num">03</div>
+        <h4>Desenho a experiência e os estados</h4>
+        <p>Arquitetura, hierarquia, estados, microcopy e responsividade.</p>
       </div>
-      <div class="serv reveal">
-        <div class="snum">S2</div>
-        <h4>Sistemas internos e CRMs</h4>
-        <p class="sdesc">Painéis, pipelines e ferramentas internas que organizam atendimento, operação e fluxo comercial.</p>
-        <div class="smeta">
-          <div><span class="lab">Entrega</span><div class="val">Operação funcional, sem retrabalho.</div></div>
-          <div><span class="lab">Quem se beneficia</span><div class="val">Empresas com atendimento desorganizado.</div></div>
-        </div>
-      </div>
-      <div class="serv reveal">
-        <div class="snum">S3</div>
-        <h4>Sites, automações e protótipos</h4>
-        <p class="sdesc">Sites comerciais, agentes de triagem, automação de atendimento e protótipos próximos do funcional.</p>
-        <div class="smeta">
-          <div><span class="lab">Entrega</span><div class="val">Presença digital real e processos automatizados.</div></div>
-          <div><span class="lab">Quem se beneficia</span><div class="val">PMEs e negócios locais com baixa presença digital.</div></div>
-        </div>
+      <div class="proc-step">
+        <div class="num">04</div>
+        <h4>Valido, documento e evoluo</h4>
+        <p>Testo no uso real, transformo achados em decisões e documento para evolução.</p>
       </div>
     </div>
 
-    <!-- CTA Sartec Digital -->
-    <div class="reveal" style="margin-top:28px;padding:20px 26px;border:1px solid rgba(227,198,140,.2);border-radius:var(--radius);background:rgba(227,198,140,.04);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
-      <p style="font-size:14.5px;color:var(--text-soft);margin:0">Para soluções comerciais completas — atendimento, automação, site e métricas para o seu negócio.</p>
-      <!-- link Sartec Digital — substituir href="#" pela URL quando disponível -->
-      <a href="#" class="btn btn-client" style="white-space:nowrap;flex:none">Conhecer Sartec Digital →</a>
+    <div class="ia-note reveal">
+      <b>IA como apoio de execução:</b> defino o escopo antes do primeiro prompt, crio guardrails que evitam regressão, reviso cada entrega com olhar de produto e documento as decisões. A direção é sempre humana — produto funcional, não protótipo alucinado.
     </div>
-
   </div>
 </section>
 
@@ -690,20 +519,32 @@ body[data-mode="client"] .card-mode-line{
 <section id="sobre">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">04 — Sobre</span>
+      <span class="kicker">03 — Sobre</span>
     </div>
     <div class="about">
       <div class="reveal">
-        <p class="lead">Sou Lucas Alves Cabral, Product Designer com repertório em operação, atendimento e construção de soluções digitais.</p>
-        <p>Minha diferença está em unir pensamento de produto, experiência do usuário e implementação assistida por IA para resolver problemas reais.</p>
-        <p>Antes de desenhar telas, eu entendo a rotina. Antes de automatizar, eu entendo o fluxo. Esse repertório vem da vivência em operação comercial, atendimento, gestão e projetos digitais reais — não só de design.</p>
+        <p class="lead">Sou Lucas Alves Cabral, Product Designer em construção avançada de repertório, com experiência prática em operação, atendimento e gestão.</p>
+        <p>Meu diferencial vem de entender a rotina antes da interface. Antes de desenhar uma tela, eu entendo o fluxo real. Antes de automatizar, eu entendo o processo. Antes de definir o produto, eu mapeio o problema.</p>
+        <p>Uso IA com critério como acelerador de implementação — documentando cada decisão para que o produto possa evoluir com clareza. Meu foco é transformar problemas reais em produtos digitais claros, funcionais e documentados.</p>
       </div>
       <div class="reveal">
         <div class="rep-grid">
-          <div class="rep"><div class="rt">Operação &amp; atendimento</div><div class="rd">Experiência real de quem esteve na linha de frente.</div></div>
-          <div class="rep"><div class="rt">UX &amp; Product Design</div><div class="rd">Arquitetura, interface, design system e estados.</div></div>
-          <div class="rep"><div class="rt">IA &amp; automação</div><div class="rd">Implementação assistida com escopo e validação.</div></div>
-          <div class="rep"><div class="rt">Sistemas &amp; processos</div><div class="rd">Pipelines, estados e regras de operação claros.</div></div>
+          <div class="rep">
+            <div class="rt">Operação &amp; atendimento</div>
+            <div class="rd">Experiência real de linha de frente, gestão de pedidos e rotina comercial.</div>
+          </div>
+          <div class="rep">
+            <div class="rt">UX &amp; Product Design</div>
+            <div class="rd">Pesquisa, arquitetura de informação, design system e estados.</div>
+          </div>
+          <div class="rep">
+            <div class="rt">IA &amp; implementação</div>
+            <div class="rd">Construção assistida com escopo, guardrails e validação humana.</div>
+          </div>
+          <div class="rep">
+            <div class="rt">Produto &amp; documentação</div>
+            <div class="rd">Critério de produto, raciocínio de decisão e evolução documentada.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -714,41 +555,26 @@ body[data-mode="client"] .card-mode-line{
 <section id="contato">
   <div class="wrap">
     <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
-      <span class="kicker" style="justify-content:center">05 — Contato</span>
-      <h2 class="talent-only">Vamos conversar sobre a próxima oportunidade</h2>
-      <h2 class="client-only">Vamos resolver o próximo problema</h2>
-      <p style="margin-left:auto;margin-right:auto">Escolha o caminho que faz sentido para você. Respondo com contexto, sem rodeios.</p>
+      <span class="kicker" style="justify-content:center">04 — Contato</span>
+      <h2>Vamos conversar sobre produto, UX e construção de soluções digitais.</h2>
     </div>
-    <div class="contact-intro reveal">
-      <div class="talent-only">
-        <p class="ci-text">Estou aberto a oportunidades como <strong>Product Designer, UX/UI, Design Engineer</strong> ou funções que combinem essas capacidades — em times que valorizem raciocínio de produto, processo e entrega funcional com critério.</p>
-      </div>
-      <div class="client-only">
-        <p class="ci-text">Se você tem um problema de <strong>operação, atendimento, presença digital, CRM ou automação</strong> — a Sartec Digital tem a frente certa para o seu negócio.</p>
-      </div>
-    </div>
-    <div class="contact">
-      <div class="cta-card reveal" data-mode="talent">
-        <span class="ctag">Oportunidades profissionais</span>
-        <h3>Para recrutadores &amp; equipes</h3>
-        <p>Estou disponível para vagas de Product Designer, UX/UI, Design Engineer ou áreas próximas. Vamos conversar sobre processo, raciocínio de produto e como atuo em times.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px">
-          <a class="btn btn-talent" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20—%20Product%20Designer%20%26%20Design%20Engineer">Enviar e-mail →</a>
-          <!-- link LinkedIn — substituir href="#" quando disponível -->
-          <a class="btn btn-ghost" href="#">LinkedIn →</a>
-        </div>
-      </div>
-      <div class="cta-card reveal" data-mode="client">
-        <span class="ctag">Soluções para negócios</span>
-        <h3>Para negócios &amp; clientes</h3>
-        <p>Tem um problema de operação, site, CRM ou automação? A Sartec Digital é a frente certa — escopo claro, entrega funcional, sem proposta genérica.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px">
-          <!-- link Sartec Digital — substituir href="#" pela URL quando disponível -->
-          <a class="btn btn-client" href="#">Conhecer Sartec Digital →</a>
-          <a class="btn btn-ghost" href="mailto:lac.lucascabral@gmail.com?subject=Projeto%20—%20Sartec%20Digital">Falar sobre projeto →</a>
-        </div>
+
+    <div class="contact-main reveal">
+      <span class="ctag">Oportunidades profissionais</span>
+      <h3>Aberto a oportunidades em times de produto e design</h3>
+      <p>Estou aberto a oportunidades como Product Designer, UX/UI Designer, Design Engineer ou funções próximas em times que valorizem raciocínio de produto, processo e entrega funcional.</p>
+      <div class="contact-btns">
+        <a class="btn-primary" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20—%20Product%20Designer%20%26%20Design%20Engineer">Enviar e-mail →</a>
+        <!-- TODO: substituir href="#" pela URL do LinkedIn quando disponível -->
+        <a class="btn-ghost" href="#">LinkedIn →</a>
       </div>
     </div>
+
+    <div class="contact-secondary reveal">
+      <span>Para soluções comerciais para negócios:</span>
+      <a href="https://sartec-digital.vercel.app" target="_blank" rel="noopener noreferrer">Conhecer Sartec Digital →</a>
+    </div>
+
   </div>
 </section>
 
@@ -765,88 +591,70 @@ body[data-mode="client"] .card-mode-line{
       <a href="#projetos">Projetos</a>
       <a href="#processo">Processo</a>
       <a href="mailto:lac.lucascabral@gmail.com">E-mail</a>
-      <!-- link LinkedIn — substituir href="#" quando disponível -->
+      <!-- TODO: substituir href="#" pela URL do LinkedIn quando disponível -->
       <a href="#">LinkedIn</a>
     </div>
   </div>
 </footer>
 
 <script>
-/* ---------- nav scrolled state ---------- */
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>20)},{passive:true});
+/* ---------- nav scroll state ---------- */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => { nav.classList.toggle('scrolled', scrollY > 20) }, { passive: true });
 
 /* ---------- mobile menu ---------- */
-const burger=document.getElementById('burger');
-burger.addEventListener('click',()=>nav.classList.toggle('open'));
-document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-
-/* ---------- audience mode (duas jornadas) ---------- */
-const body=document.body;
-const pill=document.getElementById('modePill');
-function setMode(m){
-  body.dataset.mode=m;
-  document.documentElement.style.setProperty('--accent',m==='client'?'var(--client)':'var(--talent)');
-  document.documentElement.style.setProperty('--accent-soft',m==='client'?'var(--client-soft)':'var(--talent-soft)');
-  pill.querySelectorAll('button').forEach(b=>{
-    const active=b.dataset.m===m;
-    b.classList.toggle('on',active);
-    b.setAttribute('aria-pressed',active?'true':'false');
-  });
-}
-pill.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.m)));
-document.querySelectorAll('[data-journey]').forEach(j=>j.addEventListener('click',()=>setMode(j.dataset.journey)));
+const burger = document.getElementById('burger');
+burger.addEventListener('click', () => nav.classList.toggle('open'));
+document.querySelectorAll('#navlinks a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
 /* ---------- scroll reveal ---------- */
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach((en)=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})
-},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target) } })
+}, { threshold: .1, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* ---------- active nav link on scroll ---------- */
-const sections=[...document.querySelectorAll('main section[id]')];
-const links=new Map([...document.querySelectorAll('#navlinks a')].map(a=>[a.getAttribute('href').slice(1),a]));
-const spy=new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{
-    if(en.isIntersecting){
-      links.forEach(l=>l.classList.remove('active'));
-      const l=links.get(en.target.id); if(l)l.classList.add('active');
+const sections = [...document.querySelectorAll('main section[id]')];
+const links = new Map([...document.querySelectorAll('#navlinks a')].map(a => [a.getAttribute('href').slice(1), a]));
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const l = links.get(en.target.id); if (l) l.classList.add('active');
     }
   })
-},{threshold:.4});
-sections.forEach(s=>spy.observe(s));
+}, { threshold: .35 });
+sections.forEach(s => spy.observe(s));
 
-/* ============================================================
-   POINTER EFFECTS — luz no fundo + glow nos cards
-   ============================================================ */
-(function(){
+/* ---------- pointer effects — subtle background glow + card glow ---------- */
+(function () {
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
   const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if(!fine || reduce) return;
+  if (!fine || reduce) return;
 
   const root = document.documentElement;
-  const glowEls = document.querySelectorAll('.card, .serv, .ia');
-  let bx=0, by=0, queued=false;
+  const cards = document.querySelectorAll('.card');
+  let bx = 0, by = 0, queued = false;
 
-  function flushBg(){
-    queued=false;
-    root.style.setProperty('--mx', bx+'%');
-    root.style.setProperty('--my', by+'%');
+  function flushBg() {
+    queued = false;
+    root.style.setProperty('--mx', bx + '%');
+    root.style.setProperty('--my', by + '%');
   }
-  addEventListener('pointermove',(e)=>{
-    bx=(e.clientX/innerWidth)*100;
-    by=(e.clientY/innerHeight)*100;
-    if(!queued){queued=true;requestAnimationFrame(flushBg);}
-    if(!document.body.classList.contains('cursor-on')) document.body.classList.add('cursor-on');
-  },{passive:true});
-  addEventListener('mouseleave',()=>document.body.classList.remove('cursor-on'));
+  addEventListener('pointermove', (e) => {
+    bx = (e.clientX / innerWidth) * 100;
+    by = (e.clientY / innerHeight) * 100;
+    if (!queued) { queued = true; requestAnimationFrame(flushBg); }
+    if (!document.body.classList.contains('cursor-on')) document.body.classList.add('cursor-on');
+  }, { passive: true });
+  addEventListener('mouseleave', () => document.body.classList.remove('cursor-on'));
 
-  glowEls.forEach(el=>{
-    el.addEventListener('pointermove',(e)=>{
-      const r=el.getBoundingClientRect();
-      el.style.setProperty('--mx',(e.clientX-r.left)+'px');
-      el.style.setProperty('--my',(e.clientY-r.top)+'px');
-    },{passive:true});
+  cards.forEach(el => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, { passive: true });
   });
 })();
 </script>
