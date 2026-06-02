@@ -160,6 +160,8 @@ section{padding:88px 0;position:relative}
   border-radius:var(--radius);padding:28px;overflow:hidden;
   box-shadow:0 1px 4px rgba(0,0,0,.04);
   transition:transform .4s var(--ease),border-color .3s,box-shadow .4s var(--ease);
+  display:flex;
+  flex-direction:column;
 }
 .card::before{
   content:"";position:absolute;inset:0;z-index:-1;
@@ -186,22 +188,72 @@ section{padding:88px 0;position:relative}
 .tags span{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
 
 /* card CTAs */
-.card-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:20px}
+.card-ctas{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+  margin-top:auto!important;
+  padding-top:24px;
+}
+.card > .pcta{
+  margin-top:auto!important;
+  align-self:flex-start;
+}
 .card .pcta{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:14px;font-weight:600;color:var(--accent);
-  text-decoration:none;transition:gap .3s var(--ease);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--accent);
+  background:var(--accent-soft);
+  border:1.5px solid rgba(26,140,78,0.15);
+  padding:8px 18px;
+  border-radius:99px;
+  text-decoration:none;
+  transition:all 0.25s var(--ease);
+  cursor:pointer;
 }
-.card .pcta:hover{gap:11px}
-.card .pcta .arr{transition:transform .3s var(--ease)}
-.card:hover .pcta .arr{transform:translateX(3px)}
+.card .pcta:hover{
+  background:var(--accent);
+  color:#FFFFFF;
+  border-color:var(--accent);
+  box-shadow:0 4px 12px rgba(26, 140, 78, 0.15);
+  transform:translateY(-1px);
+}
+.card .pcta .arr{
+  transition:transform 0.25s var(--ease);
+}
+.card .pcta:hover .arr{
+  transform:translateX(3px);
+}
 .card .pcta-sec{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:13.5px;font-weight:500;color:var(--muted);
-  text-decoration:none;transition:color .25s;
-  border-left:1px solid var(--line-strong);padding-left:16px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--muted);
+  background:transparent;
+  border:1.5px solid var(--line-strong);
+  padding:8px 18px;
+  border-radius:99px;
+  text-decoration:none;
+  transition:all 0.25s var(--ease);
+  cursor:pointer;
 }
-.card .pcta-sec:hover{color:var(--accent)}
+.card .pcta-sec:hover{
+  background:var(--accent-soft);
+  color:var(--accent);
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+.card .pcta:focus-visible,
+.card .pcta-sec:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
 
 /* live badge */
 .card .badge-live{
@@ -215,7 +267,36 @@ section{padding:88px 0;position:relative}
 .card-featured{grid-column:1/-1}
 .card-featured-inner{
   display:grid;grid-template-columns:1fr 252px;
-  gap:32px;align-items:start;margin-top:12px;
+  gap:32px;
+  align-items:stretch!important;
+  margin-top:12px;
+}
+.card-featured-inner > div:first-child{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+.project-card--uniedu{
+  position:relative;
+}
+.uniedu-card-watermark{
+  position:absolute;
+  width:clamp(280px, 38vw, 560px);
+  height:auto;
+  right:clamp(180px, 24vw, 420px);
+  top:56%;
+  transform:translateY(-50%) rotate(-6deg);
+  opacity:.08;
+  pointer-events:none;
+  z-index:-1;
+}
+@media(max-width:760px){
+  .uniedu-card-watermark{
+    width:220px;
+    right:40px;
+    top:70%;
+    opacity:0.05;
+  }
 }
 
 /* =========================================================
@@ -575,7 +656,8 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
       <!-- =========================================================
            PLATAFORMA UNIEDU — card principal, 2 colunas
            ========================================================= -->
-      <article class="card card-featured reveal">
+      <article class="card card-featured project-card--uniedu reveal">
+        <img class="uniedu-card-watermark" src="LOGO_app_UNIEDU.png" alt="" aria-hidden="true" />
         <span class="badge-live">CASE COMPLETO</span>
         <span class="ptype">UX/UI · Product Strategy · EdTech · Protótipo funcional</span>
         <h3>Plataforma UNIEDU</h3>
