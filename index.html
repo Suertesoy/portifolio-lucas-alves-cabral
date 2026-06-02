@@ -553,6 +553,77 @@ section{padding:88px 0;position:relative}
 .rep .rt{font-size:14px;font-weight:600;margin-bottom:4px;font-family:"Space Grotesk"}
 .rep .rd{font-size:12.5px;color:var(--muted);line-height:1.5}
 
+.about-tools {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+.about-tools h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.about-tools p {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 68ch;
+}
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+}
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 16px 8px;
+  text-align: center;
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s var(--ease);
+}
+.tool-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-green);
+  box-shadow: 0 4px 16px rgba(26,140,78,.08);
+}
+.tool-logo-placeholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.tool-card span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-soft);
+}
+@media(max-width: 920px) {
+  .tools-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media(max-width: 520px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* =========================================================
    CONTATO
    ========================================================= */
@@ -917,26 +988,27 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="kicker">03 — Sobre</span>
+      <h2>Alguém que mergulha de cabeça no que gosta.</h2>
     </div>
     <div class="about">
       <div class="reveal">
-        <p class="lead">Antes de trabalhar com produto e interfaces, eu aprendi a observar pessoas, ambientes e sistemas vivos. Sou biólogo pela UFSC, me aproximei do mergulho durante a graduação e carrego dessa trajetória um olhar atento para contexto, comportamento e conexão entre partes.</p>
-        <p>Minha relação com design nasceu também dentro da Sartec, empresa da minha família, onde vivi de perto a rotina de um negócio real. Passei por atendimento, vendas, comunicação, marketing, operação e contato direto com clientes. Foi nesse ambiente que comecei a perceber como organização, clareza e experiência podem mudar a forma como uma empresa funciona.</p>
-        <p>No UX/UI Design eu encontrei um caminho profissional que une curiosidade, escuta e construção. Gosto de estudar telas, entender fluxos, conversar com usuários, investigar dores que muitas vezes nem estão explícitas e transformar esses aprendizados em soluções digitais mais claras, úteis e funcionais.</p>
-        <p>A biologia me formou como pessoa. O design me mostrou onde quero atuar como profissional. Hoje sigo desenvolvendo meu trabalho com sede de aprender, evoluir e entregar produtos cada vez melhores, conectando experiência, produto, operação e implementação com IA sob critério humano.</p>
+        <p class="lead">Cresci dentro da papelaria da minha família, a Sartec. Desde cedo, acompanhei a rotina de atendimento, pedidos, clientes, loja, telemarketing, processos comerciais e tudo aquilo que faz uma operação funcionar no dia a dia. Mesmo durante a faculdade, continuei ajudando de forma remota sempre que podia, principalmente em demandas de comunicação, mídia, atendimento e organização.</p>
+        <p>Na UFSC, me formei em Biologia e encontrei no mergulho uma das partes mais marcantes da minha trajetória. Estudei peixes recifais, ecossistemas costeiros e vivi de perto o trabalho de campo, mas também entendi que não queria seguir uma carreira tradicional na área.</p>
+        <p>Depois da graduação, comecei a procurar uma área em que eu realmente me visse construindo futuro. Foi quando encontrei UX Design e o programa UX Unicórnio, do Leandro Rezende. Ali minha cabeça abriu para design, produto, pesquisa, interface, experiência do usuário e construção de soluções digitais.</p>
+        <p>A partir disso, comecei a estudar intensamente, consumir conteúdo, testar ferramentas e aplicar esse repertório em projetos reais. Hoje, meu trabalho junta vivência de operação, UX/UI Design, Product Design, IA e implementação assistida para transformar problemas reais em produtos digitais claros, funcionais e bem documentados.</p>
         <div class="about-credentials" aria-label="Base e repertório profissional">
           <div class="about-credentials-grid">
             <div>
               <strong>Formação</strong>
-              <span>Biólogo pela UFSC</span>
+              <span>Biologia pela UFSC · <span style="white-space: nowrap;">UX Unicórnio</span></span>
             </div>
             <div>
-              <strong>UX/UI Design</strong>
-              <span>UX/UI Designer</span>
+              <strong>Operação</strong>
+              <span>Sartec · Atendimento · Telemarketing · Processos comerciais</span>
             </div>
             <div>
-              <strong>Product Design</strong>
-              <span>Product Designer pelo programa <span style="white-space: nowrap;">UX Unicórnio</span> de Leandro Rezende</span>
+              <strong>Produto &amp; IA</strong>
+              <span>UX/UI · Product Design · Design Engineering · IA aplicada</span>
             </div>
           </div>
         </div>
@@ -972,6 +1044,41 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
             <div class="rt">IA &amp; implementação</div>
             <div class="rd">Construção assistida com escopo, guardrails, validação humana e evolução documentada.</div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-tools reveal">
+      <h3>Ferramentas que uso para pensar, desenhar e construir.</h3>
+      <p>Do design no Figma à implementação assistida por IA, uso essas plataformas para organizar decisões, prototipar, documentar e acelerar entregas.</p>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-logo-placeholder">FG</div>
+          <span>Figma</span>
+        </div>
+        <div class="tool-card">
+          <div class="tool-logo-placeholder">FM</div>
+          <span>Figma Make</span>
+        </div>
+        <div class="tool-card">
+          <div class="tool-logo-placeholder">NO</div>
+          <span>Notion</span>
+        </div>
+        <div class="tool-card">
+          <div class="tool-logo-placeholder">GW</div>
+          <span>Google Workspace</span>
+        </div>
+        <div class="tool-card">
+          <div class="tool-logo-placeholder">AG</div>
+          <span>Antigravity</span>
+        </div>
+        <div class="tool-card">
+          <div class="tool-logo-placeholder">CC</div>
+          <span>Claude Code</span>
+        </div>
+        <div class="tool-card">
+          <div class="tool-logo-placeholder">GM</div>
+          <span>Gemini</span>
         </div>
       </div>
     </div>
