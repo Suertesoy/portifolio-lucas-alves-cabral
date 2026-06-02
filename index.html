@@ -297,11 +297,12 @@ section{padding:88px 0;position:relative}
   background:var(--bg-elev-2);
   margin-bottom:20px;
   position:relative;
+  box-shadow:0 4px 24px rgba(0,0,0,.08);
 }
 .about-photo img{
   width:100%;height:100%;
   object-fit:cover;
-  object-position:center top;
+  object-position:center center;
   display:block;
 }
 
@@ -317,6 +318,10 @@ section{padding:88px 0;position:relative}
   text-transform:uppercase;color:var(--faint);
   border:1px solid var(--line-strong);border-radius:99px;
   padding:2px 9px;background:var(--bg-elev);
+}
+.about-formacao{
+  font-family:"JetBrains Mono";font-size:11.5px;letter-spacing:.04em;
+  color:var(--muted);margin-top:20px;line-height:1.7;
 }
 
 /* research note in Processo */
@@ -730,10 +735,11 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
     </div>
     <div class="about">
       <div class="reveal">
-        <p class="lead">Sou Lucas Alves Cabral, Product Designer em construção avançada de repertório, com experiência prática em operação, atendimento e gestão.</p>
-        <p>Meu diferencial vem de entender a rotina antes da interface. Antes de desenhar uma tela, eu entendo o fluxo real. Antes de automatizar, eu entendo o processo. Antes de definir o produto, eu mapeio o problema.</p>
-        <p>Uso IA com critério como acelerador de implementação — documentando cada decisão para que o produto possa evoluir com clareza. Meu foco é transformar problemas reais em produtos digitais claros, funcionais e documentados.</p>
-        <p>Minha formação mistura ciência, operação e produto: sou biólogo, mergulhador e formado no UX Unicórnio, do Leandro Rezende. Essa combinação me ajuda a observar contexto, entender sistemas reais e transformar problemas em experiências digitais mais claras.</p>
+        <p class="lead">Mergulho de cabeça nos problemas que decido resolver.</p>
+        <p>Antes de trabalhar com produto e interfaces, eu aprendi a observar sistemas vivos. Sou formado em Biologia pela UFSC, me aproximei do mergulho durante a graduação e acabei me especializando em peixes recifais, ecossistemas costeiros e na leitura de ambientes onde tudo está conectado. Trabalhei como pesquisador e divemaster na Ilha do Arvoredo — onde mergulho até hoje.</p>
+        <p>Por muitos anos, o mergulho também foi trabalho: um hobby remunerado que me ensinou presença, atenção ao detalhe, adaptação e respeito pelo contexto. Debaixo d'água, nada existe isolado. Corrente, luz, comportamento, território e movimento contam uma história. Hoje, levo esse mesmo olhar para produto.</p>
+        <p>Quando entro em um projeto, não olho só para a tela. Procuro entender o fluxo, as pessoas, a operação, os pontos de atrito e as relações invisíveis que fazem uma experiência funcionar ou travar. É por isso que trabalho bem onde design, produto e implementação se encontram: eu gosto de entender o sistema inteiro antes de desenhar a próxima interface.</p>
+        <p class="about-formacao">Biólogo · UFSC · Mergulhador profissional · UX Unicórnio / Leandro Rezende</p>
         <div class="cert-link">
           <!-- TODO: substituir href="#" pelo caminho do certificado quando disponível (ex: assets/certificado-ux-unicornio.pdf) -->
           <a class="cert-link-a" href="#" aria-disabled="true">Ver certificado UX Unicórnio →</a>
@@ -741,29 +747,30 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
         </div>
       </div>
       <div class="reveal">
-        <!-- Foto de perfil: salvar como foto-lucas.jpg (ou .png / .webp) na raiz do projeto -->
-        <!-- Proporção recomendada: quadrada (1:1) ou ligeiramente mais alta · mínimo 600px · fundo neutro -->
+        <!-- Imagem: mergulhador_lucas.jpeg — salvar na raiz do projeto -->
+        <!-- Mostra Lucas mergulhando na Ilha do Arvoredo — SC -->
         <figure class="about-photo">
-          <img src="foto-lucas.jpg" alt="Lucas Alves Cabral — Product Designer"
+          <img src="mergulhador_lucas.jpeg"
+               alt="Lucas Alves Cabral mergulhando na Ilha do Arvoredo — SC"
                onerror="this.style.display='none'" />
         </figure>
 
         <div class="rep-grid">
           <div class="rep">
             <div class="rt">Operação &amp; atendimento</div>
-            <div class="rd">Experiência real de linha de frente, gestão de pedidos e rotina comercial.</div>
+            <div class="rd">Vivência real de linha de frente, gestão de pedidos, atendimento e rotina comercial.</div>
           </div>
           <div class="rep">
             <div class="rt">UX &amp; Product Design</div>
-            <div class="rd">Pesquisa, arquitetura de informação, design system e estados.</div>
+            <div class="rd">Pesquisa, arquitetura da informação, fluxos, estados, interface e decisão de produto.</div>
+          </div>
+          <div class="rep">
+            <div class="rt">Pesquisa &amp; validação</div>
+            <div class="rd">Entrevistas com usuários, testes de usabilidade, planejamento de surveys e leitura de jornada.</div>
           </div>
           <div class="rep">
             <div class="rt">IA &amp; implementação</div>
-            <div class="rd">Construção assistida com escopo, guardrails e validação humana.</div>
-          </div>
-          <div class="rep">
-            <div class="rt">Produto &amp; documentação</div>
-            <div class="rd">Critério de produto, raciocínio de decisão e evolução documentada.</div>
+            <div class="rd">Construção assistida com escopo, guardrails, validação humana e evolução documentada.</div>
           </div>
         </div>
       </div>
