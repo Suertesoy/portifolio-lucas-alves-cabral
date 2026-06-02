@@ -101,22 +101,14 @@ header.nav.scrolled{background:rgba(245,247,245,.96)}
 /* =========================================================
    HERO
    ========================================================= */
-.hero{padding:136px 0 72px;position:relative}
+.hero{padding:136px 0 88px;position:relative}
 .hero h1{font-size:clamp(36px,5.8vw,68px);font-weight:700;max-width:18ch;line-height:1.06}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero .sub{
   font-size:clamp(16px,1.9vw,19px);color:var(--text-soft);
   max-width:58ch;margin-top:24px;line-height:1.6;
 }
-.hero-meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
-.chip{
-  font-family:"JetBrains Mono";font-size:11.5px;color:var(--muted);
-  border:1px solid var(--line-strong);background:var(--bg-elev);
-  padding:6px 12px;border-radius:99px;
-  transition:border-color .25s,color .25s,background .25s;
-}
-.chip:hover{border-color:var(--line-green);color:var(--accent);background:rgba(26,140,78,.04)}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
 .btn-primary{
   display:inline-flex;align-items:center;gap:8px;
   padding:12px 22px;border-radius:99px;font-size:14.5px;font-weight:600;
@@ -136,7 +128,7 @@ header.nav.scrolled{background:rgba(245,247,245,.96)}
    INTRO STRIP
    ========================================================= */
 .intro-strip{
-  padding:48px 0 60px;
+  padding:68px 0 64px;
   border-bottom:1px solid var(--line);
   position:relative;z-index:1;
 }
@@ -157,9 +149,11 @@ section{padding:88px 0;position:relative}
 .sec-head p{color:var(--muted);font-size:16px;line-height:1.6}
 
 /* =========================================================
-   PROJETOS
+   PROJETOS — GRID & CARDS
    ========================================================= */
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+/* card base */
 .card{
   position:relative;isolation:isolate;
   border:1px solid var(--line);background:var(--bg-elev);
@@ -181,13 +175,18 @@ section{padding:88px 0;position:relative}
 .card:hover{transform:translateY(-4px);border-color:var(--line-green);box-shadow:0 8px 32px rgba(26,140,78,.1)}
 .card:hover::before{opacity:1}
 .card:hover::after{width:100%}
-.card .ptype{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+/* card content */
+.card .ptype{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent)}
 .card h3{font-size:22px;margin:10px 0 8px;font-weight:600}
-.card .psum{color:var(--text-soft);font-size:14.5px;line-height:1.55;margin-bottom:14px}
-.card .pdem-label{font-family:"JetBrains Mono";font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
-.card .pdem{font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:18px}
+.card .psum{color:var(--text-soft);font-size:14.5px;line-height:1.6;margin-bottom:14px}
+.card .pdem-label{font-family:"JetBrains Mono";font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+.card .pdem{font-size:13.5px;color:var(--muted);line-height:1.55;margin-bottom:18px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
 .tags span{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+
+/* card CTAs */
+.card-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:20px}
 .card .pcta{
   display:inline-flex;align-items:center;gap:7px;
   font-size:14px;font-weight:600;color:var(--accent);
@@ -196,12 +195,95 @@ section{padding:88px 0;position:relative}
 .card .pcta:hover{gap:11px}
 .card .pcta .arr{transition:transform .3s var(--ease)}
 .card:hover .pcta .arr{transform:translateX(3px)}
+.card .pcta-sec{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13.5px;font-weight:500;color:var(--muted);
+  text-decoration:none;transition:color .25s;
+  border-left:1px solid var(--line-strong);padding-left:16px;
+}
+.card .pcta-sec:hover{color:var(--accent)}
+
+/* live badge */
 .card .badge-live{
   position:absolute;top:24px;right:24px;
   font-family:"JetBrains Mono";font-size:10px;letter-spacing:.08em;
   color:var(--accent);border:1px solid rgba(26,140,78,.25);
   background:rgba(26,140,78,.07);padding:3px 8px;border-radius:99px;
 }
+
+/* featured card — spans full grid width */
+.card-featured{grid-column:1/-1}
+.card-featured-inner{
+  display:grid;grid-template-columns:1fr 252px;
+  gap:32px;align-items:start;margin-top:12px;
+}
+
+/* =========================================================
+   IMAGE PLACEHOLDERS — design system component
+   ========================================================= */
+
+/* shared base */
+.img-ph{
+  position:relative;overflow:hidden;
+  border-radius:10px;
+  border:1px solid rgba(15,50,28,.1);
+  background:var(--bg-elev-2);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:10px;text-align:center;padding:22px;
+  margin-bottom:16px;
+}
+.img-ph::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px),
+    repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px);
+}
+
+/* aspect ratio variants */
+.img-ph--wide{aspect-ratio:16/9}
+.img-ph--portrait{aspect-ratio:3/4}
+
+/* inner text elements */
+.ph-label{
+  font-family:"JetBrains Mono";font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);
+  background:var(--bg-elev);border:1px solid var(--line-strong);
+  border-radius:99px;padding:3px 10px;
+  position:relative;z-index:1;
+}
+.ph-desc{
+  font-size:11.5px;color:var(--muted);
+  line-height:1.55;max-width:28ch;
+  position:relative;z-index:1;
+}
+.ph-format{
+  font-family:"JetBrains Mono";font-size:9px;color:var(--faint);
+  letter-spacing:.06em;position:relative;z-index:1;
+}
+
+/* =========================================================
+   PHOTO PLACEHOLDER — about section
+   ========================================================= */
+.photo-ph{
+  position:relative;overflow:hidden;
+  width:100%;max-width:220px;
+  aspect-ratio:4/5;
+  border-radius:var(--radius);
+  border:1px solid rgba(15,50,28,.1);
+  background:var(--bg-elev-2);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:10px;text-align:center;padding:22px;
+  margin-bottom:20px;
+}
+.photo-ph::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px),
+    repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px);
+}
+.photo-ph .ph-label,.photo-ph .ph-desc,.photo-ph .ph-format{position:relative;z-index:1}
 
 /* =========================================================
    PROCESSO
@@ -215,7 +297,7 @@ section{padding:88px 0;position:relative}
 .proc-step:hover{background:var(--bg-elev-2)}
 .proc-step .num{font-family:"JetBrains Mono";font-size:12px;color:var(--accent);margin-bottom:12px}
 .proc-step h4{font-size:15.5px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
-.proc-step p{font-size:13px;color:var(--muted);line-height:1.5}
+.proc-step p{font-size:13px;color:var(--muted);line-height:1.55}
 .ia-note{
   margin-top:18px;padding:16px 22px;
   border-left:2px solid var(--accent);
@@ -233,7 +315,7 @@ section{padding:88px 0;position:relative}
   font-size:clamp(18px,2.2vw,23px);font-family:"Space Grotesk";
   font-weight:500;line-height:1.35;letter-spacing:-.01em;color:var(--text);
 }
-.about p{color:var(--text-soft);font-size:15.5px;margin-top:16px;line-height:1.65}
+.about p{color:var(--text-soft);font-size:15.5px;margin-top:16px;line-height:1.7}
 .rep-grid{
   display:grid;grid-template-columns:1fr 1fr;
   gap:1px;background:var(--line);
@@ -242,7 +324,7 @@ section{padding:88px 0;position:relative}
 .rep{background:var(--bg-elev);padding:20px;transition:background .3s}
 .rep:hover{background:var(--bg-elev-2)}
 .rep .rt{font-size:14px;font-weight:600;margin-bottom:4px;font-family:"Space Grotesk"}
-.rep .rd{font-size:12.5px;color:var(--muted);line-height:1.45}
+.rep .rd{font-size:12.5px;color:var(--muted);line-height:1.5}
 
 /* =========================================================
    CONTATO
@@ -297,6 +379,8 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 @media(max-width:920px){
   .proc-grid{grid-template-columns:repeat(2,1fr)}
   .about{grid-template-columns:1fr;gap:32px}
+  .card-featured-inner{grid-template-columns:1fr;gap:24px}
+  .card-featured-inner .img-ph--portrait{aspect-ratio:16/9}
 }
 @media(max-width:760px){
   .nav-links,.nav-cta{display:none}
@@ -307,13 +391,16 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   }
   header.nav.open .nav-links a{padding:13px 28px;color:var(--text)}
   header.nav.open .nav-links a::after{display:none}
-  .hero{padding:110px 0 52px}
+  .hero{padding:110px 0 60px}
   .proj-grid{grid-template-columns:1fr}
+  .card-featured{grid-column:auto}
   section{padding:64px 0}
   .wrap{padding:0 20px}
   .nav-inner{padding:13px 20px}
   .contact-main{padding:28px 22px}
-  .intro-strip{padding:36px 0 44px}
+  .intro-strip{padding:48px 0 52px}
+  .card .pcta-sec{border-left:none;padding-left:0}
+  .photo-ph{max-width:160px}
 }
 @media(max-width:520px){
   .proc-grid{grid-template-columns:1fr}
@@ -354,14 +441,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
     <p class="sub reveal">
       Uno UX, produto, operação e implementação assistida por IA para transformar fluxos complexos em experiências claras, funcionais e documentadas.
     </p>
-    <div class="hero-meta reveal">
-      <span class="chip">Product Design</span>
-      <span class="chip">UX/UI</span>
-      <span class="chip">Design Engineering</span>
-      <span class="chip">IA aplicada</span>
-      <span class="chip">Sistemas internos</span>
-      <span class="chip">Produtos digitais</span>
-    </div>
+    <!-- badges removidos: repetiam informação já presente no título e na seção Sobre -->
     <div class="hero-ctas reveal">
       <a class="btn-primary" href="#projetos">Ver projetos →</a>
       <a class="btn-ghost" href="#processo">Conhecer meu processo →</a>
@@ -388,69 +468,133 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 
     <div class="proj-grid">
 
-      <!-- UNIEDU Case Study -->
-      <article class="card reveal">
+      <!-- =========================================================
+           PLATAFORMA UNIEDU — card principal, 2 colunas
+           ========================================================= -->
+      <article class="card card-featured reveal">
         <span class="badge-live">CASE COMPLETO</span>
-        <span class="ptype">UX/UI · Product Strategy · EdTech</span>
-        <h3>UNIEDU Case Study</h3>
-        <p class="psum">Case completo de produto educacional gamificado — pesquisa, estratégia, jornada do usuário, design system, validação e aprendizados documentados.</p>
-        <div class="pdem-label">O que demonstra</div>
-        <p class="pdem">Pesquisa, raciocínio de produto, estruturação de solução e documentação de processo completo.</p>
-        <div class="tags">
-          <span>UX Research</span><span>Design System</span><span>Estratégia de produto</span><span>Gamificação</span>
+        <span class="ptype">UX/UI · Product Strategy · EdTech · Protótipo funcional</span>
+        <h3>Plataforma UNIEDU</h3>
+
+        <div class="card-featured-inner">
+          <!-- conteúdo textual -->
+          <div>
+            <p class="psum">Produto educacional gamificado que conecta pesquisa, estratégia, design system e protótipo navegável para transformar constância de estudo em progresso real.</p>
+            <div class="pdem-label">O que demonstra</div>
+            <p class="pdem">Pesquisa, jornada do usuário, estratégia de produto, UI, design system, prototipação e documentação de decisão.</p>
+            <div class="tags">
+              <span>UX Research</span>
+              <span>Design System</span>
+              <span>Product Strategy</span>
+              <span>Gamificação</span>
+              <span>Prototipação</span>
+            </div>
+            <div class="card-ctas">
+              <a class="pcta" href="https://case-app-uniedu.vercel.app" target="_blank" rel="noopener noreferrer">Estudo de caso <span class="arr">→</span></a>
+              <a class="pcta-sec" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer">Abrir protótipo →</a>
+            </div>
+          </div>
+
+          <!-- placeholder visual — UNIEDU app preview -->
+          <div>
+            <!--
+              Imagem futura: GIF curto ou MP4 em loop mostrando o app UNIEDU em navegação real,
+              com transições de login, home, plano de estudos e progresso/gamificação.
+              Usar formato vertical 9:16 ou mockup mobile, duração entre 3 e 5 segundos,
+              otimizado para web.
+            -->
+            <div class="img-ph img-ph--portrait">
+              <span class="ph-label">Preview futuro</span>
+              <p class="ph-desc">GIF curto do app UNIEDU navegando pelo fluxo principal de estudo e gamificação.</p>
+              <span class="ph-format">GIF / MP4 loop · 9:16 · 3–5s</span>
+            </div>
+          </div>
         </div>
-        <a class="pcta" href="https://case-app-uniedu.vercel.app" target="_blank" rel="noopener noreferrer">Ver case study <span class="arr">→</span></a>
       </article>
 
-      <!-- UNIEDU App -->
-      <article class="card reveal">
-        <span class="badge-live">PROTÓTIPO FUNCIONAL</span>
-        <span class="ptype">Protótipo funcional · Produto educacional</span>
-        <h3>UNIEDU App</h3>
-        <p class="psum">Protótipo navegável em formato de app, criado para demonstrar a experiência proposta e a jornada de aprendizado do usuário.</p>
-        <div class="pdem-label">O que demonstra</div>
-        <p class="pdem">Prototipação, UI, fluxo de experiência e produto demonstrável em interação real.</p>
-        <div class="tags">
-          <span>Prototipação</span><span>UI premium</span><span>Fluxo de experiência</span>
-        </div>
-        <a class="pcta" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer">Ver protótipo <span class="arr">→</span></a>
-      </article>
-
-      <!-- Sartec CRM -->
+      <!-- =========================================================
+           SARTEC CRM
+           ========================================================= -->
       <article class="card reveal">
         <span class="badge-live">EM PRODUÇÃO</span>
         <span class="ptype">Sistema interno · Operação · Atendimento</span>
         <h3>Sartec CRM</h3>
-        <p class="psum">CRM operacional criado para organizar atendimentos, estados, prioridades, histórico e fluxo de trabalho de uma operação real com quase 30 anos.</p>
+        <p class="psum">Interface interna criada para organizar atendimentos, estados, prioridades, histórico e fluxo de trabalho de uma operação real de varejo.</p>
+
+        <!--
+          Imagem futura: print recortado do Sartec CRM mostrando Kanban, estados de atendimento
+          ou chat operacional. Usar dados fictícios ou borrar informações sensíveis.
+          Preferir crop horizontal 16:9 ou 4:3, com boa nitidez e leitura de interface.
+        -->
+        <div class="img-ph img-ph--wide">
+          <span class="ph-label">Preview futuro</span>
+          <p class="ph-desc">Print recortado do Kanban ou da janela de atendimento do CRM, com dados fictícios ou informações sensíveis ocultas.</p>
+          <span class="ph-format">16:9 ou 4:3 · estático · alta resolução</span>
+        </div>
+
         <div class="pdem-label">O que demonstra</div>
         <p class="pdem">Design de sistemas internos, arquitetura de fluxo, estados, regras operacionais e melhoria de rotina real.</p>
         <div class="tags">
           <span>Arquitetura de fluxo</span><span>Design de estados</span><span>UX operacional</span>
         </div>
+        <!--
+          TODO futuro: transformar este CTA em modal de mini-case com problema da operação,
+          decisão de design e resultado técnico, sem expor dados sensíveis.
+        -->
         <!-- TODO: substituir href="#" pela URL do case quando disponível -->
         <a class="pcta" href="#">Ver resumo do projeto <span class="arr">→</span></a>
       </article>
 
-      <!-- Agente WhatsApp -->
+      <!-- =========================================================
+           AGENTE WHATSAPP SARTEC
+           ========================================================= -->
       <article class="card reveal">
         <span class="badge-live">EM PRODUÇÃO</span>
         <span class="ptype">IA aplicada · Atendimento · Triagem</span>
         <h3>Agente WhatsApp Sartec</h3>
         <p class="psum">Agente de triagem conectado ao WhatsApp, desenhado para coletar contexto, organizar demandas e encaminhar atendimentos com mais clareza.</p>
+
+        <!--
+          Imagem futura: mockup ou composição visual simulando fluxo de triagem do Agente WhatsApp
+          Sartec, com mensagens fictícias. Mostrar decisão PF/PJ, coleta de contexto e
+          encaminhamento para atendimento humano. Não usar dados reais de clientes.
+        -->
+        <div class="img-ph img-ph--wide">
+          <span class="ph-label">Preview futuro</span>
+          <p class="ph-desc">Simulação visual do fluxo conversacional de triagem, com mensagens fictícias mostrando decisão PF/PJ e encaminhamento humano.</p>
+          <span class="ph-format">Mockup smartphone · 9:16 ou 4:3 · sem dados reais</span>
+        </div>
+
         <div class="pdem-label">O que demonstra</div>
         <p class="pdem">Design conversacional, prompt engineering, critérios de handoff e integração com operação real.</p>
         <div class="tags">
           <span>Design conversacional</span><span>Prompt engineering</span><span>Handoff inteligente</span>
         </div>
+        <!--
+          TODO futuro: criar página ou modal interno de mini-case sem expor dados sensíveis.
+        -->
         <!-- TODO: substituir href="#" pela URL do projeto quando disponível -->
         <a class="pcta" href="#">Ver projeto <span class="arr">→</span></a>
       </article>
 
-      <!-- Site Sartec Papelaria -->
+      <!-- =========================================================
+           SITE SARTEC PAPELARIA
+           ========================================================= -->
       <article class="card reveal">
         <span class="ptype">Site comercial · Negócio local</span>
         <h3>Site Sartec Papelaria</h3>
         <p class="psum">Camada pública da Papelaria Sartec, pensada para transformar presença digital em entrada de atendimento e pedidos.</p>
+
+        <!--
+          Imagem futura: print da home do Site Sartec Papelaria mostrando a proposta de lista
+          escolar pelo WhatsApp, com visual claro e comercial. Usar crop horizontal 16:9.
+        -->
+        <div class="img-ph img-ph--wide">
+          <span class="ph-label">Preview futuro</span>
+          <p class="ph-desc">Print da home do site destacando lista escolar e atendimento pelo WhatsApp.</p>
+          <span class="ph-format">16:9 · print do site · visual comercial</span>
+        </div>
+
         <div class="pdem-label">O que demonstra</div>
         <p class="pdem">Arquitetura de informação, copy comercial, presença digital local e conexão com operação.</p>
         <div class="tags">
@@ -460,11 +604,24 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
         <a class="pcta" href="#">Ver site <span class="arr">→</span></a>
       </article>
 
-      <!-- Sartec Digital -->
+      <!-- =========================================================
+           SARTEC DIGITAL
+           ========================================================= -->
       <article class="card reveal">
         <span class="ptype">Landing page · Oferta B2B</span>
         <h3>Sartec Digital</h3>
         <p class="psum">Página comercial para apresentar soluções digitais baseadas em atendimento, automação, sites e métricas para pequenos e médios negócios.</p>
+
+        <!--
+          Imagem futura: print da landing page Sartec Digital mostrando hero, proposta de valor
+          e CTA principal. Usar crop horizontal 16:9, sem poluir o card do portfólio.
+        -->
+        <div class="img-ph img-ph--wide">
+          <span class="ph-label">Preview futuro</span>
+          <p class="ph-desc">Print da landing page destacando hero e proposta comercial.</p>
+          <span class="ph-format">16:9 · print da landing page · foco no hero</span>
+        </div>
+
         <div class="pdem-label">O que demonstra</div>
         <p class="pdem">Posicionamento, arquitetura de oferta, estrutura comercial e landing page.</p>
         <div class="tags">
@@ -528,6 +685,18 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
         <p>Uso IA com critério como acelerador de implementação — documentando cada decisão para que o produto possa evoluir com clareza. Meu foco é transformar problemas reais em produtos digitais claros, funcionais e documentados.</p>
       </div>
       <div class="reveal">
+        <!--
+          Imagem futura: retrato editorial/casual profissional de Lucas, em proporção 4:5,
+          com iluminação natural, fundo neutro ou ambiente real de trabalho.
+          Evitar pose corporativa forçada. A imagem deve humanizar o perfil sem quebrar
+          a estética clean e tecnológica.
+        -->
+        <div class="photo-ph">
+          <span class="ph-label">Foto futura</span>
+          <p class="ph-desc">Retrato editorial ou casual profissional, com fundo neutro ou ambiente real de trabalho.</p>
+          <span class="ph-format">4:5 · iluminação natural · sem pose corporativa</span>
+        </div>
+
         <div class="rep-grid">
           <div class="rep">
             <div class="rt">Operação &amp; atendimento</div>
