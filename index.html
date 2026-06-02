@@ -286,6 +286,49 @@ section{padding:88px 0;position:relative}
 .photo-ph .ph-label,.photo-ph .ph-desc,.photo-ph .ph-format{position:relative;z-index:1}
 
 /* =========================================================
+   ABOUT PHOTO — prepared for real headshot
+   ========================================================= */
+.about-photo{
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--bg-elev-2);
+  margin-bottom:20px;
+  position:relative;
+}
+.about-photo img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+
+/* certificate link */
+.cert-link{display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.cert-link-a{
+  font-size:13.5px;color:var(--accent);font-weight:500;
+  display:inline-flex;align-items:center;gap:6px;
+  text-decoration:none;opacity:.55;cursor:default;pointer-events:none;
+}
+.cert-soon{
+  font-family:"JetBrains Mono";font-size:9.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--faint);
+  border:1px solid var(--line-strong);border-radius:99px;
+  padding:2px 9px;background:var(--bg-elev);
+}
+
+/* research note in Processo */
+.research-note{
+  margin-top:14px;padding:16px 22px;
+  border:1px solid var(--line);border-radius:10px;
+  background:var(--bg-elev);
+  font-size:14.5px;color:var(--text-soft);line-height:1.6;
+}
+.research-note b{color:var(--text);font-weight:600}
+
+/* =========================================================
    PROCESSO
    ========================================================= */
 .proc-grid{
@@ -335,6 +378,7 @@ section{padding:88px 0;position:relative}
   box-shadow:0 1px 4px rgba(0,0,0,.04);
   transition:border-color .3s,transform .4s var(--ease);
   max-width:640px;
+  margin-left:auto;margin-right:auto;
 }
 .contact-main:hover{transform:translateY(-3px);border-color:var(--line-green)}
 .contact-main .ctag{
@@ -346,6 +390,7 @@ section{padding:88px 0;position:relative}
 .contact-btns{display:flex;flex-wrap:wrap;gap:10px}
 .contact-secondary{
   margin-top:16px;max-width:640px;
+  margin-left:auto;margin-right:auto;
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   padding:14px 20px;border:1px solid var(--line);
   border-radius:10px;background:var(--bg-elev);font-size:13.5px;color:var(--muted);
@@ -401,6 +446,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   .intro-strip{padding:48px 0 52px}
   .card .pcta-sec{border-left:none;padding-left:0}
   .photo-ph{max-width:160px}
+  .about-photo{max-width:280px;margin-left:auto;margin-right:auto;margin-bottom:20px}
 }
 @media(max-width:520px){
   .proc-grid{grid-template-columns:1fr}
@@ -669,6 +715,10 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
     <div class="ia-note reveal">
       <b>IA como apoio de execução:</b> defino o escopo antes do primeiro prompt, crio guardrails que evitam regressão, reviso cada entrega com olhar de produto e documento as decisões. A direção é sempre humana — produto funcional, não protótipo alucinado.
     </div>
+
+    <div class="research-note reveal">
+      <b>Pesquisa e validação na prática:</b> já passei por etapas reais de entrevistas com usuários, testes de usabilidade, planejamento de surveys, leitura de jornada, organização de achados e transformação desses insumos em decisões de produto.
+    </div>
   </div>
 </section>
 
@@ -683,19 +733,20 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
         <p class="lead">Sou Lucas Alves Cabral, Product Designer em construção avançada de repertório, com experiência prática em operação, atendimento e gestão.</p>
         <p>Meu diferencial vem de entender a rotina antes da interface. Antes de desenhar uma tela, eu entendo o fluxo real. Antes de automatizar, eu entendo o processo. Antes de definir o produto, eu mapeio o problema.</p>
         <p>Uso IA com critério como acelerador de implementação — documentando cada decisão para que o produto possa evoluir com clareza. Meu foco é transformar problemas reais em produtos digitais claros, funcionais e documentados.</p>
+        <p>Minha formação mistura ciência, operação e produto: sou biólogo, mergulhador e formado no UX Unicórnio, do Leandro Rezende. Essa combinação me ajuda a observar contexto, entender sistemas reais e transformar problemas em experiências digitais mais claras.</p>
+        <div class="cert-link">
+          <!-- TODO: substituir href="#" pelo caminho do certificado quando disponível (ex: assets/certificado-ux-unicornio.pdf) -->
+          <a class="cert-link-a" href="#" aria-disabled="true">Ver certificado UX Unicórnio →</a>
+          <span class="cert-soon">em breve</span>
+        </div>
       </div>
       <div class="reveal">
-        <!--
-          Imagem futura: retrato editorial/casual profissional de Lucas, em proporção 4:5,
-          com iluminação natural, fundo neutro ou ambiente real de trabalho.
-          Evitar pose corporativa forçada. A imagem deve humanizar o perfil sem quebrar
-          a estética clean e tecnológica.
-        -->
-        <div class="photo-ph">
-          <span class="ph-label">Foto futura</span>
-          <p class="ph-desc">Retrato editorial ou casual profissional, com fundo neutro ou ambiente real de trabalho.</p>
-          <span class="ph-format">4:5 · iluminação natural · sem pose corporativa</span>
-        </div>
+        <!-- Foto de perfil: salvar como foto-lucas.jpg (ou .png / .webp) na raiz do projeto -->
+        <!-- Proporção recomendada: quadrada (1:1) ou ligeiramente mais alta · mínimo 600px · fundo neutro -->
+        <figure class="about-photo">
+          <img src="foto-lucas.jpg" alt="Lucas Alves Cabral — Product Designer"
+               onerror="this.style.display='none'" />
+        </figure>
 
         <div class="rep-grid">
           <div class="rep">
@@ -734,8 +785,8 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
       <p>Estou aberto a oportunidades como Product Designer, UX/UI Designer, Design Engineer ou funções próximas em times que valorizem raciocínio de produto, processo e entrega funcional.</p>
       <div class="contact-btns">
         <a class="btn-primary" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20—%20Product%20Designer%20%26%20Design%20Engineer">Enviar e-mail →</a>
-        <!-- TODO: substituir href="#" pela URL do LinkedIn quando disponível -->
-        <a class="btn-ghost" href="#">LinkedIn →</a>
+        <a class="btn-ghost" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+        <a class="btn-ghost" href="https://wa.me/5512997863832" target="_blank" rel="noopener noreferrer">WhatsApp →</a>
       </div>
     </div>
 
@@ -760,8 +811,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
       <a href="#projetos">Projetos</a>
       <a href="#processo">Processo</a>
       <a href="mailto:lac.lucascabral@gmail.com">E-mail</a>
-      <!-- TODO: substituir href="#" pela URL do LinkedIn quando disponível -->
-      <a href="#">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </div>
 </footer>
