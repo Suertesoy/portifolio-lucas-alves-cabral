@@ -111,7 +111,7 @@ header.nav.scrolled{border-bottom:1px solid var(--line);background:rgba(10,11,13
 /* =========================================================
    HERO
    ========================================================= */
-.hero{padding:160px 0 70px;position:relative}
+.hero{padding:136px 0 48px;position:relative}
 .hero h1{font-size:clamp(38px,6.4vw,76px);font-weight:700;max-width:16ch}
 .hero h1 em{font-style:normal;color:var(--accent);transition:color .4s}
 .hero .sub{font-size:clamp(17px,2.1vw,21px);color:var(--text-soft);max-width:60ch;margin-top:26px;line-height:1.55}
@@ -121,7 +121,7 @@ header.nav.scrolled{border-bottom:1px solid var(--line);background:rgba(10,11,13
 .chip:hover{border-color:var(--line-green);color:var(--accent);background:rgba(124,255,178,.05)}
 
 /* Duas jornadas */
-.journeys{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px}
+.journeys{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
 .journey{
   position:relative;border:1px solid var(--line);background:linear-gradient(180deg,var(--bg-elev),rgba(16,18,22,.4));
   border-radius:var(--radius);padding:26px 26px 22px;cursor:pointer;overflow:hidden;
@@ -138,6 +138,12 @@ header.nav.scrolled{border-bottom:1px solid var(--line);background:rgba(10,11,13
 .journey .j-go{margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text);font-weight:500}
 .journey .j-go .arr{transition:transform .3s var(--ease);color:var(--j-color)}
 .journey:hover .j-go .arr{transform:translateX(5px)}
+
+/* Journey card — secondary mode dimmed, fully active on hover */
+body[data-mode="talent"] .journey[data-mode="client"]{opacity:.5;transition:opacity .4s var(--ease),transform .4s var(--ease),border-color .35s,box-shadow .35s}
+body[data-mode="talent"] .journey[data-mode="client"]:hover{opacity:.88}
+body[data-mode="client"] .journey[data-mode="talent"]{opacity:.5;transition:opacity .4s var(--ease),transform .4s var(--ease),border-color .35s,box-shadow .35s}
+body[data-mode="client"] .journey[data-mode="talent"]:hover{opacity:.88}
 
 /* =========================================================
    SECTIONS
@@ -234,6 +240,12 @@ section{padding:96px 0;position:relative}
 .btn-client:hover{box-shadow:0 12px 34px -12px var(--client);transform:translateY(-2px)}
 .btn-ghost{border:1px solid var(--line-strong);color:var(--text)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Contact cards — secondary mode dimmed, fully active on hover */
+body[data-mode="talent"] .cta-card[data-mode="client"]{opacity:.5;transition:opacity .4s var(--ease),transform .4s var(--ease),border-color .35s}
+body[data-mode="talent"] .cta-card[data-mode="client"]:hover{opacity:.88}
+body[data-mode="client"] .cta-card[data-mode="talent"]{opacity:.5;transition:opacity .4s var(--ease),transform .4s var(--ease),border-color .35s}
+body[data-mode="client"] .cta-card[data-mode="talent"]:hover{opacity:.88}
 
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:46px 0 40px;margin-top:30px}
@@ -441,7 +453,7 @@ body[data-mode="client"] .card-mode-line{
     <h1 class="reveal" style="margin-top:22px">Desenho produtos digitais que conectam <em>experiência, operação e implementação.</em></h1>
     <p class="sub reveal">
       <span class="talent-only">Veja como penso, projeto e conduzo produtos digitais dentro de <b>contextos reais</b> — do raciocínio de produto ao funcional, com sistemas em produção e decisões documentadas.</span>
-      <span class="client-only">Sou Lucas Cabral, Product Designer com visão de operação, UX e implementação com IA. Transformo problemas reais em sistemas, sites e fluxos digitais que funcionam na prática.</span>
+      <span class="client-only">Atendimento no WhatsApp sem controle? Operação manual? Sem presença digital? Transformo problemas reais em CRMs, sites e fluxos de atendimento que funcionam na prática — do diagnóstico ao funcional.</span>
     </p>
     <div class="hero-meta reveal">
       <span class="chip">Product Design</span>
@@ -513,7 +525,8 @@ body[data-mode="client"] .card-mode-line{
         <span class="badge-live">EM PRODUÇÃO</span>
         <span class="ptype">Produto · Sistema interno · UX operacional · Design Engineering</span>
         <h3>Sartec CRM</h3>
-        <p class="psum">De WhatsApp informal a CRM operacional para uma papelaria com quase 30 anos de operação.</p>
+        <p class="psum talent-only">De WhatsApp informal a CRM operacional — arquitetei fluxos PF/PJ, design de estados, priorização por risco e condução de implementação num sistema em produção.</p>
+        <p class="psum client-only">Atendimento desorganizado virou CRM com pipeline, contexto persistente e triagem por prioridade — sem mensagem perdida, sem resposta no perfil errado.</p>
         <div class="card-mode-line">
           <span class="talent-only">Prova de Product Design, UX operacional e decisão sistêmica num sistema em produção.</span>
           <span class="client-only">Prova de como organizei atendimento, operação e fluxo comercial de um negócio real.</span>
@@ -530,7 +543,8 @@ body[data-mode="client"] .card-mode-line{
         <span class="badge-live">EM PRODUÇÃO</span>
         <span class="ptype">IA aplicada · Automação · Atendimento</span>
         <h3>Agente WhatsApp Sartec</h3>
-        <p class="psum">Agente de triagem que organiza contexto, reduz ruído e faz handoff para atendimento humano.</p>
+        <p class="psum talent-only">Agente de triagem com design conversacional, prompt engineering versionado e handoff inteligente — IA com critério, sem alucinação no canal do cliente.</p>
+        <p class="psum client-only">Seu time não precisa responder tudo na mão. O agente filtra, organiza contexto e entrega para a pessoa certa, na hora certa — sem perder o controle do atendimento.</p>
         <div class="card-mode-line">
           <span class="talent-only">Prova de design conversacional, IA aplicada com critério e handoff humano inteligente.</span>
           <span class="client-only">Prova de automação de atendimento que reduz carga sem abrir mão do controle humano.</span>
@@ -546,7 +560,8 @@ body[data-mode="client"] .card-mode-line{
       <article class="card reveal">
         <span class="ptype">Produto comercial · Landing page · Oferta B2B</span>
         <h3>Sartec Digital</h3>
-        <p class="psum">Frente de soluções digitais da Sartec para atendimento, automação, landing pages e métricas para pequenos e médios negócios.</p>
+        <p class="psum talent-only">Frente B2B desenhada do zero — estratégia de posicionamento, arquitetura de oferta, landing page e implementação funcional para pequenos e médios negócios.</p>
+        <p class="psum client-only">Atendimento, automação, site e métricas para o seu negócio — tudo com escopo claro, entrega funcional e sem proposta genérica.</p>
         <div class="card-mode-line">
           <span class="talent-only">Prova de estratégia de produto, posicionamento e implementação de oferta B2B.</span>
           <span class="client-only">A frente comercial de soluções digitais — onde negócios encontram a solução certa.</span>
@@ -609,13 +624,13 @@ body[data-mode="client"] .card-mode-line{
       <div>
         <span class="kicker">IA com critério</span>
         <h3>A IA é uma alavanca, não uma muleta</h3>
-        <p>Uso IA como ferramenta de execução — não como substituto do julgamento. Defino o escopo, imponho os limites, valido o resultado e assumo a decisão. A IA me deixa ir do design ao funcional com rapidez; a direção continua sendo minha.</p>
+        <p>Uso IA como ferramenta de execução — não como substituto do julgamento. Na prática: defino o escopo antes do primeiro prompt, crio guardrails que evitam regressão, reviso cada entrega contra critérios concretos e documento as decisões. O resultado é produto funcional, não protótipo alucinado.</p>
       </div>
       <div class="ia-list">
-        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Defino escopo e critérios</b> — o que construir, o que cortar, o que validar.</span></div>
-        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Imponho guardrails</b> — limites explícitos para evitar dano e regressão.</span></div>
-        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Trato o prompt como artefato de design</b> — estruturado e versionado.</span></div>
-        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Valido cada entrega</b> — a decisão final é sempre humana.</span></div>
+        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Defino escopo antes do primeiro prompt</b> — o que entra, o que fica de fora e o critério de aceite.</span></div>
+        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Crio guardrails explícitos</b> — limites que protegem de regressão e desvio de escopo.</span></div>
+        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Reviso com olhar de produto</b> — não só se funciona, mas se resolve o problema certo.</span></div>
+        <div class="row"><span class="ck">✓</span><span><b style="color:var(--text)">Documento decisão, não só resultado</b> — para que o produto possa evoluir depois.</span></div>
       </div>
     </div>
   </div>
@@ -627,7 +642,8 @@ body[data-mode="client"] .card-mode-line{
     <div class="sec-head reveal">
       <span class="kicker" style="color:var(--client)">03 — O que posso construir</span>
       <h2>Capacidades que viram produto</h2>
-      <p>Do problema à entrega funcional — as três frentes onde atuo em times de produto e projetos independentes.</p>
+      <p class="talent-only">Do problema à entrega funcional — as três frentes onde atuo em times de produto e projetos independentes.</p>
+      <p class="client-only">Atendimento, CRM, automação e presença digital — o que construo para negócios que precisam funcionar melhor.</p>
     </div>
 
     <div class="serv-grid">
@@ -699,7 +715,8 @@ body[data-mode="client"] .card-mode-line{
   <div class="wrap">
     <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
       <span class="kicker" style="justify-content:center">05 — Contato</span>
-      <h2>Vamos resolver o próximo problema</h2>
+      <h2 class="talent-only">Vamos conversar sobre a próxima oportunidade</h2>
+      <h2 class="client-only">Vamos resolver o próximo problema</h2>
       <p style="margin-left:auto;margin-right:auto">Escolha o caminho que faz sentido para você. Respondo com contexto, sem rodeios.</p>
     </div>
     <div class="contact-intro reveal">
