@@ -67,7 +67,26 @@ img{max-width:100%;display:block}
 h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;line-height:1.1;letter-spacing:-.02em;font-weight:600}
 .mono{font-family:"JetBrains Mono",monospace;font-weight:500;letter-spacing:.02em}
 
+...
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.wrap::before,
+.wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+  pointer-events: none;
+}
+.wrap::before { left: 28px; }
+.wrap::after { right: 28px; }
+@media(max-width:760px) {
+  .wrap::before,
+  .wrap::after {
+    display: none;
+  }
+}
 .kicker{
   font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:9px;
@@ -85,7 +104,16 @@ header.nav{
 header.nav.scrolled{background:rgba(245,247,245,.96)}
 .nav-inner{max-width:var(--maxw);margin:0 auto;padding:15px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .brand{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk";font-weight:600;font-size:15.5px;letter-spacing:-.01em}
-.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(26,140,78,.4);transition:background .4s}
+.brand-clover {
+  color: var(--accent);
+  filter: drop-shadow(0 0 6px rgba(26,140,78,.3));
+  transition: color 0.3s var(--ease), opacity 0.3s var(--ease);
+  flex-shrink: 0;
+}
+.brand:hover .brand-clover {
+  color: var(--accent-2);
+  opacity: 0.95;
+}
 .brand small{display:block;font-family:"JetBrains Mono";font-size:10px;letter-spacing:.08em;color:var(--muted);font-weight:400;margin-top:1px}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a{font-size:14px;color:var(--muted);position:relative;transition:color .25s}
@@ -109,6 +137,140 @@ header.nav.scrolled{background:rgba(245,247,245,.96)}
   max-width:58ch;margin-top:24px;line-height:1.6;
 }
 .hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.clover-composition {
+  width: 320px;
+  height: 320px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.clover-composition-glow {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(26,140,78,0.15) 0%, rgba(26,140,78,0) 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+  animation: floatGlow 8s ease-in-out infinite alternate;
+}
+.clover-composition-vector {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  opacity: 0.85;
+  animation: floatVector 6s ease-in-out infinite alternate;
+}
+.clover-leaf {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(26, 140, 78, 0.08);
+  border: 1.5px solid rgba(26, 140, 78, 0.25);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 12px rgba(26, 140, 78, 0.15);
+}
+.leaf-top {
+  top: 10px;
+  left: 43px;
+}
+.leaf-bottom {
+  bottom: 10px;
+  left: 43px;
+}
+.leaf-left {
+  top: 43px;
+  left: 10px;
+}
+.leaf-right {
+  top: 43px;
+  right: 10px;
+}
+.clover-core {
+  position: absolute;
+  top: 54px;
+  left: 54px;
+  width: 32px;
+  height: 32px;
+  background: rgba(26, 140, 78, 0.12);
+  border: 1.5px solid rgba(26, 140, 78, 0.35);
+  border-radius: 6px;
+  transform: rotate(45deg);
+  backdrop-filter: blur(12px);
+}
+
+/* Technical HUD details */
+.visual-grid-axis {
+  position: absolute;
+  background: var(--line-strong);
+  pointer-events: none;
+}
+.visual-axis-x {
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  left: 0;
+  background: repeating-linear-gradient(90deg, var(--line) 0, var(--line) 4px, transparent 4px, transparent 8px);
+}
+.visual-axis-y {
+  height: 100%;
+  width: 1px;
+  left: 50%;
+  top: 0;
+  background: repeating-linear-gradient(180deg, var(--line) 0, var(--line) 4px, transparent 4px, transparent 8px);
+}
+.visual-grid-circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.visual-grid-coordinates {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 9px;
+  color: var(--faint);
+  letter-spacing: 0.1em;
+}
+
+/* Floating Animations */
+@keyframes floatGlow {
+  0% { transform: scale(0.9) translate(0, 0); opacity: 0.8; }
+  100% { transform: scale(1.1) translate(4px, -4px); opacity: 1; }
+}
+@keyframes floatVector {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@media(max-width: 920px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+@media(max-width: 760px) {
+  .hero-visual {
+    display: none;
+  }
+}
 .btn-primary{
   display:inline-flex;align-items:center;gap:8px;
   padding:12px 22px;border-radius:99px;font-size:14.5px;font-weight:600;
@@ -148,6 +310,24 @@ section{padding:88px 0;position:relative}
 .sec-head h2{font-size:clamp(26px,3.6vw,40px);margin:12px 0 12px}
 .sec-head p{color:var(--muted);font-size:16px;line-height:1.6}
 
+#projetos {
+  background: #EFF2EF;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+#processo {
+  background: #FFFFFF;
+}
+#sobre {
+  background: #EFF2EF;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+#contato {
+  background: linear-gradient(180deg, #FFFFFF 0%, #E8ECE8 100%);
+  border-top: 1px solid var(--line);
+}
+
 /* =========================================================
    PROJETOS — GRID & CARDS
    ========================================================= */
@@ -177,6 +357,9 @@ section{padding:88px 0;position:relative}
 .card:hover{transform:translateY(-4px);border-color:var(--line-green);box-shadow:0 8px 32px rgba(26,140,78,.1)}
 .card:hover::before{opacity:1}
 .card:hover::after{width:100%}
+.card:hover .img-ph img{transform:scale(1.04)}
+.card:hover .img-ph--crm-video video{transform:scale(1.26)!important}
+.card:hover .img-ph--sartec-site-video video{transform:scale(1.10)!important}
 
 /* card content */
 .card .ptype{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent)}
@@ -263,6 +446,22 @@ section{padding:88px 0;position:relative}
   padding:0 0 3px;border-bottom:1.5px solid rgba(26,140,78,0.25);
   text-transform:uppercase;cursor:default;
 }
+.card .badge-live::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+  animation: pulseGreen 2s infinite ease-in-out;
+}
+@keyframes pulseGreen {
+  0% { transform: scale(0.85); opacity: 0.6; box-shadow: 0 0 0 0 rgba(26,140,78,0.4); }
+  50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 0 4px rgba(26,140,78,0); }
+  100% { transform: scale(0.85); opacity: 0.6; box-shadow: 0 0 0 0 rgba(26,140,78,0); }
+}
 
 /* featured card — spans full grid width */
 .card-featured{grid-column:1/-1}
@@ -322,6 +521,7 @@ section{padding:88px 0;position:relative}
   object-fit:cover;
   display:block;
   z-index:2;
+  transition:transform 0.4s var(--ease);
 }
 .img-ph--uniedu-video{
   background:#FFFFFF!important;
@@ -709,7 +909,14 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   .proc-grid{grid-template-columns:1fr}
   .rep-grid{grid-template-columns:1fr}
 }
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  *, ::before, ::after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+  .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -718,7 +925,13 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 <header class="nav" id="nav">
   <div class="nav-inner">
     <a href="#top" class="brand">
-      <span class="dot"></span>
+      <svg class="brand-clover" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="7.5" r="4.5" />
+        <circle cx="12" cy="16.5" r="4.5" />
+        <circle cx="7.5" cy="12" r="4.5" />
+        <circle cx="16.5" cy="12" r="4.5" />
+        <rect x="9.5" y="9.5" width="5" height="5" rx="1" />
+      </svg>
       <span>Lucas Cabral<small>PRODUCT DESIGNER &amp; DESIGN ENGINEER</small></span>
     </a>
     <nav class="nav-links" id="navlinks">
@@ -738,16 +951,33 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="wrap">
-    <span class="kicker reveal">Product Designer &amp; Design Engineer</span>
-    <h1 class="reveal" style="margin-top:20px">Desenho produtos digitais a partir de <em>problemas reais.</em></h1>
-    <p class="sub reveal">
-      Uno UX, produto, operação e implementação assistida por IA para transformar fluxos complexos em experiências claras, funcionais e documentadas.
-    </p>
-    <!-- badges removidos: repetiam informação já presente no título e na seção Sobre -->
-    <div class="hero-ctas reveal">
-      <a class="btn-primary" href="#projetos">Ver projetos →</a>
-      <a class="btn-ghost" href="#processo">Conhecer meu processo →</a>
+  <div class="wrap hero-grid">
+    <div class="hero-content">
+      <span class="kicker reveal">Product Designer &amp; Design Engineer</span>
+      <h1 class="reveal" style="margin-top:20px">Desenho produtos digitais a partir de <em>problemas reais.</em></h1>
+      <p class="sub reveal">
+        Uno UX, produto, operação e implementação assistida por IA para transformar fluxos complexos em experiências claras, funcionais e documentadas.
+      </p>
+      <div class="hero-ctas reveal">
+        <a class="btn-primary" href="#projetos">Ver projetos →</a>
+        <a class="btn-ghost" href="#processo">Conhecer meu processo →</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="clover-composition">
+        <div class="clover-composition-glow"></div>
+        <div class="clover-composition-vector">
+          <div class="clover-leaf leaf-top"></div>
+          <div class="clover-leaf leaf-bottom"></div>
+          <div class="clover-leaf leaf-left"></div>
+          <div class="clover-leaf leaf-right"></div>
+          <div class="clover-core"></div>
+        </div>
+        <div class="visual-grid-axis visual-axis-x"></div>
+        <div class="visual-grid-axis visual-axis-y"></div>
+        <div class="visual-grid-circle"></div>
+        <div class="visual-grid-coordinates mono">SYS_V1.06 // 45.45°</div>
+      </div>
     </div>
   </div>
 </section>
