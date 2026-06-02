@@ -245,8 +245,36 @@ section{padding:88px 0;position:relative}
   background:#FFFFFF!important;
 }
 .img-ph--video-light video{
-  object-fit:contain!important;
+  object-fit:cover!important;
   background:#FFFFFF!important;
+}
+.img-ph--crm-video{
+  background:#FFFFFF!important;
+}
+.img-ph--crm-video video{
+  object-fit:cover!important;
+  background:#FFFFFF!important;
+}
+/* Phone Mockup for UNIEDU Video */
+.phone-mockup{
+  position:relative;
+  width:154px;
+  height:274px;
+  border:6px solid #FFFFFF;
+  border-radius:20px;
+  background:#FFFFFF;
+  box-shadow:0 8px 24px rgba(15,50,28,0.08), 0 1px 3px rgba(15,50,28,0.04);
+  overflow:hidden;
+  z-index:3;
+  margin:auto;
+}
+.phone-mockup video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 .img-ph::before{
   content:"";position:absolute;inset:0;pointer-events:none;
@@ -584,9 +612,11 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
               otimizado para web.
             -->
             <div class="img-ph img-ph--portrait img-ph--video-light">
-              <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do aplicativo UNIEDU">
-                <source src="GIF APP UNIEDU.mp4" type="video/mp4">
-              </video>
+              <div class="phone-mockup">
+                <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do aplicativo UNIEDU">
+                  <source src="GIF APP UNIEDU.mp4" type="video/mp4">
+                </video>
+              </div>
               <span class="ph-label">Preview futuro</span>
               <p class="ph-desc">GIF curto do app UNIEDU navegando pelo fluxo principal de estudo e gamificação.</p>
               <span class="ph-format">GIF / MP4 loop · 9:16 · 3–5s</span>
@@ -609,7 +639,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           ou chat operacional. Usar dados fictícios ou borrar informações sensíveis.
           Preferir crop horizontal 16:9 ou 4:3, com boa nitidez e leitura de interface.
         -->
-        <div class="img-ph img-ph--wide">
+        <div class="img-ph img-ph--wide img-ph--crm-video">
           <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do CRM Sartec">
             <source src="CRM sartec.mp4" type="video/mp4">
           </video>
