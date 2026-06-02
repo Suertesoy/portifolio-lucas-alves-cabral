@@ -241,11 +241,12 @@ section{padding:88px 0;position:relative}
   display:block;
   z-index:2;
 }
-.img-ph--video-light{
+.img-ph--uniedu-video{
   background:#FFFFFF!important;
 }
-.img-ph--video-light video{
+.img-ph--uniedu-video video{
   object-fit:cover!important;
+  transform:scale(1.18); /* Zoom/crop to hide the video stream's built-in letterbox bars */
   background:#FFFFFF!important;
 }
 .img-ph--crm-video{
@@ -253,28 +254,8 @@ section{padding:88px 0;position:relative}
 }
 .img-ph--crm-video video{
   object-fit:cover!important;
+  transform:scale(1.15); /* Zoom/crop to hide the video stream's built-in letterbox bars */
   background:#FFFFFF!important;
-}
-/* Phone Mockup for UNIEDU Video */
-.phone-mockup{
-  position:relative;
-  width:154px;
-  height:274px;
-  border:6px solid #FFFFFF;
-  border-radius:20px;
-  background:#FFFFFF;
-  box-shadow:0 8px 24px rgba(15,50,28,0.08), 0 1px 3px rgba(15,50,28,0.04);
-  overflow:hidden;
-  z-index:3;
-  margin:auto;
-}
-.phone-mockup video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
 }
 .img-ph::before{
   content:"";position:absolute;inset:0;pointer-events:none;
@@ -611,15 +592,10 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
               Usar formato vertical 9:16 ou mockup mobile, duração entre 3 e 5 segundos,
               otimizado para web.
             -->
-            <div class="img-ph img-ph--portrait img-ph--video-light">
-              <div class="phone-mockup">
-                <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do aplicativo UNIEDU">
-                  <source src="GIF APP UNIEDU.mp4" type="video/mp4">
-                </video>
-              </div>
-              <span class="ph-label">Preview futuro</span>
-              <p class="ph-desc">GIF curto do app UNIEDU navegando pelo fluxo principal de estudo e gamificação.</p>
-              <span class="ph-format">GIF / MP4 loop · 9:16 · 3–5s</span>
+            <div class="img-ph img-ph--portrait img-ph--uniedu-video">
+              <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do aplicativo UNIEDU">
+                <source src="GIF APP UNIEDU.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
         </div>
@@ -643,9 +619,6 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do CRM Sartec">
             <source src="CRM sartec.mp4" type="video/mp4">
           </video>
-          <span class="ph-label">Preview futuro</span>
-          <p class="ph-desc">Print recortado do Kanban ou da janela de atendimento do CRM, com dados fictícios ou informações sensíveis ocultas.</p>
-          <span class="ph-format">16:9 ou 4:3 · estático · alta resolução</span>
         </div>
 
         <div class="pdem-label">O que demonstra</div>
