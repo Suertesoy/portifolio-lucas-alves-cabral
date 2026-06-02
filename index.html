@@ -359,8 +359,8 @@ section{padding:88px 0;position:relative}
 }
 .img-ph--sartec-site-video video{
   object-fit:cover!important;
-  transform:scale(1.20)!important; /* Zoom/crop to hide the video stream's built-in letterbox bars */
-  transform-origin:center top!important;
+  transform:scale(1.06)!important; /* Soft scale to minimize crop while keeping context */
+  transform-origin:center center!important;
   background:#FFFFFF!important;
 }
 .img-ph::before{
@@ -463,9 +463,44 @@ section{padding:88px 0;position:relative}
   border:1px solid var(--line-strong);border-radius:99px;
   padding:2px 9px;background:var(--bg-elev);
 }
-.about-formacao{
-  font-family:"JetBrains Mono";font-size:11.5px;letter-spacing:.04em;
-  color:var(--muted);margin-top:20px;line-height:1.7;
+.about-credentials {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.52);
+}
+.about-credentials-label {
+  display: block;
+  margin-bottom: 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.about-credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.about-credentials strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: var(--text);
+}
+.about-credentials span {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+@media(max-width:760px){
+  .about-credentials-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
 
 /* research note in Processo */
@@ -889,7 +924,23 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
         <p>Antes de trabalhar com produto e interfaces, eu aprendi a observar sistemas vivos. Sou biólogo pela UFSC, me aproximei do mergulho durante a graduação e estudei peixes recifais, ecossistemas costeiros e ambientes onde tudo está conectado.</p>
         <p>Hoje, esse olhar aparece no meu trabalho como Product Designer e Design Engineer. Meu diferencial vem de entender a rotina antes da interface: antes de desenhar uma tela, busco entender o fluxo real; antes de automatizar, entendo o processo; antes de definir o produto, mapeio o problema.</p>
         <p>Uso IA com critério como acelerador de implementação, mas mantendo a direção humana: escopo, decisão de produto, validação e documentação. Meu foco é transformar problemas reais em produtos digitais claros, funcionais e sustentáveis para quem usa e para quem opera.</p>
-        <p class="about-formacao">Biólogo · UFSC · Mergulhador · Product Designer · UX Unicórnio / Leandro Rezende</p>
+        <div class="about-credentials" aria-label="Base e repertório profissional">
+          <span class="about-credentials-label">Base e repertório</span>
+          <div class="about-credentials-grid">
+            <div>
+              <strong>Formação</strong>
+              <span>Biologia pela UFSC</span>
+            </div>
+            <div>
+              <strong>Campo</strong>
+              <span>Mergulho e observação de sistemas vivos</span>
+            </div>
+            <div>
+              <strong>Produto &amp; UX</strong>
+              <span>Product Design · <span style="white-space: nowrap;">UX Unicórnio</span> / Leandro Rezende</span>
+            </div>
+          </div>
+        </div>
         <div class="cert-link">
           <!-- TODO: substituir href="#" pelo caminho do certificado quando disponível (ex: assets/certificado-ux-unicornio.pdf) -->
           <a class="cert-link-a" href="#" aria-disabled="true">Ver certificado UX Unicórnio →</a>
