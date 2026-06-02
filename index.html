@@ -243,10 +243,24 @@ section{padding:88px 0;position:relative}
 }
 .img-ph--uniedu-video{
   background:#FFFFFF!important;
+  aspect-ratio:9/16!important;
+  width:100%!important;
+  max-width:252px!important;
+  height:auto!important;
+  overflow:hidden!important;
+  position:relative!important;
+  border:1px solid rgba(15,50,28,0.08)!important;
+  margin:0 auto!important;
 }
 .img-ph--uniedu-video video{
-  object-fit:cover!important;
-  transform:scale(1.18); /* Zoom/crop to hide the video stream's built-in letterbox bars */
+  position:absolute!important;
+  top:50%!important;
+  left:50%!important;
+  transform:translate(-50%,-50%)!important;
+  height:100%!important;
+  width:auto!important;
+  max-width:none!important;
+  object-fit:contain!important;
   background:#FFFFFF!important;
 }
 .img-ph--crm-video{
@@ -254,7 +268,8 @@ section{padding:88px 0;position:relative}
 }
 .img-ph--crm-video video{
   object-fit:cover!important;
-  transform:scale(1.15); /* Zoom/crop to hide the video stream's built-in letterbox bars */
+  transform:scale(1.22)!important; /* Zoom/crop to hide the video stream's built-in letterbox bars */
+  transform-origin:center center!important;
   background:#FFFFFF!important;
 }
 .img-ph::before{
@@ -592,7 +607,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
               Usar formato vertical 9:16 ou mockup mobile, duração entre 3 e 5 segundos,
               otimizado para web.
             -->
-            <div class="img-ph img-ph--portrait img-ph--uniedu-video">
+            <div class="img-ph img-ph--uniedu-video">
               <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do aplicativo UNIEDU">
                 <source src="GIF APP UNIEDU.mp4" type="video/mp4">
               </video>
