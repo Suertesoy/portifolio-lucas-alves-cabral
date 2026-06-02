@@ -258,9 +258,10 @@ section{padding:88px 0;position:relative}
 /* live badge */
 .card .badge-live{
   position:absolute;top:24px;right:24px;
-  font-family:"JetBrains Mono";font-size:10px;letter-spacing:.08em;
-  color:var(--accent);border:1px solid rgba(26,140,78,.25);
-  background:rgba(26,140,78,.07);padding:3px 8px;border-radius:99px;
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.10em;
+  color:var(--accent);background:transparent;border:0;border-radius:0;
+  padding:0 0 3px;border-bottom:1.5px solid rgba(26,140,78,0.25);
+  text-transform:uppercase;cursor:default;
 }
 
 /* featured card — spans full grid width */
@@ -350,6 +351,15 @@ section{padding:88px 0;position:relative}
 .img-ph--crm-video video{
   object-fit:cover!important;
   transform:scale(1.22)!important; /* Zoom/crop to hide the video stream's built-in letterbox bars */
+  transform-origin:center center!important;
+  background:#FFFFFF!important;
+}
+.img-ph--sartec-site-video{
+  background:#FFFFFF!important;
+}
+.img-ph--sartec-site-video video{
+  object-fit:cover!important;
+  transform:scale(1.12)!important; /* Zoom/crop to hide the video stream's built-in letterbox bars */
   transform-origin:center center!important;
   background:#FFFFFF!important;
 }
@@ -518,6 +528,7 @@ section{padding:88px 0;position:relative}
   transition:border-color .3s,transform .4s var(--ease);
   max-width:640px;
   margin-left:auto;margin-right:auto;
+  text-align:center;
 }
 .contact-main:hover{transform:translateY(-3px);border-color:var(--line-green)}
 .contact-main .ctag{
@@ -526,11 +537,12 @@ section{padding:88px 0;position:relative}
 }
 .contact-main h3{font-size:clamp(20px,2.4vw,26px);margin-bottom:12px;font-weight:600}
 .contact-main p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:24px}
-.contact-btns{display:flex;flex-wrap:wrap;gap:10px}
+.contact-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .contact-secondary{
   margin-top:16px;max-width:640px;
   margin-left:auto;margin-right:auto;
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  justify-content:center;
   padding:14px 20px;border:1px solid var(--line);
   border-radius:10px;background:var(--bg-elev);font-size:13.5px;color:var(--muted);
 }
@@ -702,7 +714,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
            SARTEC CRM
            ========================================================= -->
       <article class="card reveal">
-        <span class="badge-live">EM PRODUÇÃO</span>
+        <span class="badge-live">IMPLEMENTADO</span>
         <span class="ptype">Sistema interno · Operação · Atendimento</span>
         <h3>Sartec CRM</h3>
         <p class="psum">Interface interna criada para organizar atendimentos, estados, prioridades, histórico e fluxo de trabalho de uma operação real de varejo.</p>
@@ -735,7 +747,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
            AGENTE WHATSAPP SARTEC
            ========================================================= -->
       <article class="card reveal">
-        <span class="badge-live">EM PRODUÇÃO</span>
+        <span class="badge-live">IMPLEMENTADO</span>
         <span class="ptype">IA aplicada · Atendimento · Triagem</span>
         <h3>Agente WhatsApp Sartec</h3>
         <p class="psum">Agente de triagem conectado ao WhatsApp, desenhado para coletar contexto, organizar demandas e encaminhar atendimentos com mais clareza.</p>
@@ -767,6 +779,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
            SITE SARTEC PAPELARIA
            ========================================================= -->
       <article class="card reveal">
+        <span class="badge-live">PROTÓTIPO</span>
         <span class="ptype">Site comercial · Negócio local</span>
         <h3>Site Sartec Papelaria</h3>
         <p class="psum">Camada pública da Papelaria Sartec, pensada para transformar presença digital em entrada de atendimento e pedidos.</p>
@@ -775,10 +788,10 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           Imagem futura: print da home do Site Sartec Papelaria mostrando a proposta de lista
           escolar pelo WhatsApp, com visual claro e comercial. Usar crop horizontal 16:9.
         -->
-        <div class="img-ph img-ph--wide">
-          <span class="ph-label">Preview futuro</span>
-          <p class="ph-desc">Print da home do site destacando lista escolar e atendimento pelo WhatsApp.</p>
-          <span class="ph-format">16:9 · print do site · visual comercial</span>
+        <div class="img-ph img-ph--wide img-ph--sartec-site-video">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do protótipo do site Sartec Papelaria">
+            <source src="PROTÓTIPO-SITE SARTEC.mp4" type="video/mp4">
+          </video>
         </div>
 
         <div class="pdem-label">O que demonstra</div>
@@ -794,6 +807,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
            SARTEC DIGITAL
            ========================================================= -->
       <article class="card reveal">
+        <span class="badge-live">EMPRESA AUTORAL</span>
         <span class="ptype">Landing page · Oferta B2B</span>
         <h3>Sartec Digital</h3>
         <p class="psum">Página comercial para apresentar soluções digitais baseadas em atendimento, automação, sites e métricas para pequenos e médios negócios.</p>
