@@ -299,11 +299,25 @@ section{padding:88px 0;position:relative}
   position:relative;
   box-shadow:0 4px 24px rgba(0,0,0,.08);
 }
+.about-photo::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px),
+    repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px);
+}
+.about-photo::after{
+  content:"mergulhador_lucas.jpeg";
+  position:absolute;inset:0;z-index:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"JetBrains Mono";font-size:10px;letter-spacing:.12em;
+  color:var(--faint);pointer-events:none;
+}
 .about-photo img{
   width:100%;height:100%;
   object-fit:cover;
   object-position:center center;
   display:block;
+  position:relative;z-index:1;
 }
 
 /* certificate link */
@@ -736,10 +750,10 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
     <div class="about">
       <div class="reveal">
         <p class="lead">Mergulho de cabeça nos problemas que decido resolver.</p>
-        <p>Antes de trabalhar com produto e interfaces, eu aprendi a observar sistemas vivos. Sou formado em Biologia pela UFSC, me aproximei do mergulho durante a graduação e acabei me especializando em peixes recifais, ecossistemas costeiros e na leitura de ambientes onde tudo está conectado. Trabalhei como pesquisador e divemaster na Ilha do Arvoredo — onde mergulho até hoje.</p>
-        <p>Por muitos anos, o mergulho também foi trabalho: um hobby remunerado que me ensinou presença, atenção ao detalhe, adaptação e respeito pelo contexto. Debaixo d'água, nada existe isolado. Corrente, luz, comportamento, território e movimento contam uma história. Hoje, levo esse mesmo olhar para produto.</p>
-        <p>Quando entro em um projeto, não olho só para a tela. Procuro entender o fluxo, as pessoas, a operação, os pontos de atrito e as relações invisíveis que fazem uma experiência funcionar ou travar. É por isso que trabalho bem onde design, produto e implementação se encontram: eu gosto de entender o sistema inteiro antes de desenhar a próxima interface.</p>
-        <p class="about-formacao">Biólogo · UFSC · Mergulhador profissional · UX Unicórnio / Leandro Rezende</p>
+        <p>Antes de trabalhar com produto e interfaces, eu aprendi a observar sistemas vivos. Sou biólogo pela UFSC, me aproximei do mergulho durante a graduação e estudei peixes recifais, ecossistemas costeiros e ambientes onde tudo está conectado.</p>
+        <p>Hoje, esse olhar aparece no meu trabalho como Product Designer e Design Engineer. Meu diferencial vem de entender a rotina antes da interface: antes de desenhar uma tela, busco entender o fluxo real; antes de automatizar, entendo o processo; antes de definir o produto, mapeio o problema.</p>
+        <p>Uso IA com critério como acelerador de implementação, mas mantendo a direção humana: escopo, decisão de produto, validação e documentação. Meu foco é transformar problemas reais em produtos digitais claros, funcionais e sustentáveis para quem usa e para quem opera.</p>
+        <p class="about-formacao">Biólogo · UFSC · Mergulhador · Product Designer · UX Unicórnio / Leandro Rezende</p>
         <div class="cert-link">
           <!-- TODO: substituir href="#" pelo caminho do certificado quando disponível (ex: assets/certificado-ux-unicornio.pdf) -->
           <a class="cert-link-a" href="#" aria-disabled="true">Ver certificado UX Unicórnio →</a>
