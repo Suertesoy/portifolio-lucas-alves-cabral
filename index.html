@@ -29,7 +29,9 @@
   --glow:rgba(26,140,78,.06);
   --radius:14px;
   --radius-sm:9px;
-  --maxw:1140px;
+  --container-max:1200px;
+  --section-y:96px;
+  --section-x:28px;
   --ease:cubic-bezier(.22,.61,.36,1);
   --mx:50%; --my:18%;
 }
@@ -67,8 +69,7 @@ img{max-width:100%;display:block}
 h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;line-height:1.1;letter-spacing:-.02em;font-weight:600}
 .mono{font-family:"JetBrains Mono",monospace;font-weight:500;letter-spacing:.02em}
 
-...
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.wrap{max-width:var(--container-max);margin:0 auto;padding:0 var(--section-x);position:relative;z-index:1}
 .wrap::before,
 .wrap::after {
   content: "";
@@ -79,8 +80,8 @@ h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;line-height:1.1;letter-spacin
   background: var(--line);
   pointer-events: none;
 }
-.wrap::before { left: 28px; }
-.wrap::after { right: 28px; }
+.wrap::before { left: var(--section-x); }
+.wrap::after { right: var(--section-x); }
 @media(max-width:760px) {
   .wrap::before,
   .wrap::after {
@@ -129,7 +130,7 @@ header.nav.scrolled{background:rgba(245,247,245,.96)}
 /* =========================================================
    HERO
    ========================================================= */
-.hero{padding:136px 0 88px;position:relative}
+.hero{padding:152px 0 var(--section-y);position:relative}
 .hero h1{font-size:clamp(36px,5.8vw,68px);font-weight:700;max-width:18ch;line-height:1.06}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero .sub{
@@ -165,14 +166,14 @@ header.nav.scrolled{background:rgba(245,247,245,.96)}
   background: radial-gradient(circle, rgba(26,140,78,0.15) 0%, rgba(26,140,78,0) 70%);
   border-radius: 50%;
   filter: blur(20px);
-  animation: floatGlow 8s ease-in-out infinite alternate;
+  animation: floatGlow 16s ease-in-out infinite alternate;
 }
 .clover-composition-vector {
   position: relative;
   width: 140px;
   height: 140px;
   opacity: 0.85;
-  animation: floatVector 6s ease-in-out infinite alternate;
+  animation: floatVector 12s ease-in-out infinite alternate;
 }
 .clover-leaf {
   position: absolute;
@@ -252,12 +253,12 @@ header.nav.scrolled{background:rgba(245,247,245,.96)}
 
 /* Floating Animations */
 @keyframes floatGlow {
-  0% { transform: scale(0.9) translate(0, 0); opacity: 0.8; }
-  100% { transform: scale(1.1) translate(4px, -4px); opacity: 1; }
+  0% { transform: scale(0.95) translate(0, 0); opacity: 0.8; }
+  100% { transform: scale(1.05) translate(2px, -2px); opacity: 1; }
 }
 @keyframes floatVector {
   0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(-8px) rotate(2deg); }
+  100% { transform: translateY(-4px) rotate(1deg); }
 }
 
 @media(max-width: 920px) {
@@ -358,7 +359,7 @@ section{padding:88px 0;position:relative}
 .card:hover::before{opacity:1}
 .card:hover::after{width:100%}
 .card:hover .img-ph img{transform:scale(1.04)}
-.card:hover .img-ph--crm-video video{transform:scale(1.26)!important}
+.card:hover .img-ph--crm-video video{transform:scale(1.08)!important}
 .card:hover .img-ph--sartec-site-video video{transform:scale(1.10)!important}
 
 /* card content */
@@ -550,7 +551,7 @@ section{padding:88px 0;position:relative}
 }
 .img-ph--crm-video video{
   object-fit:cover!important;
-  transform:scale(1.22)!important; /* Zoom/crop to hide the video stream's built-in letterbox bars */
+  transform:scale(1.05)!important; /* Subtle crop to hide minor borders without clipping interface */
   transform-origin:center center!important;
   background:#FFFFFF!important;
 }
@@ -562,6 +563,42 @@ section{padding:88px 0;position:relative}
   transform:scale(1.06)!important; /* Soft scale to minimize crop while keeping context */
   transform-origin:center center!important;
   background:#FFFFFF!important;
+}
+.cta-flow-composition {
+  background: var(--bg-elev-2) !important;
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 180px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+}
+.flow-node {
+  background: var(--bg-elev);
+  border: 1px solid var(--line-green);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  box-shadow: 0 2px 8px rgba(26,140,78,0.05);
+  position: relative;
+  z-index: 5;
+  transition: transform 0.3s var(--ease);
+}
+.card:hover .flow-node {
+  transform: translateY(-2px);
+}
+.flow-connector {
+  width: 24px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--accent) 0, var(--accent) 4px, transparent 4px, transparent 8px);
+  position: relative;
+  z-index: 1;
 }
 .img-ph::before{
   content:"";position:absolute;inset:0;pointer-events:none;
@@ -575,59 +612,21 @@ section{padding:88px 0;position:relative}
 .img-ph--portrait{aspect-ratio:3/4}
 
 /* inner text elements */
-.ph-label{
-  font-family:"JetBrains Mono";font-size:9px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--faint);
-  background:var(--bg-elev);border:1px solid var(--line-strong);
-  border-radius:99px;padding:3px 10px;
-  position:relative;z-index:1;
-}
-.ph-desc{
-  font-size:11.5px;color:var(--muted);
-  line-height:1.55;max-width:28ch;
-  position:relative;z-index:1;
-}
-.ph-format{
-  font-family:"JetBrains Mono";font-size:9px;color:var(--faint);
-  letter-spacing:.06em;position:relative;z-index:1;
-}
-
-/* =========================================================
-   PHOTO PLACEHOLDER — about section
-   ========================================================= */
-.photo-ph{
-  position:relative;overflow:hidden;
-  width:100%;max-width:220px;
-  aspect-ratio:4/5;
-  border-radius:var(--radius);
-  border:1px solid rgba(15,50,28,.1);
-  background:var(--bg-elev-2);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:10px;text-align:center;padding:22px;
-  margin-bottom:20px;
-}
-.photo-ph::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px),
-    repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px);
-}
-.photo-ph .ph-label,.photo-ph .ph-desc,.photo-ph .ph-format{position:relative;z-index:1}
+/* deleted unused placeholder classes */
 
 /* =========================================================
    ABOUT PHOTO — prepared for real headshot
    ========================================================= */
 .about-photo{
   width:100%;
-  aspect-ratio:1/1;
+  aspect-ratio:16/10;
   border-radius:var(--radius);
   overflow:hidden;
   border:1px solid var(--line);
   background:var(--bg-elev-2);
-  margin-bottom:20px;
+  margin-bottom:24px;
   position:relative;
-  box-shadow:0 4px 24px rgba(0,0,0,.08);
+  box-shadow:0 4px 16px rgba(0,0,0,.04);
 }
 .about-photo::before{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
@@ -645,9 +644,14 @@ section{padding:88px 0;position:relative}
 .about-photo img{
   width:100%;height:100%;
   object-fit:cover;
-  object-position:center center;
+  object-position:center 30%;
   display:block;
   position:relative;z-index:1;
+  filter:saturate(0.85) contrast(0.98);
+  transition:filter 0.4s var(--ease);
+}
+.about-photo:hover img{
+  filter:saturate(1) contrast(1);
 }
 
 /* certificate link */
@@ -771,56 +775,71 @@ section{padding:88px 0;position:relative}
   margin-bottom: 28px;
   max-width: 68ch;
 }
-.tools-grid {
+.tools-stack {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 32px;
 }
-.tool-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.stack-group {
   background: var(--bg-elev);
   border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 16px 8px;
-  text-align: center;
-  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s var(--ease);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
 }
-.tool-card:hover {
-  transform: translateY(-2px);
+.stack-group:hover {
   border-color: var(--line-green);
-  box-shadow: 0 4px 16px rgba(26,140,78,.08);
+  box-shadow: 0 4px 16px rgba(26,140,78,.06);
+  transform: translateY(-2px);
 }
-.tool-logo-placeholder {
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
+.stack-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1.5px solid var(--line);
+  padding-bottom: 8px;
+}
+.stack-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.stack-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+.tool-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
   background: var(--bg-elev-2);
   border: 1px solid var(--line-strong);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
+  font-size: 8.5px;
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: 10px;
-}
-.tool-card span {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-soft);
 }
 @media(max-width: 920px) {
-  .tools-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .tools-stack {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media(max-width: 520px) {
-  .tools-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .tools-stack {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
@@ -885,6 +904,10 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   .card-featured-inner .img-ph--portrait{aspect-ratio:16/9}
 }
 @media(max-width:760px){
+  :root {
+    --section-x: 20px;
+    --section-y: 64px;
+  }
   .nav-links,.nav-cta{display:none}
   .burger{display:block}
   header.nav.open .nav-links{
@@ -893,16 +916,15 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   }
   header.nav.open .nav-links a{padding:13px 28px;color:var(--text)}
   header.nav.open .nav-links a::after{display:none}
-  .hero{padding:110px 0 60px}
+  .hero{padding:110px 0 var(--section-y)}
   .proj-grid{grid-template-columns:1fr}
   .card-featured{grid-column:auto}
-  section{padding:64px 0}
-  .wrap{padding:0 20px}
-  .nav-inner{padding:13px 20px}
+  section{padding:var(--section-y) 0}
+  .wrap{padding:0 var(--section-x)}
+  .nav-inner{padding:13px var(--section-x)}
   .contact-main{padding:28px 22px}
   .intro-strip{padding:48px 0 52px}
   .card .pcta-sec{border-left:none;padding-left:0}
-  .photo-ph{max-width:160px}
   .about-photo{max-width:280px;margin-left:auto;margin-right:auto;margin-bottom:20px}
 }
 @media(max-width:520px){
@@ -956,7 +978,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
       <span class="kicker reveal">Product Designer &amp; Design Engineer</span>
       <h1 class="reveal" style="margin-top:20px">Desenho produtos digitais a partir de <em>problemas reais.</em></h1>
       <p class="sub reveal">
-        Uno UX, produto, operação e implementação assistida por IA para transformar fluxos complexos em experiências claras, funcionais e documentadas.
+        Conecto estratégia de UX, design de interface e implementação funcional auxiliada por IA para transformar fluxos operacionais complexos em softwares claros, eficientes e bem documentados.
       </p>
       <div class="hero-ctas reveal">
         <a class="btn-primary" href="#projetos">Ver projetos →</a>
@@ -985,7 +1007,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 <!-- ================= INTRO STRIP ================= -->
 <div class="intro-strip">
   <div class="wrap">
-    <p class="strip-lead reveal">Meu diferencial está em conectar pesquisa, decisão de produto e entrega funcional.</p>
+    <p class="strip-lead reveal">Minha abordagem reduz a distância entre conceito, interface e produto em produção, conectando critérios de design, viabilidade técnica e impacto real na operação.</p>
     <p class="strip-body reveal">Meus projetos mostram não só telas finais — mostram raciocínio, critérios, decisões, validações e o caminho para transformar problemas em soluções utilizáveis.</p>
   </div>
 </div>
@@ -1093,10 +1115,13 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           Sartec, com mensagens fictícias. Mostrar decisão PF/PJ, coleta de contexto e
           encaminhamento para atendimento humano. Não usar dados reais de clientes.
         -->
-        <div class="img-ph img-ph--wide">
-          <span class="ph-label">Preview futuro</span>
-          <p class="ph-desc">Simulação visual do fluxo conversacional de triagem, com mensagens fictícias mostrando decisão PF/PJ e encaminhamento humano.</p>
-          <span class="ph-format">Mockup smartphone · 9:16 ou 4:3 · sem dados reais</span>
+        <div class="img-ph img-ph--wide cta-flow-composition">
+          <!-- Flow nodes visual built in CSS -->
+          <div class="flow-node">Triagem</div>
+          <div class="flow-connector"></div>
+          <div class="flow-node">Contexto</div>
+          <div class="flow-connector"></div>
+          <div class="flow-node">Handoff</div>
         </div>
 
         <div class="pdem-label">O que demonstra</div>
@@ -1153,10 +1178,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           e CTA principal. Usar crop horizontal 16:9, sem poluir o card do portfólio.
         -->
         <div class="img-ph img-ph--wide">
-          <img src="sartec digital - portifolio.png" alt="Página Sartec Digital no portfólio" onerror="this.style.display='none'" />
-          <span class="ph-label">Preview futuro</span>
-          <p class="ph-desc">Print da landing page destacando hero e proposta comercial.</p>
-          <span class="ph-format">16:9 · print da landing page · foco no hero</span>
+          <img src="sartec digital - portifolio.png" alt="Interface da Landing Page Sartec Digital" onerror="this.style.display='none'" />
         </div>
 
         <div class="pdem-label">O que demonstra</div>
@@ -1218,7 +1240,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="kicker">03 — Sobre</span>
-      <h2>Alguém que mergulha de cabeça no que gosta.</h2>
+      <h2>Entre operação real, pesquisa e construção de produtos.</h2>
     </div>
     <div class="about">
       <div class="reveal">
@@ -1281,34 +1303,35 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
     <div class="about-tools reveal">
       <h3>Ferramentas que uso para pensar, desenhar e construir.</h3>
       <p>Do design no Figma à implementação assistida por IA, uso essas plataformas para organizar decisões, prototipar, documentar e acelerar entregas.</p>
-      <div class="tools-grid">
-        <div class="tool-card">
-          <div class="tool-logo-placeholder">FG</div>
-          <span>Figma</span>
+      <div class="tools-stack">
+        <div class="stack-group">
+          <div class="stack-title">Pesquisa &amp; Organização</div>
+          <div class="stack-items">
+            <span class="stack-item"><span class="tool-dot">NO</span> Notion</span>
+            <span class="stack-item"><span class="tool-dot">GW</span> Google Workspace</span>
+            <span class="stack-item"><span class="tool-dot">GM</span> Gemini</span>
+          </div>
         </div>
-        <div class="tool-card">
-          <div class="tool-logo-placeholder">FM</div>
-          <span>Figma Make</span>
+        <div class="stack-group">
+          <div class="stack-title">Design &amp; Prototipação</div>
+          <div class="stack-items">
+            <span class="stack-item"><span class="tool-dot">FG</span> Figma</span>
+            <span class="stack-item"><span class="tool-dot">FM</span> Figma Make</span>
+          </div>
         </div>
-        <div class="tool-card">
-          <div class="tool-logo-placeholder">NO</div>
-          <span>Notion</span>
+        <div class="stack-group">
+          <div class="stack-title">Implementação Assistida</div>
+          <div class="stack-items">
+            <span class="stack-item"><span class="tool-dot">AG</span> Antigravity</span>
+            <span class="stack-item"><span class="tool-dot">CC</span> Claude Code</span>
+          </div>
         </div>
-        <div class="tool-card">
-          <div class="tool-logo-placeholder">GW</div>
-          <span>Google Workspace</span>
-        </div>
-        <div class="tool-card">
-          <div class="tool-logo-placeholder">AG</div>
-          <span>Antigravity</span>
-        </div>
-        <div class="tool-card">
-          <div class="tool-logo-placeholder">CC</div>
-          <span>Claude Code</span>
-        </div>
-        <div class="tool-card">
-          <div class="tool-logo-placeholder">GM</div>
-          <span>Gemini</span>
+        <div class="stack-group">
+          <div class="stack-title">Validação &amp; Documentação</div>
+          <div class="stack-items">
+            <span class="stack-item"><span class="tool-dot">NO</span> Notion</span>
+            <span class="stack-item"><span class="tool-dot">GW</span> Google Workspace</span>
+          </div>
         </div>
       </div>
     </div>
