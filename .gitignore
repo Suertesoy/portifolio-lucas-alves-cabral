@@ -1,3 +1,6 @@
 # Documentos de trabalho — não fazem parte do site
 *.docx
 relatorio_estrategico_portfolio_lucas.md
+
+# Dependências (instaladas no build da Vercel)
+node_modules/

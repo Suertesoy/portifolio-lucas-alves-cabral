@@ -8,938 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<style>
-/* =========================================================
-   DESIGN TOKENS — LIGHT THEME
-   ========================================================= */
-:root{
-  --bg:#F5F7F5;
-  --bg-elev:#FFFFFF;
-  --bg-elev-2:#ECF1EC;
-  --line:rgba(15,50,28,.07);
-  --line-strong:rgba(15,50,28,.14);
-  --line-green:rgba(26,140,78,.18);
-  --text:#0C1B10;
-  --text-soft:#354F3E;
-  --muted:#687D71;
-  --faint:#9EB0A6;
-  --accent:#1A8C4E;
-  --accent-2:#22A85F;
-  --accent-soft:rgba(26,140,78,.08);
-  --glow:rgba(26,140,78,.06);
-  --radius:14px;
-  --radius-sm:9px;
-  --container-max:1200px;
-  --section-y:96px;
-  --section-x:28px;
-  --ease:cubic-bezier(.22,.61,.36,1);
-  --mx:50%; --my:18%;
-}
-
-/* =========================================================
-   BASE
-   ========================================================= */
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:"Inter",system-ui,-apple-system,sans-serif;
-  font-size:16px;line-height:1.6;
-  font-feature-settings:"cv02","cv03","cv04","ss01";
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-body::before{
-  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(900px 700px at -4% -6%, rgba(26,140,78,.04), transparent 62%),
-    radial-gradient(700px 500px at 106% 2%, rgba(26,140,78,.03), transparent 60%);
-}
-body::after{
-  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;
-  transition:opacity .8s var(--ease);
-  background:radial-gradient(420px circle at var(--mx) var(--my), var(--glow), transparent 62%);
-}
-body.cursor-on::after{opacity:1}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-::selection{background:var(--accent);color:#fff}
-
-h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;line-height:1.1;letter-spacing:-.02em;font-weight:600}
-.mono{font-family:"JetBrains Mono",monospace;font-weight:500;letter-spacing:.02em}
-
-.wrap{max-width:var(--container-max);margin:0 auto;padding:0 var(--section-x);position:relative;z-index:1}
-.wrap::before,
-.wrap::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--line);
-  pointer-events: none;
-}
-.wrap::before { left: var(--section-x); }
-.wrap::after { right: var(--section-x); }
-@media(max-width:760px) {
-  .wrap::before,
-  .wrap::after {
-    display: none;
-  }
-}
-.kicker{
-  font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:9px;
-}
-.kicker::before{content:"";width:20px;height:1px;background:var(--accent);display:inline-block}
-
-/* =========================================================
-   NAV
-   ========================================================= */
-header.nav{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  backdrop-filter:blur(16px);background:rgba(245,247,245,.88);
-  border-bottom:1px solid var(--line);transition:background .4s;
-}
-header.nav.scrolled{background:rgba(245,247,245,.96)}
-.nav-inner{max-width:var(--maxw);margin:0 auto;padding:15px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk";font-weight:600;font-size:15.5px;letter-spacing:-.01em}
-.brand-clover {
-  color: var(--accent);
-  filter: drop-shadow(0 0 6px rgba(26,140,78,.3));
-  transition: color 0.3s var(--ease), opacity 0.3s var(--ease);
-  flex-shrink: 0;
-}
-.brand:hover .brand-clover {
-  color: var(--accent-2);
-  opacity: 0.95;
-}
-.brand small{display:block;font-family:"JetBrains Mono";font-size:10px;letter-spacing:.08em;color:var(--muted);font-weight:400;margin-top:1px}
-.nav-links{display:flex;align-items:center;gap:28px}
-.nav-links a{font-size:14px;color:var(--muted);position:relative;transition:color .25s}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;height:1.5px;width:0;background:var(--accent);transition:width .3s var(--ease)}
-.nav-links a:hover{color:var(--text)}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%}
-.nav-links a.active{color:var(--text)}
-.nav-cta{padding:8px 16px;border:1.5px solid var(--line-strong);border-radius:99px;font-size:13.5px;color:var(--text);transition:.25s;font-weight:500}
-.nav-cta:hover{border-color:var(--accent);color:var(--accent)}
-.burger{display:none;background:none;border:1.5px solid var(--line-strong);border-radius:9px;padding:8px 9px;cursor:pointer}
-.burger span{display:block;width:18px;height:2px;background:var(--text);margin:3px 0;transition:.3s}
-
-/* =========================================================
-   HERO
-   ========================================================= */
-.hero{padding:152px 0 var(--section-y);position:relative}
-.hero h1{font-size:clamp(36px,5.8vw,68px);font-weight:700;max-width:18ch;line-height:1.06}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero .sub{
-  font-size:clamp(16px,1.9vw,19px);color:var(--text-soft);
-  max-width:58ch;margin-top:24px;line-height:1.6;
-}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 48px;
-  align-items: center;
-}
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.clover-composition {
-  width: 320px;
-  height: 320px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.clover-composition-glow {
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  background: radial-gradient(circle, rgba(26,140,78,0.15) 0%, rgba(26,140,78,0) 70%);
-  border-radius: 50%;
-  filter: blur(20px);
-  animation: floatGlow 16s ease-in-out infinite alternate;
-}
-.clover-composition-vector {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  opacity: 0.85;
-  animation: floatVector 12s ease-in-out infinite alternate;
-}
-.clover-leaf {
-  position: absolute;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: rgba(26, 140, 78, 0.08);
-  border: 1.5px solid rgba(26, 140, 78, 0.25);
-  backdrop-filter: blur(8px);
-  box-shadow: inset 0 0 12px rgba(26, 140, 78, 0.15);
-}
-.leaf-top {
-  top: 10px;
-  left: 43px;
-}
-.leaf-bottom {
-  bottom: 10px;
-  left: 43px;
-}
-.leaf-left {
-  top: 43px;
-  left: 10px;
-}
-.leaf-right {
-  top: 43px;
-  right: 10px;
-}
-.clover-core {
-  position: absolute;
-  top: 54px;
-  left: 54px;
-  width: 32px;
-  height: 32px;
-  background: rgba(26, 140, 78, 0.12);
-  border: 1.5px solid rgba(26, 140, 78, 0.35);
-  border-radius: 6px;
-  transform: rotate(45deg);
-  backdrop-filter: blur(12px);
-}
-
-/* Technical HUD details */
-.visual-grid-axis {
-  position: absolute;
-  background: var(--line-strong);
-  pointer-events: none;
-}
-.visual-axis-x {
-  width: 100%;
-  height: 1px;
-  top: 50%;
-  left: 0;
-  background: repeating-linear-gradient(90deg, var(--line) 0, var(--line) 4px, transparent 4px, transparent 8px);
-}
-.visual-axis-y {
-  height: 100%;
-  width: 1px;
-  left: 50%;
-  top: 0;
-  background: repeating-linear-gradient(180deg, var(--line) 0, var(--line) 4px, transparent 4px, transparent 8px);
-}
-.visual-grid-circle {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 1px dashed var(--line-strong);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.visual-grid-coordinates {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 9px;
-  color: var(--faint);
-  letter-spacing: 0.1em;
-}
-
-/* Floating Animations */
-@keyframes floatGlow {
-  0% { transform: scale(0.95) translate(0, 0); opacity: 0.8; }
-  100% { transform: scale(1.05) translate(2px, -2px); opacity: 1; }
-}
-@keyframes floatVector {
-  0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(-4px) rotate(1deg); }
-}
-
-@media(max-width: 920px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-}
-@media(max-width: 760px) {
-  .hero-visual {
-    display: none;
-  }
-}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:12px 22px;border-radius:99px;font-size:14.5px;font-weight:600;
-  background:var(--accent);color:#fff;border:none;
-  transition:.3s var(--ease);cursor:pointer;text-decoration:none;
-}
-.btn-primary:hover{box-shadow:0 8px 28px rgba(26,140,78,.3);transform:translateY(-2px)}
-.btn-ghost{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:12px 22px;border-radius:99px;font-size:14.5px;font-weight:500;
-  border:1.5px solid var(--line-strong);color:var(--text);
-  transition:.3s var(--ease);cursor:pointer;text-decoration:none;
-}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
-
-/* =========================================================
-   INTRO STRIP
-   ========================================================= */
-.intro-strip{
-  padding:68px 0 64px;
-  border-bottom:1px solid var(--line);
-  position:relative;z-index:1;
-}
-.strip-lead{
-  font-family:"Space Grotesk",sans-serif;
-  font-size:clamp(17px,2vw,22px);
-  font-weight:500;line-height:1.35;letter-spacing:-.01em;
-  color:var(--text);max-width:60ch;margin-bottom:12px;
-}
-.strip-body{font-size:15.5px;color:var(--muted);max-width:68ch;line-height:1.65}
-
-/* =========================================================
-   SECTIONS
-   ========================================================= */
-section{padding:88px 0;position:relative}
-.sec-head{max-width:62ch;margin-bottom:44px}
-.sec-head h2{font-size:clamp(26px,3.6vw,40px);margin:12px 0 12px}
-.sec-head p{color:var(--muted);font-size:16px;line-height:1.6}
-
-#projetos {
-  background: #EFF2EF;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-#processo {
-  background: #FFFFFF;
-}
-#sobre {
-  background: #EFF2EF;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-#contato {
-  background: linear-gradient(180deg, #FFFFFF 0%, #E8ECE8 100%);
-  border-top: 1px solid var(--line);
-}
-
-/* =========================================================
-   PROJETOS — GRID & CARDS
-   ========================================================= */
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-
-/* card base */
-.card{
-  position:relative;isolation:isolate;
-  border:1px solid var(--line);background:var(--bg-elev);
-  border-radius:var(--radius);padding:28px;overflow:hidden;
-  box-shadow:0 1px 4px rgba(0,0,0,.04);
-  transition:transform .4s var(--ease),border-color .3s,box-shadow .4s var(--ease);
-  display:flex;
-  flex-direction:column;
-}
-.card::before{
-  content:"";position:absolute;inset:0;z-index:-1;
-  border-radius:inherit;pointer-events:none;opacity:0;
-  transition:opacity .4s var(--ease);
-  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%), var(--accent-soft), transparent 60%);
-}
-.card::after{
-  content:"";position:absolute;left:0;top:0;height:2px;width:0;
-  background:linear-gradient(90deg,var(--accent),transparent);
-  transition:width .5s var(--ease);
-}
-.card:hover{transform:translateY(-4px);border-color:var(--line-green);box-shadow:0 8px 32px rgba(26,140,78,.1)}
-.card:hover::before{opacity:1}
-.card:hover::after{width:100%}
-.card:hover .media-frame img{transform:scale(1.04)}
-.card:hover .media-frame--crm-video video{transform:scale(1.08)!important}
-.card:hover .media-frame--sartec-site-video video{transform:scale(1.10)!important}
-
-/* card content */
-.card .ptype{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent)}
-.card h3{font-size:22px;margin:10px 0 8px;font-weight:600}
-.card .psum{color:var(--text-soft);font-size:14.5px;line-height:1.6;margin-bottom:14px}
-.card .pdem-label{font-family:"JetBrains Mono";font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
-.card .pdem{font-size:13.5px;color:var(--muted);line-height:1.55;margin-bottom:18px}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
-.tags span{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
-
-/* card CTAs */
-.card-ctas{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:12px;
-  margin-top:auto!important;
-  padding-top:24px;
-}
-.card > .pcta{
-  margin-top:auto!important;
-  align-self:flex-start;
-}
-.card .pcta{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:13.5px;
-  font-weight:600;
-  color:var(--accent);
-  background:var(--accent-soft);
-  border:1.5px solid rgba(26,140,78,0.15);
-  padding:8px 18px;
-  border-radius:99px;
-  text-decoration:none;
-  transition:all 0.25s var(--ease);
-  cursor:pointer;
-}
-.card .pcta:hover{
-  background:var(--accent);
-  color:#FFFFFF;
-  border-color:var(--accent);
-  box-shadow:0 4px 12px rgba(26, 140, 78, 0.15);
-  transform:translateY(-1px);
-}
-.card .pcta .arr{
-  transition:transform 0.25s var(--ease);
-}
-.card .pcta:hover .arr{
-  transform:translateX(3px);
-}
-.card .pcta-sec{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  font-size:13px;
-  font-weight:500;
-  color:var(--muted);
-  background:transparent;
-  border:1.5px solid var(--line-strong);
-  padding:8px 18px;
-  border-radius:99px;
-  text-decoration:none;
-  transition:all 0.25s var(--ease);
-  cursor:pointer;
-}
-.card .pcta-sec:hover{
-  background:var(--accent-soft);
-  color:var(--accent);
-  border-color:var(--accent);
-  transform:translateY(-1px);
-}
-.card .pcta:focus-visible,
-.card .pcta-sec:focus-visible{
-  outline:2px solid var(--accent);
-  outline-offset:2px;
-}
-
-/* live badge */
-.card .badge-live{
-  position:absolute;top:24px;right:24px;
-  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.10em;
-  color:var(--accent);background:transparent;border:0;border-radius:0;
-  padding:0 0 3px;border-bottom:1.5px solid rgba(26,140,78,0.25);
-  text-transform:uppercase;cursor:default;
-}
-.card .badge-live::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  margin-right: 6px;
-  vertical-align: middle;
-  animation: pulseGreen 2s infinite ease-in-out;
-}
-@keyframes pulseGreen {
-  0% { transform: scale(0.85); opacity: 0.6; box-shadow: 0 0 0 0 rgba(26,140,78,0.4); }
-  50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 0 4px rgba(26,140,78,0); }
-  100% { transform: scale(0.85); opacity: 0.6; box-shadow: 0 0 0 0 rgba(26,140,78,0); }
-}
-
-/* featured card — spans full grid width */
-.card-featured{grid-column:1/-1}
-.card-featured-inner{
-  display:grid;grid-template-columns:1fr 252px;
-  gap:32px;
-  align-items:stretch!important;
-  margin-top:12px;
-}
-.card-featured-inner > div:first-child{
-  display:flex;
-  flex-direction:column;
-  height:100%;
-}
-.project-card--uniedu{
-  position:relative;
-}
-.uniedu-card-watermark{
-  position:absolute;
-  width:clamp(280px, 38vw, 560px);
-  height:auto;
-  right:clamp(180px, 24vw, 420px);
-  top:56%;
-  transform:translateY(-50%) rotate(-6deg);
-  opacity:.08;
-  pointer-events:none;
-  z-index:-1;
-}
-@media(max-width:760px){
-  .uniedu-card-watermark{
-    width:220px;
-    right:40px;
-    top:70%;
-    opacity:0.05;
-  }
-}
-
-/* =========================================================
-   MEDIA FRAMES — design system component
-   ========================================================= */
-
-/* shared base */
-.media-frame{
-  position:relative;overflow:hidden;
-  border-radius:10px;
-  border:1px solid rgba(15,50,28,.1);
-  background:var(--bg-elev-2);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:10px;text-align:center;padding:22px;
-  margin-bottom:16px;
-}
-.media-frame img,
-.media-frame video{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-  z-index:2;
-  transition:transform 0.4s var(--ease);
-}
-.media-frame--uniedu-video{
-  background:#FFFFFF!important;
-  aspect-ratio:9/16!important;
-  width:100%!important;
-  max-width:252px!important;
-  height:auto!important;
-  overflow:hidden!important;
-  position:relative!important;
-  border:1px solid rgba(15,50,28,0.08)!important;
-  margin:0 auto!important;
-}
-.media-frame--uniedu-video video{
-  position:absolute!important;
-  top:50%!important;
-  left:50%!important;
-  transform:translate(-50%,-50%)!important;
-  height:100%!important;
-  width:auto!important;
-  max-width:none!important;
-  object-fit:contain!important;
-  background:#FFFFFF!important;
-}
-.media-frame--crm-video{
-  background:#FFFFFF!important;
-}
-.media-frame--crm-video video{
-  object-fit:cover!important;
-  transform:scale(1.05)!important; /* Subtle crop to hide minor borders without clipping interface */
-  transform-origin:center center!important;
-  background:#FFFFFF!important;
-}
-.media-frame--sartec-site-video{
-  background:#FFFFFF!important;
-}
-.media-frame--sartec-site-video video{
-  object-fit:cover!important;
-  transform:scale(1.06)!important; /* Soft scale to minimize crop while keeping context */
-  transform-origin:center center!important;
-  background:#FFFFFF!important;
-}
-.cta-flow-composition {
-  background: var(--bg-elev-2) !important;
-  display: flex;
-  flex-direction: row !important;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  min-height: 180px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--line-strong);
-}
-.flow-node {
-  background: var(--bg-elev);
-  border: 1px solid var(--line-green);
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--accent);
-  box-shadow: 0 2px 8px rgba(26,140,78,0.05);
-  position: relative;
-  z-index: 5;
-  transition: transform 0.3s var(--ease);
-}
-.card:hover .flow-node {
-  transform: translateY(-2px);
-}
-.flow-connector {
-  width: 24px;
-  height: 2px;
-  background: repeating-linear-gradient(90deg, var(--accent) 0, var(--accent) 4px, transparent 4px, transparent 8px);
-  position: relative;
-  z-index: 1;
-}
-.media-frame::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px),
-    repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px);
-}
-
-/* aspect ratio variants */
-.media-frame--wide{aspect-ratio:16/9}
-.media-frame--portrait{aspect-ratio:3/4}
-
-/* inner text elements */
-/* deleted unused classes */
-
-/* =========================================================
-   ABOUT PHOTO — prepared for real headshot
-   ========================================================= */
-.about-photo{
-  width:100%;
-  aspect-ratio:16/10;
-  border-radius:var(--radius);
-  overflow:hidden;
-  border:1px solid var(--line);
-  background:var(--bg-elev-2);
-  margin-bottom:24px;
-  position:relative;
-  box-shadow:0 4px 16px rgba(0,0,0,.04);
-}
-.about-photo::before{
-  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:
-    repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px),
-    repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(15,50,28,.03) 19px,rgba(15,50,28,.03) 20px);
-}
-.about-photo::after{
-  content:"mergulhador_lucas.jpeg";
-  position:absolute;inset:0;z-index:0;
-  display:flex;align-items:center;justify-content:center;
-  font-family:"JetBrains Mono";font-size:10px;letter-spacing:.12em;
-  color:var(--faint);pointer-events:none;
-}
-.about-photo img{
-  width:100%;height:100%;
-  object-fit:cover;
-  object-position:center 30%;
-  display:block;
-  position:relative;z-index:1;
-  filter:saturate(0.85) contrast(0.98);
-  transition:filter 0.4s var(--ease);
-}
-.about-photo:hover img{
-  filter:saturate(1) contrast(1);
-}
-
-/* certificate link */
-.cert-link{display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
-.cert-link-a{
-  font-size:13.5px;color:var(--accent);font-weight:500;
-  display:inline-flex;align-items:center;gap:6px;
-  text-decoration:none;opacity:.55;cursor:default;pointer-events:none;
-}
-.cert-soon{
-  font-family:"JetBrains Mono";font-size:9.5px;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--faint);
-  border:1px solid var(--line-strong);border-radius:99px;
-  padding:2px 9px;background:var(--bg-elev);
-}
-.about-credentials {
-  margin-top: 24px;
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.52);
-}
-.about-credentials-label {
-  display: block;
-  margin-bottom: 12px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.about-credentials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.about-credentials strong {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 13px;
-  color: var(--text);
-}
-.about-credentials span {
-  display: block;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--text-soft);
-}
-@media(max-width:760px){
-  .about-credentials-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-}
-
-/* research note in Processo */
-.research-note{
-  margin-top:14px;padding:16px 22px;
-  border:1px solid var(--line);border-radius:10px;
-  background:var(--bg-elev);
-  font-size:14.5px;color:var(--text-soft);line-height:1.6;
-}
-.research-note b{color:var(--text);font-weight:600}
-
-/* =========================================================
-   PROCESSO
-   ========================================================= */
-.proc-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;background:var(--line);
-  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-}
-.proc-step{background:var(--bg-elev);padding:24px 20px;transition:background .3s}
-.proc-step:hover{background:var(--bg-elev-2)}
-.proc-step .num{font-family:"JetBrains Mono";font-size:12px;color:var(--accent);margin-bottom:12px}
-.proc-step h4{font-size:15.5px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
-.proc-step p{font-size:13px;color:var(--muted);line-height:1.55}
-.ia-note{
-  margin-top:18px;padding:16px 22px;
-  border-left:2px solid var(--accent);
-  border-radius:0 10px 10px 0;
-  background:rgba(26,140,78,.04);
-  font-size:14.5px;color:var(--text-soft);line-height:1.6;
-}
-.ia-note b{color:var(--text);font-weight:600}
-
-/* =========================================================
-   SOBRE
-   ========================================================= */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
-.about .lead{
-  font-size:clamp(18px,2.2vw,23px);font-family:"Space Grotesk";
-  font-weight:500;line-height:1.35;letter-spacing:-.01em;color:var(--text);
-}
-.about p{color:var(--text-soft);font-size:15.5px;margin-top:16px;line-height:1.7}
-.rep-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:1px;background:var(--line);
-  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-}
-.rep{background:var(--bg-elev);padding:20px;transition:background .3s}
-.rep:hover{background:var(--bg-elev-2)}
-.rep .rt{font-size:14px;font-weight:600;margin-bottom:4px;font-family:"Space Grotesk"}
-.rep .rd{font-size:12.5px;color:var(--muted);line-height:1.5}
-
-.about-tools {
-  margin-top: 64px;
-  padding-top: 48px;
-  border-top: 1px solid var(--line);
-}
-.about-tools h3 {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-.about-tools p {
-  color: var(--muted);
-  font-size: 14.5px;
-  line-height: 1.6;
-  margin-bottom: 28px;
-  max-width: 68ch;
-}
-.tools-stack {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 32px;
-}
-.stack-group {
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: border-color 0.3s, box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
-}
-.stack-group:hover {
-  border-color: var(--line-green);
-  box-shadow: 0 4px 16px rgba(26,140,78,.06);
-  transform: translateY(-2px);
-}
-.stack-title {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--text);
-  border-bottom: 1.5px solid var(--line);
-  padding-bottom: 8px;
-}
-.stack-items {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.stack-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13.5px;
-  color: var(--text-soft);
-  font-weight: 500;
-}
-.tool-dot {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  background: var(--bg-elev-2);
-  border: 1px solid var(--line-strong);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 8.5px;
-  font-weight: 600;
-  color: var(--accent);
-}
-@media(max-width: 920px) {
-  .tools-stack {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media(max-width: 520px) {
-  .tools-stack {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-
-/* =========================================================
-   CONTATO
-   ========================================================= */
-.contact-main{
-  border:1px solid var(--line);border-radius:var(--radius);
-  padding:40px;background:var(--bg-elev);
-  box-shadow:0 1px 4px rgba(0,0,0,.04);
-  transition:border-color .3s,transform .4s var(--ease);
-  max-width:640px;
-  margin-left:auto;margin-right:auto;
-  text-align:center;
-}
-.contact-main:hover{transform:translateY(-3px);border-color:var(--line-green)}
-.contact-main .ctag{
-  font-family:"JetBrains Mono";font-size:11px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px;
-}
-.contact-main h3{font-size:clamp(20px,2.4vw,26px);margin-bottom:12px;font-weight:600}
-.contact-main p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:24px}
-.contact-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.contact-secondary{
-  margin-top:16px;max-width:640px;
-  margin-left:auto;margin-right:auto;
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-  justify-content:center;
-  padding:14px 20px;border:1px solid var(--line);
-  border-radius:10px;background:var(--bg-elev);font-size:13.5px;color:var(--muted);
-}
-.contact-secondary a{
-  color:var(--accent);font-weight:500;font-size:13.5px;
-  display:inline-flex;align-items:center;gap:6px;
-  transition:opacity .25s;
-}
-.contact-secondary a:hover{opacity:.7}
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
-.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.foot-inner .fbrand{font-family:"Space Grotesk";font-weight:600;font-size:17px;color:var(--text)}
-.foot-inner .fmeta{font-size:12.5px;color:var(--faint);margin-top:2px}
-.foot-links{display:flex;gap:20px;font-size:14px;color:var(--muted)}
-.foot-links a:hover{color:var(--accent)}
-
-/* =========================================================
-   REVEAL ANIMATION
-   ========================================================= */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
-.reveal.in{opacity:1;transform:none}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-@media(max-width:920px){
-  .proc-grid{grid-template-columns:repeat(2,1fr)}
-  .about{grid-template-columns:1fr;gap:32px}
-  .card-featured-inner{grid-template-columns:1fr;gap:24px}
-  .card-featured-inner .media-frame--portrait{aspect-ratio:16/9}
-}
-@media(max-width:760px){
-  :root {
-    --section-x: 20px;
-    --section-y: 64px;
-  }
-  .nav-links,.nav-cta{display:none}
-  .burger{display:block}
-  header.nav.open .nav-links{
-    display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
-    background:rgba(245,247,245,.98);border-bottom:1px solid var(--line);padding:8px 0;
-  }
-  header.nav.open .nav-links a{padding:13px 28px;color:var(--text)}
-  header.nav.open .nav-links a::after{display:none}
-  .hero{padding:110px 0 var(--section-y)}
-  .proj-grid{grid-template-columns:1fr}
-  .card-featured{grid-column:auto}
-  section{padding:var(--section-y) 0}
-  .wrap{padding:0 var(--section-x)}
-  .nav-inner{padding:13px var(--section-x)}
-  .contact-main{padding:28px 22px}
-  .intro-strip{padding:48px 0 52px}
-  .card .pcta-sec{border-left:none;padding-left:0}
-  .about-photo{max-width:280px;margin-left:auto;margin-right:auto;margin-bottom:20px}
-}
-@media(max-width:520px){
-  .proc-grid{grid-template-columns:1fr}
-  .rep-grid{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){
-  *, ::before, ::after{
-    animation:none!important;
-    transition:none!important;
-    scroll-behavior:auto!important;
-  }
-  .reveal{opacity:1;transform:none}
-}
-</style>
+<link rel="stylesheet" href="assets/css/tailwind.css" />
 </head>
 <body>
 
@@ -957,6 +26,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
       <span>Lucas Cabral<small>PRODUCT DESIGNER &amp; DESIGN ENGINEER</small></span>
     </a>
     <nav class="nav-links" id="navlinks">
+      <a href="#servicos">Serviços</a>
       <a href="#projetos">Projetos</a>
       <a href="#processo">Processo</a>
       <a href="#sobre">Sobre</a>
@@ -973,32 +43,20 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="wrap hero-grid">
+  <div class="hero-media" aria-hidden="true">
+    <video class="hero-video" muted loop playsinline preload="none" poster="assets/brand/clover-design-engineer-poster.webp"></video>
+    <div class="hero-media-scrim"></div>
+  </div>
+  <div class="wrap hero-inner">
     <div class="hero-content">
       <span class="kicker reveal">Product Designer &amp; Design Engineer</span>
-      <h1 class="reveal" style="margin-top:20px">Desenho produtos digitais a partir de <em>problemas reais.</em></h1>
+      <h1 class="reveal" style="margin-top:20px">Do problema à solução funcional. <em>Design de produto que chega ao ar.</em></h1>
       <p class="sub reveal">
-        Conecto estratégia de UX, design de interface e implementação funcional auxiliada por IA para transformar fluxos operacionais complexos em softwares claros, eficientes e bem documentados.
+        Sou Lucas Cabral, Product Designer e Design Engineer. Desenho experiências digitais e conduzo a implementação com IA, unindo UX, UI, operação e produto funcionando de verdade.
       </p>
       <div class="hero-ctas reveal">
         <a class="btn-primary" href="#projetos">Ver projetos →</a>
         <a class="btn-ghost" href="#processo">Conhecer meu processo →</a>
-      </div>
-    </div>
-    <div class="hero-visual reveal">
-      <div class="clover-composition">
-        <div class="clover-composition-glow"></div>
-        <div class="clover-composition-vector">
-          <div class="clover-leaf leaf-top"></div>
-          <div class="clover-leaf leaf-bottom"></div>
-          <div class="clover-leaf leaf-left"></div>
-          <div class="clover-leaf leaf-right"></div>
-          <div class="clover-core"></div>
-        </div>
-        <div class="visual-grid-axis visual-axis-x"></div>
-        <div class="visual-grid-axis visual-axis-y"></div>
-        <div class="visual-grid-circle"></div>
-        <div class="visual-grid-coordinates mono">SYS_V1.06 // 45.45°</div>
       </div>
     </div>
   </div>
@@ -1012,11 +70,55 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   </div>
 </div>
 
+<!-- ================= SERVIÇOS ================= -->
+<section id="servicos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">01 — Serviços</span>
+      <h2>Onde posso ajudar</h2>
+      <p>Do desenho da experiência à implementação funcional, atuo nas frentes que conectam produto, operação e tecnologia.</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <article class="reveal group relative rounded border border-line bg-bg-elev p-7 transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-line-green hover:shadow-[0_8px_32px_rgba(26,140,78,.10)]">
+        <div class="mono text-[11px] tracking-[0.12em] text-accent">01</div>
+        <h3 class="mt-3 font-display text-[19px] font-semibold text-text">UX/UI Design de produtos digitais</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-text-soft">Pesquisa, arquitetura de informação, fluxos e interface para produtos digitais que resolvem problemas reais de usuário e de negócio.</p>
+      </article>
+      <article class="reveal group relative rounded border border-line bg-bg-elev p-7 transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-line-green hover:shadow-[0_8px_32px_rgba(26,140,78,.10)]">
+        <div class="mono text-[11px] tracking-[0.12em] text-accent">02</div>
+        <h3 class="mt-3 font-display text-[19px] font-semibold text-text">Design Engineering com IA</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-text-soft">Conduzo a implementação de telas e fluxos com apoio de IA, mantendo critério de produto, guardrails e revisão humana em cada entrega.</p>
+      </article>
+      <article class="reveal group relative rounded border border-line bg-bg-elev p-7 transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-line-green hover:shadow-[0_8px_32px_rgba(26,140,78,.10)]">
+        <div class="mono text-[11px] tracking-[0.12em] text-accent">03</div>
+        <h3 class="mt-3 font-display text-[19px] font-semibold text-text">Automação de atendimento e triagem</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-text-soft">Agentes de triagem e atendimento conectados a canais reais, desenhados para coletar contexto e encaminhar com clareza.</p>
+      </article>
+      <article class="reveal group relative rounded border border-line bg-bg-elev p-7 transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-line-green hover:shadow-[0_8px_32px_rgba(26,140,78,.10)]">
+        <div class="mono text-[11px] tracking-[0.12em] text-accent">04</div>
+        <h3 class="mt-3 font-display text-[19px] font-semibold text-text">Design de sistemas internos e CRMs</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-text-soft">Interfaces para operações internas: estados, permissões, fluxo de trabalho e dados organizados para o uso diário de quem opera.</p>
+      </article>
+      <article class="reveal group relative rounded border border-line bg-bg-elev p-7 transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-line-green hover:shadow-[0_8px_32px_rgba(26,140,78,.10)]">
+        <div class="mono text-[11px] tracking-[0.12em] text-accent">05</div>
+        <h3 class="mt-3 font-display text-[19px] font-semibold text-text">Sites institucionais e comerciais</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-text-soft">Sites que traduzem posicionamento e oferta em páginas claras, rápidas e prontas para gerar contato.</p>
+      </article>
+      <article class="reveal group relative rounded border border-line bg-bg-elev p-7 transition-all duration-300 ease-brand hover:-translate-y-1 hover:border-line-green hover:shadow-[0_8px_32px_rgba(26,140,78,.10)]">
+        <div class="mono text-[11px] tracking-[0.12em] text-accent">06</div>
+        <h3 class="mt-3 font-display text-[19px] font-semibold text-text">Consultoria de experiência operacional</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-text-soft">Leitura da operação real, identificação de gargalos e decisões de produto para times que precisam evoluir processo e interface juntos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PROJETOS ================= -->
 <section id="projetos">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">01 — Projetos</span>
+      <span class="kicker">02 — Projetos</span>
       <h2>Cases e produtos reais</h2>
       <p>Cada projeto documenta raciocínio, decisões e entrega. Veja os casos completos nas páginas externas.</p>
     </div>
@@ -1060,8 +162,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
               otimizado para web.
             -->
             <div class="media-frame media-frame--uniedu-video">
-              <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do aplicativo UNIEDU">
-                <source src="GIF APP UNIEDU.mp4" type="video/mp4">
+              <video class="lazy-video" muted loop playsinline preload="none" data-src="GIF APP UNIEDU.mp4" aria-label="Prévia em vídeo do aplicativo UNIEDU">
               </video>
             </div>
           </div>
@@ -1083,8 +184,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           Preferir crop horizontal 16:9 ou 4:3, com boa nitidez e leitura de interface.
         -->
         <div class="media-frame media-frame--wide media-frame--crm-video">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do CRM Sartec">
-            <source src="CRM sartec.mp4" type="video/mp4">
+          <video class="lazy-video" muted loop playsinline preload="none" data-src="CRM sartec.mp4" aria-label="Prévia em vídeo do CRM Sartec">
           </video>
         </div>
 
@@ -1150,8 +250,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
           escolar pelo WhatsApp, com visual claro e comercial. Usar crop horizontal 16:9.
         -->
         <div class="media-frame media-frame--wide media-frame--sartec-site-video">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Prévia em vídeo do protótipo do site Sartec Papelaria">
-            <source src="PROTÓTIPO-SITE SARTEC.mp4" type="video/mp4">
+          <video class="lazy-video" muted loop playsinline preload="none" data-src="PROTÓTIPO-SITE SARTEC.mp4" aria-label="Prévia em vídeo do protótipo do site Sartec Papelaria">
           </video>
         </div>
 
@@ -1197,7 +296,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 <section id="processo">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">02 — Processo</span>
+      <span class="kicker">03 — Processo</span>
       <h2>Começo pelo problema, não pela tela</h2>
       <p>Meu jeito de trabalhar, sem virar uma aula extensa.</p>
     </div>
@@ -1239,7 +338,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 <section id="sobre">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">03 — Sobre</span>
+      <span class="kicker">04 — Sobre</span>
       <h2>Entre operação real, pesquisa e construção de produtos.</h2>
     </div>
     <div class="about">
@@ -1342,7 +441,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 <section id="contato">
   <div class="wrap">
     <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
-      <span class="kicker" style="justify-content:center">04 — Contato</span>
+      <span class="kicker" style="justify-content:center">05 — Contato</span>
       <h2>Vamos conversar sobre produto, UX e construção de soluções digitais.</h2>
     </div>
 
@@ -1384,6 +483,43 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
 </footer>
 
 <script>
+/* ---------- hero video: load only for desktop + full-motion users ---------- */
+(function () {
+  const video = document.querySelector('.hero-video');
+  if (!video) return;
+  const enableMotion = matchMedia('(min-width:921px)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if (!enableMotion) return;
+  const source = document.createElement('source');
+  source.src = 'assets/video/clover-design-engineer-hero.mp4';
+  source.type = 'video/mp4';
+  video.appendChild(source);
+  video.load();
+  video.play().catch(() => {});
+})();
+
+/* ---------- lazy-load below-the-fold project videos ---------- */
+(function () {
+  const videos = document.querySelectorAll('.lazy-video');
+  if (!videos.length) return;
+  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      const v = en.target;
+      if (v.dataset.src) {
+        const source = document.createElement('source');
+        source.src = v.dataset.src;
+        source.type = 'video/mp4';
+        v.appendChild(source);
+        v.load();
+      }
+      if (!reduce) v.play().catch(() => {});
+      io.unobserve(v);
+    });
+  }, { rootMargin: '200px 0px' });
+  videos.forEach(v => io.observe(v));
+})();
+
 /* ---------- nav scroll state ---------- */
 const nav = document.getElementById('nav');
 addEventListener('scroll', () => { nav.classList.toggle('scrolled', scrollY > 20) }, { passive: true });
