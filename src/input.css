@@ -42,6 +42,14 @@
   --section-x:28px;
   --ease:cubic-bezier(.22,.61,.36,1);
   --mx:50%; --my:18%;
+
+  /* Dark green surface — Processo timeline card only. Not a dark-mode theme. */
+  --surface-dark-green:#0E2417;
+  --surface-dark-green-2:#15311F;
+  --line-on-dark:rgba(255,255,255,.10);
+  --line-on-dark-strong:rgba(255,255,255,.18);
+  --text-on-dark:#F2F6F3;
+  --text-on-dark-soft:rgba(242,246,243,.72);
 }
 
 /* =========================================================
@@ -139,8 +147,14 @@ header.nav.scrolled{background:rgba(245,247,245,.96)}
    HERO
    ========================================================= */
 .hero{padding:152px 0 var(--section-y);position:relative}
-.hero h1{font-size:clamp(36px,5.8vw,68px);font-weight:700;max-width:18ch;line-height:1.06}
-.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-name{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(52px,8.6vw,108px);font-weight:700;
+  line-height:.98;letter-spacing:-.03em;color:var(--text);
+  margin-top:18px;
+}
+.hero-tagline{font-size:clamp(20px,2.6vw,26px);font-weight:500;font-family:"Space Grotesk",sans-serif;max-width:20ch;line-height:1.2;color:var(--text-soft);margin-top:18px}
+.hero-tagline em{font-style:normal;color:var(--accent)}
 .hero .sub{
   font-size:clamp(16px,1.9vw,19px);color:var(--text-soft);
   max-width:58ch;margin-top:24px;line-height:1.6;
@@ -154,33 +168,42 @@ header.nav.scrolled{background:rgba(245,247,245,.96)}
   .hero-content{max-width:640px}
 }
 
-/* hero background media — clover brand video, right-anchored, blended into page bg */
-.hero-media{
+/* hero background portrait — treated photo, right-anchored, blended into page bg */
+.hero-portrait{
   position:absolute;top:0;right:0;bottom:0;
-  width:58%;z-index:0;
+  width:52%;z-index:0;
   overflow:hidden;pointer-events:none;
+  display:flex;align-items:flex-end;justify-content:center;
 }
-.hero-video{
-  position:absolute;inset:0;
+.hero-portrait-img{
   width:100%;height:100%;
-  object-fit:cover;object-position:52% 44%;
+  max-width:640px;
+  object-fit:cover;object-position:50% 12%;
 }
-.hero-media-scrim{
+.hero-portrait-scrim{
   position:absolute;inset:0;
   background:
-    linear-gradient(90deg, var(--bg) 0%, rgba(245,247,245,.85) 10%, rgba(245,247,245,.28) 24%, rgba(245,247,245,0) 40%),
-    linear-gradient(180deg, transparent 74%, var(--bg) 100%);
+    linear-gradient(90deg, var(--bg) 0%, rgba(245,247,245,.82) 10%, rgba(245,247,245,.22) 24%, rgba(245,247,245,0) 40%),
+    linear-gradient(180deg, transparent 76%, var(--bg) 100%);
 }
+.hero-portrait-mobile{display:none}
 @media(max-width:920px){
-  .hero-media{ width:44% }
-  .hero-media-scrim{
+  .hero-portrait{ width:40% }
+  .hero-portrait-scrim{
     background:
-      linear-gradient(90deg, var(--bg) 0%, rgba(245,247,245,.9) 14%, rgba(245,247,245,.3) 30%, rgba(245,247,245,0) 48%),
-      linear-gradient(180deg, transparent 70%, var(--bg) 100%);
+      linear-gradient(90deg, var(--bg) 0%, rgba(245,247,245,.88) 14%, rgba(245,247,245,.26) 30%, rgba(245,247,245,0) 48%),
+      linear-gradient(180deg, transparent 72%, var(--bg) 100%);
   }
 }
 @media(max-width:760px){
-  .hero-media{ display:none }
+  .hero-portrait{ display:none }
+  .hero-portrait-mobile{
+    display:block;margin-bottom:8px;
+  }
+  .hero-portrait-mobile img{
+    width:150px;height:auto;border-radius:var(--radius);
+    box-shadow:0 8px 24px rgba(15,50,28,.10);
+  }
 }
 
 .btn-primary{
@@ -622,38 +645,43 @@ section{padding:88px 0;position:relative}
   }
 }
 
-/* research note in Processo */
-.research-note{
-  margin-top:14px;padding:16px 22px;
-  display:flex;gap:14px;align-items:flex-start;
-  border:1px solid var(--line);border-radius:10px;
-  background:var(--bg-elev);
-  font-size:14.5px;color:var(--text-soft);line-height:1.6;
-}
-.research-note b{color:var(--text);font-weight:600}
-
 /* =========================================================
-   PROCESSO
+   PROCESSO — dark green timeline card
    ========================================================= */
-.proc-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;background:var(--line);
-  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+.proc-dark{
+  background:var(--surface-dark-green);
+  border:1px solid var(--line-on-dark);border-radius:var(--radius);
+  padding:12px clamp(20px,4vw,48px) clamp(28px,4vw,40px);
+  color:var(--text-on-dark);position:relative;overflow:hidden;
 }
-.proc-step{background:var(--bg-elev);padding:24px 20px;transition:background .3s}
-.proc-step:hover{background:var(--bg-elev-2)}
-.proc-step h4{font-size:15.5px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
-.proc-step p{font-size:13px;color:var(--muted);line-height:1.55}
-.ia-note{
-  margin-top:18px;padding:16px 22px;
-  display:flex;gap:14px;align-items:flex-start;
-  border-left:2px solid var(--accent);
-  border-radius:0 10px 10px 0;
-  background:rgba(26,140,78,.04);
-  font-size:14.5px;color:var(--text-soft);line-height:1.6;
+.icon-chip-dark{
+  border-color:var(--line-on-dark-strong);
+  background:rgba(34,168,95,.14);
+  color:var(--accent-2);
 }
-.ia-note b{color:var(--text);font-weight:600}
-.ia-note .icon-chip,.research-note .icon-chip{margin-bottom:0}
+.proc-timeline{list-style:none}
+.proc-timeline-item{
+  display:flex;gap:18px;align-items:flex-start;
+  padding:24px 0;border-top:1px solid var(--line-on-dark);
+}
+.proc-timeline-item:first-child{border-top:none}
+.proc-timeline-index{
+  font-family:"JetBrains Mono",monospace;font-size:12px;
+  color:var(--text-on-dark-soft);width:22px;flex-shrink:0;padding-top:12px;
+}
+.proc-timeline-body h4{font-size:16.5px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em;color:var(--text-on-dark)}
+.proc-timeline-body p{font-size:13.5px;color:var(--text-on-dark-soft);line-height:1.6}
+.proc-dark-notes{
+  margin-top:8px;padding-top:26px;border-top:1px solid var(--line-on-dark);
+  display:grid;gap:18px;
+}
+.proc-dark-note{display:flex;gap:14px;align-items:flex-start}
+.proc-dark-note p{font-size:14px;color:var(--text-on-dark-soft);line-height:1.6}
+.proc-dark-note b{color:var(--text-on-dark);font-weight:600}
+.proc-dark-note .icon-chip,.proc-timeline-item .icon-chip{margin-bottom:0}
+@media(max-width:520px){
+  .proc-dark-notes{grid-template-columns:1fr}
+}
 
 /* =========================================================
    SOBRE
@@ -773,6 +801,8 @@ section{padding:88px 0;position:relative}
   text-align:center;
 }
 .contact-main:hover{transform:translateY(-3px);border-color:var(--line-green)}
+.contact-mark{display:flex;justify-content:center;margin-bottom:16px}
+.contact-mark img{width:40px;height:40px;opacity:.9;filter:drop-shadow(0 0 10px rgba(26,140,78,.25))}
 .contact-main .ctag{
   font-family:"JetBrains Mono";font-size:11px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px;
@@ -815,7 +845,6 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
    RESPONSIVE
    ========================================================= */
 @media(max-width:920px){
-  .proc-grid{grid-template-columns:repeat(2,1fr)}
   .about{grid-template-columns:1fr;gap:32px}
   .card-featured-inner{grid-template-columns:1fr;gap:24px}
   .card-featured-inner .media-frame--portrait{aspect-ratio:16/9}
@@ -845,7 +874,6 @@ footer{border-top:1px solid var(--line);padding:44px 0 38px;margin-top:20px}
   .about-photo{max-width:280px;margin-left:auto;margin-right:auto;margin-bottom:20px}
 }
 @media(max-width:520px){
-  .proc-grid{grid-template-columns:1fr}
   .rep-grid{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
