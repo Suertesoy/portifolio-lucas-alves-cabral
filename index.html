@@ -43,14 +43,18 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="hero-media" aria-hidden="true">
-    <video class="hero-video" muted loop playsinline preload="none" poster="assets/brand/clover-design-engineer-poster.webp"></video>
-    <div class="hero-media-scrim"></div>
+  <div class="hero-portrait" aria-hidden="true">
+    <img class="hero-portrait-img" src="assets/images/lucas-hero-portrait.webp" alt="" width="900" height="973" fetchpriority="high" />
+    <div class="hero-portrait-scrim"></div>
   </div>
   <div class="wrap hero-inner">
     <div class="hero-content">
       <span class="kicker reveal">Product Designer &amp; Design Engineer</span>
-      <h1 class="reveal" style="margin-top:20px">Do problema à solução funcional. <em>Design de produto que chega ao ar.</em></h1>
+      <div class="hero-portrait-mobile reveal" aria-hidden="true">
+        <img src="assets/images/lucas-hero-portrait.webp" alt="" width="240" height="259" />
+      </div>
+      <h1 class="hero-name reveal">Lucas<br>Cabral</h1>
+      <p class="hero-tagline reveal">Do problema à solução funcional. <em>Design de produto que chega ao ar.</em></p>
       <p class="sub reveal">
         Sou Lucas Cabral, Product Designer e Design Engineer. Desenho experiências digitais e conduzo a implementação com IA, unindo UX, UI, operação e produto funcionando de verdade.
       </p>
@@ -322,49 +326,64 @@
       <p>Meu jeito de trabalhar, sem virar uma aula extensa.</p>
     </div>
 
-    <div class="proc-grid reveal">
-      <div class="proc-step">
-        <div class="icon-chip" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.3" cy="10.3" r="6.3"/><path d="M10.3 7.3v6M7.3 10.3h6"/><path d="M14.8 14.8 20 20"/></svg>
-        </div>
-        <h4>Entendo o problema e a operação</h4>
-        <p>Mergulho no contexto real antes de qualquer interface.</p>
-      </div>
-      <div class="proc-step">
-        <div class="icon-chip" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.5" cy="6" r="1.5"/><circle cx="4.5" cy="18" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19.5" cy="7" r="1.5"/><circle cx="19.5" cy="17" r="1.5"/><path d="M5.9 7.1 10.7 11M5.9 16.9 10.7 13M13.3 11 18.1 7.9M13.3 13 18.1 16.1"/></svg>
-        </div>
-        <h4>Mapeio usuários, contexto e fluxo</h4>
-        <p>Personas, jornada, pipeline e o trabalho real de quem opera.</p>
-      </div>
-      <div class="proc-step">
-        <div class="icon-chip" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.6"/><path d="M3.5 9h17"/><rect x="6" y="11.3" width="4.4" height="5.7" rx="0.9"/><rect x="12.4" y="11.3" width="5.6" height="2.6" rx="0.7"/><rect x="12.4" y="15.2" width="5.6" height="1.8" rx="0.7"/></svg>
-        </div>
-        <h4>Desenho a experiência e os estados</h4>
-        <p>Arquitetura, hierarquia, estados, microcopy e responsividade.</p>
-      </div>
-      <div class="proc-step">
-        <div class="icon-chip" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="3.5" width="15" height="17" rx="1.6"/><path d="M7.8 9.6l1.3 1.3 2.4-2.6"/><path d="M13.5 9.2h3.2"/><path d="M7.8 15.6l1.3 1.3 2.4-2.6"/><path d="M13.5 15.2h3.2"/></svg>
-        </div>
-        <h4>Valido, documento e evoluo</h4>
-        <p>Testo no uso real, transformo achados em decisões e documento para evolução.</p>
-      </div>
-    </div>
+    <div class="proc-dark reveal">
+      <ol class="proc-timeline">
+        <li class="proc-timeline-item">
+          <span class="proc-timeline-index">01</span>
+          <div class="icon-chip icon-chip-dark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.3" cy="10.3" r="6.3"/><path d="M10.3 7.3v6M7.3 10.3h6"/><path d="M14.8 14.8 20 20"/></svg>
+          </div>
+          <div class="proc-timeline-body">
+            <h4>Entendo o problema e a operação</h4>
+            <p>Mergulho no contexto real antes de qualquer interface.</p>
+          </div>
+        </li>
+        <li class="proc-timeline-item">
+          <span class="proc-timeline-index">02</span>
+          <div class="icon-chip icon-chip-dark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.5" cy="6" r="1.5"/><circle cx="4.5" cy="18" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19.5" cy="7" r="1.5"/><circle cx="19.5" cy="17" r="1.5"/><path d="M5.9 7.1 10.7 11M5.9 16.9 10.7 13M13.3 11 18.1 7.9M13.3 13 18.1 16.1"/></svg>
+          </div>
+          <div class="proc-timeline-body">
+            <h4>Mapeio usuários, contexto e fluxo</h4>
+            <p>Personas, jornada, pipeline e o trabalho real de quem opera.</p>
+          </div>
+        </li>
+        <li class="proc-timeline-item">
+          <span class="proc-timeline-index">03</span>
+          <div class="icon-chip icon-chip-dark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.6"/><path d="M3.5 9h17"/><rect x="6" y="11.3" width="4.4" height="5.7" rx="0.9"/><rect x="12.4" y="11.3" width="5.6" height="2.6" rx="0.7"/><rect x="12.4" y="15.2" width="5.6" height="1.8" rx="0.7"/></svg>
+          </div>
+          <div class="proc-timeline-body">
+            <h4>Desenho a experiência e os estados</h4>
+            <p>Arquitetura, hierarquia, estados, microcopy e responsividade.</p>
+          </div>
+        </li>
+        <li class="proc-timeline-item">
+          <span class="proc-timeline-index">04</span>
+          <div class="icon-chip icon-chip-dark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="3.5" width="15" height="17" rx="1.6"/><path d="M7.8 9.6l1.3 1.3 2.4-2.6"/><path d="M13.5 9.2h3.2"/><path d="M7.8 15.6l1.3 1.3 2.4-2.6"/><path d="M13.5 15.2h3.2"/></svg>
+          </div>
+          <div class="proc-timeline-body">
+            <h4>Valido, documento e evoluo</h4>
+            <p>Testo no uso real, transformo achados em decisões e documento para evolução.</p>
+          </div>
+        </li>
+      </ol>
 
-    <div class="ia-note reveal">
-      <div class="icon-chip" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.6"/><circle cx="5" cy="16" r="1.6"/><circle cx="19" cy="16" r="1.6"/><circle cx="12" cy="12.5" r="1.4"/><path d="M12 6.6V11.2M10.8 13.4 6.2 15M13.2 13.4 17.8 15"/></svg>
+      <div class="proc-dark-notes">
+        <div class="proc-dark-note">
+          <div class="icon-chip icon-chip-dark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.6"/><circle cx="5" cy="16" r="1.6"/><circle cx="19" cy="16" r="1.6"/><circle cx="12" cy="12.5" r="1.4"/><path d="M12 6.6V11.2M10.8 13.4 6.2 15M13.2 13.4 17.8 15"/></svg>
+          </div>
+          <p><b>IA como apoio de execução:</b> defino o escopo antes do primeiro prompt, crio guardrails que evitam regressão, reviso cada entrega com olhar de produto e documento as decisões. A direção é sempre humana — produto funcional, não protótipo alucinado.</p>
+        </div>
+        <div class="proc-dark-note">
+          <div class="icon-chip icon-chip-dark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.3" cy="10.3" r="6.3"/><path d="M10.3 7.3v6M7.3 10.3h6"/><path d="M14.8 14.8 20 20"/></svg>
+          </div>
+          <p><b>Pesquisa e validação na prática:</b> já passei por etapas reais de entrevistas com usuários, testes de usabilidade, planejamento de surveys, leitura de jornada, organização de achados e transformação desses insumos em decisões de produto.</p>
+        </div>
       </div>
-      <p><b>IA como apoio de execução:</b> defino o escopo antes do primeiro prompt, crio guardrails que evitam regressão, reviso cada entrega com olhar de produto e documento as decisões. A direção é sempre humana — produto funcional, não protótipo alucinado.</p>
-    </div>
-
-    <div class="research-note reveal">
-      <div class="icon-chip" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.3" cy="10.3" r="6.3"/><path d="M10.3 7.3v6M7.3 10.3h6"/><path d="M14.8 14.8 20 20"/></svg>
-      </div>
-      <p><b>Pesquisa e validação na prática:</b> já passei por etapas reais de entrevistas com usuários, testes de usabilidade, planejamento de surveys, leitura de jornada, organização de achados e transformação desses insumos em decisões de produto.</p>
     </div>
   </div>
 </section>
@@ -493,6 +512,9 @@
     </div>
 
     <div class="contact-main reveal">
+      <div class="contact-mark" aria-hidden="true">
+        <img src="assets/brand/clover-design-engineer-symbol.webp" width="40" height="40" alt="" loading="lazy" />
+      </div>
       <span class="ctag">Oportunidades profissionais</span>
       <h3>Aberto a oportunidades em times de produto e design</h3>
       <p>Estou aberto a oportunidades como Product Designer, UX/UI Designer, Design Engineer ou funções próximas em times que valorizem raciocínio de produto, processo e entrega funcional.</p>
@@ -530,68 +552,6 @@
 </footer>
 
 <script>
-/* ---------- hero video: load only for desktop + full-motion users ---------- */
-(function () {
-  const video = document.querySelector('.hero-video');
-  if (!video) return;
-  const enableMotion = matchMedia('(min-width:921px)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if (!enableMotion) return;
-  const source = document.createElement('source');
-  source.src = 'assets/video/clover-design-engineer-hero.mp4';
-  source.type = 'video/mp4';
-  video.appendChild(source);
-  video.load();
-  video.play().catch(() => {});
-})();
-
-/* ---------- hero video: subtle scroll-scrubbing (desktop, full-motion only) ---------- */
-(function () {
-  const hero = document.querySelector('.hero');
-  const video = document.querySelector('.hero-video');
-  if (!hero || !video) return;
-  const enableMotion = matchMedia('(min-width:921px)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if (!enableMotion) return;
-
-  let heroNear = false;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((en) => { heroNear = en.isIntersecting; });
-  }, { rootMargin: '200px 0px' });
-  io.observe(hero);
-
-  const SENSITIVITY = 0.0035; // seconds of video per pixel scrolled
-  const IDLE_MS = 350;
-  let lastScrollY = window.scrollY;
-  let pendingDelta = 0;
-  let scrubbing = false;
-  let ticking = false;
-  let idleTimer = null;
-
-  function applyScrub() {
-    ticking = false;
-    const d = video.duration;
-    if (!pendingDelta || !isFinite(d) || d <= 0) { pendingDelta = 0; return; }
-    if (!scrubbing) { scrubbing = true; video.pause(); }
-    let t = video.currentTime + pendingDelta;
-    t = ((t % d) + d) % d;
-    video.currentTime = t;
-    pendingDelta = 0;
-  }
-
-  addEventListener('scroll', () => {
-    const y = window.scrollY;
-    const delta = y - lastScrollY;
-    lastScrollY = y;
-    if (!heroNear) return;
-    pendingDelta += delta * SENSITIVITY;
-    if (!ticking) { ticking = true; requestAnimationFrame(applyScrub); }
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => {
-      scrubbing = false;
-      video.play().catch(() => {});
-    }, IDLE_MS);
-  }, { passive: true });
-})();
-
 /* ---------- lazy-load below-the-fold project videos ---------- */
 (function () {
   const videos = document.querySelectorAll('.lazy-video');
