@@ -507,7 +507,7 @@
   <div class="shell">
     <div class="panel contact-panel reveal">
       <a class="contact-mark" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer" aria-label="Abrir meu LinkedIn" data-i18n="social.linkedinAria" data-i18n-attr="aria-label">
-        <video autoplay loop muted playsinline width="52" height="52" poster="assets/brand/clover-design-engineer-poster.webp">
+        <video autoplay loop muted playsinline width="300" height="300" poster="assets/brand/clover-design-engineer-poster.webp">
           <source src="assets/video/clover-design-engineer-hero.mp4" type="video/mp4" />
         </video>
       </a>
@@ -676,6 +676,36 @@ setTimeout(() => document.body.classList.add('loaded'), 1200); /* safety fallbac
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+})();
+
+/* ---------- hero photo: hover gains color permanently, resets after leaving + returning to the section ---------- */
+(function () {
+  const heroSection = document.querySelector('.hero');
+  const photo = document.querySelector('.hero-photo');
+  const photoMobile = document.querySelector('.hero-photo-mobile');
+  if (!heroSection || !photo) return;
+  const setColored = () => {
+    photo.classList.add('colored');
+    if (photoMobile) photoMobile.classList.add('colored');
+  };
+  photo.addEventListener('mouseenter', setColored);
+  photo.addEventListener('touchstart', setColored, { passive: true });
+  if (photoMobile) photoMobile.addEventListener('touchstart', setColored, { passive: true });
+  let wasVisible = true;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        if (!wasVisible) {
+          photo.classList.remove('colored');
+          if (photoMobile) photoMobile.classList.remove('colored');
+        }
+        wasVisible = true;
+      } else {
+        wasVisible = false;
+      }
+    });
+  }, { threshold: 0 });
+  io.observe(heroSection);
 })();
 
 /* ---------- cursor-reactive spotlight on cards ---------- */
