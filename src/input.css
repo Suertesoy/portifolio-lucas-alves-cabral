@@ -239,7 +239,7 @@ section{padding:26px 0;position:relative}
 /* portrait rises from panel bottom, centered */
 .hero-photo{
   position:relative;z-index:2;margin:0 auto;
-  height:min(74vh,660px);max-width:64%;
+  height:min(64vh,560px);max-width:58%;
   margin-bottom:calc(-1 * clamp(22px,3vw,34px));
   display:flex;align-items:flex-end;justify-content:center;
   filter:drop-shadow(0 30px 50px rgba(14,36,23,.22));
