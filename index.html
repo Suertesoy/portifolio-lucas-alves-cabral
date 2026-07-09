@@ -293,8 +293,8 @@
       </div>
 
       <div class="svc-list reveal" id="svc-list">
-        <div class="svc-item open">
-          <button class="svc-row spot" aria-expanded="true">
+        <div class="svc-item">
+          <button class="svc-row spot" aria-expanded="false">
             <span class="svc-index">01</span>
             <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.5" cy="18" r="1.6"/><circle cx="12" cy="7" r="1.6"/><circle cx="19.5" cy="17" r="1.6"/><path d="M5.8 16.8 10.7 8.6M13.3 8.6 18.2 15.8"/></svg></span>
             <span class="svc-name">UX/UI Design</span>
@@ -500,10 +500,6 @@
             <p data-i18n="about.body2">No UX/UI Design, encontrei o caminho profissional onde essa curiosidade virou método: estudar telas, conversar com usuários, investigar dores pouco explícitas e transformar aprendizados em soluções digitais mais claras e funcionais.</p>
             <p data-i18n="about.body3">Hoje conecto operação real, pesquisa, interface, produto, IA e implementação funcional. Gosto de aprender, testar, evoluir e ver cada entrega ficar mais bem resolvida que a anterior.</p>
           </div>
-          <div class="about-chips">
-            <span>UX/UI Design</span><span>Product Design</span><span>Design Engineering</span>
-            <span data-i18n="about.chip1">IA com critério humano</span><span data-i18n="about.chip2">Operação real</span><span data-i18n="about.chip3">Pesquisa com usuários</span>
-          </div>
         </div>
         <figure class="about-figure reveal">
           <img src="mergulhador_lucas.jpeg" alt="Lucas Cabral mergulhando na Ilha do Arvoredo, Santa Catarina" onerror="this.style.display='none'" />
@@ -562,22 +558,27 @@
 <section id="contact">
   <div class="shell">
     <div class="panel contact-panel reveal">
-      <a class="contact-mark" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer" aria-label="Abrir meu LinkedIn" data-i18n="social.linkedinAria" data-i18n-attr="aria-label">
-        <video autoplay loop muted playsinline width="64" height="64" poster="assets/brand/clover-design-engineer-poster.webp">
+      <div class="contact-media" aria-hidden="true">
+        <video class="contact-bg-video" autoplay loop muted playsinline poster="assets/brand/clover-design-engineer-poster.webp">
           <source src="assets/video/clover-design-engineer-hero.mp4" type="video/mp4" />
         </video>
-      </a>
-      <span class="status" style="margin-bottom:20px" data-i18n="contact.status">Disponível para oportunidades em produto e design</span>
-      <h2 class="contact-title" data-i18n="contact.title">Tem um projeto em mente?</h2>
-      <p class="contact-desc" data-i18n="contact.desc">Se você precisa transformar um problema de produto, interface ou operação em uma solução digital funcional, podemos conversar.</p>
-      <div class="contact-cta-row">
-        <a class="btn btn-primary" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20—%20Product%20Designer%20%26%20Design%20Engineer"><span data-i18n="contact.cta">Falar comigo</span></a>
+        <video class="contact-bg-video contact-bg-video--blur" autoplay loop muted playsinline poster="assets/brand/clover-design-engineer-poster.webp">
+          <source src="assets/video/clover-design-engineer-hero.mp4" type="video/mp4" />
+        </video>
       </div>
-      <div class="contact-links">
-        <a class="pill-link" href="mailto:lac.lucascabral@gmail.com"><span data-i18n="social.email">E-mail</span> ↗</a>
-        <a class="pill-link" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-        <a class="pill-link" href="https://wa.me/5512997863832" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-        <a class="pill-link" href="https://sartec-digital.vercel.app" target="_blank" rel="noopener noreferrer">Sartec Digital ↗</a>
+      <div class="contact-content">
+        <span class="status" style="margin-bottom:20px" data-i18n="contact.status">Disponível para oportunidades em produto e design</span>
+        <h2 class="contact-title" data-i18n="contact.title">Tem um projeto em mente?</h2>
+        <p class="contact-desc" data-i18n="contact.desc">Se você precisa transformar um problema de produto, interface ou operação em uma solução digital funcional, podemos conversar.</p>
+        <div class="contact-cta-row">
+          <a class="btn btn-primary" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20—%20Product%20Designer%20%26%20Design%20Engineer"><span data-i18n="contact.cta">Falar comigo</span></a>
+        </div>
+        <div class="contact-links">
+          <a class="pill-link" href="mailto:lac.lucascabral@gmail.com"><span data-i18n="social.email">E-mail</span> ↗</a>
+          <a class="pill-link" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="pill-link" href="https://wa.me/5512997863832" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+          <a class="pill-link" href="https://sartec-digital.vercel.app" target="_blank" rel="noopener noreferrer">Sartec Digital ↗</a>
+        </div>
       </div>
     </div>
   </div>
@@ -809,11 +810,10 @@ setTimeout(() => document.body.classList.add('loaded'), 1200); /* safety fallbac
   });
 })();
 
-/* ---------- respect reduced motion for the contact clover video ---------- */
+/* ---------- respect reduced motion for the contact background videos ---------- */
 (function () {
   if (!matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  const v = document.querySelector('.contact-mark video');
-  if (v) { v.removeAttribute('autoplay'); v.pause(); }
+  document.querySelectorAll('.contact-bg-video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
 })();
 
 /* ---------- lazy-load below-the-fold project videos ---------- */
