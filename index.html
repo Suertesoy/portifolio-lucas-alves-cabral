@@ -26,7 +26,7 @@
       </a>
       <nav class="nav-links" id="navlinks">
         <a href="#work" data-i18n="nav.work">Projetos</a>
-        <a href="#service" data-i18n="nav.service">Serviços</a>
+        <a href="#service" data-i18n="nav.service">Especialidades</a>
         <a href="#experience" data-i18n="nav.experience">Experiência</a>
         <a href="#about" data-i18n="nav.about">Sobre</a>
         <a href="#contact" data-i18n="nav.contact">Contato</a>
@@ -67,16 +67,15 @@
             <img src="assets/images/lucas-hero-portrait.webp" alt="" width="360" height="480" />
           </div>
           <p class="hero-title">Product Designer &amp; Design Engineer</p>
-          <p class="hero-desc" data-i18n="hero.desc">Desenho produtos digitais, interfaces e sistemas operacionais que conectam pesquisa, decisão de produto, IA e implementação funcional.</p>
+          <p class="hero-desc" data-i18n="hero.desc">Desenho interfaces, fluxos e sistemas de produto, e uso IA com critério para acelerar a implementação até chegar a produção real.</p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="#contact"><span data-i18n="hero.ctaPrimary">Vamos conversar</span></a>
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer"><span data-i18n="hero.ctaPrimary">Conectar no LinkedIn</span></a>
             <a class="btn btn-ghost" href="#work"><span data-i18n="hero.ctaSecondary">Ver projetos</span></a>
           </div>
         </div>
 
         <div class="hero-socials hero-anim d6">
           <a class="pill-link" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          <a class="pill-link" href="https://wa.me/5512997863832" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
           <a class="pill-link" href="mailto:lac.lucascabral@gmail.com"><span data-i18n="social.email">E-mail</span> ↗</a>
         </div>
       </div>
@@ -93,21 +92,52 @@
         <div class="panel-head-row">
           <div>
             <h2 class="sec-title"><span class="slash">/</span><span data-i18n="work.title">Projetos</span></h2>
-            <p class="sec-sub" data-i18n="work.sub">Projetos reais, protótipos e sistemas funcionais — do problema de negócio à interface no ar.</p>
+            <p class="sec-sub" data-i18n="work.sub">Cases reais de produto — do problema, das decisões de UX/UI e IA, até a interface funcionando em produção.</p>
           </div>
         </div>
       </div>
 
       <div class="proj-list reveal" id="proj-list">
 
-        <!-- UNIEDU -->
+        <!-- CRM operacional + Agente de IA (WhatsApp) — priority case -->
         <div class="proj-item open">
           <button class="proj-row spot" aria-expanded="true">
+            <span class="proj-thumb">
+              <video class="proj-thumb-video lazy-video" muted loop playsinline preload="none" data-src="video crm sartec - portifolio.mp4"></video>
+            </span>
+            <span class="proj-heading">
+              <span class="proj-eyebrow" data-i18n="work.crm.eyebrow">Sistema interno · Fluxo de atendimento · IA aplicada</span>
+              <span class="proj-name" data-i18n="work.crm.title">CRM Operacional + Agente de IA</span>
+            </span>
+            <span class="proj-badge is-live" data-i18n="work.crm.badge">Implementado</span>
+            <span class="proj-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="proj-panel"><div class="proj-panel-inner">
+            <div class="proj-card">
+              <div class="proj-video">
+                <video class="lazy-video" muted loop playsinline preload="none" data-src="video crm sartec - portifolio.mp4" aria-label="Prévia do CRM Sartec" data-i18n="work.crm.videoAlt" data-i18n-attr="aria-label"></video>
+              </div>
+              <div class="proj-info">
+                <p class="work-sum" data-i18n="work.crm.sum">Sistema interno para centralizar atendimentos, estados, prioridades e fluxo de trabalho, integrado a um agente de IA no WhatsApp responsável pela triagem inicial e pelo handoff para o time humano. Meu papel cobriu pesquisa com quem operava o atendimento, modelagem dos estados do fluxo, design da interface do painel e definição de onde a IA deveria atuar — mantendo o critério e a decisão final sempre com o time.</p>
+                <div class="work-tags">
+                  <span data-i18n="work.crm.tag1">Sistema interno</span><span data-i18n="work.crm.tag2">Fluxo operacional</span><span data-i18n="work.crm.tag3">IA aplicada</span><span data-i18n="work.crm.tag4">Handoff humano</span>
+                </div>
+                <div class="work-ctas">
+                  <a class="work-cta" href="https://case-sartec.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="work.crm.cta">Ver case completo</span> <span class="arr">→</span></a>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- UNIEDU -->
+        <div class="proj-item">
+          <button class="proj-row spot" aria-expanded="false">
             <span class="proj-thumb">
               <video class="proj-thumb-video lazy-video" muted loop playsinline preload="none" data-src="video app uniedu - portifolio.mp4"></video>
             </span>
             <span class="proj-heading">
-              <span class="proj-eyebrow">UX Research · Product Strategy · EdTech</span>
+              <span class="proj-eyebrow" data-i18n="work.uniedu.eyebrow">UX Research · Design System · Produto educacional</span>
               <span class="proj-name" data-i18n="work.uniedu.title">Plataforma UNIEDU</span>
             </span>
             <span class="proj-badge is-live" data-i18n="work.uniedu.badge">Case completo</span>
@@ -119,7 +149,7 @@
                 <video class="lazy-video" muted loop playsinline preload="none" data-src="video app uniedu - portifolio.mp4" aria-label="Prévia do aplicativo UNIEDU" data-i18n="work.uniedu.videoAlt" data-i18n-attr="aria-label"></video>
               </div>
               <div class="proj-info">
-                <p class="work-sum" data-i18n="work.uniedu.sum">Produto educacional gamificado que conecta pesquisa, estratégia de produto, design system e protótipo navegável para transformar constância de estudo em progresso real.</p>
+                <p class="work-sum" data-i18n="work.uniedu.sum">Produto educacional gamificado, desenhado a partir de pesquisa com estudantes para transformar constância de estudo em progresso real. Conduzi a estratégia de produto, o design system e um protótipo navegável, validando decisões de UX diretamente com o público-alvo.</p>
                 <div class="work-tags">
                   <span>UX Research</span><span>Design System</span><span>Product Strategy</span><span data-i18n="work.uniedu.tag1">Gamificação</span><span data-i18n="work.uniedu.tag2">Protótipo</span>
                 </div>
@@ -132,48 +162,17 @@
           </div></div>
         </div>
 
-        <!-- Sartec CRM + Agente IA — merged: one ecosystem case, one link -->
-        <div class="proj-item">
-          <button class="proj-row spot" aria-expanded="false">
-            <span class="proj-thumb">
-              <video class="proj-thumb-video lazy-video" muted loop playsinline preload="none" data-src="video crm sartec - portifolio.mp4"></video>
-            </span>
-            <span class="proj-heading">
-              <span class="proj-eyebrow" data-i18n="work.crm.eyebrow">Sistema interno · Atendimento · Automação</span>
-              <span class="proj-name" data-i18n="work.crm.title">Sartec CRM + Agente IA</span>
-            </span>
-            <span class="proj-badge is-live" data-i18n="work.crm.badge">Implementado</span>
-            <span class="proj-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="proj-panel"><div class="proj-panel-inner">
-            <div class="proj-card">
-              <div class="proj-video">
-                <video class="lazy-video" muted loop playsinline preload="none" data-src="video crm sartec - portifolio.mp4" aria-label="Prévia do CRM Sartec" data-i18n="work.crm.videoAlt" data-i18n-attr="aria-label"></video>
-              </div>
-              <div class="proj-info">
-                <p class="work-sum" data-i18n="work.crm.sum">Ecossistema Sartec: sistema interno para organizar atendimentos, estados, prioridades e fluxo de trabalho, integrado a um agente de IA no WhatsApp que coleta contexto, triagem e encaminha demandas ao time.</p>
-                <div class="work-tags">
-                  <span data-i18n="work.crm.tag1">Sistema interno</span><span data-i18n="work.crm.tag2">UX operacional</span><span data-i18n="work.crm.tag3">IA aplicada</span><span>Automação</span>
-                </div>
-                <div class="work-ctas">
-                  <a class="work-cta" href="https://case-sartec.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="work.crm.cta">Ver case do ecossistema</span> <span class="arr">→</span></a>
-                </div>
-              </div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- Site Sartec Papelaria -->
+        <!-- Site Sartec Papelaria — case de apoio, menor peso -->
         <div class="proj-item">
           <button class="proj-row spot" aria-expanded="false">
             <span class="proj-thumb">
               <video class="proj-thumb-video lazy-video" muted loop playsinline preload="none" data-src="video site sartec papelaria - portifolio.mp4"></video>
             </span>
             <span class="proj-heading">
-              <span class="proj-eyebrow" data-i18n="work.papelaria.eyebrow">Site comercial · Negócio local</span>
+              <span class="proj-eyebrow" data-i18n="work.papelaria.eyebrow">Presença digital · Arquitetura da informação</span>
               <span class="proj-name" data-i18n="work.papelaria.title">Site Sartec Papelaria</span>
             </span>
-            <span class="proj-badge is-live" data-i18n="work.crm.badge">Implementado</span>
+            <span class="proj-badge" data-i18n="work.papelaria.badge">Case de apoio</span>
             <span class="proj-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </button>
           <div class="proj-panel"><div class="proj-panel-inner">
@@ -182,43 +181,12 @@
                 <video class="lazy-video" muted loop playsinline preload="none" data-src="video site sartec papelaria - portifolio.mp4" aria-label="Prévia do site Sartec Papelaria" data-i18n="work.papelaria.videoAlt" data-i18n-attr="aria-label"></video>
               </div>
               <div class="proj-info">
-                <p class="work-sum" data-i18n="work.papelaria.sum">Presença digital comercial para uma papelaria local, pensada para transformar navegação em entrada de atendimento e pedidos pelo WhatsApp.</p>
+                <p class="work-sum" data-i18n="work.papelaria.sum">Presença digital para um negócio local, pensada como exercício de arquitetura da informação e hierarquia de conteúdo — organizar o que o visitante precisa ver primeiro e transformar navegação em contato direto.</p>
                 <div class="work-tags">
-                  <span data-i18n="work.papelaria.tag1">Site comercial</span><span data-i18n="work.papelaria.tag2">Arquitetura da informação</span><span data-i18n="work.papelaria.tag3">Copy comercial</span><span>Front-end</span>
+                  <span data-i18n="work.papelaria.tag1">Arquitetura da informação</span><span data-i18n="work.papelaria.tag2">Hierarquia de conteúdo</span><span data-i18n="work.papelaria.tag3">Front-end</span>
                 </div>
                 <div class="work-ctas">
-                  <a class="work-cta" href="https://agente-triagem-sartec.vercel.app/index.html" target="_blank" rel="noopener noreferrer"><span data-i18n="work.papelaria.cta">Ver site</span> <span class="arr">→</span></a>
-                </div>
-              </div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- Sartec Digital -->
-        <div class="proj-item">
-          <button class="proj-row spot" aria-expanded="false">
-            <span class="proj-thumb">
-              <video class="proj-thumb-video lazy-video" muted loop playsinline preload="none" data-src="video site sartec digital - portifólio.mp4"></video>
-            </span>
-            <span class="proj-heading">
-              <span class="proj-eyebrow" data-i18n="work.digital.eyebrow">Landing page · Oferta B2B</span>
-              <span class="proj-name">Sartec Digital</span>
-            </span>
-            <span class="proj-badge" data-i18n="work.digital.badge">Empresa autoral</span>
-            <span class="proj-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="proj-panel"><div class="proj-panel-inner">
-            <div class="proj-card">
-              <div class="proj-video">
-                <video class="lazy-video" muted loop playsinline preload="none" data-src="video site sartec digital - portifólio.mp4" aria-label="Prévia da landing page Sartec Digital"></video>
-              </div>
-              <div class="proj-info">
-                <p class="work-sum" data-i18n="work.digital.sum">Landing page comercial para apresentar soluções digitais baseadas em atendimento, automação, sites e métricas para pequenos e médios negócios.</p>
-                <div class="work-tags">
-                  <span>Landing page</span><span data-i18n="work.digital.tag1">Oferta B2B</span><span data-i18n="work.digital.tag2">Estratégia de produto</span><span data-i18n="work.digital.tag3">Presença digital</span>
-                </div>
-                <div class="work-ctas">
-                  <a class="work-cta" href="https://sartec-digital.vercel.app" target="_blank" rel="noopener noreferrer"><span data-i18n="work.digital.cta">Ver página</span> <span class="arr">→</span></a>
+                  <a class="work-cta-sec" href="https://agente-triagem-sartec.vercel.app/index.html" target="_blank" rel="noopener noreferrer"><span data-i18n="work.papelaria.cta">Ver site</span> →</a>
                 </div>
               </div>
             </div>
@@ -235,9 +203,9 @@
   <div class="shell">
     <div class="panel panel-pad">
       <div class="panel-head reveal">
-        <div class="sec-ghost" data-i18n="service.ghost">SERVIÇOS</div>
-        <h2 class="sec-title"><span class="slash">/</span><span data-i18n="service.title">Serviços</span></h2>
-        <p class="sec-sub" data-i18n="service.sub">Como eu atuo — do desenho da experiência à condução da implementação.</p>
+        <div class="sec-ghost" data-i18n="service.ghost">ESPECIALIDADES</div>
+        <h2 class="sec-title"><span class="slash">/</span><span data-i18n="service.title">Especialidades</span></h2>
+        <p class="sec-sub" data-i18n="service.sub">Áreas onde atuo com mais profundidade — de pesquisa e interface até implementação funcional com IA.</p>
       </div>
 
       <div class="svc-list reveal" id="svc-list">
@@ -281,14 +249,14 @@
           <button class="svc-row spot" aria-expanded="false">
             <span class="svc-index">03</span>
             <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1.6"/><path d="M3.5 9.2h17"/><circle cx="6.3" cy="7.1" r="0.55" fill="currentColor" stroke="none"/><circle cx="8.4" cy="7.1" r="0.55" fill="currentColor" stroke="none"/></svg></span>
-            <span class="svc-name" data-i18n="service.sites.name">Sites e presença digital</span>
+            <span class="svc-name" data-i18n="service.sites.name">Design Systems e arquitetura de interface</span>
             <span class="svc-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </button>
           <div class="svc-panel"><div class="svc-panel-inner">
             <div class="svc-card">
               <div>
-                <p data-i18n="service.sites.body">Páginas institucionais e comerciais com arquitetura, copy, direção visual e conversão para canais reais de atendimento.</p>
-                <div class="svc-tags"><span data-i18n="service.sites.tag1">Arquitetura</span><span>Copy</span><span data-i18n="service.sites.tag2">Direção visual</span><span data-i18n="service.sites.tag3">Conversão</span></div>
+                <p data-i18n="service.sites.body">Consistência visual e de comportamento em produtos digitais — componentização, padrões de interface e documentação que escalam com o time.</p>
+                <div class="svc-tags"><span data-i18n="service.sites.tag1">Consistência</span><span data-i18n="service.sites.tag2">Componentes</span><span data-i18n="service.sites.tag3">Documentação</span></div>
               </div>
               <div class="svc-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M7 13h6M7 15.5h4"/></svg></div>
             </div>
@@ -299,13 +267,13 @@
           <button class="svc-row spot" aria-expanded="false">
             <span class="svc-index">04</span>
             <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="4.4" height="14" rx="1.2"/><rect x="9.8" y="5" width="4.4" height="9" rx="1.2"/><rect x="15.6" y="5" width="4.4" height="11.5" rx="1.2"/></svg></span>
-            <span class="svc-name" data-i18n="service.systems.name">Sistemas internos e CRM</span>
+            <span class="svc-name" data-i18n="service.systems.name">Ferramentas internas e produtos B2B</span>
             <span class="svc-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </button>
           <div class="svc-panel"><div class="svc-panel-inner">
             <div class="svc-card">
               <div>
-                <p data-i18n="service.systems.body">Painéis, fluxos e ferramentas operacionais para organizar atendimento, demanda, status, equipe e tomada de decisão.</p>
+                <p data-i18n="service.systems.body">Painéis e fluxos operacionais para times internos — organizar demanda, status, prioridade e tomada de decisão dentro do produto.</p>
                 <div class="svc-tags"><span data-i18n="service.systems.tag1">Painéis</span><span data-i18n="service.systems.tag2">Estados</span><span data-i18n="service.systems.tag3">Operação</span><span data-i18n="service.systems.tag4">Decisão</span></div>
               </div>
               <div class="svc-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="5" height="14" rx="1.4"/><rect x="10.5" y="5" width="5" height="9" rx="1.4"/><rect x="17" y="5" width="3" height="12" rx="1.4"/></svg></div>
@@ -317,13 +285,13 @@
           <button class="svc-row spot" aria-expanded="false">
             <span class="svc-index">05</span>
             <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.6"/><circle cx="5" cy="16" r="1.6"/><circle cx="19" cy="16" r="1.6"/><circle cx="12" cy="12.5" r="1.4"/><path d="M12 6.6V11.2M10.8 13.4 6.2 15M13.2 13.4 17.8 15"/></svg></span>
-            <span class="svc-name" data-i18n="service.automation.name">Automação e IA aplicada</span>
+            <span class="svc-name" data-i18n="service.automation.name">IA aplicada a fluxos e produto</span>
             <span class="svc-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </button>
           <div class="svc-panel"><div class="svc-panel-inner">
             <div class="svc-card">
               <div>
-                <p data-i18n="service.automation.body">Agentes, triagens, fluxos assistidos e automações com limites claros, handoff humano e critérios de segurança.</p>
+                <p data-i18n="service.automation.body">Uso IA para acelerar triagem, respostas e decisões dentro de um fluxo de produto, sempre com handoff humano e critério de uso claro.</p>
                 <div class="svc-tags"><span data-i18n="service.automation.tag1">Agentes</span><span data-i18n="service.automation.tag2">Triagem</span><span data-i18n="service.automation.tag3">Handoff humano</span><span>Guardrails</span></div>
               </div>
               <div class="svc-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="19" cy="17" r="2"/><circle cx="12" cy="12" r="1.8"/><path d="M12 7v3M10.5 13.5 6.5 15.8M13.5 13.5l4 2.3"/></svg></div>
@@ -513,17 +481,18 @@
       </div>
       <div class="contact-content">
         <span class="status" style="margin-bottom:20px" data-i18n="contact.status">Disponível para oportunidades em produto e design</span>
-        <h2 class="contact-title" data-i18n="contact.title">Tem um projeto em mente?</h2>
-        <p class="contact-desc" data-i18n="contact.desc">Se você precisa transformar um problema de produto, interface ou operação em uma solução digital funcional, podemos conversar.</p>
+        <h2 class="contact-title" data-i18n="contact.title">Buscando um Product Designer que una UX, UI, IA e implementação?</h2>
+        <p class="contact-desc" data-i18n="contact.desc">Estou aberto a conversas com times que constroem produtos digitais, ferramentas internas e experiências orientadas por IA. Vamos falar sobre produto, design e interfaces funcionais.</p>
         <div class="contact-cta-row">
-          <a class="btn btn-primary" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20—%20Product%20Designer%20%26%20Design%20Engineer"><span data-i18n="contact.cta">Falar comigo</span></a>
+          <a class="btn btn-primary" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20—%20Product%20Designer%20%26%20Design%20Engineer"><span data-i18n="contact.cta">Enviar e-mail</span></a>
         </div>
         <div class="contact-links">
           <a class="pill-link" href="mailto:lac.lucascabral@gmail.com"><span data-i18n="social.email">E-mail</span> ↗</a>
           <a class="pill-link" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="pill-link" href="#work" data-i18n="contact.ctaWork">Ver projetos</a>
           <a class="pill-link" href="https://wa.me/5512997863832" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-          <a class="pill-link" href="https://sartec-digital.vercel.app" target="_blank" rel="noopener noreferrer">Sartec Digital ↗</a>
         </div>
+        <p class="contact-note"><span data-i18n="contact.sartecNote">Também estruturo uma frente comercial separada para projetos digitais:</span> <a href="https://sartec-digital.vercel.app" target="_blank" rel="noopener noreferrer">Sartec Digital ↗</a></p>
       </div>
     </div>
   </div>
@@ -540,7 +509,7 @@
     </div>
     <div class="foot-links">
       <a href="#work" data-i18n="nav.work">Projetos</a>
-      <a href="#service" data-i18n="nav.service">Serviços</a>
+      <a href="#service" data-i18n="nav.service">Especialidades</a>
       <a href="#experience" data-i18n="nav.experience">Experiência</a>
       <a href="mailto:lac.lucascabral@gmail.com" data-i18n="social.email">E-mail</a>
       <a href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -552,24 +521,22 @@
 /* ---------- i18n ---------- */
 const I18N = {
   pt: {
-    nav: { work: "Projetos", service: "Serviços", experience: "Experiência", about: "Sobre", contact: "Contato", cta: "Vamos conversar" },
-    hero: { status: "Disponível para oportunidades", desc: "Desenho produtos digitais, interfaces e sistemas operacionais que conectam pesquisa, decisão de produto, IA e implementação funcional.", ctaPrimary: "Vamos conversar", ctaSecondary: "Ver projetos" },
+    nav: { work: "Projetos", service: "Especialidades", experience: "Experiência", about: "Sobre", contact: "Contato", cta: "Vamos conversar" },
+    hero: { status: "Disponível para oportunidades", desc: "Desenho interfaces, fluxos e sistemas de produto, e uso IA com critério para acelerar a implementação até chegar a produção real.", ctaPrimary: "Conectar no LinkedIn", ctaSecondary: "Ver projetos" },
     social: { email: "E-mail", linkedinAria: "Abrir meu LinkedIn" },
     work: {
-      ghost: "PROJETOS", title: "Projetos", sub: "Projetos reais, protótipos e sistemas funcionais — do problema de negócio à interface no ar.",
-      uniedu: { title: "Plataforma UNIEDU", sum: "Produto educacional gamificado que conecta pesquisa, estratégia de produto, design system e protótipo navegável para transformar constância de estudo em progresso real.", tag1: "Gamificação", tag2: "Protótipo", ctaRecruiter: "Ver case para recrutadores", ctaPrototype: "Abrir protótipo", badge: "Case completo", videoAlt: "Prévia do aplicativo UNIEDU" },
-      crm: { badge: "Implementado", videoAlt: "Prévia do CRM Sartec", eyebrow: "Sistema interno · Atendimento · Automação", title: "Sartec CRM + Agente IA", sum: "Ecossistema Sartec: sistema interno para organizar atendimentos, estados, prioridades e fluxo de trabalho, integrado a um agente de IA no WhatsApp que coleta contexto, triagem e encaminha demandas ao time.", tag1: "Sistema interno", tag2: "UX operacional", tag3: "IA aplicada", cta: "Ver case do ecossistema" },
-      agent: { flowLabel: "Fluxo do agente: mensagem, triagem e handoff para o CRM", stage1: "Mensagem no WhatsApp", stage2: "Triagem + contexto", stage3: "Handoff no CRM", eyebrow: "IA aplicada · Atendimento · Triagem", title: "Agente WhatsApp Sartec", sum: "Agente de triagem conectado ao WhatsApp, desenhado para coletar contexto, organizar demandas e encaminhar atendimentos com mais clareza para o humano.", tag1: "IA aplicada", tag2: "Triagem", cta: "Ver projeto" },
-      papelaria: { badge: "Protótipo", videoAlt: "Prévia do site Sartec Papelaria", eyebrow: "Site comercial · Negócio local", title: "Site Sartec Papelaria", sum: "Presença digital comercial para uma papelaria local, pensada para transformar navegação em entrada de atendimento e pedidos pelo WhatsApp.", tag1: "Site comercial", tag2: "Arquitetura da informação", tag3: "Copy comercial", cta: "Ver site" },
-      digital: { badge: "Empresa autoral", eyebrow: "Landing page · Oferta B2B", sum: "Landing page comercial para apresentar soluções digitais baseadas em atendimento, automação, sites e métricas para pequenos e médios negócios.", tag1: "Oferta B2B", tag2: "Estratégia de produto", tag3: "Presença digital", cta: "Ver página" }
+      ghost: "PROJETOS", title: "Projetos", sub: "Cases reais de produto — do problema, das decisões de UX/UI e IA, até a interface funcionando em produção.",
+      uniedu: { eyebrow: "UX Research · Design System · Produto educacional", title: "Plataforma UNIEDU", sum: "Produto educacional gamificado, desenhado a partir de pesquisa com estudantes para transformar constância de estudo em progresso real. Conduzi a estratégia de produto, o design system e um protótipo navegável, validando decisões de UX diretamente com o público-alvo.", tag1: "Gamificação", tag2: "Protótipo", ctaRecruiter: "Ver case para recrutadores", ctaPrototype: "Abrir protótipo", badge: "Case completo", videoAlt: "Prévia do aplicativo UNIEDU" },
+      crm: { badge: "Implementado", videoAlt: "Prévia do CRM Sartec", eyebrow: "Sistema interno · Fluxo de atendimento · IA aplicada", title: "CRM Operacional + Agente de IA", sum: "Sistema interno para centralizar atendimentos, estados, prioridades e fluxo de trabalho, integrado a um agente de IA no WhatsApp responsável pela triagem inicial e pelo handoff para o time humano. Meu papel cobriu pesquisa com quem operava o atendimento, modelagem dos estados do fluxo, design da interface do painel e definição de onde a IA deveria atuar — mantendo o critério e a decisão final sempre com o time.", tag1: "Sistema interno", tag2: "Fluxo operacional", tag3: "IA aplicada", tag4: "Handoff humano", cta: "Ver case completo" },
+      papelaria: { badge: "Case de apoio", videoAlt: "Prévia do site Sartec Papelaria", eyebrow: "Presença digital · Arquitetura da informação", title: "Site Sartec Papelaria", sum: "Presença digital para um negócio local, pensada como exercício de arquitetura da informação e hierarquia de conteúdo — organizar o que o visitante precisa ver primeiro e transformar navegação em contato direto.", tag1: "Arquitetura da informação", tag2: "Hierarquia de conteúdo", tag3: "Front-end", cta: "Ver site" }
     },
     service: {
-      ghost: "SERVIÇOS", title: "Serviços", sub: "Como eu atuo — do desenho da experiência à condução da implementação.",
+      ghost: "ESPECIALIDADES", title: "Especialidades", sub: "Áreas onde atuo com mais profundidade — de pesquisa e interface até implementação funcional com IA.",
       uxui: { body: "Interfaces claras, fluxos consistentes e experiências digitais orientadas por pesquisa, usabilidade e decisão de produto.", tag1: "Pesquisa", tag2: "Fluxos", tag3: "Usabilidade" },
       product: { body: "Estruturação de soluções digitais a partir de problema, contexto, jornada, prioridade e impacto no negócio.", tag1: "Problema", tag2: "Jornada", tag3: "Prioridade", tag4: "Impacto" },
-      sites: { name: "Sites e presença digital", body: "Páginas institucionais e comerciais com arquitetura, copy, direção visual e conversão para canais reais de atendimento.", tag1: "Arquitetura", tag2: "Direção visual", tag3: "Conversão" },
-      systems: { name: "Sistemas internos e CRM", body: "Painéis, fluxos e ferramentas operacionais para organizar atendimento, demanda, status, equipe e tomada de decisão.", tag1: "Painéis", tag2: "Estados", tag3: "Operação", tag4: "Decisão" },
-      automation: { name: "Automação e IA aplicada", body: "Agentes, triagens, fluxos assistidos e automações com limites claros, handoff humano e critérios de segurança.", tag1: "Agentes", tag2: "Triagem", tag3: "Handoff humano" },
+      sites: { name: "Design Systems e arquitetura de interface", body: "Consistência visual e de comportamento em produtos digitais — componentização, padrões de interface e documentação que escalam com o time.", tag1: "Consistência", tag2: "Componentes", tag3: "Documentação" },
+      systems: { name: "Ferramentas internas e produtos B2B", body: "Painéis e fluxos operacionais para times internos — organizar demanda, status, prioridade e tomada de decisão dentro do produto.", tag1: "Painéis", tag2: "Estados", tag3: "Operação", tag4: "Decisão" },
+      automation: { name: "IA aplicada a fluxos e produto", body: "Uso IA para acelerar triagem, respostas e decisões dentro de um fluxo de produto, sempre com handoff humano e critério de uso claro.", tag1: "Agentes", tag2: "Triagem", tag3: "Handoff humano" },
       engineering: { body: "Condução da implementação com IA, código, validação, documentação e deploy, reduzindo a distância entre design e produto funcional.", tag1: "Implementação", tag2: "Código", tag3: "Validação", tag4: "Deploy" }
     },
     experience: {
@@ -592,27 +559,25 @@ const I18N = {
       chip1: "IA com critério humano", chip2: "Operação real", chip3: "Pesquisa com usuários"
     },
     stack: { sub: "As ferramentas que uso para pesquisar, desenhar, construir e documentar.", research: "Pesquisa & organização", design: "Design & prototipação", implementation: "Implementação assistida", validation: "Validação & documentação" },
-    contact: { status: "Disponível para oportunidades em produto e design", title: "Tem um projeto em mente?", desc: "Se você precisa transformar um problema de produto, interface ou operação em uma solução digital funcional, podemos conversar.", cta: "Falar comigo" }
+    contact: { status: "Disponível para oportunidades em produto e design", title: "Buscando um Product Designer que una UX, UI, IA e implementação?", desc: "Estou aberto a conversas com times que constroem produtos digitais, ferramentas internas e experiências orientadas por IA. Vamos falar sobre produto, design e interfaces funcionais.", cta: "Enviar e-mail", ctaWork: "Ver projetos", sartecNote: "Também estruturo uma frente comercial separada para projetos digitais:" }
   },
   en: {
-    nav: { work: "Work", service: "Services", experience: "Experience", about: "About", contact: "Contact", cta: "Let's talk" },
-    hero: { status: "Available for opportunities", desc: "I design digital products, interfaces and operational systems that connect research, product decisions, AI and functional implementation.", ctaPrimary: "Let's talk", ctaSecondary: "View projects" },
+    nav: { work: "Work", service: "Expertise", experience: "Experience", about: "About", contact: "Contact", cta: "Let's talk" },
+    hero: { status: "Available for opportunities", desc: "I design interfaces, flows and product systems, and use AI with judgment to speed up implementation all the way to real production.", ctaPrimary: "Connect on LinkedIn", ctaSecondary: "View projects" },
     social: { email: "Email", linkedinAria: "Open my LinkedIn" },
     work: {
-      ghost: "WORK", title: "Selected Work", sub: "Real projects, prototypes and functional systems — from business problem to live interface.",
-      uniedu: { title: "UNIEDU Platform", sum: "A gamified education product connecting research, product strategy, design system and a navigable prototype to turn study consistency into real progress.", tag1: "Gamification", tag2: "Prototype", ctaRecruiter: "View case for recruiters", ctaPrototype: "Open prototype", badge: "Full case", videoAlt: "UNIEDU app preview" },
-      crm: { badge: "Shipped", videoAlt: "Sartec CRM preview", eyebrow: "Internal system · Support · Automation", title: "Sartec CRM + AI Agent", sum: "Sartec ecosystem: an internal system to organize service requests, statuses, priorities and workflow, integrated with a WhatsApp AI agent that gathers context, triages and routes requests to the team.", tag1: "Internal system", tag2: "Operational UX", tag3: "Applied AI", cta: "View ecosystem case" },
-      agent: { flowLabel: "Agent flow: message, triage and handoff to CRM", stage1: "WhatsApp message", stage2: "Triage + context", stage3: "CRM handoff", eyebrow: "Applied AI · Support · Triage", title: "Sartec WhatsApp Agent", sum: "A triage agent connected to WhatsApp, designed to gather context, organize requests and hand off to humans with more clarity.", tag1: "Applied AI", tag2: "Triage", cta: "View project" },
-      papelaria: { badge: "Prototype", videoAlt: "Sartec Papelaria site preview", eyebrow: "Business site · Local business", title: "Sartec Papelaria Site", sum: "A commercial digital presence for a local stationery store, designed to turn browsing into WhatsApp orders and inquiries.", tag1: "Business site", tag2: "Information architecture", tag3: "Commercial copy", cta: "View site" },
-      digital: { badge: "Own company", eyebrow: "Landing page · B2B offer", sum: "A commercial landing page presenting digital solutions in service, automation, websites and metrics for small and medium businesses.", tag1: "B2B offer", tag2: "Product strategy", tag3: "Digital presence", cta: "View page" }
+      ghost: "WORK", title: "Selected Work", sub: "Real product cases — from the problem, the UX/UI and AI decisions, to the interface running in production.",
+      uniedu: { eyebrow: "UX Research · Design System · EdTech product", title: "UNIEDU Platform", sum: "A gamified education product, shaped by research with students to turn study consistency into real progress. I led product strategy, the design system and a navigable prototype, validating UX decisions directly with the target audience.", tag1: "Gamification", tag2: "Prototype", ctaRecruiter: "View case for recruiters", ctaPrototype: "Open prototype", badge: "Full case", videoAlt: "UNIEDU app preview" },
+      crm: { badge: "Shipped", videoAlt: "Sartec CRM preview", eyebrow: "Internal system · Support flow · Applied AI", title: "Operational CRM + AI Agent", sum: "An internal system to centralize service requests, statuses, priorities and workflow, integrated with a WhatsApp AI agent responsible for initial triage and handoff to the human team. My role covered research with the people running support, modeling the flow's states, designing the dashboard interface, and defining where AI should act — keeping final judgment and decisions with the team.", tag1: "Internal system", tag2: "Operational flow", tag3: "Applied AI", tag4: "Human handoff", cta: "View full case" },
+      papelaria: { badge: "Supporting case", videoAlt: "Sartec Papelaria site preview", eyebrow: "Digital presence · Information architecture", title: "Sartec Papelaria Site", sum: "A digital presence for a local business, approached as an exercise in information architecture and content hierarchy — organizing what visitors need to see first and turning browsing into direct contact.", tag1: "Information architecture", tag2: "Content hierarchy", tag3: "Front-end", cta: "View site" }
     },
     service: {
-      ghost: "SERVICE", title: "Service", sub: "How I work — from designing the experience to leading the implementation.",
+      ghost: "EXPERTISE", title: "Expertise", sub: "Where I go deepest — from research and interface to functional implementation with AI.",
       uxui: { body: "Clear interfaces, consistent flows and digital experiences driven by research, usability and product decisions.", tag1: "Research", tag2: "Flows", tag3: "Usability" },
       product: { body: "Structuring digital solutions from problem, context, journey, priority and business impact.", tag1: "Problem", tag2: "Journey", tag3: "Priority", tag4: "Impact" },
-      sites: { name: "Websites & digital presence", body: "Institutional and commercial pages with architecture, copy, visual direction and conversion into real service channels.", tag1: "Architecture", tag2: "Visual direction", tag3: "Conversion" },
-      systems: { name: "Internal systems & CRM", body: "Dashboards, flows and operational tools to organize service, demand, status, team and decision-making.", tag1: "Dashboards", tag2: "States", tag3: "Operations", tag4: "Decision" },
-      automation: { name: "Automation & applied AI", body: "Agents, triage, assisted flows and automations with clear limits, human handoff and safety criteria.", tag1: "Agents", tag2: "Triage", tag3: "Human handoff" },
+      sites: { name: "Design systems & interface architecture", body: "Visual and behavioral consistency across digital products — componentization, interface patterns and documentation that scale with the team.", tag1: "Consistency", tag2: "Components", tag3: "Documentation" },
+      systems: { name: "Internal tools & B2B products", body: "Dashboards and operational flows for internal teams — organizing demand, status, priority and decision-making inside the product.", tag1: "Dashboards", tag2: "States", tag3: "Operations", tag4: "Decision" },
+      automation: { name: "Applied AI in flows & product", body: "I use AI to speed up triage, responses and decisions inside a product flow, always with human handoff and clear usage judgment.", tag1: "Agents", tag2: "Triage", tag3: "Human handoff" },
       engineering: { body: "Leading implementation with AI, code, validation, documentation and deploy, reducing the gap between design and a functional product.", tag1: "Implementation", tag2: "Code", tag3: "Validation", tag4: "Deploy" }
     },
     experience: {
@@ -635,7 +600,7 @@ const I18N = {
       chip1: "AI with human judgment", chip2: "Real operations", chip3: "User research"
     },
     stack: { sub: "The tools I use to research, design, build and document.", research: "Research & organization", design: "Design & prototyping", implementation: "Assisted implementation", validation: "Validation & documentation" },
-    contact: { status: "Available for product and design opportunities", title: "Have a project in mind?", desc: "If you need to turn a product, interface or operations problem into a functional digital solution, let's talk.", cta: "Get in touch" }
+    contact: { status: "Available for product and design opportunities", title: "Looking for a Product Designer who blends UX, UI, AI and implementation?", desc: "I'm open to conversations with teams building digital products, internal tools and AI-driven experiences. Let's talk about product, design and functional interfaces.", cta: "Send an email", ctaWork: "View projects", sartecNote: "I also run a separate commercial venture for digital projects:" }
   }
 };
 
