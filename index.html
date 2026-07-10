@@ -63,9 +63,6 @@
         </div>
 
         <div class="hero-intro hero-anim d5">
-          <div class="hero-photo-mobile" aria-hidden="true">
-            <img src="assets/images/lucas-hero-portrait.webp" alt="" width="360" height="480" />
-          </div>
           <p class="hero-title">Product Designer &amp; Design Engineer</p>
           <p class="hero-desc" data-i18n="hero.desc">Desenho interfaces, fluxos e sistemas de produto, e uso IA com critério para acelerar a implementação até chegar a produção real.</p>
           <div class="hero-ctas">
@@ -649,23 +646,15 @@ setTimeout(() => document.body.classList.add('loaded'), 1200); /* safety fallbac
 (function () {
   const heroSection = document.querySelector('.hero');
   const photo = document.querySelector('.hero-photo');
-  const photoMobile = document.querySelector('.hero-photo-mobile');
   if (!heroSection || !photo) return;
-  const setColored = () => {
-    photo.classList.add('colored');
-    if (photoMobile) photoMobile.classList.add('colored');
-  };
+  const setColored = () => { photo.classList.add('colored'); };
   photo.addEventListener('mouseenter', setColored);
   photo.addEventListener('touchstart', setColored, { passive: true });
-  if (photoMobile) photoMobile.addEventListener('touchstart', setColored, { passive: true });
   let wasVisible = true;
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
       if (en.isIntersecting) {
-        if (!wasVisible) {
-          photo.classList.remove('colored');
-          if (photoMobile) photoMobile.classList.remove('colored');
-        }
+        if (!wasVisible) { photo.classList.remove('colored'); }
         wasVisible = true;
       } else {
         wasVisible = false;
