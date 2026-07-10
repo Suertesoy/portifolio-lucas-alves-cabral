@@ -692,28 +692,55 @@ setTimeout(() => document.body.classList.add('loaded'), 1200); /* safety fallbac
   });
 })();
 
-/* ---------- project accordion (Selected Work) ---------- */
+/* ---------- project accordion (Selected Work) ----------
+   Desktop (>860px): classic one-open-at-a-time accordion, unchanged.
+   Mobile (<=860px): every case stays expanded — it's read as an editorial
+   sequence of cases, not a list of collapsed accordions, so the row click
+   (and its now-hidden +/× toggle) is a no-op there. Re-evaluated on resize
+   so rotating a tablet across the breakpoint keeps the right behavior. */
 (function () {
   const list = document.getElementById('proj-list');
   if (!list) return;
+  const items = [...list.querySelectorAll('.proj-item')];
+  const mobileQuery = matchMedia('(max-width:860px)');
+
+  function setExpanded(item, expanded) {
+    item.classList.toggle('open', expanded);
+    item.querySelector('.proj-row').setAttribute('aria-expanded', String(expanded));
+  }
+
+  function applyMode() {
+    if (mobileQuery.matches) {
+      items.forEach(item => setExpanded(item, true));
+    } else {
+      items.forEach((item, i) => setExpanded(item, i === 0));
+    }
+  }
+
   list.querySelectorAll('.proj-row').forEach(row => {
     row.addEventListener('click', () => {
+      if (mobileQuery.matches) return; /* mobile: cards stay expanded, toggle carries no function */
       const item = row.closest('.proj-item');
       const isOpen = item.classList.contains('open');
-      list.querySelectorAll('.proj-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.proj-row').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) { item.classList.add('open'); row.setAttribute('aria-expanded', 'true'); }
+      items.forEach(i => setExpanded(i, false));
+      if (!isOpen) setExpanded(item, true);
     });
   });
+
+  applyMode();
+  mobileQuery.addEventListener('change', applyMode);
 })();
 
-/* ---------- project preview: cursor-following floating video (never covers row text) ---------- */
+/* ---------- project preview: cursor-following floating video (never covers row text) ----------
+   Gated to devices that genuinely have a mouse (hover + fine pointer together), not just
+   "not hover:none" — some touch/hybrid browsers misreport hover support, which previously
+   let a tap open this fixed-position preview without a matching mouseleave to close it,
+   leaving a video stuck floating over the section. A CSS kill-switch at mobile widths
+   (see .proj-preview-float in the stylesheet) backs this up regardless of media-query results. */
 (function () {
   const list = document.getElementById('proj-list');
   if (!list) return;
-  if (matchMedia('(hover:none)').matches) return; /* touch devices keep the always-visible inline thumb instead */
+  if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
 
   const float = document.createElement('div');
   float.className = 'proj-preview-float';
@@ -732,6 +759,11 @@ setTimeout(() => document.body.classList.add('loaded'), 1200); /* safety fallbac
     float.style.top = y + 'px';
   }
 
+  function hideFloat() {
+    float.classList.remove('visible');
+    video.pause();
+  }
+
   list.querySelectorAll('.proj-row').forEach(row => {
     const thumbVideo = row.querySelector('.proj-thumb-video');
     const src = thumbVideo ? thumbVideo.getAttribute('data-src') : null;
@@ -744,11 +776,11 @@ setTimeout(() => document.body.classList.add('loaded'), 1200); /* safety fallbac
       position(e);
     });
     row.addEventListener('mousemove', position);
-    row.addEventListener('mouseleave', () => {
-      float.classList.remove('visible');
-      video.pause();
-    });
+    row.addEventListener('mouseleave', hideFloat);
   });
+
+  /* safety net: any real touch on the page means this was not a mouse after all */
+  addEventListener('touchstart', hideFloat, { passive: true });
 })();
 
 /* ---------- respect reduced motion for the contact background videos ---------- */

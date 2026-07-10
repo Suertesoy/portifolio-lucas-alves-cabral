@@ -274,7 +274,7 @@ section{padding:26px 0;position:relative}
 .spot>*{position:relative;z-index:1}
 
 .proj-list{border-top:1px solid var(--line)}
-.proj-item{border-bottom:1px solid var(--line);padding:10px 0}
+.proj-item{border-bottom:1px solid var(--line);padding:10px 0;overflow:hidden}
 .proj-row{
   position:relative;width:100%;background:none;border:none;cursor:pointer;text-align:left;
   display:flex;align-items:center;gap:18px;padding:16px 4px 16px 74px;
@@ -613,14 +613,19 @@ body.loaded .hero-anim.d6{transition-delay:.84s}
   .proj-row{
     flex-wrap:wrap;align-items:flex-start;padding:16px 4px;gap:10px 14px;
   }
-  .proj-thumb{position:static;order:1;width:100%;height:44vw;max-height:190px;pointer-events:auto}
+  .proj-thumb{position:static;top:auto;left:auto;transform:none;order:1;width:100%;height:44vw;max-height:190px;pointer-events:auto}
   .proj-thumb-video{position:static;inset:auto;width:100%;height:100%;opacity:1;transform:none;box-shadow:none;border-radius:var(--radius-sm)}
   .proj-heading{order:2;flex:1 1 100%;width:100%;gap:5px}
   .proj-eyebrow{font-size:10px;line-height:1.4}
   .proj-name{font-size:clamp(19px,5.6vw,24px)}
   .proj-badge{order:3}
-  .proj-toggle{order:4;margin-left:auto}
+  /* cards stay expanded by default on mobile (see JS), so the +/× toggle has no function
+     left to perform here — remove it rather than leave a button that visually lies about state */
+  .proj-toggle{display:none}
   .proj-card{padding-top:4px}
+  /* hard kill-switch for the cursor-following preview: some touch/hybrid browsers misreport
+     hover support and could otherwise leave this fixed-position video stuck on screen */
+  .proj-preview-float{display:none!important}
 
   /* specialties — denser rows; the decorative icon panel duplicates the row icon, so it's dropped here to
      cut dead vertical space and let the description carry the weight */
