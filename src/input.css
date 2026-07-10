@@ -622,7 +622,10 @@ body.loaded .hero-anim.d6{transition-delay:.84s}
   /* cards stay expanded by default on mobile (see JS), so the +/× toggle has no function
      left to perform here — remove it rather than leave a button that visually lies about state */
   .proj-toggle{display:none}
-  .proj-card{padding-top:4px}
+  /* cards already show their media as the row banner at the top, so the expanded
+     content's own media block would just repeat it — hide that copy on mobile only */
+  .proj-video{display:none}
+  .proj-card{padding-top:0}
   /* hard kill-switch for the cursor-following preview: some touch/hybrid browsers misreport
      hover support and could otherwise leave this fixed-position video stuck on screen */
   .proj-preview-float{display:none!important}
