@@ -2,525 +2,339 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lucas Cabral — Product Designer & Design Engineer</title>
-<meta name="description" content="Lucas Cabral — Product Designer & Design Engineer. Desenho produtos digitais, interfaces e sistemas operacionais que conectam pesquisa, decisão de produto, IA e implementação funcional." />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lucas Cabral — Product Designer &amp; Design Engineer</title>
+<meta name="description" content="Lucas Cabral — Product Designer & Design Engineer. Desenho interfaces, fluxos e sistemas de produto, e uso IA com critério para acelerar a implementação até chegar a produção real." />
+<meta name="theme-color" content="#F3F1EC" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/tailwind.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/home/home.css" />
+<script>document.documentElement.classList.add('js');</script>
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }
+</script>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" crossorigin />
+<!-- Redesign "Organic Intelligence" (checkpoint 11): new Home architecture.
+     Identity (hero) → the person → the work (cases, Pesca first) → how I think → journey → contact. -->
 </head>
 <body>
+<a class="skip" href="#cases" data-i18n="nav.skip">Pular para os cases</a>
+
+<!-- subtle editorial column grid behind the whole page (same 12 columns the hero paints inside WebGL) -->
+<div class="page-grid" aria-hidden="true"><div class="wrap"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
 
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
-  <div class="shell">
-    <div class="nav-inner">
-      <a href="#top" class="brand">
-        <svg class="brand-clover" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="7.5" r="4.5" /><circle cx="12" cy="16.5" r="4.5" />
-          <circle cx="7.5" cy="12" r="4.5" /><circle cx="16.5" cy="12" r="4.5" />
-          <rect x="9.5" y="9.5" width="5" height="5" rx="1" />
-        </svg>
-        <span>Lucas Cabral<small>Product Designer &amp; Design Engineer</small></span>
-      </a>
-      <nav class="nav-links" id="navlinks">
-        <a href="#work" data-i18n="nav.work">Projetos</a>
-        <a href="#service" data-i18n="nav.service">Especialidades</a>
-        <a href="#experience" data-i18n="nav.experience">Experiência</a>
-        <a href="#about" data-i18n="nav.about">Sobre</a>
-        <a href="#contact" data-i18n="nav.contact">Contato</a>
-      </nav>
-      <a href="#contact" class="nav-cta" data-i18n="nav.cta">Vamos conversar</a>
-      <div class="lang-toggle" role="group" aria-label="Idioma / Language">
-        <button type="button" class="lang-btn" data-lang="pt" aria-pressed="true">PT</button>
-        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+  <div class="wrap nav-row">
+    <a class="brand" href="#top" aria-label="Lucas Cabral — início">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><g transform="rotate(45 12 12)"><circle cx="12" cy="7.3" r="4.2"/><circle cx="12" cy="16.7" r="4.2"/><circle cx="7.3" cy="12" r="4.2"/><circle cx="16.7" cy="12" r="4.2"/></g></svg>
+      <span>Lucas Cabral</span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Principal">
+      <a href="#cases"><span class="n">01</span><span data-i18n="nav.cases">Cases</span></a>
+      <a href="#person"><span class="n">02</span><span data-i18n="nav.about">Sobre</span></a>
+      <a href="#method"><span class="n">03</span><span data-i18n="nav.method">Como penso</span></a>
+      <a href="#contact"><span class="n">04</span><span data-i18n="nav.contact">Contato</span></a>
+    </nav>
+    <div class="nav-end">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <a class="nav-cta" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20%E2%80%94%20Product%20Designer%20%26%20Design%20Engineer" data-i18n="nav.cta">Vamos conversar</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-links"><span data-i18n="nav.menu">Menu</span></button>
     </div>
   </div>
 </header>
 
 <main id="top">
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="shell">
-    <div class="panel hero-panel">
-      <div class="hero-top">
-        <span class="status hero-anim d1" data-i18n="hero.status">Disponível para oportunidades</span>
-        <span class="hero-role hero-anim d1">Product Designer &amp; Design Engineer</span>
-      </div>
+<!-- ================= 01 · IDENTITY — B2 Optical Crystal clover between LUCAS / CABRAL (assets/hero/hero.js) =================
+     The name is painted inside WebGL so the glass refracts it; the h1 carries it for assistive tech and becomes the
+     visible name without WebGL. -->
+<section class="hero hb" id="hb" aria-label="Lucas Cabral">
+  <canvas class="hb-canvas" id="hb-canvas" aria-hidden="true"></canvas>
+  <img class="hb-poster" id="hb-poster" src="assets/hero/data/poster.png" alt="" width="900" height="900" loading="lazy" />
+  <h1 class="hb-name" id="hb-name"><span id="hb-name-1">Lucas</span> <span id="hb-name-2">Cabral</span></h1>
 
-      <div class="hero-stage">
-        <h1 class="hero-name hero-anim d3">
-          <span class="ln1">Lucas</span>
-          <span class="ln2">Cabral</span>
-        </h1>
+  <div class="wrap hb-top">
+    <p class="micro"><b>(01)</b>&nbsp;&nbsp;<span data-i18n="hero.kicker">Portfólio — 2026</span></p>
+    <p class="micro status"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.status">Disponível para oportunidades</span></p>
+  </div>
 
-        <div class="hero-photo hero-anim a-photo d4" aria-hidden="true">
-          <img src="assets/images/lucas-hero-portrait.webp" alt="" width="1000" height="1333" fetchpriority="high" />
-        </div>
-
-        <div class="hero-intro hero-anim d5">
-          <p class="hero-title">Product Designer &amp; Design Engineer</p>
-          <p class="hero-desc" data-i18n="hero.desc">Desenho interfaces, fluxos e sistemas de produto, e uso IA com critério para acelerar a implementação até chegar a produção real.</p>
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer"><span data-i18n="hero.ctaPrimary">Conectar no LinkedIn</span></a>
-            <a class="btn btn-ghost" href="#work"><span data-i18n="hero.ctaSecondary">Ver projetos</span></a>
-          </div>
-        </div>
-
-        <div class="hero-socials hero-anim d6">
-          <a class="pill-link" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          <a class="pill-link" href="mailto:lac.lucascabral@gmail.com"><span data-i18n="social.email">E-mail</span> ↗</a>
-        </div>
-      </div>
+  <div class="wrap hb-bottom">
+    <div class="hb-fig" aria-hidden="true">
+      <p class="micro hb-caption"><span data-i18n="hero.fig">Fig. 01 — Trevo de quatro folhas</span><br><span data-i18n="hero.figLeaves">UX · UI · IA · Empatia</span></p>
+      <p class="micro hb-hint"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 8a5.5 5.5 0 0 1 9.6-3.7M13.5 8a5.5 5.5 0 0 1-9.6 3.7"/><path d="M12.6 1.8v2.9H9.7M3.4 14.2v-2.9h2.9"/></svg><span class="fine" data-i18n="hero.hint">Arraste para girar</span><span class="touch" data-i18n="hero.hintTouch">Deslize para girar</span></p>
+    </div>
+    <div class="hb-intro">
+      <p class="hb-role">Product Designer &amp; Design Engineer</p>
+      <p class="hb-desc" data-i18n="hero.desc">Desenho interfaces, fluxos e sistemas de produto, e uso IA com critério para acelerar a implementação até chegar a produção real.</p>
+    </div>
+    <div class="hb-ctas">
+      <a class="btn btn-solid" href="#cases"><span data-i18n="hero.ctaWork">Ver cases</span><span aria-hidden="true">↓</span></a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>
 
-<!-- ================= SELECTED WORK ================= -->
-<section id="work">
-  <div class="shell">
-    <div class="panel panel-pad">
-      <div class="panel-head reveal">
-        <div class="sec-ghost" data-i18n="work.ghost">PROJETOS</div>
-        <div class="panel-head-row">
-          <div>
-            <h2 class="sec-title"><span class="slash">/</span><span data-i18n="work.title">Projetos</span></h2>
-            <p class="sec-sub" data-i18n="work.sub">Cases reais de produto — do problema, das decisões de UX/UI e IA, até a interface funcionando em produção.</p>
-          </div>
-        </div>
+<!-- ================= 02 · THE PERSON ================= -->
+<section class="sec person" id="person" aria-labelledby="h-person">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="micro"><b>(02)</b>&nbsp;&nbsp;<span data-i18n="person.kicker">Quem desenha</span></p>
+      <span class="rule" aria-hidden="true"></span>
+    </header>
+    <!-- ck13: copy on the left, the portrait large on the right (desktop). DOM order = mobile reading order:
+         statement → portrait → story → facts. The whole portrait is a toggle (tap / click / Enter) between
+         grey and colour; hover previews colour with a fine pointer. Without JS the portrait is simply in colour. -->
+    <div class="person-grid">
+      <h2 class="statement reveal" id="h-person" data-i18n="person.statement">Conecto operação real, pesquisa, interface, produto, IA e implementação funcional.</h2>
+      <figure class="person-photo reveal" id="person-photo">
+        <img src="assets/images/lucas-hero-portrait.webp" alt="Retrato de Lucas Cabral" width="1000" height="1333" decoding="async" data-i18n="person.photoAlt" data-i18n-attr="alt" />
+        <button type="button" class="photo-toggle" aria-pressed="false" data-i18n="person.colorBtn" data-i18n-attr="aria-label" aria-label="Ver o retrato em cor">
+          <span class="photo-hint micro" aria-hidden="true">
+            <span class="hint-off"><span class="fine" data-i18n="person.hintClick">Clique para ver em cor</span><span class="touch" data-i18n="person.hintTap">Toque para ver em cor</span></span>
+            <span class="hint-on" data-i18n="person.hintBack">Voltar ao preto e branco</span>
+          </span>
+        </button>
+        <figcaption class="micro">Lucas Cabral — Product Designer &amp; Design Engineer</figcaption>
+      </figure>
+      <div class="person-body reveal">
+        <p data-i18n="person.lead">Cresci acompanhando a rotina da Sartec, empresa da minha família, onde vi de perto atendimento, pedidos, clientes, comunicação, vendas e operação acontecendo todos os dias.</p>
+        <p data-i18n="person.body">Esse contato com problemas reais moldou meu olhar para produto antes mesmo de eu trabalhar formalmente com design. Hoje desenho produtos e conduzo a implementação com IA — do problema à interface funcionando.</p>
       </div>
-
-      <div class="proj-list reveal" id="proj-list">
-
-        <!-- Pesca Delivery — case principal, página interna /cases/pesca/ -->
-        <div class="proj-item open">
-          <button class="proj-row spot" aria-expanded="true">
-            <span class="proj-thumb">
-              <img class="proj-thumb-video proj-thumb-brand" src="assets/cases/pesca/brand/pesca-delivery-logo-1000.png" alt="" width="1000" height="436" loading="lazy" />
-            </span>
-            <span class="proj-heading">
-              <span class="proj-eyebrow" data-i18n="work.pesca.eyebrow">Product Design · Design Engineering · IA aplicada</span>
-              <span class="proj-name" data-i18n="work.pesca.title">Pesca Delivery — Loja e Painel</span>
-            </span>
-            <span class="proj-badge is-live" data-i18n="work.pesca.badge">Em operação</span>
-            <span class="proj-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="proj-panel"><div class="proj-panel-inner">
-            <div class="proj-card">
-              <div class="proj-video proj-video-brand">
-                <img src="assets/cases/pesca/brand/pesca-delivery-logo-1000.png" alt="Logotipo do Pesca Delivery" width="1000" height="436" loading="lazy" data-i18n="work.pesca.logoAlt" data-i18n-attr="alt" />
-              </div>
-              <div class="proj-info">
-                <p class="work-sum" data-i18n="work.pesca.sum">Loja digital e painel operacional para uma peixaria que passou a vender Pokes personalizados, até então montados pelo WhatsApp. Conduzi o produto da oportunidade à operação: conversa com o negócio, evolução do Builder, identidade Dark Premium, regras de peso, preço e pagamento, e coordenação da implementação assistida por IA.</p>
-                <div class="work-tags">
-                  <span>Product Design</span><span>Design Engineering</span><span>UX/UI</span><span data-i18n="work.pesca.tag1">IA aplicada</span><span data-i18n="work.pesca.tag2">Operação</span>
-                </div>
-                <div class="work-ctas">
-                  <a class="work-cta" href="cases/pesca/"><span data-i18n="work.pesca.cta">Ver case completo</span> <span class="arr">→</span></a>
-                </div>
-              </div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- CRM operacional + Agente de IA (WhatsApp) -->
-        <div class="proj-item">
-          <button class="proj-row spot" aria-expanded="false">
-            <span class="proj-thumb">
-              <video class="proj-thumb-video lazy-video" muted loop playsinline preload="none" data-src="video crm sartec - portifolio.mp4"></video>
-            </span>
-            <span class="proj-heading">
-              <span class="proj-eyebrow" data-i18n="work.crm.eyebrow">Sistema interno · Fluxo de atendimento · IA aplicada</span>
-              <span class="proj-name" data-i18n="work.crm.title">CRM Operacional + Agente de IA</span>
-            </span>
-            <span class="proj-badge is-live" data-i18n="work.crm.badge">Implementado</span>
-            <span class="proj-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="proj-panel"><div class="proj-panel-inner">
-            <div class="proj-card">
-              <div class="proj-video">
-                <video class="lazy-video" muted loop playsinline preload="none" data-src="video crm sartec - portifolio.mp4" aria-label="Prévia do CRM Sartec" data-i18n="work.crm.videoAlt" data-i18n-attr="aria-label"></video>
-              </div>
-              <div class="proj-info">
-                <p class="work-sum" data-i18n="work.crm.sum">Sistema interno para centralizar atendimentos, estados, prioridades e fluxo de trabalho, integrado a um agente de IA no WhatsApp responsável pela triagem inicial e pelo handoff para o time humano. Meu papel cobriu pesquisa com quem operava o atendimento, modelagem dos estados do fluxo, design da interface do painel e definição de onde a IA deveria atuar — mantendo o critério e a decisão final sempre com o time.</p>
-                <div class="work-tags">
-                  <span data-i18n="work.crm.tag1">Sistema interno</span><span data-i18n="work.crm.tag2">Fluxo operacional</span><span data-i18n="work.crm.tag3">IA aplicada</span><span data-i18n="work.crm.tag4">Handoff humano</span>
-                </div>
-                <div class="work-ctas">
-                  <a class="work-cta" href="https://case-sartec.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="work.crm.cta">Ver case completo</span> <span class="arr">→</span></a>
-                </div>
-              </div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- UNIEDU -->
-        <div class="proj-item">
-          <button class="proj-row spot" aria-expanded="false">
-            <span class="proj-thumb">
-              <video class="proj-thumb-video lazy-video" muted loop playsinline preload="none" data-src="video app uniedu - portifolio.mp4"></video>
-            </span>
-            <span class="proj-heading">
-              <span class="proj-eyebrow" data-i18n="work.uniedu.eyebrow">UX Research · Design System · Produto educacional</span>
-              <span class="proj-name" data-i18n="work.uniedu.title">Plataforma UNIEDU</span>
-            </span>
-            <span class="proj-badge is-live" data-i18n="work.uniedu.badge">Case completo</span>
-            <span class="proj-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="proj-panel"><div class="proj-panel-inner">
-            <div class="proj-card">
-              <div class="proj-video">
-                <video class="lazy-video" muted loop playsinline preload="none" data-src="video app uniedu - portifolio.mp4" aria-label="Prévia do aplicativo UNIEDU" data-i18n="work.uniedu.videoAlt" data-i18n-attr="aria-label"></video>
-              </div>
-              <div class="proj-info">
-                <p class="work-sum" data-i18n="work.uniedu.sum">Produto educacional gamificado, desenhado a partir de pesquisa com estudantes para transformar constância de estudo em progresso real. Conduzi a estratégia de produto, o design system e um protótipo navegável, validando decisões de UX diretamente com o público-alvo.</p>
-                <div class="work-tags">
-                  <span>UX Research</span><span>Design System</span><span>Product Strategy</span><span data-i18n="work.uniedu.tag1">Gamificação</span><span data-i18n="work.uniedu.tag2">Protótipo</span>
-                </div>
-                <div class="work-ctas">
-                  <a class="work-cta" href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="work.uniedu.ctaRecruiter">Ver case para recrutadores</span> <span class="arr">→</span></a>
-                  <a class="work-cta-sec" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer"><span data-i18n="work.uniedu.ctaPrototype">Abrir protótipo</span> →</a>
-                </div>
-              </div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- Site Sartec Papelaria — case de apoio, menor peso -->
-        <div class="proj-item">
-          <button class="proj-row spot" aria-expanded="false">
-            <span class="proj-thumb">
-              <video class="proj-thumb-video lazy-video" muted loop playsinline preload="none" data-src="video site sartec papelaria - portifolio.mp4"></video>
-            </span>
-            <span class="proj-heading">
-              <span class="proj-eyebrow" data-i18n="work.papelaria.eyebrow">Presença digital · Arquitetura da informação</span>
-              <span class="proj-name" data-i18n="work.papelaria.title">Site Sartec Papelaria</span>
-            </span>
-            <span class="proj-badge" data-i18n="work.papelaria.badge">Case de apoio</span>
-            <span class="proj-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="proj-panel"><div class="proj-panel-inner">
-            <div class="proj-card">
-              <div class="proj-video">
-                <video class="lazy-video" muted loop playsinline preload="none" data-src="video site sartec papelaria - portifolio.mp4" aria-label="Prévia do site Sartec Papelaria" data-i18n="work.papelaria.videoAlt" data-i18n-attr="aria-label"></video>
-              </div>
-              <div class="proj-info">
-                <p class="work-sum" data-i18n="work.papelaria.sum">Presença digital para um negócio local, pensada como exercício de arquitetura da informação e hierarquia de conteúdo — organizar o que o visitante precisa ver primeiro e transformar navegação em contato direto.</p>
-                <div class="work-tags">
-                  <span data-i18n="work.papelaria.tag1">Arquitetura da informação</span><span data-i18n="work.papelaria.tag2">Hierarquia de conteúdo</span><span data-i18n="work.papelaria.tag3">Front-end</span>
-                </div>
-                <div class="work-ctas">
-                  <a class="work-cta-sec" href="https://agente-triagem-sartec.vercel.app/index.html" target="_blank" rel="noopener noreferrer"><span data-i18n="work.papelaria.cta">Ver site</span> →</a>
-                </div>
-              </div>
-            </div>
-          </div></div>
-        </div>
-
-      </div>
+      <dl class="facts reveal">
+        <div><dt data-i18n="person.f1k">Papel</dt><dd>Product Designer &amp; Design Engineer</dd></div>
+        <div><dt data-i18n="person.f2k">Disciplinas</dt><dd data-i18n="person.f2v">Product Design · UX/UI · Design Systems · IA aplicada</dd></div>
+        <div><dt data-i18n="person.f3k">Idiomas</dt><dd data-i18n="person.f3v">Português · English</dd></div>
+      </dl>
     </div>
   </div>
 </section>
 
-<!-- ================= SERVICE ================= -->
-<section id="service">
-  <div class="shell">
-    <div class="panel panel-pad">
-      <div class="panel-head reveal">
-        <div class="sec-ghost" data-i18n="service.ghost">ESPECIALIDADES</div>
-        <h2 class="sec-title"><span class="slash">/</span><span data-i18n="service.title">Especialidades</span></h2>
-        <p class="sec-sub" data-i18n="service.sub">Áreas onde atuo com mais profundidade — de pesquisa e interface até implementação funcional com IA.</p>
+<!-- ================= 03 · SELECTED WORK — the evidence, right after the person ================= -->
+<section class="sec work" id="cases" aria-labelledby="h-work">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="micro"><b>(03)</b>&nbsp;&nbsp;<span data-i18n="work.kicker">Trabalho selecionado</span></p>
+      <span class="rule" aria-hidden="true"></span>
+      <p class="micro sec-count" data-i18n="work.count">05 projetos</p>
+    </header>
+    <h2 class="sec-title reveal" id="h-work" data-i18n="work.title">Do problema à interface funcionando em produção.</h2>
+
+    <!-- ck13: two editorial groups — products & systems (Pesca leads) / websites -->
+    <section class="work-group" aria-labelledby="g-products">
+      <header class="group-head reveal">
+        <p class="micro group-key"><b>(A)</b></p>
+        <h3 class="group-title" id="g-products" data-i18n="work.gA">Produtos e sistemas</h3>
+        <p class="group-desc" data-i18n="work.gAdesc">Interfaces com regras, estados e operação por trás — do pedido ao painel.</p>
+      </header>
+
+    <!-- Pesca Delivery — the lead case, full width -->
+    <article class="feature reveal" aria-labelledby="h-pesca">
+      <a class="feature-link" href="cases/pesca/" aria-labelledby="h-pesca"></a>
+      <div class="feature-copy">
+        <p class="micro feature-meta"><span>01</span><span data-i18n="pesca.kicker">Case principal · 2026</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="pesca.badge">Em operação</span></span></p>
+        <h4 class="feature-title" id="h-pesca">Pesca Delivery</h4>
+        <p class="feature-sub">Beyond the storefront.</p>
+        <p class="feature-lede" data-i18n="pesca.lede">Da personalização de um Poke pelo WhatsApp a uma experiência digital que conecta compra e operação.</p>
+        <dl class="feature-dl">
+          <div><dt data-i18n="pesca.m1">Papel</dt><dd>Product Designer &amp; Design Engineer</dd></div>
+          <div><dt data-i18n="pesca.m2">Disciplinas</dt><dd>Product Design · UX/UI · Design Engineering</dd></div>
+          <div><dt data-i18n="pesca.m3">Processo</dt><dd data-i18n="pesca.m3v">Desenvolvimento assistido por IA</dd></div>
+        </dl>
+        <div class="sysmap" aria-label="Mapa do sistema" data-i18n="pesca.mapAria" data-i18n-attr="aria-label">
+          <div><span data-i18n="pesca.n1k">Loja</span><p data-i18n="pesca.n1t">Onde o cliente decide</p></div>
+          <div class="core"><span data-i18n="pesca.n2k">Regras compartilhadas</span><p data-i18n="pesca.n2t">O que é verdade</p></div>
+          <div><span data-i18n="pesca.n3k">Painel</span><p data-i18n="pesca.n3t">Onde a operação age</p></div>
+        </div>
+        <span class="cta-arrow"><span data-i18n="pesca.cta">Ver case completo</span><span aria-hidden="true">→</span></span>
       </div>
-
-      <div class="svc-list reveal" id="svc-list">
-        <div class="svc-item">
-          <button class="svc-row spot" aria-expanded="false">
-            <span class="svc-index">01</span>
-            <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.5" cy="18" r="1.6"/><circle cx="12" cy="7" r="1.6"/><circle cx="19.5" cy="17" r="1.6"/><path d="M5.8 16.8 10.7 8.6M13.3 8.6 18.2 15.8"/></svg></span>
-            <span class="svc-name">UX/UI Design</span>
-            <span class="svc-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="svc-panel"><div class="svc-panel-inner">
-            <div class="svc-card">
-              <div>
-                <p data-i18n="service.uxui.body">Interfaces claras, fluxos consistentes e experiências digitais orientadas por pesquisa, usabilidade e decisão de produto.</p>
-                <div class="svc-tags"><span data-i18n="service.uxui.tag1">Pesquisa</span><span data-i18n="service.uxui.tag2">Fluxos</span><span data-i18n="service.uxui.tag3">Usabilidade</span><span>Interface</span></div>
-              </div>
-              <div class="svc-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.6"/><path d="M3.5 9h17"/><rect x="6" y="11.3" width="4.4" height="5.7" rx="0.9"/><rect x="12.4" y="11.3" width="5.6" height="2.6" rx="0.7"/><rect x="12.4" y="15.2" width="5.6" height="1.8" rx="0.7"/></svg></div>
-            </div>
-          </div></div>
+      <!-- ck13: the product as delivered — real captures of the public store (390 × 844 @2x, same captures the
+           L A Cabral case uses) in CSS device frames whose screen keeps the capture's exact ratio: nothing is cropped.
+           Painel slot: waiting for a DEV capture with fictitious data (see the checkpoint-13 report); no stand-in image. -->
+      <div class="feature-media">
+        <img class="feature-logo" src="assets/cases/pesca/brand/pesca-delivery-logo-1000.png" alt="" width="1000" height="436" loading="lazy" />
+        <div class="devices">
+          <figure class="device">
+            <div class="device-screen"><img src="assets/cases/pesca/app/loja-inicio.webp" width="780" height="1688" loading="lazy" decoding="async"
+              alt="Tela inicial da loja do Pesca Delivery, com os caminhos Do mar e Poke." data-i18n="pesca.shotStoreAlt" data-i18n-attr="alt" /></div>
+            <figcaption class="micro" data-i18n="pesca.shotStore">Loja</figcaption>
+          </figure>
+          <figure class="device">
+            <div class="device-screen"><img src="assets/cases/pesca/app/builder-poke.webp" width="780" height="1688" loading="lazy" decoding="async"
+              alt="Builder de Poke: proteínas adicionais, valor do prato e botão de adicionar ao carrinho." data-i18n="pesca.shotBuilderAlt" data-i18n-attr="alt" /></div>
+            <figcaption class="micro" data-i18n="pesca.shotBuilder">Builder de Poke</figcaption>
+          </figure>
         </div>
-
-        <div class="svc-item">
-          <button class="svc-row spot" aria-expanded="false">
-            <span class="svc-index">02</span>
-            <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v10l-7 4-7-4V7z"/><path d="M12 3v18M5 7l7 4 7-4"/></svg></span>
-            <span class="svc-name">Product Design</span>
-            <span class="svc-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="svc-panel"><div class="svc-panel-inner">
-            <div class="svc-card">
-              <div>
-                <p data-i18n="service.product.body">Estruturação de soluções digitais a partir de problema, contexto, jornada, prioridade e impacto no negócio.</p>
-                <div class="svc-tags"><span data-i18n="service.product.tag1">Problema</span><span data-i18n="service.product.tag2">Jornada</span><span data-i18n="service.product.tag3">Prioridade</span><span data-i18n="service.product.tag4">Impacto</span></div>
-              </div>
-              <div class="svc-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M3.5 12h17M6 6l12 12M18 6 6 18"/></svg></div>
-            </div>
-          </div></div>
-        </div>
-
-        <div class="svc-item">
-          <button class="svc-row spot" aria-expanded="false">
-            <span class="svc-index">03</span>
-            <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1.6"/><path d="M3.5 9.2h17"/><circle cx="6.3" cy="7.1" r="0.55" fill="currentColor" stroke="none"/><circle cx="8.4" cy="7.1" r="0.55" fill="currentColor" stroke="none"/></svg></span>
-            <span class="svc-name" data-i18n="service.sites.name">Design Systems e arquitetura de interface</span>
-            <span class="svc-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="svc-panel"><div class="svc-panel-inner">
-            <div class="svc-card">
-              <div>
-                <p data-i18n="service.sites.body">Consistência visual e de comportamento em produtos digitais — componentização, padrões de interface e documentação que escalam com o time.</p>
-                <div class="svc-tags"><span data-i18n="service.sites.tag1">Consistência</span><span data-i18n="service.sites.tag2">Componentes</span><span data-i18n="service.sites.tag3">Documentação</span></div>
-              </div>
-              <div class="svc-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M7 13h6M7 15.5h4"/></svg></div>
-            </div>
-          </div></div>
-        </div>
-
-        <div class="svc-item">
-          <button class="svc-row spot" aria-expanded="false">
-            <span class="svc-index">04</span>
-            <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="4.4" height="14" rx="1.2"/><rect x="9.8" y="5" width="4.4" height="9" rx="1.2"/><rect x="15.6" y="5" width="4.4" height="11.5" rx="1.2"/></svg></span>
-            <span class="svc-name" data-i18n="service.systems.name">Ferramentas internas e produtos B2B</span>
-            <span class="svc-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="svc-panel"><div class="svc-panel-inner">
-            <div class="svc-card">
-              <div>
-                <p data-i18n="service.systems.body">Painéis e fluxos operacionais para times internos — organizar demanda, status, prioridade e tomada de decisão dentro do produto.</p>
-                <div class="svc-tags"><span data-i18n="service.systems.tag1">Painéis</span><span data-i18n="service.systems.tag2">Estados</span><span data-i18n="service.systems.tag3">Operação</span><span data-i18n="service.systems.tag4">Decisão</span></div>
-              </div>
-              <div class="svc-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="5" height="14" rx="1.4"/><rect x="10.5" y="5" width="5" height="9" rx="1.4"/><rect x="17" y="5" width="3" height="12" rx="1.4"/></svg></div>
-            </div>
-          </div></div>
-        </div>
-
-        <div class="svc-item">
-          <button class="svc-row spot" aria-expanded="false">
-            <span class="svc-index">05</span>
-            <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.6"/><circle cx="5" cy="16" r="1.6"/><circle cx="19" cy="16" r="1.6"/><circle cx="12" cy="12.5" r="1.4"/><path d="M12 6.6V11.2M10.8 13.4 6.2 15M13.2 13.4 17.8 15"/></svg></span>
-            <span class="svc-name" data-i18n="service.automation.name">IA aplicada a fluxos e produto</span>
-            <span class="svc-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="svc-panel"><div class="svc-panel-inner">
-            <div class="svc-card">
-              <div>
-                <p data-i18n="service.automation.body">Uso IA para acelerar triagem, respostas e decisões dentro de um fluxo de produto, sempre com handoff humano e critério de uso claro.</p>
-                <div class="svc-tags"><span data-i18n="service.automation.tag1">Agentes</span><span data-i18n="service.automation.tag2">Triagem</span><span data-i18n="service.automation.tag3">Handoff humano</span><span>Guardrails</span></div>
-              </div>
-              <div class="svc-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="19" cy="17" r="2"/><circle cx="12" cy="12" r="1.8"/><path d="M12 7v3M10.5 13.5 6.5 15.8M13.5 13.5l4 2.3"/></svg></div>
-            </div>
-          </div></div>
-        </div>
-
-        <div class="svc-item">
-          <button class="svc-row spot" aria-expanded="false">
-            <span class="svc-index">06</span>
-            <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 8 5 12l3.5 4M15.5 8 19 12l-3.5 4M13.2 6l-2.4 12"/></svg></span>
-            <span class="svc-name">Design Engineering</span>
-            <span class="svc-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="svc-panel"><div class="svc-panel-inner">
-            <div class="svc-card">
-              <div>
-                <p data-i18n="service.engineering.body">Condução da implementação com IA, código, validação, documentação e deploy, reduzindo a distância entre design e produto funcional.</p>
-                <div class="svc-tags"><span data-i18n="service.engineering.tag1">Implementação</span><span data-i18n="service.engineering.tag2">Código</span><span data-i18n="service.engineering.tag3">Validação</span><span data-i18n="service.engineering.tag4">Deploy</span></div>
-              </div>
-              <div class="svc-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 7 4 12l4.5 5M15.5 7 20 12l-4.5 5M13.5 5l-3 14"/></svg></div>
-            </div>
-          </div></div>
-        </div>
+        <p class="micro feature-note" data-i18n="pesca.note">Capturas da loja pública em produção · out. 2026</p>
       </div>
+    </article>
+
+    <!-- CRM + UNIEDU — large cards -->
+    <div class="cards">
+      <article class="card reveal" aria-labelledby="h-crm">
+        <!-- ck14: the recording's background board shows (blurred) customer names; the card frames only the
+             "who is attending now?" window in the centre (.card-media--crop) -->
+        <div class="card-media card-media--crop">
+          <video class="lazy-video" muted loop playsinline preload="none" data-src="video%20crm%20sartec%20-%20portifolio.mp4" aria-label="Prévia do CRM Sartec" data-i18n="crm.videoAlt" data-i18n-attr="aria-label"></video>
+        </div>
+        <p class="micro card-meta"><span>02</span><span data-i18n="crm.kicker">Sistema interno · IA aplicada</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="crm.badge">Implementado</span></span></p>
+        <h4 class="card-title" id="h-crm" data-i18n="crm.title">CRM Operacional + Agente de IA</h4>
+        <p class="card-sum" data-i18n="crm.sum">Sistema interno para centralizar atendimentos, estados, prioridades e fluxo de trabalho, integrado a um agente de IA no WhatsApp para triagem inicial e handoff para o time humano.</p>
+        <ul class="tags"><li data-i18n="crm.t1">Pesquisa com operação</li><li data-i18n="crm.t2">Estados do fluxo</li><li data-i18n="crm.t3">Handoff humano</li></ul>
+        <div class="card-ctas"><a class="cta-arrow" href="cases/sartec/"><span data-i18n="crm.cta">Ver case completo</span><span aria-hidden="true">→</span></a></div>
+      </article>
+
+      <article class="card reveal" aria-labelledby="h-uniedu">
+        <div class="card-media">
+          <video class="lazy-video" muted loop playsinline preload="none" data-src="video%20app%20uniedu%20-%20portifolio.mp4" aria-label="Prévia do aplicativo UNIEDU" data-i18n="uniedu.videoAlt" data-i18n-attr="aria-label"></video>
+        </div>
+        <p class="micro card-meta"><span>03</span><span data-i18n="uniedu.kicker">UX Research · Design System</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="uniedu.badge">Case completo</span></span></p>
+        <h4 class="card-title" id="h-uniedu" data-i18n="uniedu.title">Plataforma UNIEDU</h4>
+        <p class="card-sum" data-i18n="uniedu.sum">Produto educacional gamificado, desenhado a partir de pesquisa com estudantes para transformar constância de estudo em progresso real. Estratégia de produto, design system e protótipo navegável validado com o público-alvo.</p>
+        <p class="credit"><span data-i18n="uniedu.credit">Projeto em dupla com</span> <a href="https://www.linkedin.com/in/najme-simon-al%C3%A9-b08b6221" target="_blank" rel="noopener noreferrer">Najme Simon Alé</a></p>
+        <ul class="tags"><li>UX Research</li><li>Design System</li><li>Product Strategy</li></ul>
+        <div class="card-ctas">
+          <!-- the full case (root route); /recrutamento is the short recruiter version and is not linked -->
+          <a class="cta-arrow" href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta">Ver case completo</span><span aria-hidden="true">↗</span></a>
+          <a class="cta-quiet" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta2">Abrir protótipo</span> ↗</a>
+        </div>
+      </article>
+    </div>
+
+    </section>
+
+    <section class="work-group" aria-labelledby="g-web">
+      <header class="group-head reveal">
+        <p class="micro group-key"><b>(B)</b></p>
+        <h3 class="group-title" id="g-web" data-i18n="work.gB">Sites e experiências web</h3>
+        <p class="group-desc" data-i18n="work.gBdesc">Arquitetura da informação, direção visual e implementação web para negócios reais.</p>
+      </header>
+      <!-- ck13: websites get a wide editorial row each (browser frame + what was decided), alternating sides.
+           Captures: the sites' real home pages (same captures as the L A Cabral cases). -->
+      <article class="site reveal" aria-labelledby="h-papelaria">
+        <a class="browser" href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer" data-i18n="papelaria.open" data-i18n-attr="aria-label" aria-label="Abrir o site da Sartec Papelaria em nova aba">
+          <span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser-url">sartecpapelaria.com.br</span></span>
+          <img src="assets/cases/sites/sartec-papelaria-inicio.jpg" width="1600" height="900" loading="lazy" decoding="async"
+            alt="Página inicial do site da Sartec Papelaria: chamada principal, botões para explorar produtos e enviar lista escolar, e a fachada ilustrada da loja." data-i18n="papelaria.alt" data-i18n-attr="alt" />
+        </a>
+        <div class="site-copy">
+          <p class="micro card-meta"><span>04</span><span data-i18n="papelaria.kicker">Site + ecossistema digital</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="papelaria.badge">Publicado</span></span></p>
+          <h4 class="site-title" id="h-papelaria">Sartec Papelaria</h4>
+          <p class="site-sum" data-i18n="papelaria.sum">Site de uma papelaria com mais de 30 anos em São José dos Campos. Organiza o que o visitante procura — produtos, lista escolar, empresas, cópias — e leva tudo para um único canal de WhatsApp, a porta de entrada da mesma operação atendida pelo CRM + Agente de IA.</p>
+          <dl class="site-dl">
+            <div><dt data-i18n="site.ia">Arquitetura</dt><dd data-i18n="papelaria.ia">Navegação pelos motivos reais de visita, com a lista escolar em destaque</dd></div>
+            <div><dt data-i18n="site.visual">Direção visual</dt><dd data-i18n="papelaria.visual">Identidade da marca aplicada à web, com a fachada da loja como imagem de abertura</dd></div>
+            <div><dt data-i18n="site.build">Implementação</dt><dd data-i18n="papelaria.build">Site publicado e integrado ao WhatsApp</dd></div>
+          </dl>
+          <a class="cta-arrow" href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer"><span data-i18n="papelaria.cta">Visitar o site</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="site site--flip reveal" aria-labelledby="h-almeida">
+        <a class="browser" href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="almeida.open" data-i18n-attr="aria-label" aria-label="Abrir o ambiente de homologação do site do Grupo Almeida em nova aba">
+          <span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser-url">almeidaambiental.vercel.app</span></span>
+          <img src="assets/cases/sites/grupo-almeida-inicio.jpg" width="1600" height="1000" loading="lazy" decoding="async"
+            alt="Página inicial do site do Grupo Almeida: foto aérea da sede, o título Transformando resíduo em resultado e o seletor de idioma PT/EN." data-i18n="almeida.alt" data-i18n-attr="alt" />
+        </a>
+        <div class="site-copy">
+          <p class="micro card-meta"><span>05</span><span data-i18n="almeida.kicker">Site institucional · PT/EN</span><span class="state" data-i18n="almeida.badge">Em homologação</span></p>
+          <h4 class="site-title" id="h-almeida">Grupo Almeida</h4>
+          <p class="site-sum" data-i18n="almeida.sum">Site institucional de um grupo do setor ambiental que reúne Almeida Ambiental, Almeida Equipamentos e Saturno Ambiental. Apresenta o grupo sem fragmentar a navegação e sem apagar a identidade de cada empresa. Está em ambiente de homologação para validação do cliente.</p>
+          <dl class="site-dl">
+            <div><dt data-i18n="site.ia">Arquitetura</dt><dd data-i18n="almeida.ia">Três empresas como partes de um mesmo grupo</dd></div>
+            <div><dt data-i18n="site.visual">Direção visual</dt><dd data-i18n="almeida.visual">Solidez e escala: fotografia da operação e tipografia institucional</dd></div>
+            <div><dt data-i18n="site.build">Implementação</dt><dd data-i18n="almeida.build">Site bilíngue, português e inglês</dd></div>
+          </dl>
+          <a class="cta-arrow" href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="almeida.cta">Ver em homologação</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+    </section>
+  </div>
+</section>
+
+<!-- ================= 04 · HOW I THINK — the four leaves + method ================= -->
+<section class="sec method" id="method" aria-labelledby="h-method">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="micro"><b>(04)</b>&nbsp;&nbsp;<span data-i18n="method.kicker">Como eu penso</span></p>
+      <span class="rule" aria-hidden="true"></span>
+    </header>
+    <h2 class="sec-title reveal" id="h-method" data-i18n="method.title">Quatro folhas, um mesmo produto.</h2>
+    <p class="sec-lede reveal" data-i18n="method.lede">O trevo não é decoração: cada folha é uma dimensão que precisa estar presente para um produto funcionar de verdade.</p>
+    <ol class="leaves">
+      <li class="leaf reveal" style="--leaf:0"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">01</p><h3>UX</h3><p data-i18n="method.ux">Interfaces claras, fluxos consistentes e experiências orientadas por pesquisa, usabilidade e decisão de produto.</p></li>
+      <li class="leaf reveal" style="--leaf:1"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">02</p><h3>UI</h3><p data-i18n="method.ui">Consistência visual e de comportamento — componentização, padrões de interface e documentação que escalam com o time.</p></li>
+      <li class="leaf reveal" style="--leaf:2"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">03</p><h3 data-i18n="method.aiT">IA</h3><p data-i18n="method.ai">Uso IA para acelerar triagem, decisões e implementação, sempre com handoff humano e critério de uso claro.</p></li>
+      <li class="leaf reveal" style="--leaf:3"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">04</p><h3 data-i18n="method.empathyT">Empatia</h3><p data-i18n="method.empathy">Pesquisa com usuários e vivência em operação real: entender o contexto e o trabalho de quem opera antes de qualquer interface.</p></li>
+    </ol>
+    <div class="steps reveal">
+      <p class="micro steps-label" data-i18n="method.stepsLabel">Método</p>
+      <ol>
+        <li><span>01</span><b data-i18n="method.s1t">Entendo o problema</b><p data-i18n="method.s1">Mergulho no contexto real e na operação antes de qualquer interface.</p></li>
+        <li><span>02</span><b data-i18n="method.s2t">Mapeio o fluxo</b><p data-i18n="method.s2">Usuários, contexto, jornada e o trabalho real de quem opera.</p></li>
+        <li><span>03</span><b data-i18n="method.s3t">Desenho os estados</b><p data-i18n="method.s3">Arquitetura, hierarquia, estados, microcopy e responsividade.</p></li>
+        <li><span>04</span><b data-i18n="method.s4t">Valido e evoluo</b><p data-i18n="method.s4">Testo no uso real, documento decisões e evoluo a entrega.</p></li>
+      </ol>
     </div>
   </div>
 </section>
 
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience">
-  <div class="shell">
-    <div class="panel panel-dark panel-pad">
-      <div class="panel-head reveal">
-        <div class="sec-ghost" data-i18n="experience.ghost">EXPERIÊNCIA</div>
-        <div class="panel-head-row">
-          <div>
-            <h2 class="sec-title"><span class="slash">/</span><span data-i18n="experience.title">Experiência</span></h2>
-          </div>
-          <span class="xp-head-note" data-i18n="experience.headNote">Produto · Operação · Implementação</span>
-        </div>
-        <p class="xp-lead" style="margin-top:22px" data-i18n="experience.lead">Experiência aplicada em produto, operação e implementação.</p>
-        <p class="xp-intro" data-i18n="experience.intro">Meu trabalho combina vivência em operação real, pesquisa com usuários, design de interface, automação e condução de implementação com IA.</p>
-      </div>
-
-      <div class="xp-list reveal stagger">
-        <div class="xp-row">
-          <span class="xp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H10l-4 3.5V16H6.5A2.5 2.5 0 0 1 4 13.5v-7Z"/></svg></span>
-          <div>
-            <div class="xp-name">Sartec</div>
-            <div class="xp-role" data-i18n="experience.sartec.role">Vivência operacional, atendimento e processos comerciais</div>
-            <p class="xp-detail" data-i18n="experience.sartec.detail">Experiência direta com clientes, pedidos, mídias, telemarketing, rotina comercial e organização de operação.</p>
-          </div>
-          <span class="xp-tag" data-i18n="experience.sartec.tag">Operação real</span>
-        </div>
-
-        <div class="xp-row">
-          <span class="xp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="4.4" height="14" rx="1.2"/><rect x="9.8" y="5" width="4.4" height="9" rx="1.2"/><rect x="15.6" y="5" width="4.4" height="11.5" rx="1.2"/></svg></span>
-          <div>
-            <div class="xp-name">Sartec CRM</div>
-            <div class="xp-role" data-i18n="experience.crm.role">Product Design, UX operacional e Design Engineering</div>
-            <p class="xp-detail" data-i18n="experience.crm.detail">Sistema interno para organizar atendimento, estados, histórico, prioridades e fluxo de trabalho.</p>
-          </div>
-          <span class="xp-tag" data-i18n="experience.crm.tag">Sistema interno</span>
-        </div>
-
-        <div class="xp-row">
-          <span class="xp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.6"/><circle cx="5" cy="16" r="1.6"/><circle cx="19" cy="16" r="1.6"/><circle cx="12" cy="12.5" r="1.4"/><path d="M12 6.6V11.2M10.8 13.4 6.2 15M13.2 13.4 17.8 15"/></svg></span>
-          <div>
-            <div class="xp-name" data-i18n="experience.agent.name">Agente WhatsApp Sartec</div>
-            <div class="xp-role" data-i18n="experience.agent.role">IA aplicada, triagem e handoff humano</div>
-            <p class="xp-detail" data-i18n="experience.agent.detail">Agente conectado ao WhatsApp para coletar contexto, organizar demandas e encaminhar ao atendimento humano.</p>
-          </div>
-          <span class="xp-tag" data-i18n="experience.agent.tag">IA aplicada</span>
-        </div>
-
-        <div class="xp-row">
-          <span class="xp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.6"/><path d="M3.5 9h17"/><rect x="6" y="11.3" width="4.4" height="5.7" rx="0.9"/><rect x="12.4" y="11.3" width="5.6" height="2.6" rx="0.7"/><rect x="12.4" y="15.2" width="5.6" height="1.8" rx="0.7"/></svg></span>
-          <div>
-            <div class="xp-name">UNIEDU</div>
-            <div class="xp-role" data-i18n="experience.uniedu.role">UX Research, Product Design e protótipo educacional</div>
-            <p class="xp-detail" data-i18n="experience.uniedu.detail">Produto educacional gamificado com pesquisa, design system, jornadas, testes e protótipo navegável.</p>
-          </div>
-          <span class="xp-tag">Product Design</span>
-        </div>
-
-        <div class="xp-row">
-          <span class="xp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 8 5 12l3.5 4M15.5 8 19 12l-3.5 4M13.2 6l-2.4 12"/></svg></span>
-          <div>
-            <div class="xp-name" data-i18n="experience.engineering.name">Design Engineering com IA</div>
-            <div class="xp-role" data-i18n="experience.engineering.role">Implementação assistida, validação e documentação</div>
-            <p class="xp-detail" data-i18n="experience.engineering.detail">Uso IA como alavanca de execução, mantendo escopo, critérios, revisão, documentação e controle humano.</p>
-          </div>
-          <span class="xp-tag" data-i18n="experience.engineering.tag">Implementação</span>
-        </div>
-      </div>
-
-      <div class="xp-steps reveal stagger">
-        <div class="xp-step"><div class="n">01</div><h5 data-i18n="experience.step1.title">Entendo o problema</h5><p data-i18n="experience.step1.body">Mergulho no contexto real e na operação antes de qualquer interface.</p></div>
-        <div class="xp-step"><div class="n">02</div><h5 data-i18n="experience.step2.title">Mapeio o fluxo</h5><p data-i18n="experience.step2.body">Usuários, contexto, jornada e o trabalho real de quem opera.</p></div>
-        <div class="xp-step"><div class="n">03</div><h5 data-i18n="experience.step3.title">Desenho os estados</h5><p data-i18n="experience.step3.body">Arquitetura, hierarquia, estados, microcopy e responsividade.</p></div>
-        <div class="xp-step"><div class="n">04</div><h5 data-i18n="experience.step4.title">Valido e evoluo</h5><p data-i18n="experience.step4.body">Testo no uso real, documento decisões e evoluo a entrega.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about">
-  <div class="shell">
-    <div class="panel panel-pad">
-      <div class="panel-head reveal">
-        <div class="sec-ghost" data-i18n="about.ghost">SOBRE</div>
-        <h2 class="sec-title"><span class="slash">/</span><span data-i18n="about.title">Sobre</span></h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="reveal">
-          <p class="about-lead" data-i18n="about.lead">Cresci acompanhando a rotina da Sartec, empresa da minha família, onde vi de perto atendimento, pedidos, clientes, comunicação, vendas e operação acontecendo todos os dias.</p>
-          <div class="about-body">
-            <p data-i18n="about.body1">Esse contato com problemas reais moldou meu olhar para produto antes mesmo de eu trabalhar formalmente com design. Na Biologia, aprendi a observar sistemas, contexto e relações.</p>
-            <p data-i18n="about.body2">No UX/UI Design, encontrei o caminho profissional onde essa curiosidade virou método: estudar telas, conversar com usuários, investigar dores pouco explícitas e transformar aprendizados em soluções digitais mais claras e funcionais.</p>
-            <p data-i18n="about.body3">Hoje conecto operação real, pesquisa, interface, produto, IA e implementação funcional. Gosto de aprender, testar, evoluir e ver cada entrega ficar mais bem resolvida que a anterior.</p>
-          </div>
-        </div>
-        <figure class="about-figure reveal">
-          <img src="mergulhador_lucas.jpeg" alt="Lucas Cabral mergulhando na Ilha do Arvoredo, Santa Catarina" onerror="this.style.display='none'" />
-          <figcaption>Ilha do Arvoredo — SC</figcaption>
+<!-- ================= 05 · JOURNEY ================= -->
+<section class="sec journey" id="journey" aria-labelledby="h-journey">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="micro"><b>(05)</b>&nbsp;&nbsp;<span data-i18n="journey.kicker">Trajetória</span></p>
+      <span class="rule" aria-hidden="true"></span>
+    </header>
+    <div class="journey-grid">
+      <div class="journey-story reveal">
+        <h2 class="sec-title" id="h-journey" data-i18n="journey.title">Produto, operação e implementação.</h2>
+        <p data-i18n="journey.p1">Na Biologia, aprendi a observar sistemas, contexto e relações. No UX/UI Design, encontrei o caminho profissional onde essa curiosidade virou método: estudar telas, conversar com usuários, investigar dores pouco explícitas e transformar aprendizados em soluções digitais mais claras e funcionais.</p>
+        <p data-i18n="journey.p2">Gosto de aprender, testar, evoluir e ver cada entrega ficar mais bem resolvida que a anterior.</p>
+        <figure class="journey-figure">
+          <img src="mergulhador_lucas.jpeg" alt="Lucas Cabral mergulhando na Ilha do Arvoredo, Santa Catarina" loading="lazy" data-i18n="journey.photoAlt" data-i18n-attr="alt" />
+          <figcaption class="micro">Ilha do Arvoredo — SC</figcaption>
         </figure>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= STACK ================= -->
-<section id="stack">
-  <div class="shell">
-    <div class="panel panel-pad">
-      <div class="panel-head reveal">
-        <div class="sec-ghost">STACK</div>
-        <h2 class="sec-title"><span class="slash">/</span>Stack</h2>
-        <p class="sec-sub" data-i18n="stack.sub">As ferramentas que uso para pesquisar, desenhar, construir e documentar.</p>
-      </div>
-      <div class="stack-grid stagger reveal">
-        <div class="stack-group">
-          <div class="stack-title" data-i18n="stack.research">Pesquisa &amp; organização</div>
-          <div class="stack-items">
-            <span class="stack-item"><span class="stack-dot">NO</span> Notion</span>
-            <span class="stack-item"><span class="stack-dot">GW</span> Google Workspace</span>
-            <span class="stack-item"><span class="stack-dot">GM</span> Gemini</span>
-          </div>
-        </div>
-        <div class="stack-group">
-          <div class="stack-title" data-i18n="stack.design">Design &amp; prototipação</div>
-          <div class="stack-items">
-            <span class="stack-item"><span class="stack-dot">FG</span> Figma</span>
-            <span class="stack-item"><span class="stack-dot">FM</span> Figma Make</span>
-          </div>
-        </div>
-        <div class="stack-group">
-          <div class="stack-title" data-i18n="stack.implementation">Implementação assistida</div>
-          <div class="stack-items">
-            <span class="stack-item"><span class="stack-dot">AG</span> Antigravity</span>
-            <span class="stack-item"><span class="stack-dot">CC</span> Claude Code</span>
-          </div>
-        </div>
-        <div class="stack-group">
-          <div class="stack-title" data-i18n="stack.validation">Validação &amp; documentação</div>
-          <div class="stack-items">
-            <span class="stack-item"><span class="stack-dot">NO</span> Notion</span>
-            <span class="stack-item"><span class="stack-dot">GW</span> Google Workspace</span>
-          </div>
+      <div class="journey-list reveal">
+        <ol class="xp">
+          <li><b>Sartec</b><span data-i18n="xp.sartec">Vivência operacional, atendimento e processos comerciais</span><em data-i18n="xp.sartecTag">Operação real</em></li>
+          <li><b>Sartec CRM</b><span data-i18n="xp.crm">Product Design, UX operacional e Design Engineering</span><em data-i18n="xp.crmTag">Sistema interno</em></li>
+          <li><b data-i18n="xp.agentName">Agente WhatsApp Sartec</b><span data-i18n="xp.agent">IA aplicada, triagem e handoff humano</span><em data-i18n="xp.agentTag">IA aplicada</em></li>
+          <li><b>UNIEDU</b><span data-i18n="xp.uniedu">UX Research, Product Design e protótipo educacional</span><em>Product Design</em></li>
+          <li><b>Pesca Delivery</b><span data-i18n="xp.pesca">Product Design, Design Engineering e implementação assistida por IA</span><em data-i18n="xp.pescaTag">Em operação</em></li>
+        </ol>
+        <div class="tools">
+          <p class="micro" data-i18n="journey.tools">Ferramentas</p>
+          <p>Figma · Figma Make · Claude Code · Antigravity · Notion · Google Workspace · Gemini</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact">
-  <div class="shell">
-    <div class="panel contact-panel reveal">
-      <div class="contact-media" aria-hidden="true">
-        <video class="contact-bg-video" autoplay loop muted playsinline poster="assets/brand/clover-contact-bg-poster.webp">
-          <source src="assets/video/clover-contact-bg.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="contact-content">
-        <span class="status" style="margin-bottom:20px" data-i18n="contact.status">Disponível para oportunidades em produto e design</span>
-        <h2 class="contact-title" data-i18n="contact.title">Buscando um Product Designer que una UX, UI, IA e implementação?</h2>
-        <p class="contact-desc" data-i18n="contact.desc">Estou aberto a conversas com times que constroem produtos digitais, ferramentas internas e experiências orientadas por IA. Vamos falar sobre produto, design e interfaces funcionais.</p>
-        <div class="contact-cta-row">
-          <a class="btn btn-primary" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20—%20Product%20Designer%20%26%20Design%20Engineer"><span data-i18n="contact.cta">Enviar e-mail</span></a>
-        </div>
-        <div class="contact-links">
-          <a class="pill-link" href="mailto:lac.lucascabral@gmail.com"><span data-i18n="social.email">E-mail</span> ↗</a>
-          <a class="pill-link" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          <a class="pill-link" href="#work" data-i18n="contact.ctaWork">Ver projetos</a>
-          <a class="pill-link" href="https://wa.me/5512997863832" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-        </div>
-        <p class="contact-note"><span data-i18n="contact.sartecNote">Também estruturo uma frente comercial separada para projetos digitais:</span> <a href="https://sartec-digital.vercel.app" target="_blank" rel="noopener noreferrer">Sartec Digital ↗</a></p>
+<!-- ================= 06 · CONTACT ================= -->
+<section class="sec contact" id="contact" aria-labelledby="h-contact">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="micro"><b>(06)</b>&nbsp;&nbsp;<span data-i18n="contact.kicker">Contato</span></p>
+      <span class="rule" aria-hidden="true"></span>
+      <p class="micro status"><span class="dot" aria-hidden="true"></span><span data-i18n="contact.status">Disponível para oportunidades em produto e design</span></p>
+    </header>
+    <h2 class="contact-title reveal" id="h-contact" data-i18n="contact.title">Buscando um Product Designer que una UX, UI, IA e implementação?</h2>
+    <div class="contact-grid reveal">
+      <p data-i18n="contact.desc">Estou aberto a conversas com times que constroem produtos digitais, ferramentas internas e experiências orientadas por IA. Vamos falar sobre produto, design e interfaces funcionais.</p>
+      <div class="contact-actions">
+        <a class="btn btn-solid" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20%E2%80%94%20Product%20Designer%20%26%20Design%20Engineer"><span data-i18n="contact.cta">Enviar e-mail</span><span aria-hidden="true">↗</span></a>
+        <ul class="contact-links">
+          <li><a href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+          <li><a href="https://wa.me/5512997863832" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></li>
+          <li><a href="mailto:lac.lucascabral@gmail.com">lac.lucascabral@gmail.com</a></li>
+        </ul>
+        <p class="contact-note"><span data-i18n="contact.studioNote">Também conduzo uma frente comercial separada para projetos digitais:</span> <a href="https://lacabral.vercel.app/" target="_blank" rel="noopener noreferrer">L A Cabral ↗</a></p>
       </div>
     </div>
   </div>
@@ -528,344 +342,15 @@
 
 </main>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="shell foot-inner">
-    <div>
-      <div class="fbrand">Lucas Cabral</div>
-      <div class="fmeta mono">Product Designer &amp; Design Engineer</div>
-    </div>
-    <div class="foot-links">
-      <a href="#work" data-i18n="nav.work">Projetos</a>
-      <a href="#service" data-i18n="nav.service">Especialidades</a>
-      <a href="#experience" data-i18n="nav.experience">Experiência</a>
-      <a href="mailto:lac.lucascabral@gmail.com" data-i18n="social.email">E-mail</a>
-      <a href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </div>
+<footer class="foot">
+  <div class="wrap foot-row">
+    <p class="micro">© 2026 Lucas Cabral</p>
+    <p class="micro">Product Designer &amp; Design Engineer</p>
+    <a class="micro" href="#top" data-i18n="foot.top">Voltar ao topo ↑</a>
   </div>
 </footer>
 
-<script>
-/* ---------- i18n ---------- */
-const I18N = {
-  pt: {
-    nav: { work: "Projetos", service: "Especialidades", experience: "Experiência", about: "Sobre", contact: "Contato", cta: "Vamos conversar" },
-    hero: { status: "Disponível para oportunidades", desc: "Desenho interfaces, fluxos e sistemas de produto, e uso IA com critério para acelerar a implementação até chegar a produção real.", ctaPrimary: "Conectar no LinkedIn", ctaSecondary: "Ver projetos" },
-    social: { email: "E-mail", linkedinAria: "Abrir meu LinkedIn" },
-    work: {
-      ghost: "PROJETOS", title: "Projetos", sub: "Cases reais de produto — do problema, das decisões de UX/UI e IA, até a interface funcionando em produção.",
-      pesca: { badge: "Em operação", logoAlt: "Logotipo do Pesca Delivery", eyebrow: "Product Design · Design Engineering · IA aplicada", title: "Pesca Delivery — Loja e Painel", sum: "Loja digital e painel operacional para uma peixaria que passou a vender Pokes personalizados, até então montados pelo WhatsApp. Conduzi o produto da oportunidade à operação: conversa com o negócio, evolução do Builder, identidade Dark Premium, regras de peso, preço e pagamento, e coordenação da implementação assistida por IA.", tag1: "IA aplicada", tag2: "Operação", cta: "Ver case completo" },
-      uniedu: { eyebrow: "UX Research · Design System · Produto educacional", title: "Plataforma UNIEDU", sum: "Produto educacional gamificado, desenhado a partir de pesquisa com estudantes para transformar constância de estudo em progresso real. Conduzi a estratégia de produto, o design system e um protótipo navegável, validando decisões de UX diretamente com o público-alvo.", tag1: "Gamificação", tag2: "Protótipo", ctaRecruiter: "Ver case para recrutadores", ctaPrototype: "Abrir protótipo", badge: "Case completo", videoAlt: "Prévia do aplicativo UNIEDU" },
-      crm: { badge: "Implementado", videoAlt: "Prévia do CRM Sartec", eyebrow: "Sistema interno · Fluxo de atendimento · IA aplicada", title: "CRM Operacional + Agente de IA", sum: "Sistema interno para centralizar atendimentos, estados, prioridades e fluxo de trabalho, integrado a um agente de IA no WhatsApp responsável pela triagem inicial e pelo handoff para o time humano. Meu papel cobriu pesquisa com quem operava o atendimento, modelagem dos estados do fluxo, design da interface do painel e definição de onde a IA deveria atuar — mantendo o critério e a decisão final sempre com o time.", tag1: "Sistema interno", tag2: "Fluxo operacional", tag3: "IA aplicada", tag4: "Handoff humano", cta: "Ver case completo" },
-      papelaria: { badge: "Case de apoio", videoAlt: "Prévia do site Sartec Papelaria", eyebrow: "Presença digital · Arquitetura da informação", title: "Site Sartec Papelaria", sum: "Presença digital para um negócio local, pensada como exercício de arquitetura da informação e hierarquia de conteúdo — organizar o que o visitante precisa ver primeiro e transformar navegação em contato direto.", tag1: "Arquitetura da informação", tag2: "Hierarquia de conteúdo", tag3: "Front-end", cta: "Ver site" }
-    },
-    service: {
-      ghost: "ESPECIALIDADES", title: "Especialidades", sub: "Áreas onde atuo com mais profundidade — de pesquisa e interface até implementação funcional com IA.",
-      uxui: { body: "Interfaces claras, fluxos consistentes e experiências digitais orientadas por pesquisa, usabilidade e decisão de produto.", tag1: "Pesquisa", tag2: "Fluxos", tag3: "Usabilidade" },
-      product: { body: "Estruturação de soluções digitais a partir de problema, contexto, jornada, prioridade e impacto no negócio.", tag1: "Problema", tag2: "Jornada", tag3: "Prioridade", tag4: "Impacto" },
-      sites: { name: "Design Systems e arquitetura de interface", body: "Consistência visual e de comportamento em produtos digitais — componentização, padrões de interface e documentação que escalam com o time.", tag1: "Consistência", tag2: "Componentes", tag3: "Documentação" },
-      systems: { name: "Ferramentas internas e produtos B2B", body: "Painéis e fluxos operacionais para times internos — organizar demanda, status, prioridade e tomada de decisão dentro do produto.", tag1: "Painéis", tag2: "Estados", tag3: "Operação", tag4: "Decisão" },
-      automation: { name: "IA aplicada a fluxos e produto", body: "Uso IA para acelerar triagem, respostas e decisões dentro de um fluxo de produto, sempre com handoff humano e critério de uso claro.", tag1: "Agentes", tag2: "Triagem", tag3: "Handoff humano" },
-      engineering: { body: "Condução da implementação com IA, código, validação, documentação e deploy, reduzindo a distância entre design e produto funcional.", tag1: "Implementação", tag2: "Código", tag3: "Validação", tag4: "Deploy" }
-    },
-    experience: {
-      ghost: "EXPERIÊNCIA", title: "Experiência", headNote: "Produto · Operação · Implementação", lead: "Experiência aplicada em produto, operação e implementação.", intro: "Meu trabalho combina vivência em operação real, pesquisa com usuários, design de interface, automação e condução de implementação com IA.",
-      sartec: { role: "Vivência operacional, atendimento e processos comerciais", detail: "Experiência direta com clientes, pedidos, mídias, telemarketing, rotina comercial e organização de operação.", tag: "Operação real" },
-      crm: { role: "Product Design, UX operacional e Design Engineering", detail: "Sistema interno para organizar atendimento, estados, histórico, prioridades e fluxo de trabalho.", tag: "Sistema interno" },
-      agent: { name: "Agente WhatsApp Sartec", role: "IA aplicada, triagem e handoff humano", detail: "Agente conectado ao WhatsApp para coletar contexto, organizar demandas e encaminhar ao atendimento humano.", tag: "IA aplicada" },
-      uniedu: { role: "UX Research, Product Design e protótipo educacional", detail: "Produto educacional gamificado com pesquisa, design system, jornadas, testes e protótipo navegável." },
-      engineering: { name: "Design Engineering com IA", role: "Implementação assistida, validação e documentação", detail: "Uso IA como alavanca de execução, mantendo escopo, critérios, revisão, documentação e controle humano.", tag: "Implementação" },
-      step1: { title: "Entendo o problema", body: "Mergulho no contexto real e na operação antes de qualquer interface." },
-      step2: { title: "Mapeio o fluxo", body: "Usuários, contexto, jornada e o trabalho real de quem opera." },
-      step3: { title: "Desenho os estados", body: "Arquitetura, hierarquia, estados, microcopy e responsividade." },
-      step4: { title: "Valido e evoluo", body: "Testo no uso real, documento decisões e evoluo a entrega." }
-    },
-    about: {
-      ghost: "SOBRE", title: "Sobre", lead: "Cresci acompanhando a rotina da Sartec, empresa da minha família, onde vi de perto atendimento, pedidos, clientes, comunicação, vendas e operação acontecendo todos os dias.",
-      body1: "Esse contato com problemas reais moldou meu olhar para produto antes mesmo de eu trabalhar formalmente com design. Na Biologia, aprendi a observar sistemas, contexto e relações.",
-      body2: "No UX/UI Design, encontrei o caminho profissional onde essa curiosidade virou método: estudar telas, conversar com usuários, investigar dores pouco explícitas e transformar aprendizados em soluções digitais mais claras e funcionais.",
-      body3: "Hoje conecto operação real, pesquisa, interface, produto, IA e implementação funcional. Gosto de aprender, testar, evoluir e ver cada entrega ficar mais bem resolvida que a anterior.",
-      chip1: "IA com critério humano", chip2: "Operação real", chip3: "Pesquisa com usuários"
-    },
-    stack: { sub: "As ferramentas que uso para pesquisar, desenhar, construir e documentar.", research: "Pesquisa & organização", design: "Design & prototipação", implementation: "Implementação assistida", validation: "Validação & documentação" },
-    contact: { status: "Disponível para oportunidades em produto e design", title: "Buscando um Product Designer que una UX, UI, IA e implementação?", desc: "Estou aberto a conversas com times que constroem produtos digitais, ferramentas internas e experiências orientadas por IA. Vamos falar sobre produto, design e interfaces funcionais.", cta: "Enviar e-mail", ctaWork: "Ver projetos", sartecNote: "Também estruturo uma frente comercial separada para projetos digitais:" }
-  },
-  en: {
-    nav: { work: "Work", service: "Expertise", experience: "Experience", about: "About", contact: "Contact", cta: "Let's talk" },
-    hero: { status: "Available for opportunities", desc: "I design interfaces, flows and product systems, and use AI with judgment to speed up implementation all the way to real production.", ctaPrimary: "Connect on LinkedIn", ctaSecondary: "View projects" },
-    social: { email: "Email", linkedinAria: "Open my LinkedIn" },
-    work: {
-      ghost: "WORK", title: "Selected Work", sub: "Real product cases — from the problem, the UX/UI and AI decisions, to the interface running in production.",
-      pesca: { badge: "Live", logoAlt: "Pesca Delivery logo", eyebrow: "Product Design · Design Engineering · Applied AI", title: "Pesca Delivery — Storefront and Operations Panel", sum: "A digital storefront and operations panel for a fishmonger that started selling custom poke bowls, until then built over WhatsApp. I led the product from opportunity to operation: conversations with the business, the builder's evolution, the Dark Premium identity, weight, price and payment rules, and coordination of the AI-assisted implementation.", tag1: "Applied AI", tag2: "Operations", cta: "View full case" },
-      uniedu: { eyebrow: "UX Research · Design System · EdTech product", title: "UNIEDU Platform", sum: "A gamified education product, shaped by research with students to turn study consistency into real progress. I led product strategy, the design system and a navigable prototype, validating UX decisions directly with the target audience.", tag1: "Gamification", tag2: "Prototype", ctaRecruiter: "View case for recruiters", ctaPrototype: "Open prototype", badge: "Full case", videoAlt: "UNIEDU app preview" },
-      crm: { badge: "Shipped", videoAlt: "Sartec CRM preview", eyebrow: "Internal system · Support flow · Applied AI", title: "Operational CRM + AI Agent", sum: "An internal system to centralize service requests, statuses, priorities and workflow, integrated with a WhatsApp AI agent responsible for initial triage and handoff to the human team. My role covered research with the people running support, modeling the flow's states, designing the dashboard interface, and defining where AI should act — keeping final judgment and decisions with the team.", tag1: "Internal system", tag2: "Operational flow", tag3: "Applied AI", tag4: "Human handoff", cta: "View full case" },
-      papelaria: { badge: "Supporting case", videoAlt: "Sartec Papelaria site preview", eyebrow: "Digital presence · Information architecture", title: "Sartec Papelaria Site", sum: "A digital presence for a local business, approached as an exercise in information architecture and content hierarchy — organizing what visitors need to see first and turning browsing into direct contact.", tag1: "Information architecture", tag2: "Content hierarchy", tag3: "Front-end", cta: "View site" }
-    },
-    service: {
-      ghost: "EXPERTISE", title: "Expertise", sub: "Where I go deepest — from research and interface to functional implementation with AI.",
-      uxui: { body: "Clear interfaces, consistent flows and digital experiences driven by research, usability and product decisions.", tag1: "Research", tag2: "Flows", tag3: "Usability" },
-      product: { body: "Structuring digital solutions from problem, context, journey, priority and business impact.", tag1: "Problem", tag2: "Journey", tag3: "Priority", tag4: "Impact" },
-      sites: { name: "Design systems & interface architecture", body: "Visual and behavioral consistency across digital products — componentization, interface patterns and documentation that scale with the team.", tag1: "Consistency", tag2: "Components", tag3: "Documentation" },
-      systems: { name: "Internal tools & B2B products", body: "Dashboards and operational flows for internal teams — organizing demand, status, priority and decision-making inside the product.", tag1: "Dashboards", tag2: "States", tag3: "Operations", tag4: "Decision" },
-      automation: { name: "Applied AI in flows & product", body: "I use AI to speed up triage, responses and decisions inside a product flow, always with human handoff and clear usage judgment.", tag1: "Agents", tag2: "Triage", tag3: "Human handoff" },
-      engineering: { body: "Leading implementation with AI, code, validation, documentation and deploy, reducing the gap between design and a functional product.", tag1: "Implementation", tag2: "Code", tag3: "Validation", tag4: "Deploy" }
-    },
-    experience: {
-      ghost: "EXPERIENCE", title: "Experience", headNote: "Product · Operations · Implementation", lead: "Applied experience in product, operations and implementation.", intro: "My work combines real operational experience, user research, interface design, automation and AI-driven implementation.",
-      sartec: { role: "Operational experience, customer service and business processes", detail: "Direct experience with clients, orders, media, telemarketing, business routine and operations organization.", tag: "Real operations" },
-      crm: { role: "Product Design, operational UX and Design Engineering", detail: "Internal system to organize service, statuses, history, priorities and workflow.", tag: "Internal system" },
-      agent: { name: "Sartec WhatsApp Agent", role: "Applied AI, triage and human handoff", detail: "Agent connected to WhatsApp to gather context, organize requests and route them to human support.", tag: "Applied AI" },
-      uniedu: { role: "UX Research, Product Design and educational prototype", detail: "A gamified education product with research, design system, journeys, testing and a navigable prototype." },
-      engineering: { name: "Design Engineering with AI", role: "Assisted implementation, validation and documentation", detail: "I use AI as an execution lever, keeping scope, criteria, review, documentation and human control.", tag: "Implementation" },
-      step1: { title: "Understand the problem", body: "I dive into the real context and operation before any interface." },
-      step2: { title: "Map the flow", body: "Users, context, journey and the real work of who operates it." },
-      step3: { title: "Design the states", body: "Architecture, hierarchy, states, microcopy and responsiveness." },
-      step4: { title: "Validate and evolve", body: "I test in real use, document decisions and evolve the delivery." }
-    },
-    about: {
-      ghost: "ABOUT", title: "About", lead: "I grew up following the daily routine of Sartec, my family's business, seeing service, orders, clients, communication, sales and operations up close, every day.",
-      body1: "That contact with real problems shaped how I look at product before I ever worked formally with design. In Biology, I learned to observe systems, context and relationships.",
-      body2: "In UX/UI Design, I found the professional path where that curiosity became method: studying screens, talking to users, investigating hidden pain points and turning learnings into clearer, more functional digital solutions.",
-      body3: "Today I connect real operations, research, interface, product, AI and functional implementation. I like learning, testing, evolving and seeing each delivery turn out better resolved than the last.",
-      chip1: "AI with human judgment", chip2: "Real operations", chip3: "User research"
-    },
-    stack: { sub: "The tools I use to research, design, build and document.", research: "Research & organization", design: "Design & prototyping", implementation: "Assisted implementation", validation: "Validation & documentation" },
-    contact: { status: "Available for product and design opportunities", title: "Looking for a Product Designer who blends UX, UI, AI and implementation?", desc: "I'm open to conversations with teams building digital products, internal tools and AI-driven experiences. Let's talk about product, design and functional interfaces.", cta: "Send an email", ctaWork: "View projects", sartecNote: "I also run a separate commercial venture for digital projects:" }
-  }
-};
-
-function t(lang, key) {
-  return key.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), I18N[lang]);
-}
-
-function applyLang(lang) {
-  document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const value = t(lang, el.getAttribute('data-i18n'));
-    if (value === undefined) return;
-    const attr = el.getAttribute('data-i18n-attr');
-    if (attr) el.setAttribute(attr, value);
-    else el.textContent = value;
-  });
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
-  });
-  try { localStorage.setItem('lang', lang); } catch (e) {}
-}
-
-(function () {
-  let saved;
-  try { saved = localStorage.getItem('lang'); } catch (e) { saved = null; }
-  const initialLang = (saved === 'en' || saved === 'pt') ? saved : 'pt';
-  applyLang(initialLang);
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
-  });
-})();
-
-/* ---------- hero progressive load ---------- */
-addEventListener('load', () => requestAnimationFrame(() => document.body.classList.add('loaded')));
-setTimeout(() => document.body.classList.add('loaded'), 1200); /* safety fallback */
-
-/* ---------- reveal + stagger ---------- */
-(function () {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
-})();
-
-/* ---------- hero photo: hover gains color permanently, resets after leaving + returning to the section ---------- */
-(function () {
-  const heroSection = document.querySelector('.hero');
-  const photo = document.querySelector('.hero-photo');
-  if (!heroSection || !photo) return;
-  const setColored = () => { photo.classList.add('colored'); };
-  photo.addEventListener('mouseenter', setColored);
-  photo.addEventListener('touchstart', setColored, { passive: true });
-  let wasVisible = true;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => {
-      if (en.isIntersecting) {
-        if (!wasVisible) { photo.classList.remove('colored'); }
-        wasVisible = true;
-      } else {
-        wasVisible = false;
-      }
-    });
-  }, { threshold: 0 });
-  io.observe(heroSection);
-})();
-
-/* ---------- cursor-reactive spotlight on cards ---------- */
-(function () {
-  document.querySelectorAll('.spot').forEach(el => {
-    el.addEventListener('pointermove', (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      el.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
-  });
-})();
-
-/* ---------- service accordion ---------- */
-(function () {
-  const list = document.getElementById('svc-list');
-  if (!list) return;
-  list.querySelectorAll('.svc-row').forEach(row => {
-    row.addEventListener('click', () => {
-      const item = row.closest('.svc-item');
-      const isOpen = item.classList.contains('open');
-      list.querySelectorAll('.svc-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.svc-row').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) { item.classList.add('open'); row.setAttribute('aria-expanded', 'true'); }
-    });
-  });
-})();
-
-/* ---------- project accordion (Selected Work) ----------
-   Desktop (>860px): classic one-open-at-a-time accordion, unchanged.
-   Mobile (<=860px): every case stays expanded — it's read as an editorial
-   sequence of cases, not a list of collapsed accordions, so the row click
-   (and its now-hidden +/× toggle) is a no-op there. Re-evaluated on resize
-   so rotating a tablet across the breakpoint keeps the right behavior. */
-(function () {
-  const list = document.getElementById('proj-list');
-  if (!list) return;
-  const items = [...list.querySelectorAll('.proj-item')];
-  const mobileQuery = matchMedia('(max-width:860px)');
-
-  function setExpanded(item, expanded) {
-    item.classList.toggle('open', expanded);
-    item.querySelector('.proj-row').setAttribute('aria-expanded', String(expanded));
-  }
-
-  function applyMode() {
-    if (mobileQuery.matches) {
-      items.forEach(item => setExpanded(item, true));
-    } else {
-      items.forEach((item, i) => setExpanded(item, i === 0));
-    }
-  }
-
-  list.querySelectorAll('.proj-row').forEach(row => {
-    row.addEventListener('click', () => {
-      if (mobileQuery.matches) return; /* mobile: cards stay expanded, toggle carries no function */
-      const item = row.closest('.proj-item');
-      const isOpen = item.classList.contains('open');
-      items.forEach(i => setExpanded(i, false));
-      if (!isOpen) setExpanded(item, true);
-    });
-  });
-
-  applyMode();
-  mobileQuery.addEventListener('change', applyMode);
-})();
-
-/* ---------- project preview: cursor-following floating video (never covers row text) ----------
-   Gated to devices that genuinely have a mouse (hover + fine pointer together), not just
-   "not hover:none" — some touch/hybrid browsers misreport hover support, which previously
-   let a tap open this fixed-position preview without a matching mouseleave to close it,
-   leaving a video stuck floating over the section. A CSS kill-switch at mobile widths
-   (see .proj-preview-float in the stylesheet) backs this up regardless of media-query results. */
-(function () {
-  const list = document.getElementById('proj-list');
-  if (!list) return;
-  if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-
-  const float = document.createElement('div');
-  float.className = 'proj-preview-float';
-  float.innerHTML = '<video muted loop playsinline preload="none"></video>';
-  document.body.appendChild(float);
-  const video = float.querySelector('video');
-  let currentSrc = '';
-
-  function position(e) {
-    const pad = 20;
-    let x = e.clientX + pad;
-    let y = e.clientY - 140 - pad;
-    if (y < 8) y = e.clientY + pad;
-    if (x + 240 > innerWidth - 8) x = innerWidth - 248;
-    float.style.left = x + 'px';
-    float.style.top = y + 'px';
-  }
-
-  function hideFloat() {
-    float.classList.remove('visible');
-    video.pause();
-  }
-
-  list.querySelectorAll('.proj-row').forEach(row => {
-    const thumbVideo = row.querySelector('.proj-thumb-video');
-    const src = thumbVideo ? thumbVideo.getAttribute('data-src') : null;
-    if (!src) return;
-    row.addEventListener('mouseenter', (e) => {
-      if (currentSrc !== src) { video.src = src; currentSrc = src; }
-      video.currentTime = 0;
-      video.play().catch(() => {});
-      float.classList.add('visible');
-      position(e);
-    });
-    row.addEventListener('mousemove', position);
-    row.addEventListener('mouseleave', hideFloat);
-  });
-
-  /* safety net: any real touch on the page means this was not a mouse after all */
-  addEventListener('touchstart', hideFloat, { passive: true });
-})();
-
-/* ---------- respect reduced motion for the contact background videos ---------- */
-(function () {
-  if (!matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  document.querySelectorAll('.contact-bg-video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
-})();
-
-/* ---------- lazy-load below-the-fold project videos ---------- */
-(function () {
-  const videos = document.querySelectorAll('.lazy-video');
-  if (!videos.length) return;
-  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => {
-      if (!en.isIntersecting) return;
-      const v = en.target;
-      if (v.dataset.src) {
-        const source = document.createElement('source');
-        source.src = v.dataset.src; source.type = 'video/mp4';
-        v.appendChild(source); v.load();
-      }
-      if (!reduce) v.play().catch(() => {});
-      io.unobserve(v);
-    });
-  }, { rootMargin: '250px 0px' });
-  videos.forEach(v => io.observe(v));
-})();
-
-/* ---------- nav scroll state ---------- */
-const nav = document.getElementById('nav');
-addEventListener('scroll', () => { nav.classList.toggle('scrolled', scrollY > 16); }, { passive: true });
-
-/* ---------- mobile menu ---------- */
-const burger = document.getElementById('burger');
-burger.addEventListener('click', () => nav.classList.toggle('open'));
-document.querySelectorAll('#navlinks a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
-
-/* ---------- active nav link on scroll ---------- */
-(function () {
-  const sections = [...document.querySelectorAll('main section[id]')];
-  const links = new Map([...document.querySelectorAll('#navlinks a')].map(a => [a.getAttribute('href').slice(1), a]));
-  const spy = new IntersectionObserver((entries) => {
-    entries.forEach(en => {
-      if (en.isIntersecting) {
-        links.forEach(l => l.classList.remove('active'));
-        const l = links.get(en.target.id); if (l) l.classList.add('active');
-      }
-    });
-  }, { threshold: .4 });
-  sections.forEach(s => spy.observe(s));
-})();
-</script>
+<script src="assets/home/home.js" defer></script>
+<script type="module" src="assets/hero/hero.js"></script>
 </body>
 </html>

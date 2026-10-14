@@ -38,7 +38,7 @@
       b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
     });
     try { localStorage.setItem('lang', lang); } catch (e) {}
-    if (lb.open) fillLightbox();
+    if (lb && lb.open) fillLightbox();   // cases without a gallery have no lightbox
   }
 
   /* ---------- lightbox ---------- */

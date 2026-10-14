@@ -1,1 +1,15 @@
 node_modules
+
+# ck14 — never part of the public site (second line of defence; the first is not committing them).
+# The site is published from the repo root (vercel.json outputDirectory "."), so anything that reaches the
+# deployment is served: keep the lab, QA renders, tooling, private notes and local media out.
+.claude/
+.vercel/
+.env*
+assets/identity/
+*.md
+*.docx
+*.pdf
+*.log
+LOGO_SARTEC_OFICIAL_PNG.png
+foto lucas*

@@ -9,9 +9,10 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
 <meta name="description" content="Case de Product Design e Design Engineering: da personalização de um Poke pelo WhatsApp a uma experiência digital que conecta compra e operação." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23152815'><circle cx='12' cy='7.5' r='4.5'/><circle cx='12' cy='16.5' r='4.5'/><circle cx='7.5' cy='12' r='4.5'/><circle cx='16.5' cy='12' r='4.5'/><rect x='9.5' y='9.5' width='5' height='5' rx='1'/></svg>" />
 <link rel="stylesheet" href="case.css" />
+<link rel="stylesheet" href="../case-shell.css" />
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -20,14 +21,20 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
 <!-- ================= NAV ================= -->
 <header class="cnav">
   <div class="shell cnav-in">
-    <a class="back" href="../../index.html#work">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
-      <span data-i18n="nav.back">Portfólio</span>
+    <a class="brand" href="../../index.html" aria-label="Lucas Cabral — portfólio" data-i18n="nav.home" data-i18n-attr="aria-label">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><g transform="rotate(45 12 12)"><circle cx="12" cy="7.3" r="4.2"/><circle cx="12" cy="16.7" r="4.2"/><circle cx="7.3" cy="12" r="4.2"/><circle cx="16.7" cy="12" r="4.2"/></g></svg>
+      <span>Lucas Cabral</span>
     </a>
-    <span class="cnav-mid" data-i18n="nav.mid">Case · Pesca Delivery</span>
-    <div class="lang-toggle" role="group" aria-label="Idioma / Language" data-i18n="nav.lang" data-i18n-attr="aria-label">
-      <button type="button" class="lang-btn" data-lang="pt" aria-pressed="true">PT</button>
-      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    <span class="cnav-mid" data-i18n="nav.mid">Case 01 · Pesca Delivery</span>
+    <div class="cnav-end">
+      <a class="back" href="../../index.html#cases">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        <span data-i18n="nav.back">Trabalho</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language" data-i18n="nav.lang" data-i18n-attr="aria-label">
+        <button type="button" class="lang-btn" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </div>
 </header>
@@ -160,14 +167,23 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
       <p class="lede" data-i18n="b.lede">O primeiro protótipo montava o Poke em etapas. Lucas identificou dois problemas e propôs reunir as categorias numa mesma página.</p>
     </div>
 
-    <div class="ba">
-      <div class="ba-col reveal">
-        <p class="ba-label"><b data-i18n="b.before">Antes</b><span data-i18n="b.beforeT">Montagem sequencial</span></p>
-        <div class="before-wrap">
-          <figure class="shot-frame">
-            <img src="../../assets/cases/pesca/figma-make/figma-poke-builder-steps.png" width="413" height="870" loading="lazy" alt="Protótipo inicial no Figma Make: primeira de cinco etapas da montagem do Poke, a escolha de bases." data-i18n="proto.a3" data-i18n-attr="alt" />
+    <!-- ck14: Before / After switcher (case-shell.js). Both screens in the same CSS device frame, each at its own
+         capture ratio (nothing cropped). Before = the historical Figma Make capture (five steps). After = a real capture
+         of the public store's Builder (/poke/monte, captured 08/10/2026), the continuous version — not the six-step
+         wizard that came in between. Without JS both panels are shown, one after the other. -->
+    <div class="cmp reveal" data-cmp>
+      <div class="cmp-tabs" role="tablist" aria-label="Comparar as versões do Builder" data-i18n="b.cmpLabel" data-i18n-attr="aria-label">
+        <button type="button" class="cmp-tab" role="tab" id="cmp-t1" aria-controls="cmp-p1" aria-selected="true"><span data-i18n="b.before">Antes</span><small data-i18n="b.beforeK">Protótipo</small></button>
+        <button type="button" class="cmp-tab" role="tab" id="cmp-t2" aria-controls="cmp-p2" aria-selected="false"><span data-i18n="b.after">Depois</span><small data-i18n="b.afterK">Produto</small></button>
+      </div>
+      <div class="cmp-stage">
+        <section class="cmp-panel" role="tabpanel" id="cmp-p1" aria-labelledby="cmp-t1">
+          <figure class="dev" style="--ar: 413 / 870">
+            <div class="dev-screen"><img src="../../assets/cases/pesca/figma-make/figma-poke-builder-steps.png" width="413" height="870" loading="lazy" alt="Protótipo inicial no Figma Make: primeira de cinco etapas da montagem do Poke, a escolha de bases." data-i18n="proto.a3" data-i18n-attr="alt" /></div>
+            <figcaption data-i18n="b.beforeCap">Figma Make · protótipo inicial</figcaption>
           </figure>
-          <div>
+          <div class="cmp-text">
+            <p class="ba-label"><b data-i18n="b.before">Antes</b><span data-i18n="b.beforeT">Montagem sequencial</span></p>
             <ol class="steps" aria-label="Cinco etapas do protótipo" data-i18n="b.stepsLabel" data-i18n-attr="aria-label">
               <li><span data-i18n="b.s1">Bases</span></li>
               <li><span data-i18n="b.s2">Etapa 2</span></li>
@@ -177,27 +193,30 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
             </ol>
             <p class="note" data-i18n="b.beforeNote">Protótipo inicial no Figma Make, montagem por cinco etapas. O primeiro Builder implementado partiu de um wizard de seis etapas: outra versão, que não se mistura a esta.</p>
           </div>
-        </div>
-      </div>
-
-      <div class="ba-col reveal">
-        <p class="ba-label after"><b data-i18n="b.after">Depois</b><span data-i18n="b.afterT">Composição contínua</span></p>
-        <!-- Representação estrutural honesta. SLOT: builder-final-capture
-             A captura definitiva do Builder Dark Premium deve substituir (ou acompanhar) este diagrama,
-             usando o contêiner .slot logo abaixo da seção de motivos. -->
-        <div class="wire" role="img" aria-label="Diagrama estrutural: quatro categorias, Base, Proteína, Acompanhamentos e Molhos, na mesma página, com adicionais junto de proteína e molhos e um resumo persistente." data-i18n="b.wireLabel" data-i18n-attr="aria-label">
-          <span class="wire-tag" data-i18n="b.wireTag">Diagrama estrutural · não é a interface final</span>
-          <div class="wire-body" aria-hidden="true">
-            <div class="wire-cats">
-              <div class="wire-cat"><span data-i18n="b.w1">Base</span><small data-i18n="b.wr1">sempre acessível</small></div>
-              <div class="wire-cat has-extra"><span data-i18n="b.w2">Proteína</span><small data-i18n="b.wr2">+ adicional aqui</small></div>
-              <div class="wire-cat"><span data-i18n="b.w3">Acompanhamentos</span><small data-i18n="b.wr3">sempre acessível</small></div>
-              <div class="wire-cat has-extra"><span data-i18n="b.w4">Molhos</span><small data-i18n="b.wr4">+ adicional aqui</small></div>
+        </section>
+        <section class="cmp-panel" role="tabpanel" id="cmp-p2" aria-labelledby="cmp-t2">
+          <figure class="dev">
+            <div class="dev-screen"><img src="../../assets/cases/pesca/app/builder-poke.webp" width="780" height="1688" loading="lazy" alt="Builder do produto publicado: categorias na mesma página, “Quer mais proteína?” junto da escolha de proteína, e o resumo fixo com o valor do prato e o que ainda falta escolher." data-i18n="b.afterAlt" data-i18n-attr="alt" /></div>
+            <figcaption data-i18n="b.afterCap">Loja publicada · /poke/monte</figcaption>
+          </figure>
+          <div class="cmp-text">
+            <p class="ba-label after"><b data-i18n="b.after">Depois</b><span data-i18n="b.afterT">Composição contínua</span></p>
+            <div class="wire" role="img" aria-label="Diagrama estrutural: quatro categorias, Base, Proteína, Acompanhamentos e Molhos, na mesma página, com adicionais junto de proteína e molhos e um resumo persistente." data-i18n="b.wireLabel" data-i18n-attr="aria-label">
+              <span class="wire-tag" data-i18n="b.wireTag2">Estrutura da página</span>
+              <div class="wire-body" aria-hidden="true">
+                <div class="wire-cats">
+                  <div class="wire-cat"><span data-i18n="b.w1">Base</span><small data-i18n="b.wr1">sempre acessível</small></div>
+                  <div class="wire-cat has-extra"><span data-i18n="b.w2">Proteína</span><small data-i18n="b.wr2">+ adicional aqui</small></div>
+                  <div class="wire-cat"><span data-i18n="b.w3">Acompanhamentos</span><small data-i18n="b.wr3">sempre acessível</small></div>
+                  <div class="wire-cat has-extra"><span data-i18n="b.w4">Molhos</span><small data-i18n="b.wr4">+ adicional aqui</small></div>
+                </div>
+                <div class="wire-sum"><span data-i18n="b.wsum">Resumo persistente</span><span data-i18n="b.wsum2">escolhas revisáveis</span></div>
+              </div>
             </div>
-            <div class="wire-sum"><span data-i18n="b.wsum">Resumo persistente</span><span data-i18n="b.wsum2">escolhas revisáveis</span></div>
+            <p class="note" data-i18n="b.afterNote">O Builder evoluiu para uma montagem contínua: categorias na mesma página, adicionais no contexto da escolha e resumo sempre visível.</p>
+            <p class="cmp-source" data-i18n="b.afterSource">Captura real da loja pública em produção, outubro de 2026. Itens marcados como indisponíveis refletem aquele momento.</p>
           </div>
-        </div>
-        <p class="note" data-i18n="b.afterNote">O Builder evoluiu para uma montagem contínua: categorias na mesma página, adicionais no contexto da escolha e resumo sempre visível.</p>
+        </section>
       </div>
     </div>
 
@@ -206,9 +225,6 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
       <div><span>02</span><h3 data-i18n="b.r2t">Montar, não preencher</h3><p data-i18n="b.r2p">A sequência de telas parecia um formulário e estimulava pouco o apetite. A composição contínua traz o prato de volta ao centro.</p></div>
     </div>
     <p class="note reveal" style="margin-top:24px" data-i18n="b.honest">Não houve teste formal com consumidores nem medição de conversão. A mudança nasceu de observação e de julgamento de produto.</p>
-
-    <!-- SLOT: builder-final-capture (vazio por enquanto; oculto por CSS enquanto não houver conteúdo) -->
-    <div class="slot" data-slot="builder-final-capture"></div>
   </div>
 </section>
 
@@ -440,13 +456,26 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
       <blockquote data-i18n-html="o.quote">Design não termina na interface. Termina quando a <em>operação</em> consegue cumprir o que a interface promete.</blockquote>
       <p class="prose lede" data-i18n="o.after">O produto entrou numa fase de operação e observação, e a evolução agora é guiada pelo uso real, não por suposição.</p>
       <div class="ctas">
-        <a class="btn btn-primary" href="../../index.html#work"><span data-i18n="o.cta1">Voltar aos projetos</span> <span aria-hidden="true">→</span></a>
-        <a class="btn btn-ghost" href="../../index.html"><span data-i18n="o.cta2">Ir para o portfólio</span></a>
+        <a class="btn btn-primary" href="../sartec/"><span data-i18n="o.cta1">Próximo case: Sartec</span> <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="../../index.html#cases"><span data-i18n="o.cta2">Voltar ao trabalho selecionado</span></a>
         <a class="btn btn-ghost" href="#main"><span data-i18n="o.cta3">Voltar ao topo</span></a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ================= OUTROS TRABALHOS (case shell: the Home's order, next case first) ================= -->
+<nav class="more-work" aria-labelledby="mw-h">
+  <div class="shell">
+    <div class="mw-head"><h2 id="mw-h" data-i18n="mw.h">Outros trabalhos</h2><a href="../../index.html#cases" data-i18n="mw.all">Ver todo o trabalho selecionado</a></div>
+    <ol class="mw-list">
+      <li class="next"><a href="../sartec/"><span class="mw-n">02</span><span class="mw-t" data-i18n="mw.crm">CRM Operacional + Agente de IA</span><span class="mw-go" data-i18n="mw.next">Próximo case →</span><span class="mw-d" data-i18n="mw.crmD">Sartec · sistema interno, WhatsApp e IA aplicada</span></a></li>
+      <li><a href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="mw-n">03</span><span class="mw-t">Plataforma UNIEDU</span><span class="mw-go" data-i18n="mw.ext">Case externo ↗</span><span class="mw-d" data-i18n="mw.unieduD">UX Research · Design System · em dupla com Najme Simon Alé</span></a></li>
+      <li><a href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer"><span class="mw-n">04</span><span class="mw-t">Sartec Papelaria</span><span class="mw-go" data-i18n="mw.site">Site ↗</span><span class="mw-d" data-i18n="mw.papD">Site + ecossistema digital</span></a></li>
+      <li><a href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="mw-n">05</span><span class="mw-t">Grupo Almeida</span><span class="mw-go" data-i18n="mw.staging">Em homologação ↗</span><span class="mw-d" data-i18n="mw.almD">Site institucional · PT/EN</span></a></li>
+    </ol>
+  </div>
+</nav>
 
 </main>
 
@@ -459,5 +488,6 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
 
 <script src="i18n.js"></script>
 <script src="case.js"></script>
+<script src="../case-shell.js"></script>
 </body>
 </html>

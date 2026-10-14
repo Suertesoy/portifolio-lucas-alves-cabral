@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>/* relative paths need the trailing slash: /cases/sartec -> /cases/sartec/ */
+if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname+'/'+location.search+location.hash);</script>
+<title>Sartec — CRM operacional e Agente de IA · Lucas Cabral</title>
+<meta name="description" content="Case de Product Design: um CRM operacional integrado ao WhatsApp, com um agente de IA que organiza a entrada e entrega cada atendimento a uma pessoa, na operação real da Sartec Papelaria." />
+<meta name="theme-color" content="#F3F0E9" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233E5A4A'><g transform='rotate(45 12 12)'><circle cx='12' cy='7.3' r='4.2'/><circle cx='12' cy='16.7' r='4.2'/><circle cx='7.3' cy='12' r='4.2'/><circle cx='16.7' cy='12' r='4.2'/></g></svg>" />
+<!-- the portfolio case system (base components) + the shared shell + this case's skin -->
+<link rel="stylesheet" href="../pesca/case.css" />
+<link rel="stylesheet" href="../case-shell.css" />
+<link rel="stylesheet" href="case.css" />
+<script>document.documentElement.classList.add('js');</script>
+<!-- Sources (checkpoint 14 audit): the previous case page (github.com/Suertesoy/case-sartec, published at case-sartec.vercel.app,
+     identical to its local copy) and the project's working reports of May 2026. Representations and reconstructions are
+     labelled on the page; the only real capture is the attendant modal (assets/cases/sartec/crm), cropped so that no
+     customer data appears. No metrics are claimed: none were documented. -->
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Pular para o conteúdo</a>
+
+<header class="cnav">
+  <div class="shell cnav-in">
+    <a class="brand" href="../../index.html" aria-label="Lucas Cabral — portfólio" data-i18n="nav.home" data-i18n-attr="aria-label">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><g transform="rotate(45 12 12)"><circle cx="12" cy="7.3" r="4.2"/><circle cx="12" cy="16.7" r="4.2"/><circle cx="7.3" cy="12" r="4.2"/><circle cx="16.7" cy="12" r="4.2"/></g></svg>
+      <span>Lucas Cabral</span>
+    </a>
+    <span class="cnav-mid" data-i18n="nav.mid">Case 02 · Sartec</span>
+    <div class="cnav-end">
+      <a class="back" href="../../index.html#cases">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        <span data-i18n="nav.back">Trabalho</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language" data-i18n="nav.lang" data-i18n-attr="aria-label">
+        <button type="button" class="lang-btn" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= 01 · ABERTURA ================= -->
+<section class="hero" aria-labelledby="h-hero">
+  <div class="shell">
+    <p class="eyebrow"><b>01</b><span data-i18n="hero.eyebrow">Case · Sartec · 2026</span></p>
+    <p class="client"><img src="../../assets/cases/sartec/brand/sartec-logo.png" width="499" height="256" alt="Sartec Papelaria e Informática" /><span data-i18n="hero.client">Papelaria · São José dos Campos</span></p>
+    <h1 id="h-hero"><span data-i18n="hero.h1a">Da conversa</span> <span class="l2" data-i18n="hero.h1b">ao trabalho.</span></h1>
+    <div class="hero-grid">
+      <p class="lede" data-i18n="hero.lede">Um CRM operacional integrado ao WhatsApp, com um agente de IA que organiza a entrada e entrega cada atendimento a uma pessoa — desenhado dentro da rotina real da Sartec Papelaria.</p>
+      <dl class="meta">
+        <div><dt data-i18n="hero.m1">Projeto</dt><dd data-i18n="hero.m1v">CRM + Agente WhatsApp</dd></div>
+        <div><dt data-i18n="hero.m2">Ano</dt><dd>2026</dd></div>
+        <div class="wide"><dt data-i18n="hero.m5">Papel</dt><dd data-i18n="hero.m5v">Lucas Cabral · Product Designer &amp; Design Engineer</dd></div>
+        <div><dt data-i18n="hero.m3">Disciplinas</dt><dd data-i18n-html="hero.m3v">UX operacional<br>UX/UI e UX writing<br>Design Engineering</dd></div>
+        <div><dt data-i18n="hero.m4">Estado</dt><dd data-i18n="hero.m4v">Em operação · primeira fase assistida</dd></div>
+      </dl>
+    </div>
+
+    <div class="eco reveal">
+      <ol class="eco-row" aria-label="O ecossistema, da mensagem à decisão" data-i18n="hero.ecoLabel" data-i18n-attr="aria-label">
+        <li class="eco-node"><span class="k" data-i18n="hero.e1k">Cliente</span><b>WhatsApp</b><p data-i18n="hero.e1p">Pessoas e empresas escrevem no mesmo canal de sempre.</p></li>
+        <li class="eco-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></li>
+        <li class="eco-node agent"><span class="k" data-i18n="hero.e2k">Agente de IA</span><b data-i18n="hero.e2b">Triagem</b><p data-i18n="hero.e2p">Identifica PF ou PJ e coleta o essencial.</p></li>
+        <li class="eco-arrow handoff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg><span>handoff</span></li>
+        <li class="eco-node"><span class="k">CRM</span><b data-i18n="hero.e3b">Trabalho visível</b><p data-i18n="hero.e3p">Um card por atendimento, em quadros PF e PJ.</p></li>
+        <li class="eco-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></li>
+        <li class="eco-node human"><span class="k" data-i18n="hero.e4k">Atendente</span><b data-i18n="hero.e4b">Decisão</b><p data-i18n="hero.e4p">Negocia, resolve e fecha, com o histórico à vista.</p></li>
+      </ol>
+      <p class="eco-motto" data-i18n-html="hero.motto">A IA organiza. <em>A pessoa decide.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 · CONTEXTO ================= -->
+<section class="sec tint" id="contexto" aria-labelledby="h-ctx">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>02</b><span data-i18n="ctx.eyebrow">Contexto</span></p>
+        <h2 class="statement" id="h-ctx" data-i18n-html="ctx.title">Funcionava <em>apesar do sistema.</em></h2>
+      </div>
+      <div class="prose">
+        <p data-i18n="ctx.p1">A Sartec é a papelaria da família de Lucas, com mais de 30 anos em São José dos Campos. Ele cresceu acompanhando o atendimento, os pedidos e a rotina da loja.</p>
+        <p data-i18n="ctx.p2">Pessoas físicas, empresas, cópias, orçamentos e fornecedores chegavam pelo mesmo WhatsApp. O atendimento dependia de memória e de rolar conversas. O problema não era volume: era falta de contexto, prioridade e responsável.</p>
+      </div>
+    </div>
+
+    <div class="ctx">
+      <ul class="pgrid reveal">
+        <li><b data-i18n="ctx.q1">Sem dono visível</b><span data-i18n="ctx.q1p">Dois atendentes podiam responder o mesmo cliente — ou nenhum, cada um achando que o outro já tinha respondido.</span></li>
+        <li><b data-i18n="ctx.q2">PF e PJ no mesmo fluxo</b><span data-i18n="ctx.q2p">Pessoas físicas pedem velocidade; empresas pedem contexto de conta, prazos e histórico. Tudo era tratado igual.</span></li>
+        <li><b data-i18n="ctx.q3">Mídia sem contexto</b><span data-i18n="ctx.q3p">Áudios, PDFs e imagens chegavam soltos. Encontrar uma lista exigia rolar a conversa.</span></li>
+        <li><b data-i18n="ctx.q4">Uma regra invisível</b><span data-i18n="ctx.q4p">A janela de 24 horas do WhatsApp expirava sem aviso. A mensagem parecia enviada, mas não chegava.</span></li>
+        <li><b data-i18n="ctx.q5">Decisão sem histórico</b><span data-i18n="ctx.q5p">Era preciso responder rápido sem ver a última interação, os pedidos ou o estado do cliente.</span></li>
+        <li><b data-i18n="ctx.q6">Nenhuma visão de gestão</b><span data-i18n="ctx.q6p">Não havia como saber o que estava aberto, com quem e há quanto tempo.</span></li>
+      </ul>
+
+      <figure class="inbox reveal" aria-label="Representação de uma caixa de entrada antes do sistema, com mensagens ilustrativas." data-i18n="ctx.inboxLabel" data-i18n-attr="aria-label">
+        <div class="inbox-head"><b data-i18n="ctx.inboxH">Uma manhã comum</b><span class="tag" data-i18n="ctx.inboxTag">Representação</span></div>
+        <div class="msg"><p data-i18n="ctx.m1">“Preciso de papel A4 pro escritório, umas 10 resmas.”</p><small data-i18n-html="ctx.m1s">Empresa · <i>sem responsável</i></small></div>
+        <div class="msg"><p data-i18n="ctx.m2">“Quanto custa plastificação A3? É urgente.”</p><small data-i18n-html="ctx.m2s">Pessoa física · <i>urgência não registrada</i></small></div>
+        <div class="msg"><p data-i18n="ctx.m3">(áudio de 1 min com a lista de material)</p><small data-i18n-html="ctx.m3s">Pessoa física · <i>sem transcrição</i></small></div>
+        <div class="msg"><p data-i18n="ctx.m4">“Vocês fazem xerox colorido? São 50 cópias.”</p><small data-i18n-html="ctx.m4s">Pessoa física · <i>aguardando</i></small></div>
+        <div class="missing" aria-hidden="true"><span data-i18n="ctx.x1">sem fluxo</span><span data-i18n="ctx.x2">sem responsável</span><span data-i18n="ctx.x3">sem histórico</span><span data-i18n="ctx.x4">sem prioridade</span></div>
+        <figcaption class="note" data-i18n="ctx.inboxNote">Mensagens ilustrativas, sem dados reais.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 · TESE ================= -->
+<section class="sec dark on-dark" id="tese" aria-labelledby="h-th">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>03</b><span data-i18n="th.eyebrow">A tese</span></p>
+        <h2 class="statement" id="h-th" data-i18n-html="th.title">Não automatizar tudo. <em>Dividir o trabalho.</em></h2>
+      </div>
+      <p class="lede" data-i18n="th.lede">A solução não foi automatizar o atendimento. Foi separar o que a IA podia organizar do que uma pessoa precisava decidir — e tornar essa passagem visível.</p>
+    </div>
+    <div class="roles reveal">
+      <div class="role"><span class="who" data-i18n="th.w1">Agente de IA</span><span class="verb" data-i18n="th.v1">Organizar</span><p data-i18n="th.r1">Recebe o contato, identifica pessoa física ou empresa, faz as perguntas certas na ordem certa e entrega um card que já chega com contexto.</p></div>
+      <div class="role"><span class="who">CRM</span><span class="verb" data-i18n="th.v2">Mostrar</span><p data-i18n="th.r2">Cada atendimento vira um card com etapa, responsável, prioridade e próxima ação. O histórico guarda mensagens, mídias e eventos.</p></div>
+      <div class="role"><span class="who" data-i18n="th.w3">Atendente</span><span class="verb decide" data-i18n="th.v3">Decidir</span><p data-i18n="th.r3">Negocia, resolve exceções e fecha o pedido. É quem responde por preço, estoque e prazo.</p></div>
+    </div>
+    <p class="limit reveal" data-i18n-html="th.limit"><b>Limites tão importantes quanto capacidades.</b> O agente não vende, não confirma estoque, preço ou prazo e não disputa a conversa com a equipe. Quando a pergunta sai do seu escopo, ele reconhece e encaminha — não improvisa.</p>
+  </div>
+</section>
+
+<!-- ================= 04 · UM ATENDIMENTO ================= -->
+<section class="sec" id="fluxo" aria-labelledby="h-fl">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>04</b><span data-i18n="fl.eyebrow">O fluxo</span></p>
+        <h2 class="statement" id="h-fl" data-i18n-html="fl.title">Um atendimento, <em>do início ao fim.</em></h2>
+      </div>
+      <p class="lede" data-i18n="fl.lede">O mesmo pedido passa por três mãos. O desenho está nas passagens: quem fala, quando para e o que fica registrado.</p>
+    </div>
+    <div class="trace">
+      <ol class="steps-v reveal">
+        <li><div><span class="who" data-i18n="fl.client">Cliente</span><h3 data-i18n="fl.s1">Escreve no WhatsApp</h3><p data-i18n="fl.s1p">Pelo canal que já usava. Nada muda para quem compra.</p></div></li>
+        <li><div><span class="who ai" data-i18n="fl.agent">Agente</span><h3 data-i18n="fl.s2">Identifica o tipo de cliente</h3><p data-i18n="fl.s2p">Pessoa física ou empresa, antes de qualquer outra pergunta: cada um segue o seu fluxo.</p></div></li>
+        <li><div><span class="who ai" data-i18n="fl.agent">Agente</span><h3 data-i18n="fl.s3">Coleta o essencial</h3><p data-i18n="fl.s3p">O que a pessoa precisa, quantidade, prazo. Pedidos de cópia são orientados sem encerrar a conversa.</p></div></li>
+        <li class="hand"><div><span class="who ai" data-i18n="fl.agent">Agente</span><h3 data-i18n="fl.s4">Handoff</h3><p data-i18n="fl.s4p">O agente encerra a sua parte. Um card é criado no CRM e a passagem fica registrada no histórico.</p></div></li>
+        <li><div><span class="who human" data-i18n="fl.attendant">Atendente</span><h3 data-i18n="fl.s5">Assume o atendimento</h3><p data-i18n="fl.s5p">Um ato explícito: a equipe vê quem está com a conversa desde quando.</p></div></li>
+        <li><div><span class="who human" data-i18n="fl.attendant">Atendente</span><h3 data-i18n="fl.s6">Responde, resolve ou reabre</h3><p data-i18n="fl.s6p">Com o histórico completo. Resolver e reabrir também são ações explícitas, registradas.</p></div></li>
+      </ol>
+      <figure class="chat reveal" aria-label="Representação da triagem do agente no WhatsApp, com uma conversa ilustrativa." data-i18n="fl.chatLabel" data-i18n-attr="aria-label">
+        <span class="tag" data-i18n="fl.chatTag">Representação · conversa ilustrativa</span>
+        <p class="bub" data-i18n-html="fl.b1">Olá! Para te atender melhor, você é:<br>1 · Pessoa física<br>2 · Empresa / CNPJ<small>agente · triagem</small></p>
+        <p class="bub me" data-i18n-html="fl.b2">2<small>cliente</small></p>
+        <p class="bub" data-i18n-html="fl.b3">Pode me dizer o nome da empresa, o que precisa e se há um prazo?<small>agente · contexto PJ</small></p>
+        <p class="bub me" data-i18n-html="fl.b4">Empresa ABC. 500 cartões de visita com logo, em 5 dias úteis.<small>cliente</small></p>
+        <p class="bub" data-i18n-html="fl.b5">Anotei tudo. Uma pessoa da nossa equipe vai continuar com você para o orçamento.<small>agente · encerra a sua parte</small></p>
+        <p class="evt" data-i18n="fl.evt">Handoff registrado · card criado no CRM · PJ</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 · DECISÕES ================= -->
+<section class="sec tint" id="decisoes" aria-labelledby="h-d">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>05</b><span data-i18n="d.eyebrow">Decisões de UX</span></p>
+        <h2 class="statement" id="h-d" data-i18n-html="d.title">Ferramenta de operação, <em>não de registro.</em></h2>
+      </div>
+      <p class="lede" data-i18n="d.lede">Cada card precisava responder rápido: quem é, o que quer, em que etapa está, quem está atendendo e qual é a próxima ação. Quatro decisões que viraram comportamento do sistema.</p>
+    </div>
+
+    <div class="rule reveal">
+      <div class="rule-text">
+        <span class="id">A</span>
+        <h3 data-i18n="d.a.t">PF e PJ são fluxos, não filtros</h3>
+        <p data-i18n="d.a.p">Categoria e etapa são conceitos diferentes. Pessoas físicas e empresas ganharam quadros próprios, com critérios de prioridade distintos: velocidade de um lado, contexto de conta e histórico de pedidos do outro.</p>
+      </div>
+      <figure class="diagram" aria-label="Reconstrução do quadro do CRM: abas Pessoa Física e Pessoa Jurídica e as colunas Novo, Em atendimento, Orçamento enviado, Pedido aprovado ou separação, Entrega ou retirada e Resolvidos." data-i18n="d.a.fig" data-i18n-attr="aria-label">
+        <figcaption data-i18n="d.a.cap">Quadro de pessoa física · estrutura reconstruída a partir de uma captura real, sem dados</figcaption>
+        <div class="board" aria-hidden="true">
+          <div class="board-tabs"><span class="on" data-i18n="d.a.pf">Pessoa Física</span><span data-i18n="d.a.pj">Pessoa Jurídica</span><span data-i18n="d.a.ct">Contatos</span><span data-i18n="d.a.mt">Métricas</span></div>
+          <ol class="board-cols">
+            <li data-i18n="d.a.c1">Novo</li><li data-i18n="d.a.c2">Em atendimento</li><li data-i18n="d.a.c3">Orçamento enviado</li><li data-i18n="d.a.c4">Pedido aprovado / separação</li><li data-i18n="d.a.c5">Entrega / retirada</li><li class="done" data-i18n="d.a.c6">Resolvidos</li>
+          </ol>
+        </div>
+      </figure>
+    </div>
+
+    <div class="rule reveal">
+      <div class="rule-text">
+        <span class="id">B</span>
+        <h3 data-i18n="d.b.t">Assumir é um ato explícito</h3>
+        <p data-i18n="d.b.p">Para que dois atendentes não respondam a mesma pessoa — nem nenhum responda —, o painel pergunta quem está atendendo agora. Assumir e liberar são ações deliberadas, nunca efeito colateral de abrir uma conversa, e a transferência fica registrada.</p>
+      </div>
+      <figure class="evidence">
+        <div class="evidence-frame"><img src="../../assets/cases/sartec/crm/quem-esta-atendendo.webp" width="588" height="494" loading="lazy" decoding="async"
+          alt="Captura do CRM: janela “Quem está atendendo agora?”, com os nomes da equipe para escolher." data-i18n="d.b.alt" data-i18n-attr="alt" /></div>
+        <figcaption><span class="real" data-i18n="d.real">Captura real</span><span data-i18n="d.b.cap">Recortada para mostrar só a janela: o quadro ao fundo tem dados de clientes.</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="rule reveal">
+      <div class="rule-text">
+        <span class="id">C</span>
+        <h3 data-i18n="d.c.t">O CRM mostra o que o cliente viu</h3>
+        <p data-i18n="d.c.p">Mensagens automáticas de retomada chegavam ao cliente, mas não apareciam no CRM: o cliente sabia de algo que a equipe não sabia. Todo template enviado passou a ser um evento no histórico, com horário e status de entrega.</p>
+      </div>
+      <figure class="diagram" aria-label="Exemplo de histórico: mensagem do cliente, áudio transcrito, janela expirada, template de retomada registrado como evento e resposta do atendente." data-i18n="d.c.fig" data-i18n-attr="aria-label">
+        <figcaption data-i18n="d.c.cap">Histórico · exemplo ilustrativo</figcaption>
+        <ol class="hist">
+          <li><time>09:12</time><span data-i18n="d.c.h1">Cliente envia a lista de material</span></li>
+          <li><time>09:13</time><span data-i18n="d.c.h2">Áudio recebido · transcrição disponível</span></li>
+          <li><time data-i18n="d.c.t3">+24 h</time><span data-i18n="d.c.h3">Janela de atendimento expirada</span></li>
+          <li class="tpl"><time>10:40</time><span data-i18n-html="d.c.h4"><b>Template de retomada enviado</b> · entregue</span></li>
+          <li><time>10:52</time><span data-i18n="d.c.h5">Atendente responde com o orçamento</span></li>
+        </ol>
+      </figure>
+    </div>
+
+    <div class="rule reveal">
+      <div class="rule-text">
+        <span class="id">D</span>
+        <h3 data-i18n="d.d.t">Uma regra invisível, agora visível</h3>
+        <p data-i18n="d.d.p">A janela de 24 horas do WhatsApp ganhou estados com cor e badge próprios. O atendente não precisa saber a regra da plataforma: precisa saber se pode responder ou se precisa reabrir a conversa com um template.</p>
+      </div>
+      <figure class="diagram" aria-label="Os quatro estados da conversa: janela aberta, expirando, fechada e resolvido." data-i18n="d.d.fig" data-i18n-attr="aria-label">
+        <figcaption data-i18n="d.d.cap">Estados da conversa</figcaption>
+        <div class="wstates">
+          <div class="wstate open"><i></i><b data-i18n="d.d.s1">Janela aberta</b><span data-i18n="d.d.s1p">Responder normalmente.</span></div>
+          <div class="wstate exp"><i></i><b data-i18n="d.d.s2">Expirando</b><span data-i18n="d.d.s2p">Responder com prioridade.</span></div>
+          <div class="wstate closed"><i></i><b data-i18n="d.d.s3">Janela fechada</b><span data-i18n="d.d.s3p">Reabrir com um template aprovado.</span></div>
+          <div class="wstate done"><i></i><b data-i18n="d.d.s4">Resolvido</b><span data-i18n="d.d.s4p">Histórico, não tarefa ativa.</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="more-dec reveal">
+      <h3 data-i18n="d.more">E outras decisões, menores e igualmente concretas</h3>
+      <div class="reasons" style="margin-top:20px">
+        <div><span>E</span><h3 data-i18n="d.e.t">Orientar sem encerrar</h3><p data-i18n="d.e.p">“Falou xerox, encerra” parecia eficiente. O agente passou a orientar para o setor de cópias e manter a triagem aberta para o resto do pedido.</p></div>
+        <div><span>F</span><h3 data-i18n="d.f.t">Áudio virou requisito</h3><p data-i18n="d.f.p">No treinamento, a equipe mostrou que clientes mandam áudio o tempo todo. A transcrição entrou antes do lançamento — guardando o texto, não o áudio bruto.</p></div>
+        <div><span>G</span><h3 data-i18n="d.g.t">Indicador que não orienta é ruído</h3><p data-i18n="d.g.p">Um alerta crítico no topo gerava urgência sem dizer o que fazer e saiu de lá. O contador passou a refletir a aba ativa, PF ou PJ.</p></div>
+        <div><span>H</span><h3 data-i18n="d.h.t">Erros que dizem o que fazer</h3><p data-i18n="d.h.p">Mensagens técnicas genéricas viraram textos com causa e próxima ação: tentar de novo, esperar ou chamar ajuda.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 · IMPLANTAÇÃO ================= -->
+<section class="sec" id="implantacao" aria-labelledby="h-im">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>06</b><span data-i18n="im.eyebrow">Implantação</span></p>
+        <h2 class="statement" id="h-im" data-i18n-html="im.title">Uma primeira fase, <em>assistida.</em></h2>
+      </div>
+      <p class="lede" data-i18n="im.lede">Mudar como uma empresa atende não é publicar uma tela. O sistema entrou em uso aos poucos, com a equipe e com os clientes avisados.</p>
+    </div>
+    <div class="trio reveal">
+      <div class="trio-item"><span class="n">01</span><h3 data-i18n="im.t1">Mobile com arquitetura própria</h3><p data-i18n="im.p1">O responsivo do desktop confundia. O celular ganhou chat em tela única, ações rápidas e um guia curto. Uma funcionalidade instável no mobile foi revertida antes de voltar: em atendimento real, confiabilidade vem antes de velocidade.</p></div>
+      <div class="trio-item"><span class="n">02</span><h3 data-i18n="im.t2">Onboarding que ensina o trabalho</h3><p data-i18n="im.p2">Não um tour pelas áreas da tela, mas a operação: PF e PJ, quadro, card, prioridade, janela, abertura e finalização.</p></div>
+      <div class="trio-item result"><span class="n">03</span><h3 data-i18n="im.t3">Troca de número gradual</h3><p data-i18n="im.p3">Um número novo como etapa intermediária, em vez de migrar de uma vez o número principal da loja:</p>
+        <ul class="channels">
+          <li><b data-i18n="im.c1k">Novo</b><span data-i18n="im.c1">atendimento geral, com o agente</span></li>
+          <li><b data-i18n="im.c2k">Cópias</b><span data-i18n="im.c2">um número próprio para xerox e impressão</span></li>
+          <li><b data-i18n="im.c3k">Antigo</b><span data-i18n="im.c3">mantido para fornecedores</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note reveal" style="margin-top:28px" data-i18n="im.note">Os clientes foram avisados de que a nova forma de atendimento estava em teste, o que deixava espaço para voltar atrás.</p>
+  </div>
+</section>
+
+<!-- ================= 07 · IA NA EXECUÇÃO ================= -->
+<section class="sec dark on-dark" id="ia" aria-labelledby="h-ia">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>07</b><span data-i18n="ia.eyebrow">Desenvolvimento assistido por IA</span></p>
+        <h2 class="statement" id="h-ia" data-i18n-html="ia.title">A IA na execução. <em>O critério, humano.</em></h2>
+      </div>
+      <p class="lede" data-i18n="ia.lede">Lucas transformou ambiguidade operacional em critérios, estados e especificações — e usou IA para implementar, revisando cada resultado contra a operação real.</p>
+    </div>
+    <ol class="flow reveal" aria-label="Fluxo de trabalho" data-i18n="ia.flowLabel" data-i18n-attr="aria-label">
+      <li><span class="n">01</span><div><h3 data-i18n="ia.f1">Observar</h3><p data-i18n="ia.f1p">O atendimento real, no balcão e no WhatsApp, antes de qualquer tela.</p></div></li>
+      <li><span class="n">02</span><div><h3 data-i18n="ia.f2">Especificar</h3><p data-i18n="ia.f2p">Estados, transições, regras e critérios de aceite, com microcopy.</p></div></li>
+      <li><span class="n">03</span><div><h3 data-i18n="ia.f3">Implementar</h3><p data-i18n="ia.f3p">Com Claude Code; ChatGPT para estratégia, prompts e revisão.</p></div></li>
+      <li><span class="n">04</span><div><h3 data-i18n="ia.f4">Validar</h3><p data-i18n="ia.f4p">Com a equipe, em uso real e em dispositivos reais.</p></div></li>
+      <li><span class="n">05</span><div><h3 data-i18n="ia.f5">Ajustar</h3><p data-i18n="ia.f5p">Pelo feedback da operação, documentando cada decisão.</p></div></li>
+    </ol>
+    <div class="audit reveal">
+      <div style="display:grid;gap:16px;align-content:start">
+        <span class="eyebrow" data-i18n="ia.aeyebrow">Um caso concreto</span>
+        <h3 data-i18n="ia.at">O número estava registrado. O agente não respondia.</h3>
+        <p class="audit-quote" data-i18n="ia.aq">Depurar camada por camada, em vez de alterar código às cegas.</p>
+      </div>
+      <div class="audit-steps">
+        <div><b data-i18n="ia.as1b">Servidor</b><span data-i18n="ia.as1">As mensagens não chegavam à aplicação.</span></div>
+        <div><b data-i18n="ia.as2b">Dados</b><span data-i18n="ia.as2">Nada era gravado — o problema estava antes.</span></div>
+        <div><b data-i18n="ia.as3b">Configuração</b><span data-i18n="ia.as3">Variáveis de ambiente presentes; número ativo na API do WhatsApp.</span></div>
+        <div><b data-i18n="ia.as4b">Causa</b><span data-i18n="ia.as4">A conta do WhatsApp Business não estava inscrita no aplicativo, e por isso nenhum evento era entregue.</span></div>
+      </div>
+      <p class="note audit-foot" data-i18n="ia.afoot">Entender o sistema o bastante para decidir bem — sem precisar escrever cada linha — é parte do trabalho de quem conduz a implementação.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 · ESTADO E APRENDIZADOS ================= -->
+<section class="sec" id="estado" aria-labelledby="h-st">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>08</b><span data-i18n="st.eyebrow">Estado e aprendizados</span></p>
+        <h2 class="statement" id="h-st" data-i18n-html="st.title">Em uso. <em>Ainda sem medição.</em></h2>
+      </div>
+      <p class="lede" data-i18n="st.lede">O case mostra decisões e o que elas resolvem na operação. Não afirma ganhos que ainda não foram medidos.</p>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><h3 data-i18n="st.f1">Em operação</h3><p data-i18n="st.f1p">Usado pela equipe da Sartec como ferramenta de atendimento, numa primeira fase assistida.</p></div></div>
+      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><h3 data-i18n="st.f2">A equipe moldou o produto</h3><p data-i18n="st.f2p">O treinamento com os funcionários mudou prioridades, como a transcrição de áudio. É retorno qualitativo, não pesquisa formal.</p></div></div>
+      <div class="fact open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f3">Impacto ainda por medir</h3><p data-i18n="st.f3p">Não há, até aqui, medição de tempo de resposta, volume de atendimentos ou vendas. Medir faz parte da próxima etapa.</p></div></div>
+      <div class="fact open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f4">Telas completas, ainda não</h3><p data-i18n="st.f4p">As telas do quadro e do histórico mostram clientes reais. Até existirem versões anonimizadas, o case usa reconstruções sinalizadas.</p></div></div>
+    </div>
+    <div class="reflect reveal">
+      <blockquote data-i18n-html="st.quote">O CRM precisa mostrar <em>o que o cliente viu</em>, não apenas o que o atendente digitou.</blockquote>
+      <p class="prose lede" data-i18n="st.after">Ferramenta interna também precisa de UX forte: é nela que a equipe passa o dia.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="../../index.html#cases"><span data-i18n="st.cta1">Voltar ao trabalho selecionado</span> <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="../pesca/"><span data-i18n="st.cta2">Case anterior: Pesca Delivery</span></a>
+        <a class="btn btn-ghost" href="#main"><span data-i18n="st.cta3">Voltar ao topo</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="more-work" aria-labelledby="mw-h">
+  <div class="shell">
+    <div class="mw-head"><h2 id="mw-h" data-i18n="mw.h">Outros trabalhos</h2><a href="../../index.html#cases" data-i18n="mw.all">Ver todo o trabalho selecionado</a></div>
+    <ol class="mw-list">
+      <li><a href="../pesca/"><span class="mw-n">01</span><span class="mw-t">Pesca Delivery</span><span class="mw-go" data-i18n="mw.prev">← Case anterior</span><span class="mw-d" data-i18n="mw.pescaD">Case principal · loja, regras e painel de operação</span></a></li>
+      <li class="next"><a href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="mw-n">03</span><span class="mw-t">Plataforma UNIEDU</span><span class="mw-go" data-i18n="mw.ext">Case externo ↗</span><span class="mw-d" data-i18n="mw.unieduD">UX Research · Design System · em dupla com Najme Simon Alé</span></a></li>
+      <li><a href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer"><span class="mw-n">04</span><span class="mw-t">Sartec Papelaria</span><span class="mw-go" data-i18n="mw.site">Site ↗</span><span class="mw-d" data-i18n="mw.papD">Site + ecossistema digital</span></a></li>
+      <li><a href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="mw-n">05</span><span class="mw-t">Grupo Almeida</span><span class="mw-go" data-i18n="mw.staging">Em homologação ↗</span><span class="mw-d" data-i18n="mw.almD">Site institucional · PT/EN</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+</main>
+
+<footer class="cfoot">
+  <div class="shell">
+    <span>Lucas Cabral · Product Designer &amp; Design Engineer</span>
+    <span data-i18n="foot">Case Sartec · versão 1</span>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="../pesca/case.js"></script>
+<script src="../case-shell.js"></script>
+</body>
+</html>

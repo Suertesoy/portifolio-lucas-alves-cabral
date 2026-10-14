@@ -1,0 +1,69 @@
+/* =========================================================
+   CASE SHELL — shared by every internal case (checkpoint 14)
+   Loaded after the case's own stylesheet. It carries what must be identical in all cases:
+   the portfolio type (Inter Tight, as on the Home), the portfolio nav (brand · ← Trabalho · PT/EN),
+   the device frame (real captures at their own aspect ratio, as on the Home), the Before/After
+   switcher and the "other work" navigation. Colours, images and narrative stay with each case.
+   ========================================================= */
+:root { --font-display: "Inter Tight", system-ui, sans-serif; }
+h1, h2, h3 { letter-spacing: -.03em; }
+.hero h1 { letter-spacing: -.06em; }
+
+/* ---------- nav: the portfolio's, not the client's ---------- */
+.cnav-in { gap: 10px; }
+.cnav .brand { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; text-decoration: none; font: 600 15px/1 var(--font-display); letter-spacing: -.01em; color: var(--ink); }
+.cnav .brand svg { width: 18px; height: 18px; fill: var(--green); transition: transform .6s var(--ease); flex-shrink: 0; }
+.cnav .brand:hover svg { transform: rotate(90deg); }
+.cnav .brand span { display: none; }
+.cnav-end { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.cnav .back { margin-left: 0; }
+@media (min-width: 640px) { .cnav .brand span { display: inline; } }
+@media (max-width: 380px) { .cnav .back span { display: none; } .cnav .back { padding-inline: 10px; } }
+
+/* ---------- device frame (same technique as the Home): the screen keeps the capture's ratio ---------- */
+.dev { margin: 0; display: grid; justify-items: center; gap: 12px; }
+.dev-screen {
+  box-sizing: content-box; width: var(--dev-w, 240px); aspect-ratio: var(--ar, 390 / 844);
+  padding: calc(var(--dev-w, 240px) * .036); border-radius: calc(var(--dev-w, 240px) * .17);
+  background: linear-gradient(150deg, #3A433D 0%, #141816 34%, #090B0A 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07), 0 0 0 1px rgba(20, 26, 21, .12), 0 40px 64px -34px rgba(16, 20, 18, .6);
+}
+.dev-screen img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--dev-w, 240px) * .135); background: #161513; }
+.dev figcaption { font-family: var(--font-mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); text-align: center; }
+
+/* ---------- Before / After switcher (tabs; both panels visible without JS) ---------- */
+.cmp-tabs { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--paper-2); border: 1px solid var(--line-strong); }
+.cmp-tab { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--ink-soft); }
+.cmp-tab small { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.cmp-tab[aria-selected="true"] { background: var(--green-deep); color: #fff; }
+.cmp-tab[aria-selected="true"] small { color: var(--sage); }
+.cmp-tab:focus-visible { outline-offset: 2px; }
+.cmp-stage { margin-top: clamp(24px, 4vw, 40px); display: grid; }
+.cmp-panel { display: grid; gap: clamp(24px, 4vw, 56px); align-items: center; grid-template-columns: 1fr; }
+.cmp-panel[hidden] { display: none; }
+.cmp-panel .dev { --dev-w: clamp(196px, 52vw, 268px); }
+.cmp-text { display: grid; gap: 16px; align-content: start; max-width: 44ch; }
+.js .cmp-panel:not([hidden]) { animation: cmp-in .45s var(--ease) both; }
+@keyframes cmp-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.cmp-source { font-size: 12.5px; color: var(--muted); }
+@media (min-width: 900px) {
+  .cmp-panel { grid-template-columns: auto 1fr; gap: 72px; }
+  .cmp-text { max-width: 46ch; }
+}
+
+/* ---------- other work: the Home's order, the next case first ---------- */
+.more-work { padding-block: clamp(56px, 8vw, 104px); border-top: 1px solid var(--line); }
+.mw-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 24px; margin-bottom: 24px; }
+.mw-head h2 { font-size: clamp(26px, 3.4vw, 40px); }
+.mw-head a { display: inline-flex; align-items: center; min-height: 32px; font-size: 14px; color: var(--ink-soft); text-underline-offset: 4px; }
+.mw-list { list-style: none; display: grid; gap: 0; border-top: 1px solid var(--line-strong); }
+.mw-list a { display: grid; grid-template-columns: 2.4em 1fr auto; gap: 4px 14px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; transition: background .25s var(--ease), padding .25s var(--ease); }
+.mw-list a:hover { background: var(--paper-2); padding-inline: 12px; }
+.mw-n { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.mw-t { font-family: var(--font-display); font-weight: 600; font-size: clamp(19px, 2.2vw, 24px); letter-spacing: -.02em; line-height: 1.2; }
+.mw-d { grid-column: 2; font-size: 13.5px; color: var(--muted); }
+.mw-go { grid-row: 1; grid-column: 3; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; }
+.mw-list .next a { background: var(--sage-soft); padding-inline: 14px; border-bottom-color: transparent; margin-bottom: 1px; }
+.mw-list .next .mw-go { color: var(--green); }
+.mw-list .here { opacity: .55; }
+@media (prefers-reduced-motion: reduce) { .js .cmp-panel:not([hidden]) { animation: none; } }

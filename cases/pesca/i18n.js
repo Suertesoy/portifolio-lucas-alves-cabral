@@ -4,8 +4,9 @@
 window.CASE_EN = {
   "doc.title": "Pesca Delivery — Beyond the storefront · Lucas Cabral",
   "skip": "Skip to content",
-  "nav.back": "Portfolio",
-  "nav.mid": "Case · Pesca Delivery",
+  "nav.back": "Work",
+  "nav.mid": "Case 01 · Pesca Delivery",
+  "nav.home": "Lucas Cabral — portfolio",
   "nav.lang": "Idioma / Language",
 
   "hero.eyebrow": "Case · Pesca Delivery · 2026",
@@ -50,6 +51,11 @@ window.CASE_EN = {
   "b.after": "After", "b.afterT": "Continuous composition",
   "b.wireLabel": "Structural diagram: four categories, Base, Protein, Sides and Sauces, on one page, with add-ons next to protein and sauces and a persistent summary.",
   "b.wireTag": "Structural diagram · not the final interface",
+  "b.wireTag2": "Page structure",
+  "b.cmpLabel": "Compare the versions of the builder", "b.beforeK": "Prototype", "b.afterK": "Product",
+  "b.beforeCap": "Figma Make · early prototype", "b.afterCap": "Live store · /poke/monte",
+  "b.afterAlt": "The builder in the live product: categories on one page, “Want more protein?” right next to the protein choice, and a fixed summary with the bowl's price and what is still missing.",
+  "b.afterSource": "A real capture of the public store in production, October 2026. Items marked as unavailable reflect that moment.",
   "b.w1": "Base", "b.wr1": "always reachable",
   "b.w2": "Protein", "b.wr2": "+ add-on here",
   "b.w3": "Sides", "b.wr3": "always reachable",
@@ -157,6 +163,11 @@ window.CASE_EN = {
   "o.f4": "Impact still to be measured", "o.f4p": "There is not yet evidence to claim shorter support time, higher sales or conversion. Measuring over time is part of the next chapter.",
   "o.quote": "Design doesn't end at the interface. It ends when <em>operations</em> can deliver what the interface promises.",
   "o.after": "The product entered a phase of operation and observation, and its evolution is now guided by real use, not assumption.",
-  "o.cta1": "Back to projects", "o.cta2": "Go to portfolio", "o.cta3": "Back to top",
+  "o.cta1": "Next case: Sartec", "o.cta2": "Back to selected work", "o.cta3": "Back to top",
+  "mw.h": "Other work", "mw.all": "See all selected work", "mw.next": "Next case →", "mw.prev": "← Previous case", "mw.ext": "External case ↗", "mw.site": "Website ↗", "mw.staging": "In staging ↗",
+  "mw.pesca": "Pesca Delivery", "mw.pescaD": "Lead case · storefront, rules and operations panel",
+  "mw.crm": "Operational CRM + AI Agent", "mw.crmD": "Sartec · internal system, WhatsApp and applied AI",
+  "mw.unieduD": "UX Research · Design System · in partnership with Najme Simon Alé",
+  "mw.papD": "Website + digital ecosystem", "mw.almD": "Institutional website · PT/EN",
   "foot": "Pesca Delivery case · version 1"
 };
