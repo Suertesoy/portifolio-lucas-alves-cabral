@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>/* relative paths need the trailing slash: /cases/pesca -> /cases/pesca/ */
+if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+'/'+location.search+location.hash);</script>
+<title>Pesca Delivery — Beyond the storefront · Lucas Cabral</title>
+<meta name="description" content="Case de Product Design e Design Engineering: da personalização de um Poke pelo WhatsApp a uma experiência digital que conecta compra e operação." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23152815'><circle cx='12' cy='7.5' r='4.5'/><circle cx='12' cy='16.5' r='4.5'/><circle cx='7.5' cy='12' r='4.5'/><circle cx='16.5' cy='12' r='4.5'/><rect x='9.5' y='9.5' width='5' height='5' rx='1'/></svg>" />
+<link rel="stylesheet" href="case.css" />
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Pular para o conteúdo</a>
+
+<!-- ================= NAV ================= -->
+<header class="cnav">
+  <div class="shell cnav-in">
+    <a class="back" href="../../index.html#work">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      <span data-i18n="nav.back">Portfólio</span>
+    </a>
+    <span class="cnav-mid" data-i18n="nav.mid">Case · Pesca Delivery</span>
+    <div class="lang-toggle" role="group" aria-label="Idioma / Language" data-i18n="nav.lang" data-i18n-attr="aria-label">
+      <button type="button" class="lang-btn" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= 01 · ABERTURA ================= -->
+<section class="hero" aria-labelledby="h-hero">
+  <div class="shell">
+    <p class="eyebrow"><b>01</b><span data-i18n="hero.eyebrow">Case · Pesca Delivery · 2026</span></p>
+    <h1 id="h-hero"><span>Beyond the</span> <span class="l2">storefront.</span></h1>
+    <div class="hero-grid">
+      <p class="lede" data-i18n="hero.lede">Da personalização de um Poke pelo WhatsApp a uma experiência digital que conecta compra e operação.</p>
+      <dl class="meta">
+        <div><dt data-i18n="hero.m1">Projeto</dt><dd>Pesca Delivery</dd></div>
+        <div><dt data-i18n="hero.m2">Ano</dt><dd>2026</dd></div>
+        <div class="wide"><dt data-i18n="hero.m5">Papel</dt><dd data-i18n="hero.m5v">Lucas Cabral · Product Designer &amp; Design Engineer</dd></div>
+        <div><dt data-i18n="hero.m3">Disciplinas</dt><dd>Product Design<br>UX/UI<br>Design Engineering</dd></div>
+        <div><dt data-i18n="hero.m4">Processo</dt><dd>AI-assisted Development</dd></div>
+      </dl>
+    </div>
+
+    <!-- Mapa conceitual do sistema.
+         SLOT: hero-captures — quando houver capturas finais da Loja, do Builder e do Painel,
+         elas entram aqui, lado a lado com (ou no lugar de) este mapa. -->
+    <div class="sysmap reveal" data-slot="hero-captures">
+      <div class="sysmap-grid">
+        <div class="node"><span class="k" data-i18n="hero.n1k">Loja</span><p class="node-t" data-i18n="hero.n1t">Onde o cliente decide</p><p data-i18n="hero.n1p">Escolhe pescados, monta o Poke e fecha o pedido sem depender de uma conversa.</p></div>
+        <div class="node core"><span class="k" data-i18n="hero.n2k">Regras compartilhadas</span><p class="node-t" data-i18n="hero.n2t">O que é verdade</p><p data-i18n="hero.n2p">Peso, preço, disponibilidade e pagamento tratados do mesmo jeito dos dois lados.</p></div>
+        <div class="node"><span class="k" data-i18n="hero.n3k">Painel</span><p class="node-t" data-i18n="hero.n3t">Onde a operação age</p><p data-i18n="hero.n3p">Organizado por uma pergunta: o que precisa ser feito agora?</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 · OPORTUNIDADE ================= -->
+<section class="sec tint" id="oportunidade" aria-labelledby="h-op">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div class="stack" style="display:grid;gap:20px">
+        <p class="eyebrow"><b>02</b><span data-i18n="op.eyebrow">Oportunidade</span></p>
+        <h2 class="statement" id="h-op" data-i18n-html="op.title">Um Poke montado <em>mensagem por mensagem.</em></h2>
+      </div>
+      <div class="prose">
+        <p data-i18n="op.p1">Lucas conheceu o Pesca como uma peixaria. Quando o negócio passou a oferecer Pokes personalizados, percebeu que os clientes escolhiam ingredientes e montavam o prato pelo WhatsApp.</p>
+        <p data-i18n="op.p2">Perguntou ao responsável pelo negócio qual era uma das maiores dificuldades da operação. A resposta: o tempo dedicado ao atendimento pelo WhatsApp. Lucas também pediu, por iniciativa própria, dados comerciais e o catálogo, para entender demanda, variações de peso e formas de preparo antes de desenhar qualquer coisa.</p>
+      </div>
+    </div>
+
+    <div class="trio reveal">
+      <div class="trio-item"><span class="n">01</span><h3 data-i18n="op.t1">O que o designer viu</h3><p data-i18n="op.d1">Uma experiência de personalização improvisada num canal de conversa.</p></div>
+      <div class="trio-item"><span class="n">02</span><h3 data-i18n="op.t2">O que a operação sentia</h3><p data-i18n="op.d2">Tempo excessivo de atendimento pelo WhatsApp, relatado pelo responsável pelo negócio.</p></div>
+      <div class="trio-item result"><span class="n">03</span><h3 data-i18n="op.t3">A oportunidade</h3><p data-i18n="op.d3">Uma compra mais autônoma, ligada a uma estrutura que acompanha o pedido. Loja e Painel, desde a concepção.</p></div>
+    </div>
+    <p class="note reveal" style="margin-top:28px" data-i18n="op.note">O Pesca já usava outros sistemas para caixa, balança e gestão fiscal. A proposta nunca foi substituí-los.</p>
+  </div>
+</section>
+
+<!-- ================= 03 · PRIMEIRA MATERIALIZAÇÃO ================= -->
+<section class="sec dark on-dark" id="prototipo" aria-labelledby="h-proto">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>03</b><span data-i18n="proto.eyebrow">Primeira materialização</span></p>
+        <h2 class="statement" id="h-proto" data-i18n-html="proto.title">Rápido para discutir, <em>concreto para decidir.</em></h2>
+      </div>
+      <div class="prose">
+        <p data-i18n="proto.p1">Lucas explorou e estruturou as ideias e usou o Figma Make para chegar depressa a uma primeira experiência visual.</p>
+        <p data-i18n="proto.p2">A IA entrou como meio de prototipação. As decisões continuavam sendo de produto: o que a Loja precisa mostrar, como um Poke é montado, como o carrinho trata itens vendidos por peso.</p>
+      </div>
+    </div>
+
+    <div class="gallery reveal" id="gallery">
+      <button type="button" class="shot" data-lb="0">
+        <span class="shot-frame">
+          <img src="../../assets/cases/pesca/figma-make/figma-home.png" width="416" height="867" loading="lazy" alt="Protótipo inicial no Figma Make: tela inicial com banner de peixes frescos e atalhos para pescados, congelados e Poke." data-i18n="proto.a1" data-i18n-attr="alt" />
+          <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </span>
+        <span class="shot-cap"><b data-i18n="proto.b1">Início</b><span data-i18n="proto.c1">Protótipo inicial no Figma Make, tela inicial.</span></span>
+      </button>
+      <button type="button" class="shot" data-lb="1">
+        <span class="shot-frame">
+          <img src="../../assets/cases/pesca/figma-make/figma-poke-selection.png" width="410" height="870" loading="lazy" alt="Protótipo inicial no Figma Make: tela do Poke com uma opção pronta e o convite para montar o próprio Poke." data-i18n="proto.a2" data-i18n-attr="alt" />
+          <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </span>
+        <span class="shot-cap"><b data-i18n="proto.b2">Poke</b><span data-i18n="proto.c2">Protótipo inicial no Figma Make, escolha do Poke.</span></span>
+      </button>
+      <button type="button" class="shot" data-lb="2">
+        <span class="shot-frame">
+          <img src="../../assets/cases/pesca/figma-make/figma-poke-builder-steps.png" width="413" height="870" loading="lazy" alt="Protótipo inicial no Figma Make: primeira de cinco etapas da montagem do Poke, a escolha de bases." data-i18n="proto.a3" data-i18n-attr="alt" />
+          <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </span>
+        <span class="shot-cap"><b data-i18n="proto.b3">Builder</b><span data-i18n="proto.c3">Protótipo inicial no Figma Make, montagem por cinco etapas.</span></span>
+      </button>
+      <button type="button" class="shot" data-lb="3">
+        <span class="shot-frame">
+          <img src="../../assets/cases/pesca/figma-make/figma-cart.png" width="407" height="871" loading="lazy" alt="Protótipo inicial no Figma Make: carrinho com um Poke personalizado, um produto de preço fixo e um item vendido por peso com valor estimado." data-i18n="proto.a4" data-i18n-attr="alt" />
+          <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </span>
+        <span class="shot-cap"><b data-i18n="proto.b4">Carrinho</b><span data-i18n="proto.c4">Protótipo inicial no Figma Make, carrinho com item por peso.</span></span>
+      </button>
+    </div>
+    <p class="hist-badge reveal" data-i18n="proto.badge">Evidência histórica do primeiro protótipo, não as telas do produto atual. Textos e valores são de uma exploração inicial e não representam os preços atuais do Pesca.</p>
+  </div>
+</section>
+
+<!-- Lightbox (acessível, <dialog> nativo) -->
+<dialog class="lb" id="lb" aria-label="Visualização ampliada" data-i18n="lb.label" data-i18n-attr="aria-label">
+  <div class="lb-in">
+    <div class="lb-top"><span id="lb-count"></span><button type="button" class="lb-btn" id="lb-close" data-i18n="lb.close">Fechar</button></div>
+    <div class="lb-stage"><img id="lb-img" alt="" /></div>
+    <div class="lb-bottom">
+      <p class="lb-cap" id="lb-cap"></p>
+      <div class="lb-nav">
+        <button type="button" class="lb-btn" id="lb-prev" aria-label="Anterior" data-i18n="lb.prev" data-i18n-attr="aria-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="lb-btn" id="lb-next" aria-label="Próxima" data-i18n="lb.next" data-i18n-attr="aria-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- ================= 04 · EVOLUÇÃO DO BUILDER ================= -->
+<section class="sec" id="builder" aria-labelledby="h-b">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>04</b><span data-i18n="b.eyebrow">Evolução do Builder</span></p>
+        <h2 class="statement" id="h-b" data-i18n-html="b.title">De formulário <em>a composição.</em></h2>
+      </div>
+      <p class="lede" data-i18n="b.lede">O primeiro protótipo montava o Poke em etapas. Lucas identificou dois problemas e propôs reunir as categorias numa mesma página.</p>
+    </div>
+
+    <div class="ba">
+      <div class="ba-col reveal">
+        <p class="ba-label"><b data-i18n="b.before">Antes</b><span data-i18n="b.beforeT">Montagem sequencial</span></p>
+        <div class="before-wrap">
+          <figure class="shot-frame">
+            <img src="../../assets/cases/pesca/figma-make/figma-poke-builder-steps.png" width="413" height="870" loading="lazy" alt="Protótipo inicial no Figma Make: primeira de cinco etapas da montagem do Poke, a escolha de bases." data-i18n="proto.a3" data-i18n-attr="alt" />
+          </figure>
+          <div>
+            <ol class="steps" aria-label="Cinco etapas do protótipo" data-i18n="b.stepsLabel" data-i18n-attr="aria-label">
+              <li><span data-i18n="b.s1">Bases</span></li>
+              <li><span data-i18n="b.s2">Etapa 2</span></li>
+              <li><span data-i18n="b.s3">Etapa 3</span></li>
+              <li><span data-i18n="b.s4">Etapa 4</span></li>
+              <li><span data-i18n="b.s5">Etapa 5</span></li>
+            </ol>
+            <p class="note" data-i18n="b.beforeNote">Protótipo inicial no Figma Make, montagem por cinco etapas. O primeiro Builder implementado partiu de um wizard de seis etapas: outra versão, que não se mistura a esta.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ba-col reveal">
+        <p class="ba-label after"><b data-i18n="b.after">Depois</b><span data-i18n="b.afterT">Composição contínua</span></p>
+        <!-- Representação estrutural honesta. SLOT: builder-final-capture
+             A captura definitiva do Builder Dark Premium deve substituir (ou acompanhar) este diagrama,
+             usando o contêiner .slot logo abaixo da seção de motivos. -->
+        <div class="wire" role="img" aria-label="Diagrama estrutural: quatro categorias, Base, Proteína, Acompanhamentos e Molhos, na mesma página, com adicionais junto de proteína e molhos e um resumo persistente." data-i18n="b.wireLabel" data-i18n-attr="aria-label">
+          <span class="wire-tag" data-i18n="b.wireTag">Diagrama estrutural · não é a interface final</span>
+          <div class="wire-body" aria-hidden="true">
+            <div class="wire-cats">
+              <div class="wire-cat"><span data-i18n="b.w1">Base</span><small data-i18n="b.wr1">sempre acessível</small></div>
+              <div class="wire-cat has-extra"><span data-i18n="b.w2">Proteína</span><small data-i18n="b.wr2">+ adicional aqui</small></div>
+              <div class="wire-cat"><span data-i18n="b.w3">Acompanhamentos</span><small data-i18n="b.wr3">sempre acessível</small></div>
+              <div class="wire-cat has-extra"><span data-i18n="b.w4">Molhos</span><small data-i18n="b.wr4">+ adicional aqui</small></div>
+            </div>
+            <div class="wire-sum"><span data-i18n="b.wsum">Resumo persistente</span><span data-i18n="b.wsum2">escolhas revisáveis</span></div>
+          </div>
+        </div>
+        <p class="note" data-i18n="b.afterNote">O Builder evoluiu para uma montagem contínua: categorias na mesma página, adicionais no contexto da escolha e resumo sempre visível.</p>
+      </div>
+    </div>
+
+    <div class="reasons reveal">
+      <div><span>01</span><h3 data-i18n="b.r1t">Revisar sem recomeçar</h3><p data-i18n="b.r1p">Trocar a base depois de chegar aos molhos exigia voltar etapas. Com tudo na mesma página, qualquer escolha pode ser reconsiderada.</p></div>
+      <div><span>02</span><h3 data-i18n="b.r2t">Montar, não preencher</h3><p data-i18n="b.r2p">A sequência de telas parecia um formulário e estimulava pouco o apetite. A composição contínua traz o prato de volta ao centro.</p></div>
+    </div>
+    <p class="note reveal" style="margin-top:24px" data-i18n="b.honest">Não houve teste formal com consumidores nem medição de conversão. A mudança nasceu de observação e de julgamento de produto.</p>
+
+    <!-- SLOT: builder-final-capture (vazio por enquanto; oculto por CSS enquanto não houver conteúdo) -->
+    <div class="slot" data-slot="builder-final-capture"></div>
+  </div>
+</section>
+
+<!-- ================= 05 · DOIS UNIVERSOS ================= -->
+<section class="sec dark on-dark" id="identidade" aria-labelledby="h-id">
+  <div class="shell">
+    <div class="brandstage">
+      <div class="reveal" style="display:grid;gap:22px">
+        <p class="eyebrow"><b>05</b><span data-i18n="id.eyebrow">Identidade</span></p>
+        <h2 class="statement" id="h-id" data-i18n-html="id.title">Dois universos, <em>uma identidade.</em></h2>
+        <div class="prose">
+          <p data-i18n="id.p1">O Pesca vende Pokes personalizados e pescados tradicionais. São intenções de compra diferentes, que convivem na mesma loja e no mesmo pedido.</p>
+          <p data-i18n="id.p2">Lucas notou que as embalagens e comunicações recentes do Pesca caminhavam para algo mais premium e quis levar isso para a interface. O Dark Premium deu mais presença à marca e uma atmosfera própria.</p>
+        </div>
+      </div>
+      <div class="logo-plate reveal">
+        <img src="../../assets/cases/pesca/brand/pesca-delivery-logo-1000.png" width="1000" height="436" loading="lazy" alt="Logotipo oficial do Pesca Delivery, em letras amarelas cursivas sobre fundo preto." data-i18n="id.logoAlt" data-i18n-attr="alt" />
+      </div>
+    </div>
+
+    <div class="plus-row reveal">
+      <div class="uni"><span class="intent" data-i18n="id.i1">Escolher um corte</span><span class="big" data-i18n="id.u1">Pescados</span><p data-i18n="id.d1">Peixes, frutos do mar e preparados, escolhidos por produto, peso e forma de preparo.</p></div>
+      <div class="uni"><span class="intent" data-i18n="id.i2">Montar um prato</span><span class="big" data-i18n="id.u2">Pokes</span><p data-i18n="id.d2">Base, proteína, acompanhamentos e molhos, compostos pelo próprio cliente.</p></div>
+    </div>
+    <div class="merge reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg>
+      <span data-i18n="id.merge">Um só carrinho, um só pedido.</span>
+    </div>
+    <div class="principles reveal">
+      <p data-i18n-html="id.pr1"><b>O desafio:</b> uma interface escura não podia escurecer a comida. As fotografias continuam sendo o centro de cor da Loja.</p>
+      <p class="note" data-i18n="id.pr2">Aqui a identidade do Pesca é conteúdo do case. A página segue a identidade do portfólio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 · TRÊS PERSPECTIVAS ================= -->
+<section class="sec" id="perspectivas" aria-labelledby="h-p">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>06</b><span data-i18n="p.eyebrow">Um pedido</span></p>
+        <h2 class="statement" id="h-p" data-i18n-html="p.title">Um pedido, <em>três perspectivas.</em></h2>
+      </div>
+      <p class="lede" data-i18n="p.lede">A mesma compra vista por quem pede, pelas regras que a sustentam e por quem executa.</p>
+    </div>
+
+    <div class="persp reveal">
+      <section class="lane" aria-labelledby="l1">
+        <header><h3 id="l1" data-i18n="p.l1">Cliente</h3></header>
+        <p class="q" data-i18n="p.q1">“Quero isso e quero saber quanto vai ficar.”</p>
+        <ol>
+          <li><i>1</i><span data-i18n-html="p.c1"><b>Escolhe</b> pescados e monta o Poke.</span></li>
+          <li><i>2</i><span data-i18n-html="p.c2"><b>Vê o total estimado</b>, com os itens por peso marcados como estimados.</span></li>
+          <li><i>3</i><span data-i18n-html="p.c3"><b>Acompanha</b> o pedido numa página pública.</span></li>
+        </ol>
+      </section>
+      <section class="lane sys" aria-labelledby="l2">
+        <header><h3 id="l2" data-i18n="p.l2">Sistema</h3></header>
+        <p class="q" data-i18n="p.q2">“O que é verdade agora?”</p>
+        <ol>
+          <li><i>1</i><span data-i18n-html="p.s1"><b>Protege o preço</b> e <b>revalida a disponibilidade</b>.</span></li>
+          <li><i>2</i><span data-i18n-html="p.s2"><b>Registra</b> peso solicitado e, depois, peso efetivo.</span></li>
+          <li><i>3</i><span data-i18n-html="p.s3"><b>Mantém o pagamento pendente</b> até haver confirmação.</span></li>
+        </ol>
+      </section>
+      <section class="lane" aria-labelledby="l3">
+        <header><h3 id="l3" data-i18n="p.l3">Operação</h3></header>
+        <p class="q" data-i18n="p.q3">“O que precisa ser feito agora?”</p>
+        <ol>
+          <li><i>1</i><span data-i18n-html="p.o1"><b>Vê o pedido</b> organizado por urgência de trabalho.</span></li>
+          <li><i>2</i><span data-i18n-html="p.o2"><b>Separa e pesa</b> os itens vendidos por peso.</span></li>
+          <li><i>3</i><span data-i18n-html="p.o3"><b>Confirma o pagamento</b> e acompanha retirada ou entrega.</span></li>
+          <li><i>4</i><span data-i18n-html="p.o4"><b>Conversa pelo WhatsApp</b> quando algo foge do previsto.</span></li>
+        </ol>
+      </section>
+    </div>
+    <span class="tag illus-tag" data-i18n="p.illus">Fluxo ilustrativo e simplificado · sem dados reais</span>
+    <p class="note reveal" style="margin-top:16px" data-i18n="p.note">Os agrupamentos do Painel, como Agora ou Hoje, ajudam as pessoas a trabalhar. Não são estados do pedido: o estado continua sendo definido pelo domínio.</p>
+  </div>
+</section>
+
+<!-- ================= 07 · QUANDO UX VIRA REGRA ================= -->
+<section class="sec tint" id="regras" aria-labelledby="h-r">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>07</b><span data-i18n="r.eyebrow">Design Engineering</span></p>
+        <h2 class="statement" id="h-r" data-i18n-html="r.title">Quando UX <em>vira regra.</em></h2>
+      </div>
+      <p class="lede" data-i18n="r.lede">Decisões de experiência que se transformaram em comportamento de software. Três exemplos.</p>
+    </div>
+
+    <!-- A -->
+    <div class="rule reveal">
+      <div class="rule-text">
+        <span class="id">A</span>
+        <h3 data-i18n="r.a.t">Peso pedido não é peso separado</h3>
+        <p data-i18n="r.a.p">Uma pessoa pede 300 g; a peça separada pesa 345 g. O sistema distingue o que foi pedido do que foi pesado, e o valor acompanha o peso efetivo. Transparência antes da surpresa. Se houver discordância, a conversa continua entre pessoas, pelo WhatsApp.</p>
+        <details class="deep"><summary data-i18n="r.deep">Aprofundar</summary><div>
+          <p data-i18n="r.a.d1">Intenção de compra e forma de precificação são conceitos diferentes. Em peixes inteiros, o cliente escolhe unidades; o valor sai do peso real multiplicado pelo preço por kg.</p>
+          <p data-i18n="r.a.d2">Pedidos antigos não são reinterpretados quando o catálogo muda: histórico comercial permanece histórico.</p>
+        </div></details>
+      </div>
+      <figure class="diagram" aria-label="Diagrama: peso solicitado de 300 gramas, peso separado de 345 gramas, valor final calculado sobre o peso efetivo." data-i18n="r.a.fig" data-i18n-attr="aria-label">
+        <figcaption data-i18n="r.a.cap">Exemplo ilustrativo</figcaption>
+        <div class="wbar"><div class="lbl"><span data-i18n="r.a.req">Peso solicitado</span><strong>300 g</strong></div><div class="track"><div class="fill req"></div></div></div>
+        <div class="wbar"><div class="lbl"><span data-i18n="r.a.eff">Peso efetivo (separado)</span><strong>345 g</strong></div><div class="track"><div class="fill eff"></div></div></div>
+        <div class="wcalc">
+          <div class="row"><span data-i18n="r.a.r1">Diferença</span><b>+45 g</b></div>
+          <div class="row total"><span data-i18n="r.a.r2">Valor final</span><b data-i18n="r.a.r3">peso efetivo × preço por kg</b></div>
+        </div>
+      </figure>
+    </div>
+
+    <!-- B -->
+    <div class="rule reveal">
+      <div class="rule-text">
+        <span class="id">B</span>
+        <h3 data-i18n="r.b.t">Preço protegido, disponibilidade revalidada</h3>
+        <p data-i18n="r.b.p">O preço visto no carrinho não muda por baixo do cliente. A disponibilidade pode mudar, então é conferida de novo na hora de finalizar. Um produto indisponível continua visível, com o aviso “Indisponível no momento”.</p>
+        <details class="deep"><summary data-i18n="r.deep">Aprofundar</summary><div>
+          <p data-i18n="r.b.d1">Produto cadastrado não significa produto disponível: catálogo e disponibilidade são conceitos separados.</p>
+          <p data-i18n="r.b.d2">“Indisponível no momento” é um produto real, temporariamente sem compra. “Em breve” é um produto ainda não lançado.</p>
+        </div></details>
+      </div>
+      <figure class="diagram" aria-label="Diagrama de três momentos: adicionar ao carrinho protege o preço, revisar mostra itens por peso como estimados, finalizar revalida a disponibilidade." data-i18n="r.b.fig" data-i18n-attr="aria-label">
+        <figcaption data-i18n="r.b.cap">Da escolha à finalização</figcaption>
+        <ol class="tl">
+          <li><span class="dot lock" aria-hidden="true">1</span><div><h4 data-i18n="r.b.s1">Adiciona ao carrinho</h4><p data-i18n="r.b.s1p">O preço fica protegido.</p></div></li>
+          <li><span class="dot" aria-hidden="true">2</span><div><h4 data-i18n="r.b.s2">Revisa o carrinho</h4><p data-i18n="r.b.s2p">Itens por peso aparecem como estimados.</p></div></li>
+          <li><span class="dot check" aria-hidden="true">3</span><div><h4 data-i18n="r.b.s3">Finaliza</h4><p data-i18n="r.b.s3p">A disponibilidade é conferida de novo.</p>
+            <div class="branch"><span class="chip ok"><i></i><span data-i18n="r.b.ok">Disponível: o pedido segue</span></span><span class="chip warn"><i></i><span data-i18n="r.b.no">Indisponível no momento: o cliente é avisado</span></span></div></div></li>
+        </ol>
+      </figure>
+    </div>
+
+    <!-- C -->
+    <div class="rule reveal">
+      <div class="rule-text">
+        <span class="id">C</span>
+        <h3 data-i18n="r.c.t">Estados que não prometem demais</h3>
+        <p data-i18n="r.c.p">A interface não diz mais do que o sistema sabe. Pagamento pendente não é pagamento confirmado. Abrir o WhatsApp não é ter enviado uma mensagem.</p>
+        <details class="deep"><summary data-i18n="r.deep">Aprofundar</summary><div>
+          <p data-i18n="r.c.d0">Mesmo quando o cliente copia o código Pix, isso é registrado como intenção, nunca como pagamento. Só a operação confirma, e o Painel nunca mostra essa atividade com cara de dinheiro recebido.</p>
+          <p data-i18n="r.c.d1">A comunicação por WhatsApp é manual: não existe estado persistido de notificação, então o sistema só sabe que a conversa foi aberta.</p>
+          <p data-i18n="r.c.d2">Mostrar menos capacidades reais é preferível a mostrar capacidades falsas. Isso vale também para testes: QA não simula um pagamento que não aconteceu.</p>
+        </div></details>
+      </div>
+      <figure class="diagram" aria-label="Diagrama de dois pares de estados: pagamento pendente versus confirmado, e WhatsApp aberto versus mensagem enviada, esta última não observável." data-i18n="r.c.fig" data-i18n-attr="aria-label">
+        <figcaption data-i18n="r.c.cap">Dois pares de estados distintos</figcaption>
+        <div class="pair-head" data-i18n="r.c.h1">Pagamento</div>
+        <div class="pair">
+          <div class="state pending"><span class="s"><i></i><span data-i18n="r.c.pend">Pendente</span></span><p data-i18n="r.c.pendp">Aguardando confirmação.</p></div>
+          <div class="state done"><span class="s"><i></i><span data-i18n="r.c.conf">Confirmado</span></span><p data-i18n="r.c.confp">Recebido e registrado.</p></div>
+        </div>
+        <div class="pair-head" data-i18n="r.c.h2">WhatsApp</div>
+        <div class="pair">
+          <div class="state opened"><span class="s"><i></i><span data-i18n="r.c.open">Conversa aberta</span></span><p data-i18n="r.c.openp">É o que o sistema consegue saber.</p></div>
+          <div class="state unknown"><span class="s"><i></i><span data-i18n="r.c.sent">Mensagem enviada</span></span><p data-i18n="r.c.sentp">Não observável, por isso não é afirmada.</p></div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 · IA ================= -->
+<section class="sec dark on-dark" id="ia" aria-labelledby="h-ia">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>08</b><span data-i18n="ia.eyebrow">Desenvolvimento assistido por IA</span></p>
+        <h2 class="statement" id="h-ia" data-i18n-html="ia.title">Direção e <em>responsabilidade.</em></h2>
+      </div>
+      <p class="lede" data-i18n="ia.lede">Lucas definiu o produto, coordenou os agentes e validou o resultado. A confiança veio da auditoria, não do relatório.</p>
+    </div>
+
+    <ol class="flow reveal" aria-label="Fluxo de trabalho" data-i18n="ia.flowLabel" data-i18n-attr="aria-label">
+      <li><span class="n">01</span><div><h3 data-i18n="ia.f1">Definição</h3><p data-i18n="ia.f1p">Problema, escopo e critérios de qualidade.</p></div></li>
+      <li><span class="n">02</span><div><h3 data-i18n="ia.f2">Especificação</h3><p data-i18n="ia.f2p">Planejamento e análise crítica, com apoio do ChatGPT.</p></div></li>
+      <li><span class="n">03</span><div><h3 data-i18n="ia.f3">Implementação</h3><p data-i18n="ia.f3p">Claude Code e outros agentes escrevem o código.</p></div></li>
+      <li><span class="n">04</span><div><h3 data-i18n="ia.f4">Auditoria</h3><p data-i18n="ia.f4p">Revisão independente do que foi relatado.</p></div></li>
+      <li><span class="n">05</span><div><h3 data-i18n="ia.f5">Validação</h3><p data-i18n="ia.f5p">O comportamento real é verificado antes de seguir.</p></div></li>
+    </ol>
+
+    <div class="roles reveal">
+      <div class="role"><span class="who" data-i18n="ia.w1">Lucas</span><span class="verb" data-i18n="ia.v1">Definir</span><p data-i18n="ia.rp1">Decisões de produto, experiência, escopo e critérios de qualidade.</p></div>
+      <div class="role"><span class="who" data-i18n="ia.w2">Agentes de IA</span><span class="verb" data-i18n="ia.v2">Executar</span><p data-i18n="ia.rp2">Implementação técnica a partir de especificações, sem decidir o que o produto deve ser.</p></div>
+      <div class="role"><span class="who" data-i18n="ia.w3">Lucas e auditorias independentes</span><span class="verb" data-i18n="ia.v3">Validar</span><p data-i18n="ia.rp3">Relatórios não eram prova. Cada entrega passava por auditoria e pela verificação do comportamento real.</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:28px" data-i18n="ia.process">O trabalho foi dividido no início entre Loja, Painel e um Vault Obsidian com a memória do projeto, e unificado na reta final do lançamento. A implementação foi assistida por IA; a direção, não.</p>
+
+    <div class="audit reveal">
+      <div style="display:grid;gap:16px;align-content:start">
+        <span class="eyebrow" data-i18n="ia.aeyebrow">Um caso concreto · 01/10</span>
+        <h3 data-i18n="ia.at">O risco estava no próprio ambiente.</h3>
+        <p class="audit-quote" data-i18n="ia.aq">Desenvolvimento e testes precisam de uma fronteira explícita contra produção.</p>
+      </div>
+      <div class="audit-steps">
+        <div><b data-i18n="ia.as1b">Risco</b><span data-i18n="ia.as1">Na release da Loja, descobriu-se que desenvolvimento e produção não estavam realmente isolados: atividades de teste poderiam atingir o ambiente de produção.</span></div>
+        <div><b data-i18n="ia.as2b">Pausa</b><span data-i18n="ia.as2">Os testes de integração foram interrompidos até o problema ser corrigido.</span></div>
+        <div><b data-i18n="ia.as3b">Correção</b><span data-i18n="ia.as3">DEV e PROD passaram a ser ambientes distintos. O DEV foi reconstruído a partir da fonte autoritativa do projeto, sem copiar dados de produção.</span></div>
+        <div><b data-i18n="ia.as4b">Retomada</b><span data-i18n="ia.as4">Só então a validação automatizada voltou a rodar, em um ambiente próprio.</span></div>
+      </div>
+      <p class="note audit-foot" data-i18n="ia.afoot">Por isso implementar, validar e governar são responsabilidades distintas: quem executa uma tarefa não é, sozinho, quem garante que ela é segura.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 · OPERAÇÃO E APRENDIZADOS ================= -->
+<section class="sec" id="operacao" aria-labelledby="h-o">
+  <div class="shell">
+    <div class="sec-head split reveal">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow"><b>09</b><span data-i18n="o.eyebrow">Operação e aprendizados</span></p>
+        <h2 class="statement" id="h-o" data-i18n-html="o.title">Publicado. <em>Em&nbsp;operação. Em&nbsp;observação.</em></h2>
+      </div>
+      <p class="lede" data-i18n="o.lede">O lançamento não é o fim do trabalho. É quando o produto começa a ensinar.</p>
+    </div>
+
+    <div class="facts reveal">
+      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><h3 data-i18n="o.f1">Produto publicado</h3><p data-i18n="o.f1p">Loja e Painel estão no ar e em uso real.</p></div></div>
+      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><h3 data-i18n="o.f2">Recepção qualitativa positiva</h3><p data-i18n="o.f2p">O feedback relatado durante o projeto pelo responsável pelo negócio foi muito positivo quanto à estética, ao profissionalismo, à facilidade de uso e à coerência com a identidade do Pesca, assim como a recepção inicial dos clientes. É um retorno qualitativo e indireto, não uma pesquisa formal.</p></div></div>
+      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><h3 data-i18n="o.f3">Migração em andamento</h3><p data-i18n="o.f3p">Clientes habituados ao WhatsApp estão sendo direcionados ao novo canal.</p></div></div>
+      <div class="fact open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="o.f4">Impacto ainda por medir</h3><p data-i18n="o.f4p">Ainda não há evidência para afirmar redução do tempo de atendimento, crescimento de vendas ou conversão. Medir ao longo do tempo faz parte do próximo capítulo.</p></div></div>
+    </div>
+
+    <div class="reflect reveal">
+      <blockquote data-i18n-html="o.quote">Design não termina na interface. Termina quando a <em>operação</em> consegue cumprir o que a interface promete.</blockquote>
+      <p class="prose lede" data-i18n="o.after">O produto entrou numa fase de operação e observação, e a evolução agora é guiada pelo uso real, não por suposição.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="../../index.html#work"><span data-i18n="o.cta1">Voltar aos projetos</span> <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="../../index.html"><span data-i18n="o.cta2">Ir para o portfólio</span></a>
+        <a class="btn btn-ghost" href="#main"><span data-i18n="o.cta3">Voltar ao topo</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="cfoot">
+  <div class="shell">
+    <span>Lucas Cabral · Product Designer &amp; Design Engineer</span>
+    <span data-i18n="foot">Case Pesca Delivery · versão 1</span>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

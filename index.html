@@ -96,9 +96,40 @@
 
       <div class="proj-list reveal" id="proj-list">
 
-        <!-- CRM operacional + Agente de IA (WhatsApp) — priority case -->
+        <!-- Pesca Delivery — case principal, página interna /cases/pesca/ -->
         <div class="proj-item open">
           <button class="proj-row spot" aria-expanded="true">
+            <span class="proj-thumb">
+              <img class="proj-thumb-video proj-thumb-brand" src="assets/cases/pesca/brand/pesca-delivery-logo-1000.png" alt="" width="1000" height="436" loading="lazy" />
+            </span>
+            <span class="proj-heading">
+              <span class="proj-eyebrow" data-i18n="work.pesca.eyebrow">Product Design · Design Engineering · IA aplicada</span>
+              <span class="proj-name" data-i18n="work.pesca.title">Pesca Delivery — Loja e Painel</span>
+            </span>
+            <span class="proj-badge is-live" data-i18n="work.pesca.badge">Em operação</span>
+            <span class="proj-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="proj-panel"><div class="proj-panel-inner">
+            <div class="proj-card">
+              <div class="proj-video proj-video-brand">
+                <img src="assets/cases/pesca/brand/pesca-delivery-logo-1000.png" alt="Logotipo do Pesca Delivery" width="1000" height="436" loading="lazy" data-i18n="work.pesca.logoAlt" data-i18n-attr="alt" />
+              </div>
+              <div class="proj-info">
+                <p class="work-sum" data-i18n="work.pesca.sum">Loja digital e painel operacional para uma peixaria que passou a vender Pokes personalizados, até então montados pelo WhatsApp. Conduzi o produto da oportunidade à operação: conversa com o negócio, evolução do Builder, identidade Dark Premium, regras de peso, preço e pagamento, e coordenação da implementação assistida por IA.</p>
+                <div class="work-tags">
+                  <span>Product Design</span><span>Design Engineering</span><span>UX/UI</span><span data-i18n="work.pesca.tag1">IA aplicada</span><span data-i18n="work.pesca.tag2">Operação</span>
+                </div>
+                <div class="work-ctas">
+                  <a class="work-cta" href="cases/pesca/"><span data-i18n="work.pesca.cta">Ver case completo</span> <span class="arr">→</span></a>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- CRM operacional + Agente de IA (WhatsApp) -->
+        <div class="proj-item">
+          <button class="proj-row spot" aria-expanded="false">
             <span class="proj-thumb">
               <video class="proj-thumb-video lazy-video" muted loop playsinline preload="none" data-src="video crm sartec - portifolio.mp4"></video>
             </span>
@@ -523,6 +554,7 @@ const I18N = {
     social: { email: "E-mail", linkedinAria: "Abrir meu LinkedIn" },
     work: {
       ghost: "PROJETOS", title: "Projetos", sub: "Cases reais de produto — do problema, das decisões de UX/UI e IA, até a interface funcionando em produção.",
+      pesca: { badge: "Em operação", logoAlt: "Logotipo do Pesca Delivery", eyebrow: "Product Design · Design Engineering · IA aplicada", title: "Pesca Delivery — Loja e Painel", sum: "Loja digital e painel operacional para uma peixaria que passou a vender Pokes personalizados, até então montados pelo WhatsApp. Conduzi o produto da oportunidade à operação: conversa com o negócio, evolução do Builder, identidade Dark Premium, regras de peso, preço e pagamento, e coordenação da implementação assistida por IA.", tag1: "IA aplicada", tag2: "Operação", cta: "Ver case completo" },
       uniedu: { eyebrow: "UX Research · Design System · Produto educacional", title: "Plataforma UNIEDU", sum: "Produto educacional gamificado, desenhado a partir de pesquisa com estudantes para transformar constância de estudo em progresso real. Conduzi a estratégia de produto, o design system e um protótipo navegável, validando decisões de UX diretamente com o público-alvo.", tag1: "Gamificação", tag2: "Protótipo", ctaRecruiter: "Ver case para recrutadores", ctaPrototype: "Abrir protótipo", badge: "Case completo", videoAlt: "Prévia do aplicativo UNIEDU" },
       crm: { badge: "Implementado", videoAlt: "Prévia do CRM Sartec", eyebrow: "Sistema interno · Fluxo de atendimento · IA aplicada", title: "CRM Operacional + Agente de IA", sum: "Sistema interno para centralizar atendimentos, estados, prioridades e fluxo de trabalho, integrado a um agente de IA no WhatsApp responsável pela triagem inicial e pelo handoff para o time humano. Meu papel cobriu pesquisa com quem operava o atendimento, modelagem dos estados do fluxo, design da interface do painel e definição de onde a IA deveria atuar — mantendo o critério e a decisão final sempre com o time.", tag1: "Sistema interno", tag2: "Fluxo operacional", tag3: "IA aplicada", tag4: "Handoff humano", cta: "Ver case completo" },
       papelaria: { badge: "Case de apoio", videoAlt: "Prévia do site Sartec Papelaria", eyebrow: "Presença digital · Arquitetura da informação", title: "Site Sartec Papelaria", sum: "Presença digital para um negócio local, pensada como exercício de arquitetura da informação e hierarquia de conteúdo — organizar o que o visitante precisa ver primeiro e transformar navegação em contato direto.", tag1: "Arquitetura da informação", tag2: "Hierarquia de conteúdo", tag3: "Front-end", cta: "Ver site" }
@@ -564,6 +596,7 @@ const I18N = {
     social: { email: "Email", linkedinAria: "Open my LinkedIn" },
     work: {
       ghost: "WORK", title: "Selected Work", sub: "Real product cases — from the problem, the UX/UI and AI decisions, to the interface running in production.",
+      pesca: { badge: "Live", logoAlt: "Pesca Delivery logo", eyebrow: "Product Design · Design Engineering · Applied AI", title: "Pesca Delivery — Storefront and Operations Panel", sum: "A digital storefront and operations panel for a fishmonger that started selling custom poke bowls, until then built over WhatsApp. I led the product from opportunity to operation: conversations with the business, the builder's evolution, the Dark Premium identity, weight, price and payment rules, and coordination of the AI-assisted implementation.", tag1: "Applied AI", tag2: "Operations", cta: "View full case" },
       uniedu: { eyebrow: "UX Research · Design System · EdTech product", title: "UNIEDU Platform", sum: "A gamified education product, shaped by research with students to turn study consistency into real progress. I led product strategy, the design system and a navigable prototype, validating UX decisions directly with the target audience.", tag1: "Gamification", tag2: "Prototype", ctaRecruiter: "View case for recruiters", ctaPrototype: "Open prototype", badge: "Full case", videoAlt: "UNIEDU app preview" },
       crm: { badge: "Shipped", videoAlt: "Sartec CRM preview", eyebrow: "Internal system · Support flow · Applied AI", title: "Operational CRM + AI Agent", sum: "An internal system to centralize service requests, statuses, priorities and workflow, integrated with a WhatsApp AI agent responsible for initial triage and handoff to the human team. My role covered research with the people running support, modeling the flow's states, designing the dashboard interface, and defining where AI should act — keeping final judgment and decisions with the team.", tag1: "Internal system", tag2: "Operational flow", tag3: "Applied AI", tag4: "Human handoff", cta: "View full case" },
       papelaria: { badge: "Supporting case", videoAlt: "Sartec Papelaria site preview", eyebrow: "Digital presence · Information architecture", title: "Sartec Papelaria Site", sum: "A digital presence for a local business, approached as an exercise in information architecture and content hierarchy — organizing what visitors need to see first and turning browsing into direct contact.", tag1: "Information architecture", tag2: "Content hierarchy", tag3: "Front-end", cta: "View site" }
