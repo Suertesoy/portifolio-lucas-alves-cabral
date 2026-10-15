@@ -4,13 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Lucas Cabral — Product Designer &amp; Design Engineer</title>
-<meta name="description" content="Lucas Cabral — Product Designer & Design Engineer. Desenho interfaces, fluxos e sistemas de produto, e uso IA com critério para acelerar a implementação até chegar a produção real." />
+<meta name="description" content="Portfólio de Lucas Cabral — Product Designer & Design Engineer. Pesquisa, UX/UI e implementação assistida por IA, mostradas em produtos em uso: Pesca Delivery e um CRM com agente de IA." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Lucas Cabral" />
+<meta property="og:title" content="Lucas Cabral — Product Designer &amp; Design Engineer" />
+<meta property="og:description" content="Portfólio de Lucas Cabral — Product Designer & Design Engineer. Pesquisa, UX/UI e implementação assistida por IA, mostradas em produtos em uso: Pesca Delivery e um CRM com agente de IA." />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:image" content="https://portifolio-lucas-alves-cabral.vercel.app/assets/hero/data/poster.png" />
+<meta property="og:image:alt" content="Trevo de quatro folhas em vidro entre as palavras LUCAS e CABRAL" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Lucas Cabral — Product Designer &amp; Design Engineer" />
+<meta name="twitter:description" content="Portfólio de Lucas Cabral — Product Designer & Design Engineer. Pesquisa, UX/UI e implementação assistida por IA, mostradas em produtos em uso: Pesca Delivery e um CRM com agente de IA." />
 <meta name="theme-color" content="#F3F1EC" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/home/home.css" />
 <script>document.documentElement.classList.add('js');</script>
+<script src="assets/i18n/lang-kit.js"></script>
 <script type="importmap">
 { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }
 </script>
@@ -27,11 +38,11 @@
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
   <div class="wrap nav-row">
-    <a class="brand" href="#top" aria-label="Lucas Cabral — início">
+    <a class="brand" href="#top" aria-label="Lucas Cabral — início" data-i18n="nav.brand" data-i18n-attr="aria-label">
       <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><g transform="rotate(45 12 12)"><circle cx="12" cy="7.3" r="4.2"/><circle cx="12" cy="16.7" r="4.2"/><circle cx="7.3" cy="12" r="4.2"/><circle cx="16.7" cy="12" r="4.2"/></g></svg>
       <span>Lucas Cabral</span>
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Principal">
+    <nav class="nav-links" id="nav-links" aria-label="Principal" data-i18n="nav.main" data-i18n-attr="aria-label">
       <a href="#cases"><span class="n">01</span><span data-i18n="nav.cases">Cases</span></a>
       <a href="#person"><span class="n">02</span><span data-i18n="nav.about">Sobre</span></a>
       <a href="#method"><span class="n">03</span><span data-i18n="nav.method">Como penso</span></a>
@@ -39,9 +50,9 @@
     </nav>
     <div class="nav-end">
       <div class="lang" role="group" aria-label="Idioma / Language">
-        <button type="button" data-lang="pt" aria-pressed="true">PT</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="pt" lang="pt" aria-label="Português (PT)" aria-pressed="true">PT</button><button type="button" data-lang="en" lang="en" aria-label="English (EN)" aria-pressed="false">EN</button><button type="button" data-lang="es" lang="es" aria-label="Español (ES)" aria-pressed="false">ES</button>
       </div>
-      <a class="nav-cta" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20%E2%80%94%20Product%20Designer%20%26%20Design%20Engineer" data-i18n="nav.cta">Vamos conversar</a>
+      <a class="nav-cta" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20%E2%80%94%20Product%20Designer%20%26%20Design%20Engineer" data-i18n="mail.href" data-i18n-attr="href"><span data-i18n="nav.cta">Vamos conversar</span></a>
       <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-links"><span data-i18n="nav.menu">Menu</span></button>
     </div>
   </div>
@@ -69,7 +80,7 @@
     </div>
     <div class="hb-intro">
       <p class="hb-role">Product Designer &amp; Design Engineer</p>
-      <p class="hb-desc" data-i18n="hero.desc">Desenho interfaces, fluxos e sistemas de produto, e uso IA com critério para acelerar a implementação até chegar a produção real.</p>
+      <p class="hb-desc" data-i18n="hero.desc">Desenho produtos digitais junto de quem os usa e os opera, da pesquisa à interface funcionando. A IA me ajuda a implementar; eu reviso e testo o resultado.</p>
     </div>
     <div class="hb-ctas">
       <a class="btn btn-solid" href="#cases"><span data-i18n="hero.ctaWork">Ver cases</span><span aria-hidden="true">↓</span></a>
@@ -89,7 +100,7 @@
          statement → portrait → story → facts. The whole portrait is a toggle (tap / click / Enter) between
          grey and colour; hover previews colour with a fine pointer. Without JS the portrait is simply in colour. -->
     <div class="person-grid">
-      <h2 class="statement reveal" id="h-person" data-i18n="person.statement">Conecto operação real, pesquisa, interface, produto, IA e implementação funcional.</h2>
+      <h2 class="statement reveal" id="h-person" data-i18n="person.statement">Gosto de criar com as pessoas, não só para elas.</h2>
       <figure class="person-photo reveal" id="person-photo">
         <img src="assets/images/lucas-hero-portrait.webp" alt="Retrato de Lucas Cabral" width="1000" height="1333" decoding="async" data-i18n="person.photoAlt" data-i18n-attr="alt" />
         <button type="button" class="photo-toggle" aria-pressed="false" data-i18n="person.colorBtn" data-i18n-attr="aria-label" aria-label="Ver o retrato em cor">
@@ -101,13 +112,13 @@
         <figcaption class="micro">Lucas Cabral — Product Designer &amp; Design Engineer</figcaption>
       </figure>
       <div class="person-body reveal">
-        <p data-i18n="person.lead">Cresci acompanhando a rotina da Sartec, empresa da minha família, onde vi de perto atendimento, pedidos, clientes, comunicação, vendas e operação acontecendo todos os dias.</p>
-        <p data-i18n="person.body">Esse contato com problemas reais moldou meu olhar para produto antes mesmo de eu trabalhar formalmente com design. Hoje desenho produtos e conduzo a implementação com IA — do problema à interface funcionando.</p>
+        <p data-i18n="person.lead">Cresci acompanhando a rotina da Sartec, empresa da minha família, onde vi de perto o atendimento, os pedidos, os clientes e as vendas acontecerem todos os dias.</p>
+        <p data-i18n="person.body">Esse contato com problemas reais moldou meu olhar para produto antes mesmo de eu trabalhar formalmente com design. Hoje desenho produtos e conduzo a implementação com apoio de IA, do problema à interface funcionando. Gosto de conversar com quem usa e opera o que desenho, entender cada ponto de vista e construir junto.</p>
       </div>
       <dl class="facts reveal">
         <div><dt data-i18n="person.f1k">Papel</dt><dd>Product Designer &amp; Design Engineer</dd></div>
-        <div><dt data-i18n="person.f2k">Disciplinas</dt><dd data-i18n="person.f2v">Product Design · UX/UI · Design Systems · IA aplicada</dd></div>
-        <div><dt data-i18n="person.f3k">Idiomas</dt><dd data-i18n="person.f3v">Português · English</dd></div>
+        <div><dt data-i18n="person.f2k">Disciplinas</dt><dd data-i18n="person.f2v">Product Design · UX Research · UX/UI · Design Systems · IA aplicada</dd></div>
+        <div><dt data-i18n="person.f3k">Idiomas</dt><dd data-i18n="person.f3v">Português (nativo) · English (fluente) · Español (leio e entendo bem, ainda falo pouco)</dd></div>
       </dl>
     </div>
   </div>
@@ -121,7 +132,7 @@
       <span class="rule" aria-hidden="true"></span>
       <p class="micro sec-count" data-i18n="work.count">05 projetos</p>
     </header>
-    <h2 class="sec-title reveal" id="h-work" data-i18n="work.title">Do problema à interface funcionando em produção.</h2>
+    <h2 class="sec-title reveal" id="h-work" data-i18n="work.title">Do problema real à interface funcionando.</h2>
 
     <!-- ck13: two editorial groups — products & systems (Pesca leads) / websites -->
     <section class="work-group" aria-labelledby="g-products">
@@ -137,7 +148,7 @@
       <div class="feature-copy">
         <p class="micro feature-meta"><span>01</span><span data-i18n="pesca.kicker">Case principal · 2026</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="pesca.badge">Em operação</span></span></p>
         <h4 class="feature-title" id="h-pesca">Pesca Delivery</h4>
-        <p class="feature-sub">Beyond the storefront.</p>
+        <p class="feature-sub" data-i18n="pesca.sub">Além da loja.</p>
         <p class="feature-lede" data-i18n="pesca.lede">Da personalização de um Poke pelo WhatsApp a uma experiência digital que conecta compra e operação.</p>
         <dl class="feature-dl">
           <div><dt data-i18n="pesca.m1">Papel</dt><dd>Product Designer &amp; Design Engineer</dd></div>
@@ -146,7 +157,7 @@
         </dl>
         <div class="sysmap" aria-label="Mapa do sistema" data-i18n="pesca.mapAria" data-i18n-attr="aria-label">
           <div><span data-i18n="pesca.n1k">Loja</span><p data-i18n="pesca.n1t">Onde o cliente decide</p></div>
-          <div class="core"><span data-i18n="pesca.n2k">Regras compartilhadas</span><p data-i18n="pesca.n2t">O que é verdade</p></div>
+          <div class="core"><span data-i18n="pesca.n2k">Regras compartilhadas</span><p data-i18n="pesca.n2t">A fonte da verdade</p></div>
           <div><span data-i18n="pesca.n3k">Painel</span><p data-i18n="pesca.n3t">Onde a operação age</p></div>
         </div>
         <span class="cta-arrow"><span data-i18n="pesca.cta">Ver case completo</span><span aria-hidden="true">→</span></span>
@@ -168,7 +179,7 @@
             <figcaption class="micro" data-i18n="pesca.shotBuilder">Builder de Poke</figcaption>
           </figure>
         </div>
-        <p class="micro feature-note" data-i18n="pesca.note">Capturas da loja pública em produção · out. 2026</p>
+        <p class="micro feature-note" data-i18n="pesca.note">Capturas da loja pública em produção (interface em português) · out. 2026</p>
       </div>
     </article>
 
@@ -182,10 +193,10 @@
           <img src="assets/cases/sartec/crm/quem-esta-atendendo.webp" width="588" height="494" loading="lazy" decoding="async"
             alt="CRM Sartec: janela “Quem está atendendo agora?”, em que o atendente escolhe o próprio nome antes de assumir as conversas." data-i18n="crm.videoAlt" data-i18n-attr="alt" />
         </div>
-        <p class="micro card-meta"><span>02</span><span data-i18n="crm.kicker">Sistema interno · IA aplicada</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="crm.badge">Implementado</span></span></p>
+        <p class="micro card-meta"><span>02</span><span data-i18n="crm.kicker">Sistema interno · IA aplicada</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="crm.badge">Em uso</span></span></p>
         <h4 class="card-title" id="h-crm" data-i18n="crm.title">CRM Operacional + Agente de IA</h4>
-        <p class="card-sum" data-i18n="crm.sum">Sistema interno para centralizar atendimentos, estados, prioridades e fluxo de trabalho, integrado a um agente de IA no WhatsApp para triagem inicial e handoff para o time humano.</p>
-        <ul class="tags"><li data-i18n="crm.t1">Pesquisa com operação</li><li data-i18n="crm.t2">Estados do fluxo</li><li data-i18n="crm.t3">Handoff humano</li></ul>
+        <p class="card-sum" data-i18n="crm.sum">Sistema interno que centraliza atendimentos, estados e prioridades, com um agente de IA no WhatsApp que faz a triagem inicial e passa cada conversa, com contexto, para uma pessoa da equipe. Desenhei o produto e conduzi a implementação com apoio de IA.</p>
+        <ul class="tags"><li data-i18n="crm.t1">Observação da operação</li><li data-i18n="crm.t2">Estados do fluxo</li><li data-i18n="crm.t3">Handoff humano</li></ul>
         <div class="card-ctas"><a class="cta-arrow" href="cases/sartec/"><span data-i18n="crm.cta">Ver case completo</span><span aria-hidden="true">→</span></a></div>
       </article>
 
@@ -195,8 +206,8 @@
         </div>
         <p class="micro card-meta"><span>03</span><span data-i18n="uniedu.kicker">UX Research · Design System</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="uniedu.badge">Case completo</span></span></p>
         <h4 class="card-title" id="h-uniedu" data-i18n="uniedu.title">Plataforma UNIEDU</h4>
-        <p class="card-sum" data-i18n="uniedu.sum">Produto educacional gamificado, desenhado a partir de pesquisa com estudantes para transformar constância de estudo em progresso real. Estratégia de produto, design system e protótipo navegável validado com o público-alvo.</p>
-        <p class="credit"><span data-i18n="uniedu.credit">Projeto em dupla com</span> <a href="https://www.linkedin.com/in/najme-simon-al%C3%A9-b08b6221" target="_blank" rel="noopener noreferrer">Najme Simon Alé</a></p>
+        <p class="card-sum" data-i18n="uniedu.sum">Produto educacional gamificado que desenhamos a partir de entrevistas com estudantes e validamos em testes de usabilidade, para transformar constância de estudo em progresso real. Inclui estratégia de produto, design system e protótipo navegável.</p>
+        <p class="credit"><span data-i18n="uniedu.credit">Em coautoria com</span> <a href="https://www.linkedin.com/in/najme-simon-al%C3%A9-b08b6221" target="_blank" rel="noopener noreferrer">Najme Simon Alé</a></p>
         <ul class="tags"><li>UX Research</li><li>Design System</li><li>Product Strategy</li></ul>
         <div class="card-ctas">
           <!-- the full case (root route); /recrutamento is the short recruiter version and is not linked -->
@@ -225,9 +236,9 @@
         <div class="site-copy">
           <p class="micro card-meta"><span>04</span><span data-i18n="papelaria.kicker">Site + ecossistema digital</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="papelaria.badge">Publicado</span></span></p>
           <h4 class="site-title" id="h-papelaria">Sartec Papelaria</h4>
-          <p class="site-sum" data-i18n="papelaria.sum">Site de uma papelaria com mais de 30 anos em São José dos Campos. Organiza o que o visitante procura — produtos, lista escolar, empresas, cópias — e leva tudo para um único canal de WhatsApp, a porta de entrada da mesma operação atendida pelo CRM + Agente de IA.</p>
+          <p class="site-sum" data-i18n="papelaria.sum">Site da papelaria da minha família, com mais de 30 anos em São José dos Campos. Organiza o que o visitante procura — produtos, lista escolar, empresas, cópias — e leva tudo para um único canal de WhatsApp, a porta de entrada da mesma operação atendida pelo CRM + Agente de IA.</p>
           <dl class="site-dl">
-            <div><dt data-i18n="site.ia">Arquitetura</dt><dd data-i18n="papelaria.ia">Navegação pelos motivos reais de visita, com a lista escolar em destaque</dd></div>
+            <div><dt data-i18n="site.ia">Arquitetura da informação</dt><dd data-i18n="papelaria.ia">Navegação pelos motivos reais de visita, com a lista escolar em destaque</dd></div>
             <div><dt data-i18n="site.visual">Direção visual</dt><dd data-i18n="papelaria.visual">Identidade da marca aplicada à web, com a fachada da loja como imagem de abertura</dd></div>
             <div><dt data-i18n="site.build">Implementação</dt><dd data-i18n="papelaria.build">Site publicado e integrado ao WhatsApp</dd></div>
           </dl>
@@ -246,7 +257,7 @@
           <h4 class="site-title" id="h-almeida">Grupo Almeida</h4>
           <p class="site-sum" data-i18n="almeida.sum">Site institucional de um grupo do setor ambiental que reúne Almeida Ambiental, Almeida Equipamentos e Saturno Ambiental. Apresenta o grupo sem fragmentar a navegação e sem apagar a identidade de cada empresa. Está em ambiente de homologação para validação do cliente.</p>
           <dl class="site-dl">
-            <div><dt data-i18n="site.ia">Arquitetura</dt><dd data-i18n="almeida.ia">Três empresas como partes de um mesmo grupo</dd></div>
+            <div><dt data-i18n="site.ia">Arquitetura da informação</dt><dd data-i18n="almeida.ia">Três empresas como partes de um mesmo grupo</dd></div>
             <div><dt data-i18n="site.visual">Direção visual</dt><dd data-i18n="almeida.visual">Solidez e escala: fotografia da operação e tipografia institucional</dd></div>
             <div><dt data-i18n="site.build">Implementação</dt><dd data-i18n="almeida.build">Site bilíngue, português e inglês</dd></div>
           </dl>
@@ -267,18 +278,18 @@
     <h2 class="sec-title reveal" id="h-method" data-i18n="method.title">Quatro folhas, um mesmo produto.</h2>
     <p class="sec-lede reveal" data-i18n="method.lede">O trevo não é decoração: cada folha é uma dimensão que precisa estar presente para um produto funcionar de verdade.</p>
     <ol class="leaves">
-      <li class="leaf reveal" style="--leaf:0"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">01</p><h3>UX</h3><p data-i18n="method.ux">Interfaces claras, fluxos consistentes e experiências orientadas por pesquisa, usabilidade e decisão de produto.</p></li>
-      <li class="leaf reveal" style="--leaf:1"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">02</p><h3>UI</h3><p data-i18n="method.ui">Consistência visual e de comportamento — componentização, padrões de interface e documentação que escalam com o time.</p></li>
-      <li class="leaf reveal" style="--leaf:2"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">03</p><h3 data-i18n="method.aiT">IA</h3><p data-i18n="method.ai">Uso IA para acelerar triagem, decisões e implementação, sempre com handoff humano e critério de uso claro.</p></li>
-      <li class="leaf reveal" style="--leaf:3"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">04</p><h3 data-i18n="method.empathyT">Empatia</h3><p data-i18n="method.empathy">Pesquisa com usuários e vivência em operação real: entender o contexto e o trabalho de quem opera antes de qualquer interface.</p></li>
+      <li class="leaf reveal" style="--leaf:0"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">01</p><h3>UX</h3><p data-i18n="method.ux">Fluxos claros, definidos a partir de pesquisa, usabilidade e do contexto de quem usa.</p></li>
+      <li class="leaf reveal" style="--leaf:1"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">02</p><h3>UI</h3><p data-i18n="method.ui">Consistência visual e de comportamento: componentes, padrões de interface e documentação que escalam com o time.</p></li>
+      <li class="leaf reveal" style="--leaf:2"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">03</p><h3 data-i18n="method.aiT">IA</h3><p data-i18n="method.ai">Uso IA para acelerar a implementação e a triagem inicial, com revisão minha e passagem para uma pessoa sempre que o julgamento importa.</p></li>
+      <li class="leaf reveal" style="--leaf:3"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">04</p><h3 data-i18n="method.empathyT">Empatia</h3><p data-i18n="method.empathy">Converso, observo e escuto antes de desenhar. No UNIEDU, fizemos entrevistas com estudantes e testes de usabilidade; no Pesca, perguntei ao responsável o que mais dificultava a operação; na Sartec, parti do que vi no balcão.</p></li>
     </ol>
     <div class="steps reveal">
       <p class="micro steps-label" data-i18n="method.stepsLabel">Método</p>
       <ol>
-        <li><span>01</span><b data-i18n="method.s1t">Entendo o problema</b><p data-i18n="method.s1">Mergulho no contexto real e na operação antes de qualquer interface.</p></li>
-        <li><span>02</span><b data-i18n="method.s2t">Mapeio o fluxo</b><p data-i18n="method.s2">Usuários, contexto, jornada e o trabalho real de quem opera.</p></li>
-        <li><span>03</span><b data-i18n="method.s3t">Desenho os estados</b><p data-i18n="method.s3">Arquitetura, hierarquia, estados, microcopy e responsividade.</p></li>
-        <li><span>04</span><b data-i18n="method.s4t">Valido e evoluo</b><p data-i18n="method.s4">Testo no uso real, documento decisões e evoluo a entrega.</p></li>
+        <li><span>01</span><b data-i18n="method.s1t">Entender o problema</b><p data-i18n="method.s1">Converso com quem usa e opera, e acompanho a rotina real antes de abrir uma tela.</p></li>
+        <li><span>02</span><b data-i18n="method.s2t">Mapear o fluxo</b><p data-i18n="method.s2">Mapeio usuários, contexto, jornada e o trabalho real de quem opera, junto com eles sempre que posso.</p></li>
+        <li><span>03</span><b data-i18n="method.s3t">Desenhar os estados</b><p data-i18n="method.s3">Defino arquitetura, hierarquia, estados, microcopy e responsividade.</p></li>
+        <li><span>04</span><b data-i18n="method.s4t">Validar e evoluir</b><p data-i18n="method.s4">Testo no uso real, ouço o retorno, documento decisões e sigo melhorando a entrega.</p></li>
       </ol>
     </div>
   </div>
@@ -295,10 +306,10 @@
       <div class="journey-story reveal">
         <h2 class="sec-title" id="h-journey" data-i18n="journey.title">Produto, operação e implementação.</h2>
         <p data-i18n="journey.p1">Na Biologia, aprendi a observar sistemas, contexto e relações. No UX/UI Design, encontrei o caminho profissional onde essa curiosidade virou método: estudar telas, conversar com usuários, investigar dores pouco explícitas e transformar aprendizados em soluções digitais mais claras e funcionais.</p>
-        <p data-i18n="journey.p2">Gosto de aprender, testar, evoluir e ver cada entrega ficar mais bem resolvida que a anterior.</p>
+        <p data-i18n="journey.p2">Gosto de aprender, testar e evoluir, e de fazer isso acompanhado: cada conversa com um usuário, um cliente ou um colega melhora a entrega seguinte.</p>
         <figure class="journey-figure">
           <img src="mergulhador_lucas.jpeg" alt="Lucas Cabral mergulhando na Ilha do Arvoredo, Santa Catarina" loading="lazy" data-i18n="journey.photoAlt" data-i18n-attr="alt" />
-          <figcaption class="micro">Ilha do Arvoredo — SC</figcaption>
+          <figcaption class="micro" data-i18n="journey.cap">Ilha do Arvoredo — Santa Catarina, Brasil</figcaption>
         </figure>
       </div>
       <div class="journey-list reveal">
@@ -306,12 +317,12 @@
           <li><b>Sartec</b><span data-i18n="xp.sartec">Vivência operacional, atendimento e processos comerciais</span><em data-i18n="xp.sartecTag">Operação real</em></li>
           <li><b>Sartec CRM</b><span data-i18n="xp.crm">Product Design, UX operacional e Design Engineering</span><em data-i18n="xp.crmTag">Sistema interno</em></li>
           <li><b data-i18n="xp.agentName">Agente WhatsApp Sartec</b><span data-i18n="xp.agent">IA aplicada, triagem e handoff humano</span><em data-i18n="xp.agentTag">IA aplicada</em></li>
-          <li><b>UNIEDU</b><span data-i18n="xp.uniedu">UX Research, Product Design e protótipo educacional</span><em>Product Design</em></li>
+          <li><b>UNIEDU</b><span data-i18n="xp.uniedu">UX Research, Product Design e protótipo educacional, em coautoria</span><em>Product Design</em></li>
           <li><b>Pesca Delivery</b><span data-i18n="xp.pesca">Product Design, Design Engineering e implementação assistida por IA</span><em data-i18n="xp.pescaTag">Em operação</em></li>
         </ol>
         <div class="tools">
           <p class="micro" data-i18n="journey.tools">Ferramentas</p>
-          <p>Figma · Figma Make · Claude Code · Antigravity · Notion · Google Workspace · Gemini</p>
+          <p>Figma · Figma Make · Claude Code · ChatGPT · Antigravity · Notion · Google Workspace · Gemini</p>
         </div>
       </div>
     </div>
@@ -326,11 +337,11 @@
       <span class="rule" aria-hidden="true"></span>
       <p class="micro status"><span class="dot" aria-hidden="true"></span><span data-i18n="contact.status">Disponível para oportunidades em produto e design</span></p>
     </header>
-    <h2 class="contact-title reveal" id="h-contact" data-i18n="contact.title">Buscando um Product Designer que una UX, UI, IA e implementação?</h2>
+    <h2 class="contact-title reveal" id="h-contact" data-i18n="contact.title">Vamos conversar sobre o que você está construindo.</h2>
     <div class="contact-grid reveal">
-      <p data-i18n="contact.desc">Estou aberto a conversas com times que constroem produtos digitais, ferramentas internas e experiências orientadas por IA. Vamos falar sobre produto, design e interfaces funcionais.</p>
+      <p data-i18n="contact.desc">Estou aberto a vagas e a colaborações remotas com times e agências que constroem produtos digitais, ferramentas internas e experiências com IA. Se há um problema real em jogo, gosto de começar conversando com quem o vive.</p>
       <div class="contact-actions">
-        <a class="btn btn-solid" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20%E2%80%94%20Product%20Designer%20%26%20Design%20Engineer"><span data-i18n="contact.cta">Enviar e-mail</span><span aria-hidden="true">↗</span></a>
+        <a class="btn btn-solid" href="mailto:lac.lucascabral@gmail.com?subject=Oportunidade%20%E2%80%94%20Product%20Designer%20%26%20Design%20Engineer" data-i18n="mail.href" data-i18n-attr="href"><span data-i18n="contact.cta">Enviar e-mail</span><span aria-hidden="true">↗</span></a>
         <ul class="contact-links">
           <li><a href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
           <li><a href="https://wa.me/5512997863832" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></li>
@@ -352,6 +363,8 @@
   </div>
 </footer>
 
+<script src="assets/home/i18n.en.js" defer></script>
+<script src="assets/home/i18n.es.js" defer></script>
 <script src="assets/home/home.js" defer></script>
 <script type="module" src="assets/hero/hero.js"></script>
 </body>

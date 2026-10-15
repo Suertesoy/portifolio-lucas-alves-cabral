@@ -7,6 +7,14 @@
 if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname+'/'+location.search+location.hash);</script>
 <title>Sartec — CRM operacional e Agente de IA · Lucas Cabral</title>
 <meta name="description" content="Case de Product Design: um CRM operacional integrado ao WhatsApp, com um agente de IA que organiza a entrada e entrega cada atendimento a uma pessoa, na operação real da Sartec Papelaria." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Lucas Cabral" />
+<meta property="og:title" content="Sartec — CRM operacional e Agente de IA · Lucas Cabral" />
+<meta property="og:description" content="Case de Product Design: um CRM operacional integrado ao WhatsApp, com um agente de IA que organiza a entrada e entrega cada atendimento a uma pessoa, na operação real da Sartec Papelaria." />
+<meta property="og:locale" content="pt_BR" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sartec — CRM operacional e Agente de IA · Lucas Cabral" />
+<meta name="twitter:description" content="Case de Product Design: um CRM operacional integrado ao WhatsApp, com um agente de IA que organiza a entrada e entrega cada atendimento a uma pessoa, na operação real da Sartec Papelaria." />
 <meta name="theme-color" content="#F3F0E9" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,6 +25,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
 <link rel="stylesheet" href="../case-shell.css" />
 <link rel="stylesheet" href="case.css" />
 <script>document.documentElement.classList.add('js');</script>
+<script src="../../assets/i18n/lang-kit.js"></script>
 <!-- Sources (checkpoint 14 audit): the previous case page (github.com/Suertesoy/case-sartec, published at case-sartec.vercel.app,
      identical to its local copy) and the project's working reports of May 2026. Representations and reconstructions are
      labelled on the page; the only real capture is the attendant modal (assets/cases/sartec/crm), cropped so that no
@@ -38,8 +47,9 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
         <span data-i18n="nav.back">Trabalho</span>
       </a>
       <div class="lang-toggle" role="group" aria-label="Idioma / Language" data-i18n="nav.lang" data-i18n-attr="aria-label">
-        <button type="button" class="lang-btn" data-lang="pt" aria-pressed="true">PT</button>
-        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="lang-btn" data-lang="pt" lang="pt" aria-label="Português (PT)" aria-pressed="true">PT</button>
+        <button type="button" class="lang-btn" data-lang="en" lang="en" aria-label="English (EN)" aria-pressed="false">EN</button>
+        <button type="button" class="lang-btn" data-lang="es" lang="es" aria-label="Español (ES)" aria-pressed="false">ES</button>
       </div>
     </div>
   </div>
@@ -54,7 +64,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
     <p class="client"><img src="../../assets/cases/sartec/brand/sartec-logo.png" width="499" height="256" alt="Sartec Papelaria e Informática" /><span data-i18n="hero.client">Papelaria · São José dos Campos</span></p>
     <h1 id="h-hero"><span data-i18n="hero.h1a">Da conversa</span> <span class="l2" data-i18n="hero.h1b">ao trabalho.</span></h1>
     <div class="hero-grid">
-      <p class="lede" data-i18n="hero.lede">Um CRM operacional integrado ao WhatsApp, com um agente de IA que organiza a entrada e entrega cada atendimento a uma pessoa — desenhado dentro da rotina real da Sartec Papelaria.</p>
+      <p class="lede" data-i18n="hero.lede">Um CRM operacional integrado ao WhatsApp, com um agente de IA que organiza a entrada e entrega cada atendimento a uma pessoa — desenhado dentro da rotina real da Sartec Papelaria, loja da minha família.</p>
       <dl class="meta">
         <div><dt data-i18n="hero.m1">Projeto</dt><dd data-i18n="hero.m1v">CRM + Agente WhatsApp</dd></div>
         <div><dt data-i18n="hero.m2">Ano</dt><dd>2026</dd></div>
@@ -69,7 +79,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
         <li class="eco-node"><span class="k" data-i18n="hero.e1k">Cliente</span><b>WhatsApp</b><p data-i18n="hero.e1p">Pessoas e empresas escrevem no mesmo canal de sempre.</p></li>
         <li class="eco-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></li>
         <li class="eco-node agent"><span class="k" data-i18n="hero.e2k">Agente de IA</span><b data-i18n="hero.e2b">Triagem</b><p data-i18n="hero.e2p">Identifica PF ou PJ e coleta o essencial.</p></li>
-        <li class="eco-arrow handoff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg><span>handoff</span></li>
+        <li class="eco-arrow handoff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg><span data-i18n="hero.handoff">handoff</span></li>
         <li class="eco-node"><span class="k">CRM</span><b data-i18n="hero.e3b">Trabalho visível</b><p data-i18n="hero.e3p">Um card por atendimento, em quadros PF e PJ.</p></li>
         <li class="eco-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></li>
         <li class="eco-node human"><span class="k" data-i18n="hero.e4k">Atendente</span><b data-i18n="hero.e4b">Decisão</b><p data-i18n="hero.e4p">Negocia, resolve e fecha, com o histórico à vista.</p></li>
@@ -88,8 +98,8 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
         <h2 class="statement" id="h-ctx" data-i18n-html="ctx.title">Funcionava <em>apesar do sistema.</em></h2>
       </div>
       <div class="prose">
-        <p data-i18n="ctx.p1">A Sartec é a papelaria da família de Lucas, com mais de 30 anos em São José dos Campos. Ele cresceu acompanhando o atendimento, os pedidos e a rotina da loja.</p>
-        <p data-i18n="ctx.p2">Pessoas físicas, empresas, cópias, orçamentos e fornecedores chegavam pelo mesmo WhatsApp. O atendimento dependia de memória e de rolar conversas. O problema não era volume: era falta de contexto, prioridade e responsável.</p>
+        <p data-i18n="ctx.p1">A Sartec é a papelaria da minha família, com mais de 30 anos em São José dos Campos. Cresci acompanhando o atendimento, os pedidos e a rotina da loja.</p>
+        <p data-i18n="ctx.p2">Pessoas físicas, empresas, cópias, orçamentos e fornecedores chegavam pelo mesmo WhatsApp. O atendimento dependia de memória e de rolar conversas. O problema não era volume: era falta de contexto, prioridade e responsável. Parti do que observei no balcão e no WhatsApp.</p>
       </div>
     </div>
 
@@ -263,7 +273,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
         <p class="eyebrow"><b>06</b><span data-i18n="im.eyebrow">Implantação</span></p>
         <h2 class="statement" id="h-im" data-i18n-html="im.title">Uma primeira fase, <em>assistida.</em></h2>
       </div>
-      <p class="lede" data-i18n="im.lede">Mudar como uma empresa atende não é publicar uma tela. O sistema entrou em uso aos poucos, com a equipe e com os clientes avisados.</p>
+      <p class="lede" data-i18n="im.lede">Mudar como uma empresa atende não é publicar uma tela. O sistema entrou em uso aos poucos, com a equipe envolvida e os clientes avisados.</p>
     </div>
     <div class="trio reveal">
       <div class="trio-item"><span class="n">01</span><h3 data-i18n="im.t1">Mobile com arquitetura própria</h3><p data-i18n="im.p1">O responsivo do desktop confundia. O celular ganhou chat em tela única, ações rápidas e um guia curto. Uma funcionalidade instável no mobile foi revertida antes de voltar: em atendimento real, confiabilidade vem antes de velocidade.</p></div>
@@ -288,7 +298,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
         <p class="eyebrow"><b>07</b><span data-i18n="ia.eyebrow">Desenvolvimento assistido por IA</span></p>
         <h2 class="statement" id="h-ia" data-i18n-html="ia.title">A IA na execução. <em>O critério, humano.</em></h2>
       </div>
-      <p class="lede" data-i18n="ia.lede">Lucas transformou ambiguidade operacional em critérios, estados e especificações — e usou IA para implementar, revisando cada resultado contra a operação real.</p>
+      <p class="lede" data-i18n="ia.lede">Transformei ambiguidade operacional em critérios, estados e especificações — e usei IA para implementar, revisando cada resultado contra a operação real.</p>
     </div>
     <ol class="flow reveal" aria-label="Fluxo de trabalho" data-i18n="ia.flowLabel" data-i18n-attr="aria-label">
       <li><span class="n">01</span><div><h3 data-i18n="ia.f1">Observar</h3><p data-i18n="ia.f1p">O atendimento real, no balcão e no WhatsApp, antes de qualquer tela.</p></div></li>
@@ -309,7 +319,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
         <div><b data-i18n="ia.as3b">Configuração</b><span data-i18n="ia.as3">Variáveis de ambiente presentes; número ativo na API do WhatsApp.</span></div>
         <div><b data-i18n="ia.as4b">Causa</b><span data-i18n="ia.as4">A conta do WhatsApp Business não estava inscrita no aplicativo, e por isso nenhum evento era entregue.</span></div>
       </div>
-      <p class="note audit-foot" data-i18n="ia.afoot">Entender o sistema o bastante para decidir bem — sem precisar escrever cada linha — é parte do trabalho de quem conduz a implementação.</p>
+      <p class="note audit-foot" data-i18n="ia.afoot">Entender o sistema o bastante para decidir bem, sem precisar escrever cada linha, faz parte do meu trabalho ao conduzir a implementação.</p>
     </div>
   </div>
 </section>
@@ -326,7 +336,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
     </div>
     <div class="facts reveal">
       <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><h3 data-i18n="st.f1">Em operação</h3><p data-i18n="st.f1p">Usado pela equipe da Sartec como ferramenta de atendimento, numa primeira fase assistida.</p></div></div>
-      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><h3 data-i18n="st.f2">A equipe moldou o produto</h3><p data-i18n="st.f2p">O treinamento com os funcionários mudou prioridades, como a transcrição de áudio. É retorno qualitativo, não pesquisa formal.</p></div></div>
+      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><h3 data-i18n="st.f2">A equipe moldou o produto</h3><p data-i18n="st.f2p">O treinamento com a equipe mudou prioridades, como a transcrição de áudio. É retorno qualitativo, não pesquisa formal.</p></div></div>
       <div class="fact open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f3">Impacto ainda por medir</h3><p data-i18n="st.f3p">Não há, até aqui, medição de tempo de resposta, volume de atendimentos ou vendas. Medir faz parte da próxima etapa.</p></div></div>
       <div class="fact open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f4">Telas completas, ainda não</h3><p data-i18n="st.f4p">As telas do quadro e do histórico mostram clientes reais. Até existirem versões anonimizadas, o case usa reconstruções sinalizadas.</p></div></div>
     </div>
@@ -347,7 +357,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
     <div class="mw-head"><h2 id="mw-h" data-i18n="mw.h">Outros trabalhos</h2><a href="../../index.html#cases" data-i18n="mw.all">Ver todo o trabalho selecionado</a></div>
     <ol class="mw-list">
       <li><a href="../pesca/"><span class="mw-n">01</span><span class="mw-t">Pesca Delivery</span><span class="mw-go" data-i18n="mw.prev">← Case anterior</span><span class="mw-d" data-i18n="mw.pescaD">Case principal · loja, regras e painel de operação</span></a></li>
-      <li class="next"><a href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="mw-n">03</span><span class="mw-t">Plataforma UNIEDU</span><span class="mw-go" data-i18n="mw.ext">Case externo ↗</span><span class="mw-d" data-i18n="mw.unieduD">UX Research · Design System · em dupla com Najme Simon Alé</span></a></li>
+      <li class="next"><a href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="mw-n">03</span><span class="mw-t" data-i18n="mw.uniedu">Plataforma UNIEDU</span><span class="mw-go" data-i18n="mw.ext">Case externo ↗</span><span class="mw-d" data-i18n="mw.unieduD">UX Research · Design System · em coautoria com Najme Simon Alé · em português</span></a></li>
       <li><a href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer"><span class="mw-n">04</span><span class="mw-t">Sartec Papelaria</span><span class="mw-go" data-i18n="mw.site">Site ↗</span><span class="mw-d" data-i18n="mw.papD">Site + ecossistema digital</span></a></li>
       <li><a href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="mw-n">05</span><span class="mw-t">Grupo Almeida</span><span class="mw-go" data-i18n="mw.staging">Em homologação ↗</span><span class="mw-d" data-i18n="mw.almD">Site institucional · PT/EN</span></a></li>
     </ol>
@@ -364,6 +374,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
 </footer>
 
 <script src="i18n.js"></script>
+<script src="i18n.es.js"></script>
 <script src="../pesca/case.js"></script>
 <script src="../case-shell.js"></script>
 </body>
