@@ -30,11 +30,12 @@ const LANGS = {
 };
 const X_DEFAULT = 'en';   // visitors whose language is not offered land on the English version
 
-const SOCIAL_IMAGE = { path: '/assets/hero/data/poster.png', width: 900, height: 900, type: 'image/png' };
+// 1200×630 cover, one image for every language and page. Source: scripts/social-cover/cover.html (npm run cover).
+const SOCIAL_IMAGE = { path: '/assets/social/cover-1200x630.jpg', width: 1200, height: 630, type: 'image/jpeg' };
 const IMAGE_ALT = {
-  pt: 'Trevo de quatro folhas translúcido, em 3D, símbolo do portfólio de Lucas Cabral',
-  en: "A translucent 3D four-leaf clover, the symbol of Lucas Cabral's portfolio",
-  es: 'Un trébol de cuatro hojas translúcido en 3D, símbolo del portfolio de Lucas Cabral',
+  pt: 'Lucas Cabral, Product Designer & Design Engineer, ao lado de um trevo de quatro folhas translúcido em 3D',
+  en: 'Lucas Cabral, Product Designer & Design Engineer, next to a translucent 3D four-leaf clover',
+  es: 'Lucas Cabral, Product Designer & Design Engineer, junto a un trébol de cuatro hojas translúcido en 3D',
 };
 
 const PAGES = [
@@ -86,7 +87,7 @@ function headBlock(page, lang, meta) {
     `<meta property="og:image:width" content="${SOCIAL_IMAGE.width}" />`,
     `<meta property="og:image:height" content="${SOCIAL_IMAGE.height}" />`,
     `<meta property="og:image:alt" content="${esc(IMAGE_ALT[lang])}" />`,
-    `<meta name="twitter:card" content="summary" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(meta.title)}" />`,
     `<meta name="twitter:description" content="${esc(meta.desc)}" />`,
     `<meta name="twitter:image" content="${img}" />`,

@@ -6,7 +6,8 @@
     "build": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --minify && node scripts/build-i18n.mjs",
     "watch": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --watch",
     "build:i18n": "node scripts/build-i18n.mjs",
-    "sync:pt-head": "node scripts/build-i18n.mjs --sync-pt"
+    "sync:pt-head": "node scripts/build-i18n.mjs --sync-pt",
+    "cover": "node scripts/social-cover/render.mjs"
   },
   "devDependencies": {
     "autoprefixer": "^10.5.2",
