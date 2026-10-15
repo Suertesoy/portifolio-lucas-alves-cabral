@@ -114,8 +114,9 @@ ol, ul { padding: 0; list-style: none; }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 .nav-end { display: flex; align-items: center; gap: 14px; }
 .lang { display: flex; font: 500 11.5px/1 "JetBrains Mono", monospace; }
-.lang button { appearance: none; background: none; border: 0; padding: 6px 5px; min-width: 28px; min-height: 28px; cursor: pointer; color: var(--muted); font: inherit; letter-spacing: .04em; }
-.lang button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.lang a { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; padding: 6px 5px; min-width: 28px; min-height: 28px; color: var(--muted); font: inherit; letter-spacing: .04em; }
+.lang a:hover { color: var(--ink); }
+.lang a[aria-current="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 .nav-cta { display: inline-flex; align-items: center; height: 38px; padding: 0 16px; border-radius: 999px; background: var(--ink); color: var(--bg); text-decoration: none; font: 500 13.5px/1 "Inter", sans-serif; transition: background .3s; }
 .nav-cta:hover { background: var(--mineral); }
 .menu-btn { display: none; appearance: none; border: 1px solid var(--line); background: transparent; height: 36px; padding: 0 14px; border-radius: 999px; font: 500 11.5px/1 "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--ink); cursor: pointer; }
@@ -432,7 +433,7 @@ ol, ul { padding: 0; list-style: none; }
   .journey-story, .journey-list, .contact-grid > p, .contact-actions { grid-column: 1; }
 }
 @media (max-width: 559px) {
-  .lang button { padding: 6px 3px; }
+  .lang a { padding: 6px 3px; }
   .leaves, .steps ol { grid-template-columns: 1fr; }
   .sysmap { grid-template-columns: 1fr; }
   .sysmap::before { left: 50%; right: auto; top: 8%; bottom: 8%; width: 1px; height: auto; }

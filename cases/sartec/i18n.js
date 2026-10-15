@@ -1,8 +1,8 @@
-/* English (international, US spelling) strings for the Sartec case. Portuguese is the markup itself (source of truth, also
-   the no-JS fallback); Spanish is in i18n.es.js. assets/i18n/lang-kit.js (loaded through ../pesca/case.js) swaps them on demand. */
+/* English (international, US spelling) strings for the Sartec case. Portuguese is the markup itself (source of truth).
+   Build input of scripts/build-i18n.mjs, which renders /en/cases/sartec/; Spanish is in i18n.es.js. */
 (window.I18N = window.I18N || {}).en = {
   "doc.title": "Sartec — Operational CRM and AI Agent · Lucas Cabral",
-  "doc.desc": "Product Design case study: an operational CRM integrated with WhatsApp, with an AI agent that organizes incoming conversations and hands each one to a person, in the real operation of Sartec Papelaria.",
+  "doc.desc": "Product Design case study: a WhatsApp-integrated CRM with an AI agent that organizes incoming chats and hands each one to a person, in a real stationery shop.",
   "skip": "Skip to content",
   "nav.home": "Lucas Cabral — portfolio", "nav.mid": "Case study 02 · Sartec", "nav.back": "Work", "nav.lang": "Idioma / Language",
 
@@ -126,7 +126,7 @@
   "mw.h": "Other work", "mw.all": "See all selected work", "mw.next": "Next case study →", "mw.prev": "← Previous case study", "mw.ext": "External case study ↗", "mw.site": "Website ↗", "mw.staging": "In staging ↗",
   "mw.uniedu": "UNIEDU Platform",
   "mw.pescaD": "Featured case · storefront, rules and operations panel",
-  "mw.unieduD": "UX Research · Design System · co-created with Najme Simon Alé · in Portuguese",
+  "mw.unieduD": "UX Research · Design System · co-created with Najme Simon Alé · PT/EN",
   "mw.papD": "Website + digital ecosystem", "mw.almD": "Institutional website · PT/EN",
   "foot": "Sartec case study · version 1"
 };

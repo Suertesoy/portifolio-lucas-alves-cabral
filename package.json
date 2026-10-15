@@ -3,8 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --minify",
-    "watch": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --watch"
+    "build": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --minify && node scripts/build-i18n.mjs",
+    "watch": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --watch",
+    "build:i18n": "node scripts/build-i18n.mjs",
+    "sync:pt-head": "node scripts/build-i18n.mjs --sync-pt"
   },
   "devDependencies": {
     "autoprefixer": "^10.5.2",

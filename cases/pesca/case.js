@@ -1,4 +1,4 @@
-/* Case pages (Pesca, Sartec) — language switch (LangKit), lightbox, reveal. No dependencies. */
+/* Case pages (Pesca, Sartec) — lightbox, reveal, language switcher hook. No dependencies. */
 (function () {
   'use strict';
 
@@ -44,11 +44,8 @@
     });
   }
 
-  /* ---------- language ----------
-     PT lives in the markup; EN / ES come from i18n.js / i18n.es.js (window.I18N). The shared layer (assets/i18n/lang-kit.js)
-     picks the language (?lang → saved choice → browser), swaps the strings and metadata, keeps <html lang> and the
-     PT/EN/ES buttons in sync and carries the choice across internal links. The open lightbox is refreshed on a change. */
-  LangKit.init({ onApply: function () { if (lb && lb.open) fillLightbox(); } });
+  /* ---------- language: the page is already localized by URL (see assets/i18n/lang-kit.js) ---------- */
+  LangKit.init();
 
   /* ---------- reveal on scroll (content stays visible without JS / with reduced motion) ---------- */
   var items = document.querySelectorAll('.reveal');

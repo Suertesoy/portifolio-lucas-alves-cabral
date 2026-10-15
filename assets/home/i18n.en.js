@@ -1,7 +1,7 @@
-/* English (international, US spelling) strings for the Home. Portuguese is the markup; see assets/i18n/lang-kit.js. */
+/* English (international, US spelling) strings for the Home. Portuguese is the markup. Build input of scripts/build-i18n.mjs (renders /en/). */
 (window.I18N = window.I18N || {}).en = {
   'doc.title': 'Lucas Cabral — Product Designer & Design Engineer',
-  'doc.desc': "Lucas Cabral's portfolio — Product Designer & Design Engineer. Research, UX/UI and AI-assisted implementation, shown through live products: Pesca Delivery and a CRM with an AI agent.",
+  'doc.desc': 'Product Designer & Design Engineer. Research, UX/UI and AI-assisted implementation, shown through live products: Pesca Delivery and a CRM with an AI agent.',
   'nav.skip': 'Skip to selected work', 'nav.main': 'Main', 'nav.brand': 'Lucas Cabral — home',
   'nav.cases': 'Work', 'nav.about': 'About', 'nav.method': 'How I think', 'nav.contact': 'Contact', 'nav.cta': "Let's talk", 'nav.menu': 'Menu',
   'mail.href': 'mailto:lac.lucascabral@gmail.com?subject=Opportunity%20%E2%80%94%20Product%20Designer%20%26%20Design%20Engineer',
@@ -41,7 +41,7 @@
 
   'uniedu.kicker': 'UX Research · Design System', 'uniedu.badge': 'Full case study', 'uniedu.title': 'UNIEDU Platform', 'uniedu.videoAlt': 'UNIEDU app preview',
   'uniedu.sum': 'A gamified education product we designed from interviews with students and validated through usability testing, to turn study consistency into real progress. It includes product strategy, a design system and a navigable prototype.',
-  'uniedu.credit': 'Co-created with', 'uniedu.cta': 'View full case study (in Portuguese)', 'uniedu.cta2': 'Open prototype',
+  'uniedu.credit': 'Co-created with', 'uniedu.cta': 'View full case study (PT/EN)', 'uniedu.cta2': 'Open prototype',
 
   'site.ia': 'Information architecture', 'site.visual': 'Visual direction', 'site.build': 'Implementation',
   'papelaria.kicker': 'Website + digital ecosystem', 'papelaria.badge': 'Live', 'papelaria.open': 'Open the Sartec Papelaria website in a new tab',

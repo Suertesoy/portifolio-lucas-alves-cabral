@@ -1,7 +1,7 @@
-/* Español (es-ES) para el Home. El portugués es el propio markup; ver assets/i18n/lang-kit.js. */
+/* Español (es-ES) para el Home. El portugués es el propio markup. Entrada de scripts/build-i18n.mjs (genera /es/). */
 (window.I18N = window.I18N || {}).es = {
   'doc.title': 'Lucas Cabral — Product Designer & Design Engineer',
-  'doc.desc': 'Portfolio de Lucas Cabral — Product Designer & Design Engineer. Investigación, UX/UI e implementación asistida por IA, a través de productos en uso: Pesca Delivery y un CRM con agente de IA.',
+  'doc.desc': 'Product Designer & Design Engineer. Investigación, UX/UI e implementación asistida por IA, a través de productos en uso: Pesca Delivery y un CRM con agente de IA.',
   'nav.skip': 'Saltar a los proyectos', 'nav.main': 'Principal', 'nav.brand': 'Lucas Cabral — inicio',
   'nav.cases': 'Proyectos', 'nav.about': 'Sobre mí', 'nav.method': 'Cómo pienso', 'nav.contact': 'Contacto', 'nav.cta': 'Hablemos', 'nav.menu': 'Menú',
   'mail.href': 'mailto:lac.lucascabral@gmail.com?subject=Oportunidad%20%E2%80%94%20Product%20Designer%20%26%20Design%20Engineer',
@@ -41,7 +41,7 @@
 
   'uniedu.kicker': 'UX Research · Design System', 'uniedu.badge': 'Caso completo', 'uniedu.title': 'Plataforma UNIEDU', 'uniedu.videoAlt': 'Vista previa de la app UNIEDU',
   'uniedu.sum': 'Un producto educativo gamificado que diseñamos a partir de entrevistas con estudiantes y validamos con pruebas de usabilidad, para convertir la constancia en el estudio en progreso real. Incluye estrategia de producto, design system y un prototipo navegable.',
-  'uniedu.credit': 'En coautoría con', 'uniedu.cta': 'Ver caso completo (en portugués)', 'uniedu.cta2': 'Abrir prototipo',
+  'uniedu.credit': 'En coautoría con', 'uniedu.cta': 'Ver caso completo (PT/EN)', 'uniedu.cta2': 'Abrir prototipo',
 
   'site.ia': 'Arquitectura de la información', 'site.visual': 'Dirección visual', 'site.build': 'Implementación',
   'papelaria.kicker': 'Sitio web + ecosistema digital', 'papelaria.badge': 'Publicado', 'papelaria.open': 'Abrir el sitio de Sartec Papelaria en una pestaña nueva',

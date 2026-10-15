@@ -1,7 +1,7 @@
-/* Español (es-ES) para el caso Sartec. El portugués es el propio markup; el inglés está en i18n.js. */
+/* Español (es-ES) para el caso Sartec. El portugués es el propio markup; el inglés está en i18n.js. Entrada de scripts/build-i18n.mjs. */
 (window.I18N = window.I18N || {}).es = {
   "doc.title": "Sartec — CRM operativo y agente de IA · Lucas Cabral",
-  "doc.desc": "Caso de Product Design: un CRM operativo integrado con WhatsApp, con un agente de IA que organiza la entrada y entrega cada conversación a una persona, en la operación real de Sartec Papelaria.",
+  "doc.desc": "Caso de Product Design: un CRM integrado con WhatsApp y un agente de IA que organiza los mensajes entrantes y pasa cada conversación a una persona, en una papelería real.",
   "skip": "Saltar al contenido",
   "nav.home": "Lucas Cabral — portfolio", "nav.mid": "Caso 02 · Sartec", "nav.back": "Proyectos", "nav.lang": "Idioma / Language",
 
@@ -125,7 +125,7 @@
   "mw.h": "Otros trabajos", "mw.all": "Ver todos los proyectos", "mw.next": "Siguiente caso →", "mw.prev": "← Caso anterior", "mw.ext": "Caso externo ↗", "mw.site": "Sitio web ↗", "mw.staging": "En validación ↗",
   "mw.uniedu": "Plataforma UNIEDU",
   "mw.pescaD": "Caso principal · tienda, reglas y panel de operaciones",
-  "mw.unieduD": "UX Research · Design System · en coautoría con Najme Simon Alé · en portugués",
+  "mw.unieduD": "UX Research · Design System · en coautoría con Najme Simon Alé · PT/EN",
   "mw.papD": "Sitio web + ecosistema digital", "mw.almD": "Sitio institucional · PT/EN",
   "foot": "Caso Sartec · versión 1"
 };

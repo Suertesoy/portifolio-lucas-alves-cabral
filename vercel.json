@@ -1,5 +1,43 @@
 {
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "(?<l>en|es)"
+        }
+      ],
+      "destination": "/:l/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/pesca",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "(?<l>en|es)"
+        }
+      ],
+      "destination": "/:l/cases/pesca/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/sartec",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "(?<l>en|es)"
+        }
+      ],
+      "destination": "/:l/cases/sartec/",
+      "permanent": true
+    }
+  ]
 }

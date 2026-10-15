@@ -1,12 +1,11 @@
-/* Lucas Cabral — Home (checkpoint 11): i18n PT/EN/ES (ck17), nav, section reveal, lazy case videos, four-leaf marks.
+/* Lucas Cabral — Home (checkpoint 11): nav, section reveal, lazy case videos, four-leaf marks.
    The hero lives in assets/hero/hero.js (ES module, WebGL). */
 (function () {
   'use strict';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* ------------------------------------------------------------------ i18n (PT is the markup; EN / ES live in i18n.en.js / i18n.es.js)
-     The language layer is assets/i18n/lang-kit.js: it resolves the language (?lang → saved choice → browser), swaps the
-     strings, keeps <html lang>, the metadata and the PT/EN/ES buttons in sync, and carries the choice across internal links. */
+  /* ------------------------------------------------------------------ language
+     The page is already localized by its URL (/, /en/, /es/ — see assets/i18n/lang-kit.js and scripts/build-i18n.mjs). */
   LangKit.init();
 
   /* ------------------------------------------------------------------ nav: solid after the hero top, mobile menu, active section */

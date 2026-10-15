@@ -1,4 +1,4 @@
-/* Español (es-ES) para el caso Pesca. El portugués es el propio markup; el inglés está en i18n.js. */
+/* Español (es-ES) para el caso Pesca. El portugués es el propio markup; el inglés está en i18n.js. Entrada de scripts/build-i18n.mjs. */
 (window.I18N = window.I18N || {}).es = {
   "doc.title": "Pesca Delivery — Más allá de la tienda · Lucas Cabral",
   "doc.desc": "Caso de Product Design y Design Engineering: de personalizar un poke por WhatsApp a una experiencia digital que conecta la compra con la operación.",
@@ -166,7 +166,7 @@
   "mw.h": "Otros trabajos", "mw.all": "Ver todos los proyectos", "mw.next": "Siguiente caso →", "mw.prev": "← Caso anterior", "mw.ext": "Caso externo ↗", "mw.site": "Sitio web ↗", "mw.staging": "En validación ↗",
   "mw.uniedu": "Plataforma UNIEDU",
   "mw.crm": "CRM operativo + agente de IA", "mw.crmD": "Sartec · sistema interno, WhatsApp e IA aplicada",
-  "mw.unieduD": "UX Research · Design System · en coautoría con Najme Simon Alé · en portugués",
+  "mw.unieduD": "UX Research · Design System · en coautoría con Najme Simon Alé · PT/EN",
   "mw.papD": "Sitio web + ecosistema digital", "mw.almD": "Sitio institucional · PT/EN",
   "foot": "Caso Pesca Delivery · versión 1"
 };

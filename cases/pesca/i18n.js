@@ -1,6 +1,5 @@
-/* English (international, US spelling) strings for the Pesca case.
-   Portuguese is the markup itself (source of truth, also the no-JS fallback); Spanish is in i18n.es.js.
-   assets/i18n/lang-kit.js snapshots the markup on load and swaps to these dictionaries on demand. */
+/* English (international, US spelling) strings for the Pesca case. Portuguese is the markup itself (source of truth).
+   Build input of scripts/build-i18n.mjs, which renders /en/cases/pesca/; Spanish is in i18n.es.js. */
 (window.I18N = window.I18N || {}).en = {
   "doc.title": "Pesca Delivery — Beyond the storefront · Lucas Cabral",
   "doc.desc": "Product Design and Design Engineering case study: from customizing a poke bowl over WhatsApp to a digital experience that connects ordering and operations.",
@@ -168,7 +167,7 @@
   "mw.h": "Other work", "mw.all": "See all selected work", "mw.next": "Next case study →", "mw.prev": "← Previous case study", "mw.ext": "External case study ↗", "mw.site": "Website ↗", "mw.staging": "In staging ↗",
   "mw.uniedu": "UNIEDU Platform",
   "mw.crm": "Operational CRM + AI Agent", "mw.crmD": "Sartec · internal system, WhatsApp and applied AI",
-  "mw.unieduD": "UX Research · Design System · co-created with Najme Simon Alé · in Portuguese",
+  "mw.unieduD": "UX Research · Design System · co-created with Najme Simon Alé · PT/EN",
   "mw.papD": "Website + digital ecosystem", "mw.almD": "Institutional website · PT/EN",
   "foot": "Pesca Delivery case study · version 1"
 };
