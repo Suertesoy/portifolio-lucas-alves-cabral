@@ -23,6 +23,10 @@
       var rest = q.toString();
       w.location.replace('/' + legacy + path + (rest ? '?' + rest : '') + w.location.hash);
     }
+    else if (pageLang !== 'pt' && legacy) {   // arrived through a server redirect that kept the old ?lang=: tidy the address bar
+      q.delete('lang'); var tidy = q.toString();
+      w.history.replaceState(w.history.state, '', w.location.pathname + (tidy ? '?' + tidy : '') + w.location.hash);
+    }
   } catch (e) { /* no URL API: the visitor simply stays on the Portuguese page and can use the switcher */ }
 
   w.LangKit = {

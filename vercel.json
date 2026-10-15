@@ -38,6 +38,30 @@
       ],
       "destination": "/:l/cases/sartec/",
       "permanent": true
+    },
+    {
+      "source": "/cases/pesca/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "(?<l>en|es)"
+        }
+      ],
+      "destination": "/:l/cases/pesca/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/sartec/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "(?<l>en|es)"
+        }
+      ],
+      "destination": "/:l/cases/sartec/",
+      "permanent": true
     }
   ]
 }
