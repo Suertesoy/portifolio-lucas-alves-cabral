@@ -4,3 +4,9 @@ relatorio_estrategico_portfolio_lucas.md
 
 # Dependências (instaladas no build da Vercel)
 node_modules/
+
+# ck15C — gravações do CRM com dados de clientes (nomes, telefones, conversas): nunca versionar nem publicar
+CRM sartec.mp4
+video crm sartec - portifolio.mp4
+# ck15C — painel do laboratório do Kinetic Clover: ferramenta local
+assets/hero/kinetic-lab.js

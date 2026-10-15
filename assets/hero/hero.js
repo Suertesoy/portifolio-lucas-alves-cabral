@@ -11,7 +11,13 @@
 //   hbposter=1 renders the clover alone on white, centred, still: source of data/poster.png (no-WebGL fallback)
 //   lg=0 (checkpoint-11 plate, no Living Grid)  lgfail=1 (force the Living Grid shader to fail → automatic fallback)
 //   lgguides=1 (keep the type guides under the Living Grid)  fields=raw (load the unpacked 3 MB fields, for A/B)
+// Checkpoint 15 (approved and shipped in 15C): kinetic.js — the kinetic field (cursor impulse + tangential torque) and
+//   the scroll choreography from the hero to the portrait — is the default behaviour (EXP is on unless hbposter=1).
+//   Evaluation only: off=impulse,torque,scroll,travel,reveal (disable parts)  rm=1 (simulated reduced motion)
+//   cfg={...} (lab parameters). The lab panel (lab=1, dbg=1: kinetic-lab.js) is a local tool: it loads only on a local
+//   host and is not part of the published site.
 import * as THREE from 'three';
+import * as KINETIC from './kinetic.js';
 import { pmremEnvironment, normalMapFrom } from './lib/studio.js';
 import { buildCloverGeometry, thicknessTexture, fetchRetry, PROFILE } from './lib/clover-geometry.js';
 import { shadowTexture } from './lib/materials.js';
@@ -28,6 +34,9 @@ const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t
 const hero = window.__hero = { status: 'loading', stats: {} };
 const status = s => { hero.status = s; };
 const POSTER = q.get('hbposter') === '1';
+const EXP = !POSTER;   // ck15C: the kinetic hero is the default (the poster render keeps the still clover)
+let KX = null, KXF = null, kx = null;   // ck15 module, its flags, the running experiment (EXP only)
+const LOCAL = /^(localhost|127\.0\.0\.1|\[::1\]|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(location.hostname);   // the lab never loads on the public site
 
 // ---------------------------------------------------------------- approved configuration
 const CONFIG = { gap: 0.14, reach: 0.68, scale: 1.5, lens: 0.3, sage: 0.45 };
@@ -48,7 +57,7 @@ const MOTION = {
   scrollMax: 6 * DEG,
 };
 const mqReduce = matchMedia('(prefers-reduced-motion: reduce)');
-const reduced = () => mqReduce.matches;
+const reduced = () => mqReduce.matches || !!(KXF && KXF.rm);
 
 // ---------------------------------------------------------------- layout (panel CSS px)
 const R_MAX = 0.538;   // circumscribed radius / bbox height of the clover
@@ -164,12 +173,14 @@ const gl2 = (() => { if (q.get('nogl') === '1') return false; try { return !!doc
 async function main() {
   await Promise.all([document.fonts.load('700 100px "Inter Tight"'), document.fonts.ready]);
   if (!gl2) return fallback('no-webgl2');
+  if (EXP) { KX = KINETIC; KXF = KX.readFlags(q); }
   try { (await initScene()).start(); } catch (e) { console.error(e); fallback('init-error: ' + e.message); }
 }
 
 // No WebGL (or a lost context): the h1 becomes the visible name and the clover a pre-rendered still.
 function fallback(reason) {
   hero.stats.fallback = reason;
+  if (kx) kx.off();
   panel.classList.add('hb-no-webgl');
   const place = () => {
     const L = computeLayout(measure()), c = L.clover;
@@ -215,7 +226,9 @@ async function loadClover(cell) {
 async function initScene() {
   const clover = await loadClover(3);
   const glass = createOpticalGlass(clover.tex, { lens: CONFIG.lens, sage: CONFIG.sage });
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+  // EXP: a transparent canvas — below the hero it only carries the clover over the page
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance', ...(EXP ? { alpha: true } : {}) });
+  if (EXP) renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NeutralToneMapping;
   let dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -261,6 +274,14 @@ async function initScene() {
     map: shadowTexture(clover.sdf, { strength: 0.5, caustic: 0.07 }), transparent: true, depthWrite: false, toneMapped: false, opacity: 0.85 }));
   shadow.matrixAutoUpdate = false; shadow.renderOrder = -1; scene.add(shadow);
 
+  // ck15 experiment: kinetic field + scroll choreography; the hero's input moves to its own layer (the canvas now
+  // also covers the portrait and must not take its clicks)
+  const field = EXP ? KX.createKineticField() : null;
+  if (EXP) kx = KX.createExperiment({ renderer, scene, camera, group, plate, shadow, glass, panel, canvas, clover, PLATE_Z, K, D, R_MAX, flags: KXF, reduced, lens: CONFIG.lens });
+  const input = EXP ? KX.inputLayer(panel, canvas) : canvas;
+  let lab = null;   // ck15 evaluation panel / gesture overlay (lab=1, dbg=1)
+  if (EXP && LOCAL && (KXF.lab || KXF.dbg)) import('./kinetic-lab.js').catch(() => null).then(m => m && m.createLab && (lab = m.createLab({ flags: KXF, field, kx, panel, onChange: k => { if (k === 'reveal') kx.repaint(); requestRender(); } })));
+
   // ---------------------------------------------------------- layout
   let L, PXW = 0.001;
   const toWorld = (x, y) => [(x - L.W / 2) * PXW, -(y - L.H / 2) * PXW];
@@ -272,7 +293,9 @@ async function initScene() {
     camera.aspect = W / H; camera.updateProjectionMatrix();
     PXW = 2 / H;
     plate.scale.set(2 * K * W / H, 2 * K, 1);
+    const pw = plateCanvas.width, ph = plateCanvas.height;
     paintPlate(L, Math.min(2, window.devicePixelRatio || 1), plateLook());
+    if (plateCanvas.width !== pw || plateCanvas.height !== ph) plateTex.dispose();   // ck15C: new size → new GPU storage (was a GL_INVALID_VALUE on resize)
     plateTex.needsUpdate = true;
     const pr = panel.getBoundingClientRect();
     // reading zones over the plate (DOM text): the grid's light and trails step aside there
@@ -281,6 +304,7 @@ async function initScene() {
       .map(el => [el.getBoundingClientRect(), el.closest('.nav') ? top0 : pr.top]).filter(([r]) => r.width && r.height)
       .map(([r, y0]) => [r.left - pr.left, r.top - y0, r.right - pr.left, r.bottom - y0]);
     if (grid) grid.layout(L, occ, renderer.getPixelRatio());
+    if (kx) kx.layout(L, PXW, toWorld);
     hero.stats.layout = { font: Math.round(L.font), cloverR: Math.round(L.clover.R), cloverScale: +L.clover.scale.toFixed(2),
       clover: [Math.round(L.clover.cx), Math.round(L.clover.cy)], cloverPage: [Math.round(pr.left + L.clover.cx), Math.round(pr.top + scrollY + L.clover.cy)],
       lines: L.lines.map(l => ({ t: l.t, x: Math.round(l.x), w: Math.round(l.w), capTop: Math.round(l.capTop), baseline: Math.round(l.baseline) })) };
@@ -307,12 +331,18 @@ async function initScene() {
     const r = panel.getBoundingClientRect();
     const inside = e.clientY >= r.top && e.clientY <= r.bottom;   // the whole width counts (margins included), as in the lab
     const x = e.clientX - r.left, y = e.clientY - r.top, c = cloverScreen();
-    if (!drag) canvas.classList.toggle('grab', inside && Math.hypot(x - c.x, y - c.y) < c.R * 1.15);
-    if (!inside) { if (grid) grid.leave(); if (hover.tx || hover.ty) { hover.tx = hover.ty = 0; lastMove = null; requestRender(); } return; }
+    if (!drag) input.classList.toggle('grab', inside && Math.hypot(x - c.x, y - c.y) < c.R * 1.15);
+    if (!inside) { if (grid) grid.leave(); if (field) field.leave(); if (hover.tx || hover.ty) { hover.tx = hover.ty = 0; lastMove = null; requestRender(); } return; }
     if (grid && !reduced()) grid.pointer(x, y, 'mouse');   // one gesture, two responses: the clover turns, the grid lights up
     hover.tx = (x - c.x) / (0.5 * L.W); hover.ty = (y - c.y) / (0.5 * L.H);
     const now = performance.now();
-    if (lastMove && !user.dragging && !reduced()) {   // quick gestures leave a small damped settle (glass has mass)
+    // ck15 kinetic field: read only at the top of the page, never during a drag; links/buttons/nav are not gestures
+    const nearField = field && Math.hypot(x - c.x, y - c.y) < c.R * 2.15;
+    if (field && !reduced() && !user.dragging && kx.st.p < 0.02) {
+      field.pointer(x, y, now, c, { blocked: !!(e.target && e.target.closest && e.target.closest('a, button, .nav, .kx-lab')),
+        normalSign: Math.sign(nrm.set(0, 0, 1).applyQuaternion(group.quaternion).z) || 1, impulse: KXF.impulse, torque: KXF.torque });
+    }
+    if (lastMove && !user.dragging && !reduced() && !nearField) {   // quick gestures leave a small damped settle (glass has mass)
       const dt = Math.max(8, now - lastMove.t) / 1000, W = MOTION.wobble;
       wob.yaw.kick((x - lastMove.x) / L.W / dt * W.gain * 0.016, W.max);
       wob.pitch.kick((y - lastMove.y) / L.H / dt * W.gain * 0.016, W.max);
@@ -326,14 +356,15 @@ async function initScene() {
     if (!grid || e.pointerType === 'mouse' || reduced()) return;
     const r = panel.getBoundingClientRect(); grid.pointer(e.clientX - r.left, e.clientY - r.top, 'touch', down); requestRender();
   };
-  canvas.addEventListener('pointerdown', e => gridTouch(e, true));
-  canvas.addEventListener('pointermove', e => gridTouch(e, false));
-  for (const ev of ['pointerup', 'pointercancel']) canvas.addEventListener(ev, e => { if (grid && e.pointerType !== 'mouse') { grid.leave(); requestRender(); } });
+  input.addEventListener('pointerdown', e => gridTouch(e, true));
+  input.addEventListener('pointermove', e => gridTouch(e, false));
+  for (const ev of ['pointerup', 'pointercancel']) input.addEventListener(ev, e => { if (grid && e.pointerType !== 'mouse') { grid.leave(); requestRender(); } });
 
   // drag: mouse starts on the clover; touch starts anywhere on the hero but only claims horizontal gestures
   // (the canvas has touch-action: pan-y, so vertical swipes keep scrolling the page)
-  canvas.addEventListener('pointerdown', e => {
+  input.addEventListener('pointerdown', e => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (kx && kx.st.p > 0.02) return;   // ck15: the scroll timeline owns the clover once the page has moved
     const r = panel.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, c = cloverScreen(), mouse = e.pointerType === 'mouse';
     if (mouse && Math.hypot(x - c.x, y - c.y) > c.R * 1.15) return;
     drag = { id: e.pointerId, mouse, x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, active: false, samples: [] };
@@ -341,10 +372,11 @@ async function initScene() {
   });
   function begin(e) {
     drag.active = true; user.dragging = true; user.vy = user.vp = 0; user.pitchRaw = user.pitch;
-    try { canvas.setPointerCapture(e.pointerId); } catch {}
-    canvas.classList.add('grabbing'); hintUsed(); requestRender();
+    if (field) field.kill();   // grabbing the glass stops its spin
+    try { input.setPointerCapture(e.pointerId); } catch {}
+    input.classList.add('grabbing'); hintUsed(); requestRender();
   }
-  canvas.addEventListener('pointermove', e => {
+  input.addEventListener('pointermove', e => {
     if (!drag || e.pointerId !== drag.id) return;
     if (!drag.active) {
       const tx = e.clientX - drag.x0, ty = e.clientY - drag.y0;
@@ -376,14 +408,15 @@ async function initScene() {
       user.vp = !reduced() && dt && fresh ? clamp((b.pitch - a.pitch) / dt, -MOTION.drag.vMax / 2, MOTION.drag.vMax / 2) : 0;
       user.back.yaw.snap(user.yaw); user.back.pitch.snap(user.pitch);
       user.dragging = false;
-      canvas.classList.remove('grabbing');
+      input.classList.remove('grabbing');
     }
     drag = null; requestRender();
   }
-  for (const ev of ['pointerup', 'pointercancel', 'lostpointercapture']) canvas.addEventListener(ev, release);
+  for (const ev of ['pointerup', 'pointercancel', 'lostpointercapture']) input.addEventListener(ev, release);
   let lastY = window.scrollY;
   window.addEventListener('scroll', () => {
     const dy = window.scrollY - lastY; lastY = window.scrollY;
+    if (kx) { if (!reduced() && inView && grid) grid.scroll(dy); requestRender(); return; }   // ck15: the timeline replaces the scroll tilt
     if (!reduced() && inView) { scrollKick = clamp(scrollKick - dy * 0.0012, -MOTION.scrollMax, MOTION.scrollMax); if (grid) grid.scroll(dy); requestRender(); }
   }, { passive: true });
 
@@ -406,27 +439,35 @@ async function initScene() {
     return user.dragging || !pos.x.resting(c.cx, 0.05) || !pos.y.resting(c.cy, 0.05) || !pos.h.resting(c.h, 0.05)
       || Math.abs(user.yaw) > 1e-4 || Math.abs(user.pitch) > 1e-4 || Math.abs(user.vy) > 1e-4 || Math.abs(user.vp) > 1e-4
       || !wob.yaw.rest() || !wob.pitch.rest() || !hover.x.resting(ht.x, 1e-4) || !hover.y.resting(ht.y, 1e-4) || !hover.z.resting(ht.z, 1e-4)
-      || Math.abs(scrollP.v) > 1e-4 || Math.abs(scrollKick) > 1e-4 || (grid && grid.busy());
+      || Math.abs(scrollP.v) > 1e-4 || Math.abs(scrollKick) > 1e-4 || (grid && grid.busy()) || (field && !field.resting());
   }
-  function requestRender() { if (L && !raf && inView && !document.hidden) raf = requestAnimationFrame(frame); }
+  const visible = () => inView || !!(kx && kx.wants());   // ck15: the clover can be on screen below the hero
+  function requestRender() { if (L && !raf && visible() && !document.hidden) raf = requestAnimationFrame(frame); }
   function frame(now) {
     raf = 0;
     const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60; last = now;
     update(dt);
     renderer.render(scene, camera);
+    if (lab) lab.draw(cloverScreen());
     meter(now, dt);
-    const keep = (idling() || settling()) && inView && !document.hidden;
+    const keep = (idling() || settling()) && visible() && !document.hidden;
     if (keep) raf = requestAnimationFrame(frame); else { last = 0; meter(now, dt, true); }
     if (!panel.classList.contains('hb-ready')) { panel.classList.add('hb-ready'); status('done'); }
   }
 
   const nrm = new THREE.Vector3();
+  const fieldStats = () => field && { omega: +field.omega.toFixed(3), angleDeg: +field.angleDeg.toFixed(1), spinRate: +field.spinRate.toFixed(3), phiDeg: +(field.phi / DEG).toFixed(2),
+    turnedDeg: Math.round(field.log.turnedDeg), spunDeg: Math.round(field.log.spunDeg), impulses: field.log.impulses, torqueSamples: field.log.torqueSamples, last: field.log.last, lastTorque: field.log.lastTorque, resting: field.resting() };
   const flatness = () => Math.acos(Math.min(1, Math.abs(nrm.set(0, 0, 1).applyQuaternion(group.quaternion).z))) / DEG;
   const smoothBand = x => (x <= 0.15 ? 0.15 * Math.exp((x - 0.15) / 0.15) : x >= 0.85 ? 1 - 0.15 * Math.exp((0.85 - x) / 0.15) : x);
-  function stepUser(dt) {
+  const wrapPi = a => a - Math.round(a / TAU) * TAU;
+  function stepUser(dt, release = false) {
     const Dg = MOTION.drag;
     if (user.dragging) return;
-    if (reduced() || staticMode) {   // quick, critically damped return; no coasting
+    // ck15: once the page scrolls, a drag/flick still in flight is released (whole turns dropped: same pose)
+    if (release && !user.released) { user.yaw = wrapPi(user.yaw); user.back.yaw.snap(user.yaw); user.back.pitch.snap(user.pitch); }
+    user.released = release;
+    if (reduced() || staticMode || release) {   // quick, critically damped return; no coasting
       user.yaw = user.back.yaw.step(0, MOTION.reduced.back, dt); user.pitch = user.back.pitch.step(0, MOTION.reduced.back, dt);
       user.vy = user.vp = 0; user.pitchRaw = user.pitch;
       if (Math.abs(user.yaw) < 1e-4 && Math.abs(user.pitch) < 1e-4) { user.yaw = user.pitch = 0; user.back.yaw.snap(0); user.back.pitch.snap(0); }
@@ -446,6 +487,7 @@ async function initScene() {
   }
   function update(dt) {
     const c = L.clover, rm = reduced(), motionOn = !rm && !staticMode;
+    const S = kx ? kx.scroll(dt) : null, k = S ? S.k : 1;   // ck15: scroll progress; k = influence of the kinetic layers (1 at the top)
     if (!motionOn || !placedOnce) { pos.x.snap(c.cx); pos.y.snap(c.cy); pos.h.snap(c.h); pos.hb.snap(c.hBase); placedOnce = true; }
     else { pos.x.step(c.cx, 0.5, dt); pos.y.step(c.cy, 0.5, dt); pos.h.step(c.h, 0.5, dt); pos.hb.step(c.hBase, 0.5, dt); }
     if (idling()) { t += dt; scrollKick *= Math.exp(-dt / 0.5); }
@@ -455,28 +497,37 @@ async function initScene() {
       wob.yaw.step(dt); wob.pitch.step(dt);
       scrollP.step(scrollKick, 0.35, dt);
     } else { hover.x.snap(0); hover.y.snap(0); hover.z.snap(0); wob.yaw.reset(); wob.pitch.reset(); scrollP.snap(0); scrollKick = 0; }
-    stepUser(dt);
+    stepUser(dt, !!(S && S.release));
+    if (field) field.step(dt, !motionOn || S.release);
 
-    const I = MOTION.idle, B = MOTION.base, wave = (a, T) => (rm ? 0 : a * Math.sin(TAU * t / T));
-    const restPitch = B.pitch + clamp(wave(I.pitch, I.pitchT) + hover.y.v + wob.pitch.x + scrollP.v, -18 * DEG, 18 * DEG);
+    // (k = 1 without the experiment: every product below is the checkpoint-14 expression)
+    const I = MOTION.idle, B = MOTION.base, wave = (a, T) => (rm ? 0 : a * k * Math.sin(TAU * t / T));
+    const restPitch = B.pitch + clamp(wave(I.pitch, I.pitchT) + (hover.y.v + wob.pitch.x + scrollP.v) * k, -18 * DEG, 18 * DEG);
     const sg = Math.sign(B.yaw) || 1, [y0, y1] = MOTION.yawBand;
-    const u = Math.abs(B.yaw) + sg * (wave(I.yaw, I.yawT) + hover.x.v + wob.yaw.x);
+    const u = Math.abs(B.yaw) + sg * (wave(I.yaw, I.yawT) + (hover.x.v + wob.yaw.x) * k);
     const restYaw = sg * (y0 + (y1 - y0) * smoothBand((u - y0) / (y1 - y0)));
-    const restSpin = B.spin + wave(I.spin, I.spinT) + hover.z.v;
+    // ck15: the free-spin layers (cursor spin/impulse, drag) are not scaled by k — their angles wrap (whole/quarter turns),
+    // so a scaled wrap would jump; once the page scrolls they are released instead (critically damped, ~0.6 s)
+    const restSpin = B.spin + wave(I.spin, I.spinT) + hover.z.v * k + (field ? field.phi : 0);
     qRest.setFromEuler(eRest.set(restPitch, restYaw, restSpin));
     qUser.setFromEuler(eUser.set(user.pitch, user.yaw, 0, 'YXZ'));   // drag acts in screen space, after the rest pose
+    if (field) qUser.multiply(field.qK);                               // ck15: cursor impulse, also in screen space
     group.quaternion.multiplyQuaternions(qUser, qRest);
+    if (kx) kx.orient(group.quaternion);                                       // ck15: the scroll timeline
     hero.stats.pose = { pitchDeg: +(restPitch / DEG).toFixed(2), yawDeg: +(restYaw / DEG).toFixed(2), spinDeg: +(restSpin / DEG).toFixed(2), flatness: +flatness().toFixed(1) };
 
     if (POSTER) { group.position.set(0, 0, 0); }
-    const floatPx = rm || POSTER ? 0 : I.floatPx * L.s * Math.sin(TAU * t / I.floatT), par = MOTION.hover.parallaxPx, m = motionOn ? 1 : 0;
-    const [wx, wy] = toWorld(pos.x.v + Math.tanh(hover.tx) * par[0] * L.s * m, pos.y.v + Math.tanh(hover.ty) * par[1] * L.s * m + floatPx);
+    const floatPx = rm || POSTER ? 0 : I.floatPx * L.s * Math.sin(TAU * t / I.floatT), par = MOTION.hover.parallaxPx, m = motionOn ? k : 0;
+    let cl = { x: pos.x.v + Math.tanh(hover.tx) * par[0] * L.s * m, y: pos.y.v + Math.tanh(hover.ty) * par[1] * L.s * m + floatPx * k, h: pos.h.v };
+    if (kx) cl = kx.place(cl);   // ck15: along the timeline (panel px; below the hero once it travels)
+    const [wx, wy] = toWorld(cl.x, cl.y);
     group.position.set(wx, wy, 0);
-    group.scale.setScalar(pos.h.v * PXW / clover.heightWorld);
-    glass.set.scale(pos.hb.v * PXW);   // optical depth from the base size: the 150 % clover is not a stronger lens
+    group.scale.setScalar(cl.h * PXW / clover.heightWorld);
+    glass.set.scale(pos.hb.v * (cl.h / pos.h.v) * PXW);   // optical depth from the base size: the 150 % clover is not a stronger lens
     group.updateMatrixWorld();
     shadow.matrix.multiplyMatrices(PROJ, group.matrixWorld); shadow.matrixWorldNeedsUpdate = true;
-    scene.environmentRotation.set(hover.y.v * 0.25, hover.x.v * 0.5 + hover.z.v * 0.4 - user.yaw * 0.15, 0);
+    scene.environmentRotation.set(hover.y.v * 0.25 * k, (hover.x.v * 0.5 + hover.z.v * 0.4 - user.yaw * 0.15) * k, 0);
+    if (kx) { kx.frame(cl, renderer.getPixelRatio()); hero.stats.kx = { ...kx.stats(), field: fieldStats() }; }
     if (grid) { grid.step(dt, { reduced: rm, frozen: staticMode, scrollY: window.scrollY, dpr: renderer.getPixelRatio() }); hero.stats.grid = grid.stats(); }
   }
 
@@ -505,8 +556,13 @@ async function initScene() {
 
   let lt = 0;
   new ResizeObserver(() => { clearTimeout(lt); lt = setTimeout(layout, 90); }).observe(panel);
+  if (kx) {   // ck15: the portrait moves when the page below reflows (fonts, lazy media) without the hero resizing
+    let lt2 = 0; const relayout = () => { clearTimeout(lt2); lt2 = setTimeout(() => { if (L) { kx.layout(L, PXW, toWorld); requestRender(); } }, 120); };
+    new ResizeObserver(relayout).observe(document.body); window.addEventListener('load', relayout);
+  }
   layout();
   renderer.compile(scene, camera);
+  if (kx) kx.prewarm(renderer);
   const gl = renderer.getContext(), dbg = gl.getExtension('WEBGL_debug_renderer_info');
   hero.stats.gpu = dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : 'unknown';
   return { start: requestRender };

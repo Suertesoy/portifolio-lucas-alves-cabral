@@ -26,7 +26,7 @@
     'pesca.cta': 'View full case', 'pesca.note': 'Captures of the public store in production · Oct 2026',
     'pesca.shotStore': 'Storefront', 'pesca.shotStoreAlt': 'Pesca Delivery store home screen, with the From the sea and Poke paths.',
     'pesca.shotBuilder': 'Poke builder', 'pesca.shotBuilderAlt': 'Poke builder: extra proteins, the bowl price and the add-to-cart button.',
-    'crm.kicker': 'Internal system · Applied AI', 'crm.badge': 'Shipped', 'crm.title': 'Operational CRM + AI Agent', 'crm.videoAlt': 'Sartec CRM preview',
+    'crm.kicker': 'Internal system · Applied AI', 'crm.badge': 'Shipped', 'crm.title': 'Operational CRM + AI Agent', 'crm.videoAlt': 'Sartec CRM: the “Who is attending now?” window, where the attendant picks their own name before taking over the conversations.',
     'crm.sum': 'An internal system to centralize service requests, statuses, priorities and workflow, integrated with a WhatsApp AI agent for initial triage and handoff to the human team.',
     'crm.t1': 'Research with operations', 'crm.t2': 'Flow states', 'crm.t3': 'Human handoff', 'crm.cta': 'View full case',
     'uniedu.kicker': 'UX Research · Design System', 'uniedu.badge': 'Full case', 'uniedu.title': 'UNIEDU Platform', 'uniedu.videoAlt': 'UNIEDU app preview',

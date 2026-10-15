@@ -313,7 +313,9 @@ ol, ul { padding: 0; list-style: none; }
 .card:hover .card-media video { transform: scale(1.025); }
 /* ck14 privacy crop: the CRM recording is framed on its central window; the customer cards at its edges stay out */
 .card-media--crop { background: #77797e; }
-.card-media--crop video, .card:hover .card-media--crop video { transform: scale(1.85); }
+/* ck15C: an anonymous still (the CRM recording is no longer published), shown whole on the modal's grey backdrop */
+.card-media--crop img { width: 100%; height: 100%; object-fit: contain; transition: transform 1.2s var(--ease-out); }
+.card:hover .card-media--crop img { transform: scale(1.025); }
 .card-meta { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
 .card-meta .live { display: inline-flex; gap: 8px; align-items: center; color: var(--ink-soft); }
 .card-title { margin-top: 12px; font: 600 clamp(26px, 2.5vw, 38px)/1.08 "Inter Tight", sans-serif; letter-spacing: -.03em; }

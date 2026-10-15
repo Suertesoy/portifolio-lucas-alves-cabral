@@ -175,10 +175,12 @@
     <!-- CRM + UNIEDU — large cards -->
     <div class="cards">
       <article class="card reveal" aria-labelledby="h-crm">
-        <!-- ck14: the recording's background board shows (blurred) customer names; the card frames only the
-             "who is attending now?" window in the centre (.card-media--crop) -->
+        <!-- ck15C: the CRM recording showed customer names, phone numbers and conversations (a CSS crop does not
+             anonymise a file that is served whole), so it is no longer published. The card shows the anonymous
+             "who is attending now?" window — the same capture the Sartec case uses (attendants' first names only). -->
         <div class="card-media card-media--crop">
-          <video class="lazy-video" muted loop playsinline preload="none" data-src="video%20crm%20sartec%20-%20portifolio.mp4" aria-label="Prévia do CRM Sartec" data-i18n="crm.videoAlt" data-i18n-attr="aria-label"></video>
+          <img src="assets/cases/sartec/crm/quem-esta-atendendo.webp" width="588" height="494" loading="lazy" decoding="async"
+            alt="CRM Sartec: janela “Quem está atendendo agora?”, em que o atendente escolhe o próprio nome antes de assumir as conversas." data-i18n="crm.videoAlt" data-i18n-attr="alt" />
         </div>
         <p class="micro card-meta"><span>02</span><span data-i18n="crm.kicker">Sistema interno · IA aplicada</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="crm.badge">Implementado</span></span></p>
         <h4 class="card-title" id="h-crm" data-i18n="crm.title">CRM Operacional + Agente de IA</h4>

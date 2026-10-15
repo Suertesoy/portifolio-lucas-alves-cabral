@@ -13,3 +13,8 @@ assets/identity/
 *.log
 LOGO_SARTEC_OFICIAL_PNG.png
 foto lucas*
+# ck15C — private data: these CRM recordings show customer names, phone numbers and conversations. Never served.
+CRM sartec.mp4
+video crm sartec - portifolio.mp4
+# ck15C — the Kinetic Clover lab panel is a local development tool
+assets/hero/kinetic-lab.js
