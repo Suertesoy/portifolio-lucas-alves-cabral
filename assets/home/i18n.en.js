@@ -14,8 +14,7 @@
 
   'person.kicker': 'About me',
   'person.statement': 'I like to create with people, not just for them.',
-  'person.photoAlt': 'Portrait of Lucas Cabral',
-  'person.colorBtn': 'View the portrait in color', 'person.hintClick': 'Click to see in color', 'person.hintTap': 'Tap to see in color', 'person.hintBack': 'Back to black and white',
+  'person.photoAlt': 'Portrait of Lucas Cabral smiling, in a white shirt',
   'person.lead': "I grew up around Sartec, my family's business, watching customer service, orders, clients and sales up close, every day.",
   'person.body': "That closeness to real problems shaped how I see product long before I worked formally in design. Today I design products and guide their implementation with AI support, from the problem to a working interface. I enjoy talking with the people who use and run what I build, understanding each point of view, and building together.",
   'person.f1k': 'Role', 'person.f2k': 'Disciplines', 'person.f2v': 'Product Design · UX Research · UX/UI · Design Systems · Applied AI',

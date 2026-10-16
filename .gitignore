@@ -16,3 +16,8 @@ assets/hero/kinetic-lab.js
 /es/
 /robots.txt
 /sitemap.xml
+
+# ck20 — local only: the portrait's PNG sources (the page serves the WebP) and the no-cache preview server (node scripts/dev-server.mjs)
+assets/home/portrait/*.png
+assets/portrait/
+scripts/dev-server.mjs

@@ -1,8 +1,8 @@
-/* Lucas Cabral — Home (checkpoint 11): nav, section reveal, lazy case videos, four-leaf marks.
+/* Lucas Cabral — Home (checkpoint 11): nav, section reveal, lazy case videos, four-leaf marks, Living Grid beyond the hero.
    The hero lives in assets/hero/hero.js (ES module, WebGL). */
 (function () {
   'use strict';
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)'), root0 = document.documentElement;
 
   /* ------------------------------------------------------------------ language
      The page is already localized by its URL (/, /en/, /es/ — see assets/i18n/lang-kit.js and scripts/build-i18n.mjs). */
@@ -46,14 +46,17 @@
       + `<g fill="#8FA58A" stroke="#3E5A4A">${leaf(k * 90 - 45)}</g></svg>`;
   });
 
-  /* ------------------------------------------------------------------ portrait: the whole photo is a toggle (ck13)
-     tap / click / Enter / Space switch grey ↔ colour (aria-pressed); a fine pointer also previews colour on hover (CSS) */
-  const photo = document.getElementById('person-photo'), photoBtn = photo && photo.querySelector('.photo-toggle');
-  if (photoBtn) photoBtn.addEventListener('click', () => {
-    const on = photoBtn.getAttribute('aria-pressed') !== 'true';
-    photoBtn.setAttribute('aria-pressed', String(on));
-    photo.classList.toggle('is-color', on);
+  /* a principle leans its leaf (the mark's quadrant) toward the reader on the 3D clover — pointer only; the clover is the hero's renderer */
+  const leafApi = k => { const h = window.__hero; if (h && h.api && h.api.leaf) h.api.leaf(k); };
+  document.querySelectorAll('.leaf').forEach(li => {
+    const k = +getComputedStyle(li).getPropertyValue('--leaf') || 0;
+    li.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') leafApi(k); });
+    li.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') leafApi(null); });
   });
+
+  /* The portrait has no control of its own (ck20): its colour is led by the clover (assets/hero/kinetic.js). It starts grey
+     (html.kx-want, set in the head); if the hero module never starts (CDN down), the portrait goes back to colour. */
+  addEventListener('load', () => setTimeout(() => { if (!window.__hero) root0.classList.remove('kx-want'); }, 8000));
 
   /* ------------------------------------------------------------------ Living Grid beyond the hero (ck13)
      The hero paints the full Living Grid in WebGL (assets/hero/living-grid.js). Below it the same modular grid goes on as

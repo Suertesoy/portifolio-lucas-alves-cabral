@@ -36,7 +36,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/home/home.css" />
-<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('js');
+/* ck20: the portrait is grey only while the clover can lead its colour (motion allowed). hero.js clears kx-want when WebGL is missing or fails; home.js does it if the module never starts. */
+try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('kx-want'); } catch (e) {}</script>
 <script src="assets/i18n/lang-kit.js"></script>
 <script type="importmap">
 { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }
@@ -113,18 +115,16 @@
       <span class="rule" aria-hidden="true"></span>
     </header>
     <!-- ck13: copy on the left, the portrait large on the right (desktop). DOM order = mobile reading order:
-         statement → portrait → story → facts. The whole portrait is a toggle (tap / click / Enter) between
-         grey and colour; hover previews colour with a fine pointer. Without JS the portrait is simply in colour. -->
+         statement → portrait → story → facts.
+         ck20: the portrait is a transparent cut-out (assets/home/portrait, PNG source kept beside the WebP). Its colour is not a
+         control any more: the clover walks up to it, brings the colour in, and takes it away again as it leaves (kinetic.js).
+         Without WebGL, with reduced motion, or without JS it simply stays in colour. -->
     <div class="person-grid">
       <h2 class="statement reveal" id="h-person" data-i18n="person.statement">Gosto de criar com as pessoas, não só para elas.</h2>
       <figure class="person-photo reveal" id="person-photo">
-        <img src="assets/images/lucas-hero-portrait.webp" alt="Retrato de Lucas Cabral" width="1000" height="1333" decoding="async" data-i18n="person.photoAlt" data-i18n-attr="alt" />
-        <button type="button" class="photo-toggle" aria-pressed="false" data-i18n="person.colorBtn" data-i18n-attr="aria-label" aria-label="Ver o retrato em cor">
-          <span class="photo-hint micro" aria-hidden="true">
-            <span class="hint-off"><span class="fine" data-i18n="person.hintClick">Clique para ver em cor</span><span class="touch" data-i18n="person.hintTap">Toque para ver em cor</span></span>
-            <span class="hint-on" data-i18n="person.hintBack">Voltar ao preto e branco</span>
-          </span>
-        </button>
+        <div class="photo-frame">
+          <img src="assets/home/portrait/lucas-cabral-portrait-2026.webp" alt="Retrato de Lucas Cabral sorrindo, de camisa branca" width="1086" height="1448" decoding="async" data-i18n="person.photoAlt" data-i18n-attr="alt" />
+        </div>
         <figcaption class="micro">Lucas Cabral — Product Designer &amp; Design Engineer</figcaption>
       </figure>
       <div class="person-body reveal">
@@ -148,7 +148,12 @@
       <span class="rule" aria-hidden="true"></span>
       <p class="micro sec-count" data-i18n="work.count">05 projetos</p>
     </header>
-    <h2 class="sec-title reveal" id="h-work" data-i18n="work.title">Do problema real à interface funcionando.</h2>
+    <!-- ck20B: the clover walks down from the portrait and rests in the free area beside this title (assets/hero/kinetic.js reads
+         the slot's box); it is gone before the cards. Same renderer as the hero; the still poster only loads where it cannot run. -->
+    <div class="work-head">
+      <h2 class="sec-title reveal" id="h-work" data-i18n="work.title">Do problema real à interface funcionando.</h2>
+      <div class="clover-slot" data-clover-slot="work" aria-hidden="true"><img class="slot-poster" src="assets/hero/data/poster.png" alt="" width="900" height="900" loading="lazy" decoding="async" /></div>
+    </div>
 
     <!-- ck13: two editorial groups — products & systems (Pesca leads) / websites -->
     <section class="work-group" aria-labelledby="g-products">
@@ -291,8 +296,15 @@
       <p class="micro"><b>(04)</b>&nbsp;&nbsp;<span data-i18n="method.kicker">Como eu penso</span></p>
       <span class="rule" aria-hidden="true"></span>
     </header>
-    <h2 class="sec-title reveal" id="h-method" data-i18n="method.title">Quatro folhas, um mesmo produto.</h2>
-    <p class="sec-lede reveal" data-i18n="method.lede">O trevo não é decoração: cada folha é uma dimensão que precisa estar presente para um produto funcionar de verdade.</p>
+    <!-- ck20: the free area beside the title is the clover's second appearance (assets/hero/kinetic.js reads the slot's box:
+         same renderer as the hero, no second WebGL context). The still poster only loads where the clover cannot run. -->
+    <div class="method-head">
+      <div class="method-copy">
+        <h2 class="sec-title reveal" id="h-method" data-i18n="method.title">Quatro folhas, um mesmo produto.</h2>
+        <p class="sec-lede reveal" data-i18n="method.lede">O trevo não é decoração: cada folha é uma dimensão que precisa estar presente para um produto funcionar de verdade.</p>
+      </div>
+      <div class="clover-slot" data-clover-slot="method" aria-hidden="true"><img class="slot-poster" src="assets/hero/data/poster.png" alt="" width="900" height="900" loading="lazy" decoding="async" /></div>
+    </div>
     <ol class="leaves">
       <li class="leaf reveal" style="--leaf:0"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">01</p><h3>UX</h3><p data-i18n="method.ux">Fluxos claros, definidos a partir de pesquisa, usabilidade e do contexto de quem usa.</p></li>
       <li class="leaf reveal" style="--leaf:1"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">02</p><h3>UI</h3><p data-i18n="method.ui">Consistência visual e de comportamento: componentes, padrões de interface e documentação que escalam com o time.</p></li>
@@ -353,7 +365,11 @@
       <span class="rule" aria-hidden="true"></span>
       <p class="micro status"><span class="dot" aria-hidden="true"></span><span data-i18n="contact.status">Disponível para oportunidades em produto e design</span></p>
     </header>
-    <h2 class="contact-title reveal" id="h-contact" data-i18n="contact.title">Vamos conversar sobre o que você está construindo.</h2>
+    <!-- ck20: the clover signs the page off in the free area beside the title (see the method slot above) -->
+    <div class="contact-head">
+      <h2 class="contact-title reveal" id="h-contact" data-i18n="contact.title">Vamos conversar sobre o que você está construindo.</h2>
+      <div class="clover-slot" data-clover-slot="contact" aria-hidden="true"><img class="slot-poster" src="assets/hero/data/poster.png" alt="" width="900" height="900" loading="lazy" decoding="async" /></div>
+    </div>
     <div class="contact-grid reveal">
       <p data-i18n="contact.desc">Estou aberto a vagas e a colaborações remotas com times e agências que constroem produtos digitais, ferramentas internas e experiências com IA. Se há um problema real em jogo, gosto de começar conversando com quem o vive.</p>
       <div class="contact-actions">

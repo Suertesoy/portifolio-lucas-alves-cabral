@@ -18,3 +18,10 @@ CRM sartec.mp4
 video crm sartec - portifolio.mp4
 # ck15C — the Kinetic Clover lab panel is a local development tool
 assets/hero/kinetic-lab.js
+
+# ck20 — the portrait's PNG is the editing source (the page serves the WebP beside it)
+assets/home/portrait/*.png
+assets/portrait/
+
+# ck20 — local preview server
+scripts/dev-server.mjs

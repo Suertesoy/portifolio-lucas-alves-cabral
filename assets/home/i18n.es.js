@@ -14,8 +14,7 @@
 
   'person.kicker': 'Quién diseña',
   'person.statement': 'Me gusta crear con las personas, no solo para ellas.',
-  'person.photoAlt': 'Retrato de Lucas Cabral',
-  'person.colorBtn': 'Ver el retrato en color', 'person.hintClick': 'Haz clic para ver en color', 'person.hintTap': 'Toca para ver en color', 'person.hintBack': 'Volver al blanco y negro',
+  'person.photoAlt': 'Retrato de Lucas Cabral sonriendo, con camisa blanca',
   'person.lead': 'Crecí siguiendo el día a día de Sartec, el negocio de mi familia, y viendo de cerca la atención al cliente, los pedidos y las ventas.',
   'person.body': 'Esa cercanía con problemas reales marcó mi forma de mirar el producto mucho antes de trabajar formalmente en diseño. Hoy diseño productos y guío su implementación con apoyo de IA, del problema a una interfaz que funciona. Disfruto hablando con quienes usan y operan lo que diseño, entendiendo cada punto de vista y construyendo en conjunto.',
   'person.f1k': 'Rol', 'person.f2k': 'Disciplinas', 'person.f2v': 'Product Design · UX Research · UX/UI · Design Systems · IA aplicada',

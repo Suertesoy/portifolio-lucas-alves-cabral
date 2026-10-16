@@ -14,6 +14,7 @@
 // Checkpoint 15 (approved and shipped in 15C): kinetic.js — the kinetic field (cursor impulse + tangential torque) and
 //   the scroll choreography from the hero to the portrait — is the default behaviour (EXP is on unless hbposter=1).
 //   Evaluation only: off=impulse,torque,scroll,travel,reveal (disable parts)  rm=1 (simulated reduced motion)
+//   Checkpoint 20: the same clover also appears in "Como eu penso" and "Contato" (kinetic.js, [data-clover-slot]): same renderer, same loop.
 //   cfg={...} (lab parameters). The lab panel (lab=1, dbg=1: kinetic-lab.js) is a local tool: it loads only on a local
 //   host and is not part of the published site.
 import * as THREE from 'three';
@@ -181,6 +182,7 @@ async function main() {
 function fallback(reason) {
   hero.stats.fallback = reason;
   if (kx) kx.off();
+  document.documentElement.classList.remove('kx-want'); document.documentElement.classList.add('kx-fallback');   // ck20: the portrait stays in colour, the slots show the still clover
   panel.classList.add('hb-no-webgl');
   const place = () => {
     const L = computeLayout(measure()), c = L.clover;
@@ -277,7 +279,7 @@ async function initScene() {
   // ck15 experiment: kinetic field + scroll choreography; the hero's input moves to its own layer (the canvas now
   // also covers the portrait and must not take its clicks)
   const field = EXP ? KX.createKineticField() : null;
-  if (EXP) kx = KX.createExperiment({ renderer, scene, camera, group, plate, shadow, glass, panel, canvas, clover, PLATE_Z, K, D, R_MAX, flags: KXF, reduced, lens: CONFIG.lens });
+  if (EXP) kx = KX.createExperiment({ renderer, scene, camera, group, plate, shadow, glass, panel, canvas, clover, field, PLATE_Z, K, D, R_MAX, flags: KXF, reduced, lens: CONFIG.lens });
   const input = EXP ? KX.inputLayer(panel, canvas) : canvas;
   let lab = null;   // ck15 evaluation panel / gesture overlay (lab=1, dbg=1)
   if (EXP && LOCAL && (KXF.lab || KXF.dbg)) import('./kinetic-lab.js').catch(() => null).then(m => m && m.createLab && (lab = m.createLab({ flags: KXF, field, kx, panel, onChange: k => { if (k === 'reveal') kx.repaint(); requestRender(); } })));
@@ -319,7 +321,8 @@ async function initScene() {
   const scrollP = new Spring();
   let t = 0, scrollKick = 0, placedOnce = false, flips = 0;
   const qRest = new THREE.Quaternion(), qUser = new THREE.Quaternion(), eRest = new THREE.Euler(), eUser = new THREE.Euler(0, 0, 0, 'YXZ');
-  hero.api = { flick: v => { if (!reduced()) { user.vy = clamp(v, -MOTION.drag.vMax, MOTION.drag.vMax); requestRender(); } } };
+  hero.api = { flick: v => { if (!reduced()) { user.vy = clamp(v, -MOTION.drag.vMax, MOTION.drag.vMax); requestRender(); } },
+    leaf: k => { if (kx) { kx.leaf(k); requestRender(); } } };   // ck20: a principle leans its leaf (0 UX · 1 UI · 2 IA · 3 Empatia; null releases)
 
   // ---------------------------------------------------------- input
   const cloverScreen = () => ({ x: pos.x.v, y: pos.y.v, R: pos.h.v * R_MAX });
@@ -329,6 +332,16 @@ async function initScene() {
   window.addEventListener('pointermove', e => {
     if (e.pointerType !== 'mouse') return;   // hover orientation is a mouse affordance
     const r = panel.getBoundingClientRect();
+    const sc = kx && kx.circle();   // ck20: the clover is drawn further down the page (Como eu penso, Contato): the same gestures, on it
+    if (sc) {
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      kx.cursor(x, y, sc);
+      if (field && !reduced() && !user.dragging) field.pointer(x, y, performance.now(), sc, { blocked: !!(e.target && e.target.closest && e.target.closest('a, button, .nav')),
+        normalSign: Math.sign(nrm.set(0, 0, 1).applyQuaternion(group.quaternion).z) || 1, impulse: KXF.impulse, torque: KXF.torque });
+      if (grid) grid.leave();
+      requestRender(); return;
+    }
+    if (kx) kx.cursor(null);
     const inside = e.clientY >= r.top && e.clientY <= r.bottom;   // the whole width counts (margins included), as in the lab
     const x = e.clientX - r.left, y = e.clientY - r.top, c = cloverScreen();
     if (!drag) input.classList.toggle('grab', inside && Math.hypot(x - c.x, y - c.y) < c.R * 1.15);
@@ -350,7 +363,7 @@ async function initScene() {
     lastMove = { x, y, t: now };
     requestRender();
   }, { passive: true });
-  document.documentElement.addEventListener('mouseleave', () => { if (grid) grid.leave(); hover.tx = hover.ty = 0; lastMove = null; requestRender(); });
+  document.documentElement.addEventListener('mouseleave', () => { if (grid) grid.leave(); if (field) field.leave(); if (kx) kx.cursor(null); hover.tx = hover.ty = 0; lastMove = null; requestRender(); });
   // touch / pen on the hero: the light follows the finger (vertical swipes still scroll: pointercancel ends it)
   const gridTouch = (e, down) => {
     if (!grid || e.pointerType === 'mouse' || reduced()) return;
@@ -427,7 +440,7 @@ async function initScene() {
   document.addEventListener('visibilitychange', () => { last = 0; requestRender(); });
   mqReduce.addEventListener('change', requestRender);
 
-  const idling = () => !reduced() && !staticMode && !POSTER;
+  const idling = () => !reduced() && !staticMode && !POSTER && (!kx || kx.idleOK());   // ck20: a touch screen's stage clover only moves with the scroll
   const hoverTarget = () => {
     if (reduced() || user.dragging || staticMode) return { x: 0, y: 0, z: 0 };
     const H = MOTION.hover, b = MOTION.base.yaw, sg = Math.sign(b) || 1, k = Math.tanh(H.yawGain * hover.tx);
@@ -439,7 +452,7 @@ async function initScene() {
     return user.dragging || !pos.x.resting(c.cx, 0.05) || !pos.y.resting(c.cy, 0.05) || !pos.h.resting(c.h, 0.05)
       || Math.abs(user.yaw) > 1e-4 || Math.abs(user.pitch) > 1e-4 || Math.abs(user.vy) > 1e-4 || Math.abs(user.vp) > 1e-4
       || !wob.yaw.rest() || !wob.pitch.rest() || !hover.x.resting(ht.x, 1e-4) || !hover.y.resting(ht.y, 1e-4) || !hover.z.resting(ht.z, 1e-4)
-      || Math.abs(scrollP.v) > 1e-4 || Math.abs(scrollKick) > 1e-4 || (grid && grid.busy()) || (field && !field.resting());
+      || Math.abs(scrollP.v) > 1e-4 || Math.abs(scrollKick) > 1e-4 || (grid && grid.busy()) || (field && !field.resting()) || (kx && kx.settling());
   }
   const visible = () => inView || !!(kx && kx.wants());   // ck15: the clover can be on screen below the hero
   function requestRender() { if (L && !raf && visible() && !document.hidden) raf = requestAnimationFrame(frame); }
