@@ -201,6 +201,7 @@ ol, ul { padding: 0; list-style: none; }
 .facts div { border-top: 1px solid var(--ink); padding-top: 12px; }
 .facts dt { font: 400 11px/1.4 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .facts dd { margin-top: 6px; font-size: 14.5px; line-height: 1.45; }
+.facts .langs span { display: block; white-space: nowrap; }   /* ck21: "Idioma — nível", one per line */
 
 /* The clover's other two appearances (ck20): an empty box in the layout that assets/hero/kinetic.js reads — the hero's
    renderer draws the sculpture there. Where it cannot run (no WebGL, reduced motion) the still poster takes the box. */
@@ -208,6 +209,24 @@ ol, ul { padding: 0; list-style: none; }
 .slot-poster { display: none; position: absolute; left: 50%; top: 50%; height: min(100%, 340px); width: auto; aspect-ratio: 1; transform: translate(-50%, -50%); mix-blend-mode: multiply; max-width: none; }
 .kx-fallback .slot-poster { display: block; }
 @media (prefers-reduced-motion: reduce) { .slot-poster { display: block; } }
+
+/* ck21 — small screens: the clover's secondary appearances (work, method, contact) are not the 3D sculpture but the navbar's own
+   symbol (index.html: #brand-clover, referenced with <use>), at the end of the section's header row — next to the title, in the same
+   row as the kicker, so it never takes a line of its own and never narrows the title. It turns a quarter with the page's scroll
+   (home.js sets --mk-r / --mk-s / --mk-o); without JS or with reduced motion it simply stands still. kinetic.js draws no stage on
+   these screens (same breakpoint), so the WebGL scene is idle behind them. */
+.clover-mark { display: none; }
+@media (max-width: 899px) {
+  .clover-slot { display: none; }
+  .clover-mark { --mk: clamp(38px, 10vw, 60px); display: block; flex: none; width: var(--mk); height: var(--mk); margin-block: calc((17px - var(--mk)) / 2); }
+  .clover-mark svg { display: block; width: 100%; height: 100%; overflow: visible; fill: var(--mineral);
+    transform: rotate(var(--mk-r, 0deg)) scale(var(--mk-s, 1)); opacity: var(--mk-o, 1);
+    transition: transform .28s var(--ease-out), opacity .28s var(--ease-out); will-change: transform; }
+}
+@media (max-width: 640px) {   /* the contact row also carries a long status line: it takes the row below, the mark stays beside the kicker */
+  .contact .sec-head { flex-wrap: wrap; row-gap: 10px; }
+  .contact .sec-head .status { order: 3; flex: 1 0 100%; }
+}
 
 /* 03 · work */
 .work-head { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); align-items: stretch; }
@@ -406,9 +425,7 @@ ol, ul { padding: 0; list-style: none; }
 
   /* person: one column in reading order — statement, portrait (mid-scroll, reachable by either thumb), story, facts */
   .person-grid, .journey-grid, .contact-grid, .method-head, .contact-head, .work-head { grid-template-columns: 1fr; }
-  .method-copy, .method-head .clover-slot, .contact-head .contact-title, .contact-head .clover-slot, .work-head .sec-title, .work-head .clover-slot { grid-column: 1; }
-  .method-head .clover-slot, .contact-head .clover-slot { min-height: 168px; margin-top: 8px; }
-  .work-head .clover-slot { min-height: 128px; margin-top: 4px; }
+  .method-copy, .contact-head .contact-title, .work-head .sec-title { grid-column: 1; }
   .person-grid { grid-template-rows: none; }
   .statement, .person-photo, .person-body, .facts { grid-column: 1; grid-row: auto; }
   .person-photo { width: 100%; max-width: 560px; margin-top: 28px; }

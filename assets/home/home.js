@@ -54,6 +54,55 @@
     li.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') leafApi(null); });
   });
 
+  /* ------------------------------------------------------------------ small screens: the still clover marks (ck21)
+     Where the 3D clover would be too big for the layout (≤ 899 px, the same breakpoint kinetic.js uses to draw no stage), the
+     work / method / contact headers carry the navbar's symbol instead. No WebGL here: a quarter turn, a small entrance, both a pure
+     function of where the mark stands in the viewport (compositor-only transform), written only while a mark is on screen.
+     Reduced motion: the mark stands still, fully shown (the CSS defaults). */
+  const marks = [...document.querySelectorAll('.clover-mark')], small = matchMedia('(max-width: 899px)');
+  if (marks.length) {
+    const near = new Set(); let queued = false;
+    const clamp01 = v => Math.min(1, Math.max(0, v));
+    const paint = () => {
+      queued = false;
+      const still = reduce.matches || !small.matches;
+      near.forEach(m => {
+        if (still) { m.style.removeProperty('--mk-r'); m.style.removeProperty('--mk-s'); m.style.removeProperty('--mk-o'); return; }
+        const r = m.getBoundingClientRect(); if (!r.height) return;
+        const c = clamp01(1 - (r.top + r.height / 2) / innerHeight);   // 0 as the mark rises into the viewport, 1 as it leaves at the top
+        const e = clamp01(c / 0.2), s = e * e * (3 - 2 * e);           // the entrance: over the first fifth of its passage
+        m.style.setProperty('--mk-r', ((c - 0.5) * 90).toFixed(1) + 'deg');   // a quarter turn: the symbol has four equal leaves
+        m.style.setProperty('--mk-s', (0.7 + 0.3 * s).toFixed(3));
+        m.style.setProperty('--mk-o', s.toFixed(3));
+      });
+    };
+    const queue = () => { if (!queued && near.size) { queued = true; requestAnimationFrame(paint); } };
+    const markIO = new IntersectionObserver(entries => { entries.forEach(en => { en.isIntersecting ? near.add(en.target) : near.delete(en.target); }); queue(); }, { rootMargin: '12% 0px' });
+    marks.forEach(m => markIO.observe(m));
+    addEventListener('scroll', queue, { passive: true });
+    addEventListener('resize', queue, { passive: true });
+    reduce.addEventListener('change', queue);
+  }
+
+  /* ------------------------------------------------------------------ "Ver cases" on small screens (ck21)
+     The tap gives the clover a push toward the reader (kinetic.js: cta); the page then goes to #cases with the browser's own anchor
+     navigation, a beat into the push. Anywhere the push cannot run — desktop, reduced motion, no WebGL, the module not started, the
+     clover not at the top — the link is left alone and the browser follows it as it always did. */
+  const ctaCases = document.querySelector('.hb-ctas a[href="#cases"]');
+  if (ctaCases) ctaCases.addEventListener('click', e => {
+    if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const h = window.__hero, push = h && h.api && h.api.push;
+    if (!small.matches || reduce.matches || !push) return;
+    const delay = push();   // ms until the page should start moving; false when the push cannot run
+    if (delay === false) return;
+    e.preventDefault();
+    const y0 = scrollY;
+    setTimeout(() => {
+      if (Math.abs(scrollY - y0) > 40) return;   // the reader took over in that beat: the page is where they put it
+      if (location.hash !== '#cases') location.hash = 'cases'; else document.getElementById('cases').scrollIntoView();
+    }, delay);
+  });
+
   /* The portrait has no control of its own (ck20): its colour is led by the clover (assets/hero/kinetic.js). It starts grey
      (html.kx-want, set in the head); if the hero module never starts (CDN down), the portrait goes back to colour. */
   addEventListener('load', () => setTimeout(() => { if (!window.__hero) root0.classList.remove('kx-want'); }, 8000));

@@ -14,6 +14,8 @@
 // Checkpoint 15 (approved and shipped in 15C): kinetic.js — the kinetic field (cursor impulse + tangential torque) and
 //   the scroll choreography from the hero to the portrait — is the default behaviour (EXP is on unless hbposter=1).
 //   Evaluation only: off=impulse,torque,scroll,travel,reveal (disable parts)  rm=1 (simulated reduced motion)
+//   Checkpoint 21: on small screens (≤ 899 px) those appearances are the still navbar symbol instead (home.js) and no stage is drawn;
+//   the "Ver cases" CTA pushes this same clover toward the reader (kinetic.js push(); hero.api.push).
 //   Checkpoint 20: the same clover also appears in "Como eu penso" and "Contato" (kinetic.js, [data-clover-slot]): same renderer, same loop.
 //   cfg={...} (lab parameters). The lab panel (lab=1, dbg=1: kinetic-lab.js) is a local tool: it loads only on a local
 //   host and is not part of the published site.
@@ -322,7 +324,8 @@ async function initScene() {
   let t = 0, scrollKick = 0, placedOnce = false, flips = 0;
   const qRest = new THREE.Quaternion(), qUser = new THREE.Quaternion(), eRest = new THREE.Euler(), eUser = new THREE.Euler(0, 0, 0, 'YXZ');
   hero.api = { flick: v => { if (!reduced()) { user.vy = clamp(v, -MOTION.drag.vMax, MOTION.drag.vMax); requestRender(); } },
-    leaf: k => { if (kx) { kx.leaf(k); requestRender(); } } };   // ck20: a principle leans its leaf (0 UX · 1 UI · 2 IA · 3 Empatia; null releases)
+    leaf: k => { if (kx) { kx.leaf(k); requestRender(); } },   // ck20: a principle leans its leaf (0 UX · 1 UI · 2 IA · 3 Empatia; null releases)
+    push: () => { const ms = kx ? kx.push() : false; if (ms !== false) requestRender(); return ms; } };   // ck21: "Ver cases" on small screens — ms until the page should move, or false (not run)
 
   // ---------------------------------------------------------- input
   const cloverScreen = () => ({ x: pos.x.v, y: pos.y.v, R: pos.h.v * R_MAX });
@@ -534,7 +537,7 @@ async function initScene() {
     let cl = { x: pos.x.v + Math.tanh(hover.tx) * par[0] * L.s * m, y: pos.y.v + Math.tanh(hover.ty) * par[1] * L.s * m + floatPx * k, h: pos.h.v };
     if (kx) cl = kx.place(cl);   // ck15: along the timeline (panel px; below the hero once it travels)
     const [wx, wy] = toWorld(cl.x, cl.y);
-    group.position.set(wx, wy, 0);
+    group.position.set(wx, wy, kx ? kx.pushZ() : 0);   // ck21: the push brings it toward the camera
     group.scale.setScalar(cl.h * PXW / clover.heightWorld);
     glass.set.scale(pos.hb.v * (cl.h / pos.h.v) * PXW);   // optical depth from the base size: the 150 % clover is not a stronger lens
     group.updateMatrixWorld();

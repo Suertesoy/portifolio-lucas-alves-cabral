@@ -17,6 +17,11 @@
 //     with the scroll (touch included), and — with a fine pointer — idles, leans toward the cursor and takes the same cursor
 //     impulse and torque as the hero. A principle (UX · UI · IA · Empatia) can lean its leaf toward the reader.
 //
+//  D. Small screens (ck21): C does not run at ≤ 899 px — the appearances there are the still navbar symbol (home.js, .clover-mark),
+//     so no slot is measured, no stage is drawn and the loop stops once the clover has left the portrait. The hero clover and the
+//     photo choreography (A, B) are unchanged. "Ver cases" (Hero CTA, small screens) gives the same clover a push toward the reader
+//     (push(): a spin, a perspective approach, a fade) and hands it back to the timeline when the page has settled.
+//
 // Hand-over: k = 1 − smoothstep(0, 0.1, p) is the kinetic system's influence (hover, idle, impulse, spin, drag). New
 // gestures are only read while p < 0.02; as soon as the page scrolls the kinetic state is "released" (critically damped
 // settle, no coasting), so the timeline takes over from an at-rest pose with no jump. Back at the top, k returns to 1.
@@ -206,6 +211,23 @@ export const STAGE = {
   work: { workFill: 0.92 },   // scale of the clover in the work header (lab)
 };
 
+// ck21 — "Ver cases" on small screens: the tap pushes the clover toward the reader. Same sculpture, same renderer: only its pose, its
+// distance from the camera (real perspective: the camera sits at D ≈ 5.1, so z = 2 is ≈ ×1.6 on screen) and its opacity change, on top
+// of whatever the timeline says. Nothing is kept: the push is handed back (release) once the page has settled, or at once if the reader
+// touches / scrolls / presses a key, and the scroll timeline resumes from where the page is.
+export const PUSH = {
+  dur: 0.6,              // s the push lasts
+  nav: 0.3,              // s into the push when the page may start moving (the clover is at its largest and begins to go)
+  z: 2.0,                // world units toward the camera at the end of the push
+  turn: 190 * DEG,       // flip about the choreography's axis (decelerating: an impulse, not a motor)
+  twist: QUARTER,        // plus a quarter turn in the plane (the four leaves: same pose)
+  fade: [0.55, 1],       // × push: the clover goes over this stretch
+  release: 0.45,         // s to hand the clover back to the timeline
+  settle: 0.18,          // s without scrolling that ends the hold …
+  wait: 0.9,             // … or, if the page never moved, this long after the push
+  cap: 2.6,              // s: the hold never lasts longer than this
+};
+
 // rotation progress F(p): starts immediately, decelerates, done at p = 0.92 (a short ramp avoids a kick at p = 0;
 // exponent 1.1, not steeper: a quick flick of the page must not spin the clover faster than the eye follows)
 const N_LUT = 512, LUT_F = new Float32Array(N_LUT + 1);
@@ -313,6 +335,7 @@ export function createExperiment(ctx) {
   style.textContent = CSS; document.head.appendChild(style);
   root.classList.add('kx-on');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  const smallScreen = matchMedia('(max-width: 899px)');   // ck21: no stages here (the still mark in the page takes their place)
 
   // glass fade (premultiplied "over"), patched on top of the approved material: optics untouched, alpha only
   const fadeU = { value: 1 };
@@ -410,7 +433,7 @@ export function createExperiment(ctx) {
       if (overlay) { overlay.style.setProperty('--kx-ax', ax.toFixed(1) + 'px'); overlay.style.setProperty('--kx-ay', ay.toFixed(1) + 'px'); }
     }
     // the clover's other appearances: boxes in the layout, measured here so a longer title or another language just moves them
-    G.slots = [...document.querySelectorAll('[data-clover-slot]')].map(el => {
+    G.slots = smallScreen.matches ? [] : [...document.querySelectorAll('[data-clover-slot]')].map(el => {
       const [sx, sy] = offsetPage(el), w = el.offsetWidth, h = el.offsetHeight;
       if (w < 8 || h < 8) return null;
       const key = el.dataset.cloverSlot, fill = key === 'work' ? STAGE.work.workFill : STAGE.fill;
@@ -502,6 +525,7 @@ export function createExperiment(ctx) {
   const stageNear = () => stagesOn() && G.slots.some(sl => { const v = slotView(sl, window.scrollY - G.heroTop); return v > -0.14 && v < 1.1; });
   let grey = null;
   function scroll(dt) {
+    pushStep(dt);
     const sRaw = window.scrollY - G.heroTop, on = enabled();
     st.s = sRaw;
     if (!on) { st.sS = 0; st.vel = 0; }
@@ -577,7 +601,7 @@ export function createExperiment(ctx) {
   const qLens = new THREE.Quaternion().setFromEuler(new THREE.Euler(CHOREO.lens.pitch, CHOREO.lens.yaw, CHOREO.lens.spin));
   const FLIP = new THREE.Vector3(...CHOREO.flipAxis).normalize(), Z = new THREE.Vector3(0, 0, 1);
   const qLensEnd = new THREE.Quaternion(), qGoal = new THREE.Quaternion(), qCand = new THREE.Quaternion(), qSw = new THREE.Quaternion();
-  function orient(q) {   // q: the hero orientation (kinetic layers already weighted by k) → the choreographed one
+  function orientBase(q) {   // q: the hero orientation (kinetic layers already weighted by k) → the choreographed one
     if (!enabled()) return q;
     if (st.stage >= 0) return orientStage(q);
     if (st.p <= 0) return q;
@@ -616,7 +640,7 @@ export function createExperiment(ctx) {
     out.fade = w; out.lensK = 1; out.shadowK = w; st.fade = w;
     return out;
   }
-  function place(base) {
+  function placeBase(base) {
     Object.assign(out, base, { fade: 1, lensK: 1, shadowK: 1 });
     if (!enabled()) { st.fade = 1; return out; }
     if (st.stage >= 0) return placeStage(G.slots[st.stage]);
@@ -653,6 +677,59 @@ export function createExperiment(ctx) {
     st.fade = out.fade;
     return out;
   }
+
+  // ---------------------------------------------------------------------------------------- ck21 · "Ver cases": the push
+  // phase: idle → push (PUSH.dur) → hold (hidden, while the page travels) → release (PUSH.release) → idle. tau is the push's progress, k how
+  // much of it is applied (1 while pushing and holding, back to 0 in the release). Every output is the timeline's own, modulated.
+  const cta = { phase: 'idle', t: 0, tau: 0, k: 0, hold: 0, still: 0, lastY: 0, y0: 0, rt: 0 };
+  const qPush = new THREE.Quaternion(), qPushSpin = new THREE.Quaternion();
+  const ease = x => 1 - Math.pow(1 - clamp(x, 0, 1), 2.4);                 // an impulse: fast first, then decelerating
+  const pushPose = () => ease(cta.tau) * cta.k;                            // 0 → 1: how far the push has carried the clover
+  const pushFade = () => smooth(PUSH.fade[0], PUSH.fade[1], cta.tau) * cta.k;   // 0 → 1: how much of the clover is gone
+  const idleNow = () => cta.phase === 'idle';
+  function beginRelease() { if (cta.phase === 'push' || cta.phase === 'hold') { cta.phase = 'release'; cta.rt = 0; cta.k = 1; } }
+  function push() {   // → ms until the page should start moving, or false: the push cannot run (the link is then followed as usual)
+    if (!G.ok || !enabled() || ctx.reduced() || root.classList.contains('kx-fallback')) return false;
+    if (cta.phase === 'push' || cta.phase === 'hold') return 0;   // already under way: the page need not wait again
+    if (st.stage >= 0 || st.p > 0.15 || window.scrollY - G.heroTop > 0.25 * G.vh) return false;   // only the hero's clover is pushed
+    Object.assign(cta, { phase: 'push', t: 0, tau: 0, k: 1, hold: 0, still: 0, lastY: window.scrollY, y0: window.scrollY, rt: 0 });
+    return Math.round(PUSH.nav * 1000);
+  }
+  function pushStep(dt) {
+    if (cta.phase === 'idle') return;
+    if (!enabled() || ctx.reduced()) { cta.phase = 'idle'; cta.k = 0; return; }
+    const y = window.scrollY;
+    if (cta.phase === 'push') {
+      cta.t += dt; cta.tau = Math.min(1, cta.t / PUSH.dur);
+      if (cta.tau >= 1) { cta.phase = 'hold'; cta.hold = 0; cta.still = 0; cta.lastY = y; }
+    } else if (cta.phase === 'hold') {
+      cta.hold += dt; cta.still = Math.abs(y - cta.lastY) < 0.5 ? cta.still + dt : 0; cta.lastY = y;
+      const moved = Math.abs(y - cta.y0) > 40;
+      if ((cta.still >= PUSH.settle && (moved || cta.hold > PUSH.wait)) || cta.hold > PUSH.cap) beginRelease();
+    } else {
+      cta.rt += dt; cta.k = 1 - smoother(cta.rt / PUSH.release);
+      if (cta.rt >= PUSH.release) { cta.phase = 'idle'; cta.k = 0; cta.tau = 0; }
+    }
+  }
+  // the reader took over (touch, wheel, key, mouse): give the clover back
+  for (const ev of ['touchstart', 'wheel', 'keydown', 'mousedown']) addEventListener(ev, beginRelease, { passive: true });
+  function orient(q) {
+    orientBase(q);
+    if (!idleNow()) {
+      const a = pushPose();
+      qPush.setFromAxisAngle(FLIP, PUSH.turn * a); qPushSpin.setFromAxisAngle(Z, PUSH.twist * a);
+      q.premultiply(qPushSpin).premultiply(qPush);   // screen-space, after the timeline's pose (like the cursor impulse)
+    }
+    return q;
+  }
+  function place(base) {
+    placeBase(base);
+    if (!idleNow()) { const m = 1 - pushFade(); out.fade *= m; out.shadowK *= m; st.fade = out.fade; }
+    return out;
+  }
+  const pushZ = () => (idleNow() ? 0 : PUSH.z * pushPose());   // world units toward the camera
+  // the portrait's colour belongs to the clover: while it is away (hold) there is none, and it comes back with it (release)
+  const pushShow = () => (cta.phase === 'idle' ? 1 : cta.phase === 'release' ? 1 - cta.k : 0);
 
   // ---------------------------------------------------------------------------------------- per frame: window, camera, plate, underlay, colour
   const FOV0 = camera.fov;
@@ -704,7 +781,7 @@ export function createExperiment(ctx) {
     // Everything is a function of the scroll. Whole in colour = the plain image (no mask, no overlay): nothing can be left over the face.
     if (overlay) {
       const T = G.T, V = x => x * G.vh, a = st.a, g = st.g, d = st.d, portraitOn = on && flags.reveal && !stageOn && st.p >= 1;
-      const o = portraitOn ? CHOREO.revealOpacity * smooth(0, 0.1, a) * (1 - smooth(T.retB - V(0.02), T.retB + V(0.06), d)) : 0;
+      const o = portraitOn ? CHOREO.revealOpacity * smooth(0, 0.1, a) * (1 - smooth(T.retB - V(0.02), T.retB + V(0.06), d)) * pushShow() : 0;
       const full = o > 0.999 && a >= 0.999 && g <= 0.0005;
       if (fig && full !== lastFull) { fig.classList.toggle('kx-full', full); lastFull = full; }
       let css = 'o0';
@@ -727,7 +804,7 @@ export function createExperiment(ctx) {
   // compile the underlay's two programs and upload its texture at start, not mid-scroll (first use was a ~80 ms hitch)
   function prewarm(renderer) { const v = under.visible; under.visible = true; renderer.render(scene, camera); under.visible = v; }
   function off() {   // WebGL lost: back to the static page
-    root.classList.remove('kx-on', 'kx-want'); root.classList.add('kx-fallback'); canvas.style.transform = '';
+    root.classList.remove('kx-on', 'kx-want'); root.classList.add('kx-fallback'); canvas.style.transform = ''; cta.phase = 'idle'; cta.k = 0;
     if (overlay) overlay.style.opacity = '0';
   }
   function stats() {
@@ -736,18 +813,18 @@ export function createExperiment(ctx) {
       stage: st.stage, sw: +st.sw.toFixed(3), slots: G.slots.map(s => ({ key: s.key, x: Math.round(s.x), cy: Math.round(s.cy), R: Math.round(s.R), w: +(s.w || 0).toFixed(3) })),
       sEnd: Math.round(G.sEnd || 0), rSpan: Math.round(G.rSpan || 0), anchor: G.A ? [Math.round(G.A.x), Math.round(G.A.y)] : null, hArr: Math.round(G.hArr || 0),
       flags: { ...flags }, underlay: [uCanvas.width, uCanvas.height], zone: zoneKey, notch: +mask.notch.toFixed(3), plateVisible: plate.visible, underVisible: under.visible,
-      overlayOpacity: overlay ? +(overlay.style.opacity || 0) : null, rotF: +LUT(st.p).toFixed(5), anchorFrac: [...CHOREO.anchor], layouts, grey, lean: [lean.k, +lean.w.v.toFixed(3)] };
+      push: { phase: cta.phase, tau: +cta.tau.toFixed(3), k: +cta.k.toFixed(3), z: +pushZ().toFixed(3) }, overlayOpacity: overlay ? +(overlay.style.opacity || 0) : null, rotF: +LUT(st.p).toFixed(5), anchorFrac: [...CHOREO.anchor], layouts, grey, lean: [lean.k, +lean.w.v.toFixed(3)] };
   }
   // the render loop may run while the hero is off screen: only while the clover can still be seen (or is catching up)
   // (and once more after a flick that left the clover behind on the canvas: that frame draws it away)
-  const wants = () => enabled() && ((flags.travel && (window.scrollY - G.heroTop < G.sEnd + G.rSpan + 40)) || st.live || stageNear() || drawn);
+  const wants = () => enabled() && ((flags.travel && (window.scrollY - G.heroTop < G.sEnd + G.rSpan + 40)) || st.live || stageNear() || drawn || !idleNow());
   // at rest on a touch screen the stage clover only moves with the scroll: no free-running loop (battery); the cursor and the sway need one
   const idleOK = () => st.stage < 0 || finePointer.matches;
   // the stage clover on screen now, for the pointer (panel px), or null
   const circle = () => (st.stage >= 0 && st.sw > 0.3 ? { x: out.x, y: out.y, R: out.h * R_MAX } : null);
   // the eased scroll still catching up with the real one (the loop must not stop on a stale frame when it is not free-running)
-  const settling = () => (enabled() && Math.abs(st.sS - st.s) > 0.5) || st.stage >= 0 && (Math.abs(tilt.x.v - tilt.tx) > 1e-3 || Math.abs(tilt.y.v - tilt.ty) > 1e-3 || Math.abs(lean.w.v - (lean.k >= 0 ? 1 : 0)) > 1e-3);
-  return { st, G, layout, scroll, orient, place, frame, off, stats, wants, prewarm, repaint: paintUnderlay, enabled, cursor, leaf: leafFocus, circle, idleOK, settling };
+  const settling = () => !idleNow() || (enabled() && Math.abs(st.sS - st.s) > 0.5) || st.stage >= 0 && (Math.abs(tilt.x.v - tilt.tx) > 1e-3 || Math.abs(tilt.y.v - tilt.ty) > 1e-3 || Math.abs(lean.w.v - (lean.k >= 0 ? 1 : 0)) > 1e-3);
+  return { st, G, layout, scroll, orient, place, frame, off, stats, wants, prewarm, repaint: paintUnderlay, enabled, cursor, leaf: leafFocus, circle, idleOK, settling, push, pushZ };
 }
 
 // the hero's input surface when the canvas no longer takes pointer events (it now also covers the portrait)

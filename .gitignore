@@ -21,3 +21,13 @@ assets/hero/kinetic-lab.js
 assets/home/portrait/*.png
 assets/portrait/
 scripts/dev-server.mjs
+
+# ck21 — Sartec CRM evidence folder: only the reviewed, anonymised .webp / .mp4 (see its README) can be committed; raw captures, recordings and edit files never
+assets/cases/sartec/crm/media/*
+!assets/cases/sartec/crm/media/README.md
+!assets/cases/sartec/crm/media/screenshots/
+!assets/cases/sartec/crm/media/videos/
+assets/cases/sartec/crm/media/screenshots/*
+!assets/cases/sartec/crm/media/screenshots/*.webp
+assets/cases/sartec/crm/media/videos/*
+!assets/cases/sartec/crm/media/videos/*.mp4

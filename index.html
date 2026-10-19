@@ -57,7 +57,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
 <header class="nav" id="nav">
   <div class="wrap nav-row">
     <a class="brand" href="#top" aria-label="Lucas Cabral — início" data-i18n="nav.brand" data-i18n-attr="aria-label">
-      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><g transform="rotate(45 12 12)"><circle cx="12" cy="7.3" r="4.2"/><circle cx="12" cy="16.7" r="4.2"/><circle cx="7.3" cy="12" r="4.2"/><circle cx="16.7" cy="12" r="4.2"/></g></svg>
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><g id="brand-clover" transform="rotate(45 12 12)"><circle cx="12" cy="7.3" r="4.2"/><circle cx="12" cy="16.7" r="4.2"/><circle cx="7.3" cy="12" r="4.2"/><circle cx="16.7" cy="12" r="4.2"/></g></svg>
       <span>Lucas Cabral</span>
     </a>
     <nav class="nav-links" id="nav-links" aria-label="Principal" data-i18n="nav.main" data-i18n-attr="aria-label">
@@ -134,7 +134,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
       <dl class="facts reveal">
         <div><dt data-i18n="person.f1k">Papel</dt><dd>Product Designer &amp; Design Engineer</dd></div>
         <div><dt data-i18n="person.f2k">Disciplinas</dt><dd data-i18n="person.f2v">Product Design · UX Research · UX/UI · Design Systems · IA aplicada</dd></div>
-        <div><dt data-i18n="person.f3k">Idiomas</dt><dd data-i18n="person.f3v">Português (nativo) · English (fluente) · Español (leio e entendo bem, ainda falo pouco)</dd></div>
+        <div><dt data-i18n="person.f3k">Idiomas</dt><dd class="langs" data-i18n-html="person.f3v"><span>Português — nativo</span><span>Inglês — fluente</span><span>Espanhol — intermediário</span></dd></div>
       </dl>
     </div>
   </div>
@@ -147,6 +147,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
       <p class="micro"><b>(03)</b>&nbsp;&nbsp;<span data-i18n="work.kicker">Trabalho selecionado</span></p>
       <span class="rule" aria-hidden="true"></span>
       <p class="micro sec-count" data-i18n="work.count">05 projetos</p>
+      <span class="clover-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#brand-clover"/></svg></span>
     </header>
     <!-- ck20B: the clover walks down from the portrait and rests in the free area beside this title (assets/hero/kinetic.js reads
          the slot's box); it is gone before the cards. Same renderer as the hero; the still poster only loads where it cannot run. -->
@@ -295,6 +296,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
     <header class="sec-head reveal">
       <p class="micro"><b>(04)</b>&nbsp;&nbsp;<span data-i18n="method.kicker">Como eu penso</span></p>
       <span class="rule" aria-hidden="true"></span>
+      <span class="clover-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#brand-clover"/></svg></span>
     </header>
     <!-- ck20: the free area beside the title is the clover's second appearance (assets/hero/kinetic.js reads the slot's box:
          same renderer as the hero, no second WebGL context). The still poster only loads where the clover cannot run. -->
@@ -364,6 +366,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
       <p class="micro"><b>(06)</b>&nbsp;&nbsp;<span data-i18n="contact.kicker">Contato</span></p>
       <span class="rule" aria-hidden="true"></span>
       <p class="micro status"><span class="dot" aria-hidden="true"></span><span data-i18n="contact.status">Disponível para oportunidades em produto e design</span></p>
+      <span class="clover-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#brand-clover"/></svg></span>
     </header>
     <!-- ck20: the clover signs the page off in the free area beside the title (see the method slot above) -->
     <div class="contact-head">

@@ -18,7 +18,7 @@
   'person.lead': 'Crecí siguiendo el día a día de Sartec, el negocio de mi familia, y viendo de cerca la atención al cliente, los pedidos y las ventas.',
   'person.body': 'Esa cercanía con problemas reales marcó mi forma de mirar el producto mucho antes de trabajar formalmente en diseño. Hoy diseño productos y guío su implementación con apoyo de IA, del problema a una interfaz que funciona. Disfruto hablando con quienes usan y operan lo que diseño, entendiendo cada punto de vista y construyendo en conjunto.',
   'person.f1k': 'Rol', 'person.f2k': 'Disciplinas', 'person.f2v': 'Product Design · UX Research · UX/UI · Design Systems · IA aplicada',
-  'person.f3k': 'Idiomas', 'person.f3v': 'Portugués (nativo) · Inglés (fluido) · Español (leo y entiendo bien, todavía hablo poco)',
+  'person.f3k': 'Idiomas', 'person.f3v': '<span>Portugués — nativo</span><span>Inglés — fluido</span><span>Español — intermedio</span>',
 
   'work.kicker': 'Trabajo seleccionado', 'work.count': '05 proyectos', 'work.title': 'Del problema real a una interfaz que funciona.',
   'work.gA': 'Productos y sistemas', 'work.gAdesc': 'Interfaces con reglas, estados y una operación detrás: del pedido al panel.',
