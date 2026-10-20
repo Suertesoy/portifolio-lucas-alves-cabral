@@ -134,7 +134,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
       <dl class="facts reveal">
         <div><dt data-i18n="person.f1k">Papel</dt><dd>Product Designer &amp; Design Engineer</dd></div>
         <div><dt data-i18n="person.f2k">Disciplinas</dt><dd data-i18n="person.f2v">Product Design · UX Research · UX/UI · Design Systems · IA aplicada</dd></div>
-        <div><dt data-i18n="person.f3k">Idiomas</dt><dd class="langs" data-i18n-html="person.f3v"><span>Português — nativo</span><span>Inglês — fluente</span><span>Espanhol — intermediário</span></dd></div>
+        <div><dt data-i18n="person.f3k">Idiomas</dt><dd class="langs" data-i18n-html="person.f3v"><span>Português — nativo</span> <span>Inglês — fluente</span> <span>Espanhol — intermediário</span></dd></div>
       </dl>
     </div>
   </div>
@@ -233,8 +233,8 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
         <ul class="tags"><li>UX Research</li><li>Design System</li><li>Product Strategy</li></ul>
         <div class="card-ctas">
           <!-- the full case (root route); /recrutamento is the short recruiter version and is not linked -->
-          <a class="cta-arrow" href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta">Ver case completo</span><span aria-hidden="true">↗</span></a>
-          <a class="cta-quiet" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta2">Abrir protótipo</span> ↗</a>
+          <a class="cta-arrow" href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta">Ver case completo</span> <span aria-hidden="true">↗</span></a>
+          <a class="btn-action btn-action--sm" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta2">Abrir protótipo</span> <span aria-hidden="true">↗</span></a>
         </div>
       </article>
     </div>
@@ -264,7 +264,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
             <div><dt data-i18n="site.visual">Direção visual</dt><dd data-i18n="papelaria.visual">Identidade da marca aplicada à web, com a fachada da loja como imagem de abertura</dd></div>
             <div><dt data-i18n="site.build">Implementação</dt><dd data-i18n="papelaria.build">Site publicado e integrado ao WhatsApp</dd></div>
           </dl>
-          <a class="cta-arrow" href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer"><span data-i18n="papelaria.cta">Visitar o site</span><span aria-hidden="true">↗</span></a>
+          <a class="btn-action" href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer"><span data-i18n="papelaria.cta">Visitar o site</span> <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
@@ -283,7 +283,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
             <div><dt data-i18n="site.visual">Direção visual</dt><dd data-i18n="almeida.visual">Solidez e escala: fotografia da operação e tipografia institucional</dd></div>
             <div><dt data-i18n="site.build">Implementação</dt><dd data-i18n="almeida.build">Site bilíngue, português e inglês</dd></div>
           </dl>
-          <a class="cta-arrow" href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="almeida.cta">Ver em homologação</span><span aria-hidden="true">↗</span></a>
+          <a class="btn-action" href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="almeida.cta">Ver em homologação</span> <span aria-hidden="true">↗</span></a>
         </div>
       </article>
     </section>
@@ -308,18 +308,37 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
       <div class="clover-slot" data-clover-slot="method" aria-hidden="true"><img class="slot-poster" src="assets/hero/data/poster.png" alt="" width="900" height="900" loading="lazy" decoding="async" /></div>
     </div>
     <ol class="leaves">
-      <li class="leaf reveal" style="--leaf:0"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">01</p><h3>UX</h3><p data-i18n="method.ux">Fluxos claros, definidos a partir de pesquisa, usabilidade e do contexto de quem usa.</p></li>
-      <li class="leaf reveal" style="--leaf:1"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">02</p><h3>UI</h3><p data-i18n="method.ui">Consistência visual e de comportamento: componentes, padrões de interface e documentação que escalam com o time.</p></li>
-      <li class="leaf reveal" style="--leaf:2"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">03</p><h3 data-i18n="method.aiT">IA</h3><p data-i18n="method.ai">Uso IA para acelerar a implementação e a triagem inicial, com revisão minha e passagem para uma pessoa sempre que o julgamento importa.</p></li>
-      <li class="leaf reveal" style="--leaf:3"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">04</p><h3 data-i18n="method.empathyT">Empatia</h3><p data-i18n="method.empathy">Converso, observo e escuto antes de desenhar. No UNIEDU, fizemos entrevistas com estudantes e testes de usabilidade; no Pesca, perguntei ao responsável o que mais dificultava a operação; na Sartec, parti do que vi no balcão.</p></li>
+      <li class="leaf reveal" style="--leaf:0"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">01</p><h3>UX</h3><p data-i18n="method.ux">Fluxos claros e funcionais, desenhados a partir da pesquisa, contexto e necessidades de quem usa o produto.</p></li>
+      <li class="leaf reveal" style="--leaf:1"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">02</p><h3>UI</h3><p data-i18n="method.ui">Consistência visual e de interação: componentes, sistemas de design e documentação que facilitam a implementação.</p></li>
+      <li class="leaf reveal" style="--leaf:2"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">03</p><h3 data-i18n="method.aiT">IA</h3><p data-i18n="method.ai">Soluções no produto (triagem e automação útil) e apoio à implementação, com critério e validação humana.</p></li>
+      <li class="leaf reveal" style="--leaf:3"><span class="leaf-mark" aria-hidden="true"></span><p class="micro">04</p><h3 data-i18n="method.empathyT">Empatia</h3><p data-i18n="method.empathy">Escuta atenta e presença na rotina real de quem opera e atende, transformando a fricção em decisões conscientes.</p></li>
     </ol>
-    <div class="steps reveal">
-      <p class="micro steps-label" data-i18n="method.stepsLabel">Método</p>
-      <ol>
-        <li><span>01</span><b data-i18n="method.s1t">Entender o problema</b><p data-i18n="method.s1">Converso com quem usa e opera, e acompanho a rotina real antes de abrir uma tela.</p></li>
-        <li><span>02</span><b data-i18n="method.s2t">Mapear o fluxo</b><p data-i18n="method.s2">Mapeio usuários, contexto, jornada e o trabalho real de quem opera, junto com eles sempre que posso.</p></li>
-        <li><span>03</span><b data-i18n="method.s3t">Desenhar os estados</b><p data-i18n="method.s3">Defino arquitetura, hierarquia, estados, microcopy e responsividade.</p></li>
-        <li><span>04</span><b data-i18n="method.s4t">Validar e evoluir</b><p data-i18n="method.s4">Testo no uso real, ouço o retorno, documento decisões e sigo melhorando a entrega.</p></li>
+    <div class="method-flow reveal">
+      <div class="method-flow-head">
+        <p class="micro" data-i18n="method.stepsLabel">Método de trabalho</p>
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+      <ol class="flow-track">
+        <li class="flow-step">
+          <div class="step-marker" aria-hidden="true"><span>01</span><i></i></div>
+          <b class="step-title" data-i18n="method.s1t">Entender o problema</b>
+          <p class="step-desc" data-i18n="method.s1">Imersão no contexto real, escuta de quem opera e observação da rotina antes de desenhar.</p>
+        </li>
+        <li class="flow-step">
+          <div class="step-marker" aria-hidden="true"><span>02</span><i></i></div>
+          <b class="step-title" data-i18n="method.s2t">Mapear o fluxo</b>
+          <p class="step-desc" data-i18n="method.s2">Jornada de ponta a ponta, atores, regras de negócio e mapeamento dos pontos críticos de fricção.</p>
+        </li>
+        <li class="flow-step">
+          <div class="step-marker" aria-hidden="true"><span>03</span><i></i></div>
+          <b class="step-title" data-i18n="method.s3t">Estruturar e prototipar</b>
+          <p class="step-desc" data-i18n="method.s3">Arquitetura de informação, hierarquia visual, design system, microcopy e protótipos funcionais.</p>
+        </li>
+        <li class="flow-step">
+          <div class="step-marker" aria-hidden="true"><span>04</span><i></i></div>
+          <b class="step-title" data-i18n="method.s4t">Validar e evoluir</b>
+          <p class="step-desc" data-i18n="method.s4">Testes de usabilidade, acompanhamento da entrega e refinamento contínuo em produção real.</p>
+        </li>
       </ol>
     </div>
   </div>
@@ -334,25 +353,75 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
     </header>
     <div class="journey-grid">
       <div class="journey-story reveal">
-        <h2 class="sec-title" id="h-journey" data-i18n="journey.title">Produto, operação e implementação.</h2>
-        <p data-i18n="journey.p1">Na Biologia, aprendi a observar sistemas, contexto e relações. No UX/UI Design, encontrei o caminho profissional onde essa curiosidade virou método: estudar telas, conversar com usuários, investigar dores pouco explícitas e transformar aprendizados em soluções digitais mais claras e funcionais.</p>
-        <p data-i18n="journey.p2">Gosto de aprender, testar e evoluir, e de fazer isso acompanhado: cada conversa com um usuário, um cliente ou um colega melhora a entrega seguinte.</p>
+        <h2 class="sec-title" id="h-journey" data-i18n="journey.title">Repertório multidisciplinar e foco no problema real.</h2>
+        <p data-i18n="journey.p1">Minha trajetória conecta ciência, operação comercial e tecnologia. Na formação em Ciências Biológicas pela UFSC, desenvolvi olhar sistêmico, rigor investigativo e atenção a contextos complexos. Na rotina operacional e no atendimento ao cliente da papelaria da família, aprendi que nenhum produto se sustenta sem resolver a dor real de quem o opera todos os dias.</p>
+        <p data-i18n="journey.p2">No Product Design e no Design Engineering essa base se transformou em método: entrevistar pessoas, estruturar jornadas, desenhar sistemas visuais consistentes e conduzir a implementação assistida por IA com olhar crítico e colaborativo.</p>
         <figure class="journey-figure">
           <img src="mergulhador_lucas.jpeg" alt="Lucas Cabral mergulhando na Ilha do Arvoredo, Santa Catarina" loading="lazy" data-i18n="journey.photoAlt" data-i18n-attr="alt" />
           <figcaption class="micro" data-i18n="journey.cap">Ilha do Arvoredo — Santa Catarina, Brasil</figcaption>
         </figure>
       </div>
-      <div class="journey-list reveal">
-        <ol class="xp">
-          <li><b>Sartec</b><span data-i18n="xp.sartec">Vivência operacional, atendimento e processos comerciais</span><em data-i18n="xp.sartecTag">Operação real</em></li>
-          <li><b>Sartec CRM</b><span data-i18n="xp.crm">Product Design, UX operacional e Design Engineering</span><em data-i18n="xp.crmTag">Sistema interno</em></li>
-          <li><b data-i18n="xp.agentName">Agente WhatsApp Sartec</b><span data-i18n="xp.agent">IA aplicada, triagem e handoff humano</span><em data-i18n="xp.agentTag">IA aplicada</em></li>
-          <li><b>UNIEDU</b><span data-i18n="xp.uniedu">UX Research, Product Design e protótipo educacional, em coautoria</span><em>Product Design</em></li>
-          <li><b>Pesca Delivery</b><span data-i18n="xp.pesca">Product Design, Design Engineering e implementação assistida por IA</span><em data-i18n="xp.pescaTag">Em operação</em></li>
-        </ol>
+      <div class="journey-curriculum reveal">
+        <div class="cv-section">
+          <p class="micro cv-label" data-i18n="journey.expLabel">Atuação &amp; Experiência</p>
+          <ul class="cv-list">
+            <li>
+              <div class="cv-head">
+                <b class="cv-title" data-i18n="journey.exp1Title">L A Cabral</b>
+                <span class="cv-tag" data-i18n="journey.exp1Tag">Estúdio &amp; Projetos</span>
+              </div>
+              <p class="cv-role" data-i18n="journey.exp1Role">Product Design &amp; Design Engineering</p>
+              <p class="cv-desc" data-i18n="journey.exp1Desc">Soluções digitais de ponta a ponta: pesquisa, UX/UI, arquitetura de sistemas e implementação assistida por IA para produtos em operação e sites institucionais.</p>
+            </li>
+            <li>
+              <div class="cv-head">
+                <b class="cv-title" data-i18n="journey.exp2Title">Sartec Papelaria</b>
+                <span class="cv-tag" data-i18n="journey.exp2Tag">Operação real</span>
+              </div>
+              <p class="cv-role" data-i18n="journey.exp2Role">Operação Comercial &amp; Atendimento</p>
+              <p class="cv-desc" data-i18n="journey.exp2Desc">Vivência prática em balcão, processos de venda, organização de rotinas e contato direto com clientes, base para o desenho de sistemas e fluxos de atendimento.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cv-section">
+          <p class="micro cv-label" data-i18n="journey.eduLabel">Formação Acadêmica &amp; Cursos Complementares</p>
+          <ul class="cv-list">
+            <li>
+              <div class="cv-head">
+                <b class="cv-title" data-i18n="journey.edu1Title">Universidade Federal de Santa Catarina (UFSC)</b>
+                <span class="cv-tag" data-i18n="journey.edu1Tag">Graduação · 2024</span>
+              </div>
+              <p class="cv-role" data-i18n="journey.edu1Role">Bacharelado em Ciências Biológicas</p>
+              <p class="cv-desc" data-i18n="journey.edu1Desc">Formação científica com ênfase em observação empírica, dinâmica de sistemas complexos e relações ecológicas.</p>
+            </li>
+            <li>
+              <div class="cv-head">
+                <b class="cv-title" data-i18n="journey.edu2Title">UX Unicórnio</b>
+                <span class="cv-tag" data-i18n="journey.edu2Tag">Formação complementar · 2026</span>
+              </div>
+              <p class="cv-role" data-i18n="journey.edu2Role">Formação complementar em UX/UI Design · aproximadamente 200h</p>
+              <p class="cv-desc" data-i18n="journey.edu2Desc">Imersão em pesquisa com usuários, estratégia de produto, design systems, prototipagem avançada e testes de usabilidade.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cv-section">
+          <p class="micro cv-label" data-i18n="journey.skillsLabel">Competências Principais</p>
+          <div class="cv-skills">
+            <p><b data-i18n="journey.skillsDesignKey">Design:</b> <span data-i18n="journey.skillsDesign">Product Design · UX Research · UX/UI · Design Systems · Arquitetura da Informação · Testes de Usabilidade</span></p>
+            <p><b data-i18n="journey.skillsTechKey">Tecnologia &amp; IA:</b> <span data-i18n="journey.skillsTech">Design Engineering · HTML/CSS/JS · Agentes de IA aplicados a produtos · Triagem e automação de fluxos</span></p>
+          </div>
+        </div>
+
         <div class="tools">
           <p class="micro" data-i18n="journey.tools">Ferramentas</p>
           <p>Figma · Figma Make · Claude Code · ChatGPT · Antigravity · Notion · Google Workspace · Gemini</p>
+        </div>
+
+        <div class="cv-cta-wrap">
+          <a class="btn-action" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer"><span data-i18n="journey.ctaLinkedin">Ver perfil completo no LinkedIn</span> <span aria-hidden="true">↗</span></a>
+          <p class="micro cv-note" data-i18n="journey.cvNote">Disponível para posições remotas internacionais e projetos como Product Designer &amp; Design Engineer.</p>
         </div>
       </div>
     </div>
