@@ -35,7 +35,7 @@
 
   'crm.kicker': 'Internal system · Applied AI', 'crm.badge': 'In use', 'crm.title': 'Operational CRM + AI Agent',
   'crm.videoAlt': 'Sartec CRM: the “Who is attending now?” window, where each team member picks their own name before taking over conversations.',
-  'crm.sum': 'An internal system that centralizes conversations, statuses and priorities, with a WhatsApp AI agent that handles first triage and hands each chat, with context, to a person on the team. I designed the product and guided its AI-assisted implementation.',
+  'crm.sum': 'An internal system that centralizes conversations, statuses and priorities, with a WhatsApp AI agent that handles first triage and hands the chat, with context, to a person on the team. I designed the product and guided its AI-assisted implementation.',
   'crm.t1': 'Operations observation', 'crm.t2': 'Flow states', 'crm.t3': 'Human handoff', 'crm.cta': 'View full case study',
 
   'uniedu.kicker': 'UX Research · Design System', 'uniedu.badge': 'Full case study', 'uniedu.title': 'UNIEDU Platform', 'uniedu.videoAlt': 'UNIEDU app preview',

@@ -47,7 +47,7 @@ const PAGES = [
           desc: 'Case de Product Design e Design Engineering: da personalização de um Poke pelo WhatsApp a uma experiência digital que conecta compra e operação.' } },
   { id: 'sartec', src: 'cases/sartec/index.html', url: '/cases/sartec/', ogType: 'article', dicts: ['cases/sartec/i18n.js', 'cases/sartec/i18n.es.js'],
     pt: { title: 'Sartec — CRM operacional e Agente de IA · Lucas Cabral',
-          desc: 'Case de Product Design: um CRM integrado ao WhatsApp, com um agente de IA que organiza a entrada e entrega cada atendimento a uma pessoa, numa papelaria real.' } },
+          desc: 'Case de Product Design: um CRM integrado ao WhatsApp, com um agente de IA que organiza a entrada e encaminha o atendimento a uma pessoa da equipe, numa papelaria real.' } },
 ];
 
 const HEAD_START = '<!-- i18n:head:start -->';
