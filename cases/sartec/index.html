@@ -92,6 +92,27 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
       </dl>
     </div>
 
+    <!-- ck23: the case in four lines for a quick read. Each decision links to where the full case documents it; nothing here is new. -->
+    <section class="brief" aria-labelledby="h-brief">
+      <h2 class="eyebrow brief-h" id="h-brief" data-i18n="brief.h">Em resumo</h2>
+      <div class="brief-in">
+        <dl class="brief-dl">
+          <div><dt data-i18n="brief.k1">Desafio</dt><dd data-i18n="brief.v1">Organizar o atendimento recebido pelo WhatsApp, distinguindo os processos de pessoa física e jurídica, preservando o contexto e tornando as responsabilidades explícitas.</dd></div>
+          <div><dt data-i18n="brief.k2">Minha atuação</dt><dd data-i18n="brief.v2">Observação da operação, modelagem de fluxos, UX/UI, UX writing, definição do comportamento do agente e validação.</dd></div>
+          <div><dt data-i18n="brief.k3">Solução</dt><dd data-i18n="brief.v3">CRM com Kanban operacional, histórico de atendimento e um agente de IA que faz a triagem e transfere o controle para a equipe.</dd></div>
+          <div><dt data-i18n="brief.k4">Estado atual</dt><dd data-i18n="brief.v4">Em uso, na primeira fase assistida. Os resultados quantitativos ainda não foram mensurados.</dd></div>
+        </dl>
+        <div class="brief-dec">
+          <h3 class="brief-dh" data-i18n="brief.dh">Três decisões centrais</h3>
+          <ol>
+            <li><span class="n">01</span><a href="#d-pfpj"><span data-i18n="brief.d1t">Pessoa física e empresa em fluxos próprios</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d1p">O agente identifica o tipo de cliente antes de qualquer outra pergunta, e cada um segue o seu quadro, com critérios de prioridade distintos.</p></li>
+            <li><span class="n">02</span><a href="#fluxo"><span data-i18n="brief.d2t">Handoff explícito entre agente e atendente</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d2p">O agente encerra a sua parte e a passagem fica registrada; assumir o atendimento é um ato deliberado da equipe, nunca efeito de abrir a conversa.</p></li>
+            <li><span class="n">03</span><a href="#d-audio"><span data-i18n="brief.d3t">A equipe orientou a evolução</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d3p">No treinamento, a equipe mostrou que os clientes mandam áudio o tempo todo; a transcrição virou requisito e entrou antes do lançamento.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
     <div class="eco reveal">
       <ol class="eco-row" aria-label="O ecossistema, da mensagem à decisão" data-i18n="hero.ecoLabel" data-i18n-attr="aria-label">
         <li class="eco-node"><span class="k" data-i18n="hero.e1k">Cliente</span><b>WhatsApp</b><p data-i18n="hero.e1p">Pessoas e empresas escrevem no mesmo canal de sempre.</p></li>
@@ -206,7 +227,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
       <p class="lede" data-i18n="d.lede">Cada card precisava responder rápido: quem é, o que quer, em que etapa está, quem está atendendo e qual é a próxima ação. Quatro decisões que viraram comportamento do sistema.</p>
     </div>
 
-    <div class="rule reveal">
+    <div class="rule reveal" id="d-pfpj">
       <div class="rule-text">
         <span class="id">A</span>
         <h3 data-i18n="d.a.t">PF e PJ são fluxos, não filtros</h3>
@@ -275,7 +296,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
       <h3 data-i18n="d.more">E outras decisões, menores e igualmente concretas</h3>
       <div class="reasons" style="margin-top:20px">
         <div><span>E</span><h3 data-i18n="d.e.t">Orientar sem encerrar</h3><p data-i18n="d.e.p">“Falou xerox, encerra” parecia eficiente. O agente passou a orientar para o setor de cópias e manter a triagem aberta para o resto do pedido.</p></div>
-        <div><span>F</span><h3 data-i18n="d.f.t">Áudio virou requisito</h3><p data-i18n="d.f.p">No treinamento, a equipe mostrou que clientes mandam áudio o tempo todo. A transcrição entrou antes do lançamento — guardando o texto, não o áudio bruto.</p></div>
+        <div id="d-audio"><span>F</span><h3 data-i18n="d.f.t">Áudio virou requisito</h3><p data-i18n="d.f.p">No treinamento, a equipe mostrou que clientes mandam áudio o tempo todo. A transcrição entrou antes do lançamento — guardando o texto, não o áudio bruto.</p></div>
         <div><span>G</span><h3 data-i18n="d.g.t">Indicador que não orienta é ruído</h3><p data-i18n="d.g.p">Um alerta crítico no topo gerava urgência sem dizer o que fazer e saiu de lá. O contador passou a refletir a aba ativa, PF ou PJ.</p></div>
         <div><span>H</span><h3 data-i18n="d.h.t">Erros que dizem o que fazer</h3><p data-i18n="d.h.p">Mensagens técnicas genéricas viraram textos com causa e próxima ação: tentar de novo, esperar ou chamar ajuda.</p></div>
       </div>

@@ -228,9 +228,16 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
         </div>
         <p class="micro card-meta"><span>03</span><span data-i18n="uniedu.kicker">UX Research · Design System</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="uniedu.badge">Case completo</span></span></p>
         <h4 class="card-title" id="h-uniedu" data-i18n="uniedu.title">Plataforma UNIEDU</h4>
-        <p class="card-sum" data-i18n="uniedu.sum">Produto educacional gamificado que desenhamos a partir de entrevistas com estudantes e validamos em testes de usabilidade, para transformar constância de estudo em progresso real. Inclui estratégia de produto, design system e protótipo navegável.</p>
         <p class="credit"><span data-i18n="uniedu.credit">Em coautoria com</span> <a href="https://www.linkedin.com/in/najme-simon-al%C3%A9-b08b6221" target="_blank" rel="noopener noreferrer">Najme Simon Alé</a></p>
-        <ul class="tags"><li>UX Research</li><li>Design System</li><li>Product Strategy</li></ul>
+        <p class="card-sum" data-i18n="uniedu.sum">Produto educacional gamificado para transformar constância de estudo em progresso real. Cada decisão de interface partiu de um achado da pesquisa.</p>
+        <!-- ck23: the research evidence in three steps (numbers from the external case: 8 interviews, 5 usability-test participants),
+             and one research → interface decision. The full process stays in the external case; the old tags repeated the kicker. -->
+        <ol class="proof" aria-label="Processo do projeto" data-i18n="uniedu.proofLabel" data-i18n-attr="aria-label">
+          <li><span class="proof-k" data-i18n="uniedu.p1k">Investigar</span><span data-i18n="uniedu.p1">Entrevistas em profundidade com 8 estudantes de cursos online</span></li>
+          <li><span class="proof-k" data-i18n="uniedu.p2k">Prototipar</span><span data-i18n="uniedu.p2">Dos esboços em papel ao protótipo navegável em alta fidelidade</span></li>
+          <li><span class="proof-k" data-i18n="uniedu.p3k">Validar</span><span data-i18n="uniedu.p3">Testes de usabilidade com 5 participantes, que apontaram atritos na comunidade e no resgate de pontos</span></li>
+        </ol>
+        <p class="card-decision" data-i18n-html="uniedu.dec"><b>Da pesquisa à interface:</b> a competição motivava alguns estudantes e pressionava outros, por isso o ranking é opcional.</p>
         <div class="card-ctas">
           <!-- the full case (root route); /recrutamento is the short recruiter version and is not linked -->
           <a class="cta-arrow" href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta">Ver case completo</span> <span aria-hidden="true">↗</span></a>

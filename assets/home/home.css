@@ -360,6 +360,12 @@ ol, ul { padding: 0; list-style: none; }
 .tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 6px; }
 .tags li { padding: 5px 11px; border: 1px solid var(--line); border-radius: 999px; font: 400 11px/1.3 "JetBrains Mono", monospace; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
 .card-ctas { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+/* ck23: UNIEDU research evidence — three steps and one decision traced back to the research */
+.proof { margin-top: 18px; max-width: 58ch; border-top: 1px solid var(--line); }
+.proof li { display: grid; grid-template-columns: 7.5em 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.proof-k { font: 400 11px/2 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--mineral); }
+.card-decision { margin-top: 16px; max-width: 54ch; padding-left: 14px; border-left: 2px solid var(--sage); font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.card-decision b { font-weight: 600; color: var(--ink); }
 
 /* 04 · method */
 .method-head { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); align-items: stretch; }

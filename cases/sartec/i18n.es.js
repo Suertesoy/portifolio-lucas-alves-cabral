@@ -18,6 +18,16 @@
   "hero.e4k": "Persona del equipo", "hero.e4b": "Decisión", "hero.e4p": "Negocia, resuelve y cierra, con el historial a la vista.",
   "hero.motto": "La IA organiza. <em>Una persona decide.</em>",
 
+  "brief.h": "En resumen",
+  "brief.k1": "Desafío", "brief.v1": "Organizar la atención que llega por WhatsApp, distinguiendo los procesos de particulares y de empresas, conservando el contexto y haciendo explícitas las responsabilidades.",
+  "brief.k2": "Mi papel", "brief.v2": "Observación de la operación, modelado de flujos, UX/UI, UX writing, definición del comportamiento del agente y validación.",
+  "brief.k3": "Solución", "brief.v3": "Un CRM con tablero Kanban operativo, historial de atención y un agente de IA que hace el triaje y traspasa el control al equipo.",
+  "brief.k4": "Estado actual", "brief.v4": "En uso, en una primera fase asistida. Los resultados cuantitativos todavía no se han medido.",
+  "brief.dh": "Tres decisiones clave",
+  "brief.d1t": "Particulares y empresas, cada uno con su flujo", "brief.d1p": "El agente identifica el tipo de cliente antes de cualquier otra pregunta, y cada uno sigue su propio tablero, con criterios de prioridad distintos.",
+  "brief.d2t": "Un traspaso explícito entre agente y equipo", "brief.d2p": "El agente termina su parte y el traspaso queda registrado; asumir la atención es un acto deliberado del equipo, nunca un efecto de abrir la conversación.",
+  "brief.d3t": "El equipo orientó la evolución", "brief.d3p": "En la formación, el equipo mostró que los clientes mandan audios todo el tiempo; la transcripción se volvió requisito y entró antes del lanzamiento.",
+
   "ctx.eyebrow": "Contexto", "ctx.title": "Funcionaba <em>a pesar del sistema.</em>",
   "ctx.p1": "Sartec es la papelería de mi familia, con más de 30 años en São José dos Campos. Crecí viendo su atención al cliente, sus pedidos y su rutina diaria.",
   "ctx.p2": "Particulares, empresas, copias, presupuestos y proveedores llegaban por el mismo WhatsApp. La atención dependía de la memoria y de ir subiendo y bajando por las conversaciones. El problema no era el volumen: era la falta de contexto, de prioridad y de responsable. Partí de lo que observé en el mostrador y en WhatsApp.",

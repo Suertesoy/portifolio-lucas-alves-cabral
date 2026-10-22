@@ -16,6 +16,16 @@
   "hero.n2k": "Reglas compartidas", "hero.n2t": "La fuente de verdad", "hero.n2p": "Peso, precio, disponibilidad y pago se tratan igual en ambos lados.",
   "hero.n3k": "Panel de operaciones", "hero.n3t": "Donde actúa la operación", "hero.n3p": "Organizado en torno a una pregunta: ¿qué hay que hacer ahora?",
 
+  "brief.h": "En resumen",
+  "brief.k1": "Desafío", "brief.v1": "Convertir la personalización manual de pedidos por WhatsApp en una experiencia de compra estructurada e integrada con la operación.",
+  "brief.k2": "Mi papel", "brief.v2": "Investigación del problema, definición de los flujos, UX/UI, reglas de producto, especificación y validación de la implementación asistida por IA.",
+  "brief.k3": "Solución", "brief.v3": "Tienda digital, constructor de pokes, carrito y panel de operaciones, conectados por reglas de negocio.",
+  "brief.k4": "Estado actual", "brief.v4": "Publicado y en funcionamiento. El impacto cuantitativo todavía no se ha medido.",
+  "brief.dh": "Tres decisiones clave",
+  "brief.d1t": "Del paso a paso a una composición continua", "brief.d1p": "El constructor dejó de ser una secuencia de pasos: las categorías están en la misma página y cualquier elección se puede revisar sin empezar de nuevo.",
+  "brief.d2t": "Precio protegido, disponibilidad revalidada", "brief.d2p": "El precio que se ve en el carrito no cambia durante la sesión; la disponibilidad se comprueba de nuevo al finalizar.",
+  "brief.d3t": "Compra y operación en el mismo pedido", "brief.d3p": "La tienda y el panel siguen las mismas reglas de peso, precio, disponibilidad y pago, del carrito a la preparación.",
+
   "op.eyebrow": "Oportunidad",
   "op.title": "Un poke montado <em>mensaje a mensaje.</em>",
   "op.p1": "Yo conocía Pesca como pescadería. Cuando el negocio empezó a ofrecer pokes personalizados, me di cuenta de que los clientes elegían los ingredientes y montaban el plato por WhatsApp.",

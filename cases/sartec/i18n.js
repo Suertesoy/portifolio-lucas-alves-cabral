@@ -19,6 +19,16 @@
   "hero.e4k": "Team member", "hero.e4b": "Decision", "hero.e4p": "Negotiates, solves and closes, with the history in view.",
   "hero.motto": "AI organizes. <em>A person decides.</em>",
 
+  "brief.h": "At a glance",
+  "brief.k1": "Challenge", "brief.v1": "Organize customer service arriving through WhatsApp, separating the processes for individuals and businesses, keeping the context, and making responsibilities explicit.",
+  "brief.k2": "My role", "brief.v2": "Observing operations, flow modeling, UX/UI, UX writing, defining the agent's behavior, and validation.",
+  "brief.k3": "Solution", "brief.v3": "A CRM with an operational Kanban board, conversation history, and an AI agent that handles triage and hands control over to the team.",
+  "brief.k4": "Current status", "brief.v4": "In use, in a first, assisted phase. Quantitative results have not been measured yet.",
+  "brief.dh": "Three key decisions",
+  "brief.d1t": "Individuals and businesses in their own flows", "brief.d1p": "The agent identifies the type of customer before any other question, and each one follows its own board, with different priority criteria.",
+  "brief.d2t": "An explicit handoff between agent and team member", "brief.d2p": "The agent ends its part and the handoff is recorded; taking over a conversation is a deliberate act by the team, never a side effect of opening it.",
+  "brief.d3t": "The team steered the evolution", "brief.d3p": "In training, the team showed that customers send voice notes all the time; transcription became a requirement and shipped before launch.",
+
   "ctx.eyebrow": "Context", "ctx.title": "It worked <em>despite the system.</em>",
   "ctx.p1": "Sartec is my family's stationery shop, with over 30 years in São José dos Campos. I grew up watching its customer service, orders and daily routine.",
   "ctx.p2": "Individuals, companies, copy jobs, quotes and suppliers all arrived through the same WhatsApp. Service depended on memory and on scrolling through chats. The problem was not volume: it was a lack of context, priority and ownership. I started from what I observed at the counter and on WhatsApp.",

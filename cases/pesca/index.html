@@ -85,6 +85,27 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
       </dl>
     </div>
 
+    <!-- ck23: the case in four lines for a quick read. Each decision links to where the full case documents it; nothing here is new. -->
+    <section class="brief" aria-labelledby="h-brief">
+      <h2 class="eyebrow brief-h" id="h-brief" data-i18n="brief.h">Em resumo</h2>
+      <div class="brief-in">
+        <dl class="brief-dl">
+          <div><dt data-i18n="brief.k1">Desafio</dt><dd data-i18n="brief.v1">Transformar a personalização manual de pedidos pelo WhatsApp em uma experiência de compra estruturada, integrada à operação.</dd></div>
+          <div><dt data-i18n="brief.k2">Minha atuação</dt><dd data-i18n="brief.v2">Investigação do problema, definição dos fluxos, UX/UI, regras de produto, especificação e validação da implementação assistida por IA.</dd></div>
+          <div><dt data-i18n="brief.k3">Solução</dt><dd data-i18n="brief.v3">Loja digital, Builder de Pokes, carrinho e painel operacional, conectados por regras de negócio.</dd></div>
+          <div><dt data-i18n="brief.k4">Estado atual</dt><dd data-i18n="brief.v4">Publicado e em operação. Os impactos quantitativos ainda não foram medidos.</dd></div>
+        </dl>
+        <div class="brief-dec">
+          <h3 class="brief-dh" data-i18n="brief.dh">Três decisões centrais</h3>
+          <ol>
+            <li><span class="n">01</span><a href="#builder"><span data-i18n="brief.d1t">Do passo a passo à composição contínua</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d1p">O Builder deixou de ser uma sequência de etapas: as categorias ficam na mesma página e qualquer escolha pode ser revista sem recomeçar.</p></li>
+            <li><span class="n">02</span><a href="#r-preco"><span data-i18n="brief.d2t">Preço protegido, disponibilidade revalidada</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d2p">O preço visto no carrinho não muda durante a sessão; a disponibilidade é conferida de novo ao finalizar.</p></li>
+            <li><span class="n">03</span><a href="#perspectivas"><span data-i18n="brief.d3t">Compra e operação no mesmo pedido</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d3p">Loja e Painel seguem as mesmas regras de peso, preço, disponibilidade e pagamento, do carrinho à separação.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
     <!-- Mapa conceitual do sistema.
          SLOT: hero-captures — quando houver capturas finais da Loja, do Builder e do Painel,
          elas entram aqui, lado a lado com (ou no lugar de) este mapa. -->
@@ -368,7 +389,7 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
     </div>
 
     <!-- B -->
-    <div class="rule reveal">
+    <div class="rule reveal" id="r-preco">
       <div class="rule-text">
         <span class="id">B</span>
         <h3 data-i18n="r.b.t">Preço protegido, disponibilidade revalidada</h3>

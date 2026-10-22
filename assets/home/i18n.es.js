@@ -36,10 +36,15 @@
   'crm.kicker': 'Sistema interno · IA aplicada', 'crm.badge': 'En uso', 'crm.title': 'CRM operativo + agente de IA',
   'crm.videoAlt': 'CRM de Sartec: la ventana «¿Quién está atendiendo ahora?», donde cada persona del equipo elige su nombre antes de asumir las conversaciones.',
   'crm.sum': 'Un sistema interno que centraliza conversaciones, estados y prioridades, con un agente de IA en WhatsApp que hace la primera clasificación y pasa cada conversación, con su contexto, a una persona del equipo. Diseñé el producto y guié su implementación con apoyo de IA.',
-  'crm.t1': 'Observación de la operación', 'crm.t2': 'Estados del fluxo', 'crm.t3': 'Traspaso a una persona', 'crm.cta': 'Ver caso completo',
+  'crm.t1': 'Observación de la operación', 'crm.t2': 'Estados del flujo', 'crm.t3': 'Traspaso a una persona', 'crm.cta': 'Ver caso completo',
 
   'uniedu.kicker': 'UX Research · Design System', 'uniedu.badge': 'Caso completo', 'uniedu.title': 'Plataforma UNIEDU', 'uniedu.videoAlt': 'Vista previa de la app UNIEDU',
-  'uniedu.sum': 'Un producto educativo gamificado que diseñamos a partir de entrevistas con estudiantes y validamos con pruebas de usabilidad, para convertir la constancia en el estudio en progreso real. Incluye estrategia de producto, design system y un prototipo navegable.',
+  'uniedu.sum': 'Un producto educativo gamificado para convertir la constancia en el estudio en progreso real. Cada decisión de interfaz partió de un hallazgo de la investigación.',
+  'uniedu.proofLabel': 'Proceso del proyecto',
+  'uniedu.p1k': 'Investigar', 'uniedu.p1': 'Entrevistas en profundidad con 8 estudiantes de cursos en línea',
+  'uniedu.p2k': 'Prototipar', 'uniedu.p2': 'De los bocetos en papel al prototipo navegable en alta fidelidad',
+  'uniedu.p3k': 'Validar', 'uniedu.p3': 'Pruebas de usabilidad con 5 participantes, que señalaron fricciones en la comunidad y en el canje de puntos',
+  'uniedu.dec': '<b>De la investigación a la interfaz:</b> la competición motivaba a unos estudiantes y presionaba a otros, por eso el ranking es opcional.',
   'uniedu.credit': 'En coautoría con', 'uniedu.cta': 'Ver caso completo (PT/EN)', 'uniedu.cta2': 'Abrir prototipo',
 
   'site.ia': 'Arquitectura de la información', 'site.visual': 'Dirección visual', 'site.build': 'Implementación',

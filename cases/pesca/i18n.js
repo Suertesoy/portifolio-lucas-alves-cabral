@@ -17,6 +17,16 @@
   "hero.n2k": "Shared rules", "hero.n2t": "The source of truth", "hero.n2p": "Weight, price, availability and payment handled the same way on both sides.",
   "hero.n3k": "Operations panel", "hero.n3t": "Where operations act", "hero.n3p": "Organized around one question: what needs to be done now?",
 
+  "brief.h": "At a glance",
+  "brief.k1": "Challenge", "brief.v1": "Turn the manual customization of orders over WhatsApp into a structured shopping experience, connected to operations.",
+  "brief.k2": "My role", "brief.v2": "Problem discovery, flow definition, UX/UI, product rules, specification, and validation of the AI-assisted implementation.",
+  "brief.k3": "Solution", "brief.v3": "A digital storefront, a poke builder, a cart and an operations panel, connected by business rules.",
+  "brief.k4": "Current status", "brief.v4": "Published and in operation. Quantitative impact has not been measured yet.",
+  "brief.dh": "Three key decisions",
+  "brief.d1t": "From step by step to a continuous composition", "brief.d1p": "The builder stopped being a sequence of steps: the categories sit on one page, and any choice can be revisited without starting over.",
+  "brief.d2t": "Protected price, revalidated availability", "brief.d2p": "The price seen in the cart does not change during the session; availability is checked again at checkout.",
+  "brief.d3t": "Shopping and operations in the same order", "brief.d3p": "The storefront and the panel follow the same rules for weight, price, availability and payment, from the cart to fulfillment.",
+
   "op.eyebrow": "Opportunity",
   "op.title": "A poke built <em>one message at a time.</em>",
   "op.p1": "I knew Pesca as a fishmonger. When the business began offering custom poke bowls, I noticed customers were choosing ingredients and building their bowls over WhatsApp.",

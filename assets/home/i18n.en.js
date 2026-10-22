@@ -39,7 +39,12 @@
   'crm.t1': 'Operations observation', 'crm.t2': 'Flow states', 'crm.t3': 'Human handoff', 'crm.cta': 'View full case study',
 
   'uniedu.kicker': 'UX Research · Design System', 'uniedu.badge': 'Full case study', 'uniedu.title': 'UNIEDU Platform', 'uniedu.videoAlt': 'UNIEDU app preview',
-  'uniedu.sum': 'A gamified education product we designed from interviews with students and validated through usability testing, to turn study consistency into real progress. It includes product strategy, a design system and a navigable prototype.',
+  'uniedu.sum': 'A gamified education product that turns study consistency into real progress. Every interface decision started from a research finding.',
+  'uniedu.proofLabel': 'Project process',
+  'uniedu.p1k': 'Research', 'uniedu.p1': 'In-depth interviews with 8 students of online courses',
+  'uniedu.p2k': 'Prototype', 'uniedu.p2': 'From paper sketches to a high-fidelity navigable prototype',
+  'uniedu.p3k': 'Validate', 'uniedu.p3': 'Usability tests with 5 participants, which surfaced friction in the community and in redeeming points',
+  'uniedu.dec': '<b>From research to interface:</b> competition motivated some students and pressured others, so the ranking is optional.',
   'uniedu.credit': 'Co-created with', 'uniedu.cta': 'View full case study (PT/EN)', 'uniedu.cta2': 'Open prototype',
 
   'site.ia': 'Information architecture', 'site.visual': 'Visual direction', 'site.build': 'Implementation',
