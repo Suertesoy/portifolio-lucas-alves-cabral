@@ -34,7 +34,7 @@
   'pesca.shotBuilder': 'Constructor de poke', 'pesca.shotBuilderAlt': 'Constructor de poke: proteínas adicionales, precio del plato y botón para añadir al carrito.',
 
   'crm.kicker': 'Sistema interno · IA aplicada', 'crm.badge': 'En uso', 'crm.title': 'CRM operativo + agente de IA',
-  'crm.videoAlt': 'CRM de Sartec: la ventana «¿Quién está atendiendo ahora?», donde cada persona del equipo elige su nombre antes de asumir las conversaciones.',
+  'crm.videoAlt': 'CRM de Sartec: reconstrucción de la ventana «¿Quién está atendiendo ahora?», donde cada persona del equipo elige su perfil antes de asumir las conversaciones. Nombres ficticios.',
   'crm.sum': 'Un sistema interno que centraliza conversaciones, estados y prioridades, con un agente de IA en WhatsApp que hace la primera clasificación y pasa la conversación, con su contexto, a una persona del equipo. Diseñé el producto y guié su implementación con apoyo de IA.',
   'crm.t1': 'Observación de la operación', 'crm.t2': 'Estados del flujo', 'crm.t3': 'Traspaso a una persona', 'crm.cta': 'Ver caso completo',
 

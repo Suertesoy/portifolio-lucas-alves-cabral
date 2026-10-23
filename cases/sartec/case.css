@@ -97,11 +97,7 @@
 .board-cols { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
 .board-cols li { min-height: 64px; border-radius: 10px; background: var(--paper-2); padding: 8px 8px 30px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.35; position: relative; }
 .board-cols li::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: 8px; height: 14px; border-radius: 4px; background: #fff; border: 1px solid var(--line); }
-.board-cols li.done { opacity: .6; }.evidence { margin: 0; display: grid; gap: 12px; justify-items: center; }
-.evidence-frame { width: min(100%, 420px); border-radius: 16px; overflow: hidden; border: 1px solid var(--line-strong); background: #6d6f75; box-shadow: 0 30px 60px -36px rgba(16, 22, 61, .55); }
-.evidence-frame img { display: block; width: 100%; height: auto; }
-.evidence figcaption { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; font-size: 13px; color: var(--muted); text-align: center; }
-.real { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: var(--green-deep); color: #fff; }
+.board-cols li.done { opacity: .6; }
 .hist { list-style: none; display: grid; gap: 8px; }
 .hist li { display: grid; grid-template-columns: 52px 1fr; gap: 10px; align-items: baseline; font-size: 13.5px; padding: 10px 12px; border-radius: 10px; background: var(--paper); }
 .hist time { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
@@ -171,6 +167,71 @@
 
 .more-dec { margin-top: clamp(40px, 6vw, 72px); }
 .more-dec h3 { font-size: clamp(22px, 2.6vw, 30px); margin-bottom: 8px; }
+.reasons p a { color: var(--green); text-underline-offset: 3px; white-space: nowrap; }
+
+/* ck27 · what kind of evidence a figure is: reconstruction (dashed pill, as in the chat and S4) vs explanatory diagram (solid
+   accent pill). The words carry the meaning; the border only reinforces it. */
+.fig-cap { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.fig-cap .tag { background: #fff; border-style: dashed; font-size: 10px; padding: 3px 9px; }
+.fig-cap .tag.dia { border-style: solid; border-color: var(--green); color: var(--green); }
+
+/* ck27 · S6, part 1 — who is attending: picker + the three states of the conversation bar (reconstruction, fictitious names) */
+.duty { align-content: start; }
+.du-pick { padding: 16px 14px 14px; border: 1px solid var(--line-strong); border-radius: 14px; background: #fff; box-shadow: 0 14px 30px -22px rgba(16, 22, 61, .5); }
+.du-pt { text-align: center; font-weight: 700; font-size: 14px; margin-bottom: 12px; }
+.du-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.du-grid li { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; font-size: 13px; font-weight: 600; min-width: 0; }
+.du-grid i { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 10px; font-weight: 700; color: #fff; }
+.du-grid .c1 { background: #2563EB; } .du-grid .c2 { background: #7C3AED; } .du-grid .c3 { background: #047857; } .du-grid .c4 { background: #B45309; }
+.du-bars { list-style: none; display: grid; gap: 10px; }
+.du-when { display: block; margin-bottom: 4px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.du-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; padding: 8px 12px; border-radius: 8px; font-size: 12.5px; line-height: 1.35; border: 1px solid var(--line); }
+.du-bar.none { background: #F8F9FC; color: #4A5270; }
+.du-bar.self { background: #EFF6FF; border-color: #BFDBFE; color: #1D4ED8; }
+.du-bar.other { background: #FFFBEB; border-color: #F59E0B; border-left: 3px solid #D97706; color: #92400E; font-weight: 600; }
+.du-btn { flex: none; font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 5px; border: 1px solid currentColor; background: rgba(255, 255, 255, .6); white-space: nowrap; }
+
+/* ck27 · S6, part 2 — the relay from agent to team (diagram). Vertical sequence on small screens, five columns on wide ones;
+   the handoff step carries the Sartec red, the point under watch carries a dashed circle and words. */
+.relay { margin: 0; padding-block: clamp(28px, 4vw, 48px) clamp(36px, 5vw, 64px); border-top: 1px solid var(--line-strong); display: grid; gap: 18px; }
+.relay .who { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--muted); background: #fff; }
+.relay .who.ai { border-style: dashed; }
+.relay .who.human { background: var(--green-deep); border-color: var(--green-deep); color: #fff; }
+.rl-steps { list-style: none; display: grid; margin-top: 6px; border-top: 1px solid var(--line-strong); }
+.rl-steps > li { display: grid; gap: 8px; align-content: start; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.rl-top { display: flex; align-items: center; gap: 10px; min-height: 22px; }
+.rl-n { font-family: var(--font-mono); font-size: 11px; color: var(--green); }
+.rl-steps h5 { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -.01em; line-height: 1.25; }
+.rl-steps p { font-size: 14px; color: var(--ink-soft); max-width: 62ch; }
+.rl-branch { display: grid; gap: 6px; padding: 10px 12px; border-radius: 12px; background: var(--paper); border: 1px solid var(--line); }
+.rl-bt { display: flex; align-items: center; gap: 8px; }
+.rl-bt b { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--ink); }
+.rl-gate .rl-n, .rl-gate h5 { color: var(--red); }
+.rl-steps .rl-watch { display: flex; gap: 8px; align-items: flex-start; padding: 8px 10px; border-radius: 10px; border: 1px dashed var(--line-strong); font-size: 13px; }
+.rl-watch svg { flex: none; width: 18px; height: 18px; color: var(--muted); margin-top: 1px; }
+.rl-watch a { color: var(--green); text-underline-offset: 3px; }
+
+/* ck27 · S5 — three errors: technical failure, the words on screen, the recovery, the decision */
+.errs { margin: clamp(32px, 5vw, 56px) 0 0; padding-top: clamp(28px, 4vw, 48px); border-top: 1px solid var(--line-strong); display: grid; gap: 18px; }
+.er-list { list-style: none; display: grid; gap: 14px; margin-top: 6px; }
+.er { display: grid; gap: 12px; align-content: start; padding: 16px; border-radius: 18px; background: #fff; border: 1px solid var(--line); min-width: 0; }
+.er h5 { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -.01em; line-height: 1.25; }
+.er dl { display: grid; gap: 12px; }
+.er dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.er dd { font-size: 13.5px; line-height: 1.45; color: var(--ink-soft); min-width: 0; }
+.er-why { padding-top: 12px; border-top: 1px solid var(--line); }
+.er-why dd { color: var(--ink); }
+.toast-r { display: flex; gap: 8px; align-items: flex-start; padding: 10px 14px; border-radius: 9px; background: #1E293B; color: #F8FAFC; border-left: 3px solid #EF4444; font-size: 13px; font-weight: 600; line-height: 1.4; }
+.er-ui { display: grid; gap: 6px; }
+.er-where { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.er-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.er-badge { font-size: 11.5px; font-weight: 700; padding: 2px 7px; border-radius: 4px; background: #FEE2E2; color: #991B1B; }
+.er-cta { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; background: var(--green-deep); color: #fff; }
+.er-status { display: flex; gap: 8px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; background: #FEF2F2; border: 1px solid #FECACA; color: #7F1D1D; font-size: 12.5px; }
+.er-status i { flex: none; width: 10px; height: 10px; margin-top: 4px; border-radius: 50%; background: #DC2626; }
+.er-status b { font-weight: 700; }
+.er-ui small { font-size: 12px; color: var(--muted); }
+.er-lock { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; margin-bottom: 6px; padding: 8px 12px; border-radius: 8px; background: #FFF1F2; border-top: 2px solid #FECDD3; color: #B91C1C; font-size: 12.5px; }
 
 /* ---------- roll-out ---------- */
 .channels { list-style: none; display: grid; gap: 8px; margin-top: 14px; }
@@ -194,5 +255,14 @@
   .rule .board-cols { grid-template-columns: repeat(3, 1fr); }
   .anat-grid { grid-template-columns: minmax(300px, 380px) 1fr; gap: 64px; align-items: start; }
   .rule .can-grid { grid-template-columns: 1fr 1fr; }   /* ck25: beside the text the figure is ~480px — six columns would break the words */
+  .er-list { grid-template-columns: repeat(3, 1fr); }
   .flow { grid-template-columns: repeat(5, 1fr); }
+}
+@media (min-width: 1100px) {
+  /* ck27 · S6: five states side by side; the branching step gets more room */
+  .rl-steps { grid-template-columns: 1fr 1.45fr 1.2fr 1fr 1fr; border-bottom: 1px solid var(--line-strong); }
+  .rl-steps > li { padding: 18px 18px 22px; border-bottom: 0; border-left: 1px solid var(--line); }
+  .rl-steps > li:first-child { padding-left: 0; border-left: 0; }
+  .rl-steps > li:last-child { padding-right: 0; }
+  .rl-gate { border-top: 3px solid var(--red); margin-top: -2px; }
 }

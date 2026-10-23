@@ -46,8 +46,8 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
 <script src="../../assets/i18n/lang-kit.js"></script>
 <!-- Sources (checkpoint 14 audit): the previous case page (github.com/Suertesoy/case-sartec, published at case-sartec.vercel.app,
      identical to its local copy) and the project's working reports of May 2026. Representations and reconstructions are
-     labelled on the page; the only real capture is the attendant modal (assets/cases/sartec/crm), cropped so that no
-     customer data appears. No metrics are claimed: none were documented. -->
+     labelled on the page. ck27: CRM production = agente-triagem-crm-sartec @ f7e7a84 (deployed 2026-10-22); no real capture is
+     used any more (the attendant window showed the team's real names and is now a reconstruction). No metrics are claimed. -->
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="skip">Pular para o conteúdo</a>
@@ -106,7 +106,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
           <h3 class="brief-dh" data-i18n="brief.dh">Três decisões centrais</h3>
           <ol>
             <li><span class="n">01</span><a href="#d-pfpj"><span data-i18n="brief.d1t">Pessoa física e empresa em fluxos próprios</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d1p">Dois botões na primeira mensagem. Cada tipo de cliente segue um quadro com etapas próprias: atendimento e orçamento de um lado, cotação e proposta do outro.</p></li>
-            <li><span class="n">02</span><a href="#fluxo"><span data-i18n="brief.d2t">Handoff explícito entre agente e atendente</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d2p">Pensado para que o agente encerre a sua parte, o card chegue ao CRM e assumir seja um ato deliberado da equipe. Com empresas, o encaminhamento é imediato; com pessoas físicas, sua confiabilidade está em revisão.</p></li>
+            <li><span class="n">02</span><a href="#fluxo"><span data-i18n="brief.d2t">Handoff explícito entre agente e atendente</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d2p">Pensado para que o agente encerre a sua parte, o card chegue ao CRM e assumir seja um ato deliberado da equipe. Com empresas, o encaminhamento é imediato; com pessoas físicas, uma correção recente está em acompanhamento.</p></li>
             <li><span class="n">03</span><a href="#d-audio"><span data-i18n="brief.d3t">A equipe orientou a evolução</span> <span aria-hidden="true">↓</span></a><p data-i18n="brief.d3p">No treinamento, a equipe mostrou que os clientes mandam áudio o tempo todo; a transcrição virou requisito e entrou antes do lançamento.</p></li>
           </ol>
         </div>
@@ -199,8 +199,8 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
         <li><div><span class="who" data-i18n="fl.client">Cliente</span><h3 data-i18n="fl.s1">Escreve no WhatsApp</h3><p data-i18n="fl.s1p">Pelo canal que já usava. Nada muda para quem compra.</p></div></li>
         <li><div><span class="who ai" data-i18n="fl.agent">Agente</span><h3 data-i18n="fl.s2">Identifica o tipo de cliente</h3><p data-i18n="fl.s2p">Dois botões, pessoa física ou jurídica, antes de qualquer outra pergunta: cada um segue o seu fluxo.</p></div></li>
         <li><div><span class="who ai" data-i18n="fl.agent">Agente</span><h3 data-i18n="fl.s3">Reúne o pedido</h3><p data-i18n="fl.s3p">Só com pessoas físicas: o que a pessoa precisa, por texto, foto, PDF ou áudio. Pedidos de cópia são orientados sem encerrar a conversa. Empresas pulam esta etapa.</p></div></li>
-        <li class="hand"><div><span class="who ai" data-i18n="fl.agent">Agente</span><h3 data-i18n="fl.s4">Handoff</h3><p data-i18n-html="fl.s4p">O agente encerra a sua parte e o card entra no CRM. Com empresas, o sistema faz isso na hora; com pessoas físicas, quando reconhece a mensagem de encaminhamento do agente, ponto que está <a href="#estado">em revisão</a>.</p></div></li>
-        <li><div><span class="who human" data-i18n="fl.attendant">Atendente</span><h3 data-i18n="fl.s5">Assume o atendimento</h3><p data-i18n="fl.s5p">Um ato explícito: a equipe vê quem está com a conversa desde quando.</p></div></li>
+        <li class="hand"><div><span class="who ai" data-i18n="fl.agent">Agente</span><h3 data-i18n="fl.s4">Handoff</h3><p data-i18n-html="fl.s4p">O agente encerra a sua parte e o card entra no CRM. Com empresas, o sistema faz isso na hora; com pessoas físicas, quando o agente decide encaminhar. O cliente só recebe a confirmação depois do registro, mecanismo recém-publicado e <a href="#d-handoff">em acompanhamento</a>.</p></div></li>
+        <li><div><span class="who human" data-i18n="fl.attendant">Atendente</span><h3 data-i18n="fl.s5">Assume o atendimento</h3><p data-i18n="fl.s5p">Um ato explícito: abrir a conversa não basta, e a equipe vê quem está com ela.</p></div></li>
         <li><div><span class="who human" data-i18n="fl.attendant">Atendente</span><h3 data-i18n="fl.s6">Responde, resolve ou reabre</h3><p data-i18n="fl.s6p">Com o histórico completo. Resolver e reabrir também são ações explícitas, registradas.</p></div></li>
       </ol>
       <!-- ck25: texts copied from the production code (api/webhook.js @ 0ed6693: PF_PJ_BUTTONS_TEXT, the Reply Buttons,
@@ -291,7 +291,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
       </div>
     </figure>
 
-    <!-- ck26 · S4: the agent's limits, summarised from the production rules (api/webhook.js @ 0ed6693, prompt v7.6:
+    <!-- ck26 · S4: the agent's limits, summarised from the production rules (api/webhook.js @ 0ed6693, prompt v7.6; still true in v7.7 @ f7e7a84:
          "Você pode confirmar sem escalar", catalogue, hours and travel-intent rules). Not the prompt itself; the shop's
          phone number is omitted from the example. -->
     <div class="rule reveal" id="d-limites">
@@ -342,14 +342,68 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
       <div class="rule-text">
         <span class="id">C</span>
         <h3 data-i18n="d.b.t">Assumir é um ato explícito</h3>
-        <p data-i18n="d.b.p">Para que dois atendentes não respondam a mesma pessoa — nem nenhum responda —, o painel pergunta quem está atendendo agora. Assumir e liberar são ações deliberadas, nunca efeito colateral de abrir uma conversa, e a transferência fica registrada.</p>
+        <p data-i18n="d.b.p">Para que dois atendentes não respondam a mesma pessoa — nem nenhum responda —, cada aparelho diz quem está atendendo agora. Abrir uma conversa só observa; assumir é um botão ou o envio de uma resposta, e liberar também é uma ação deliberada.</p>
+        <p class="note" data-i18n="d.b.note">O perfil é escolhido no aparelho, não é um login individual. A posse vale enquanto a conversa está aberta e expira em até cinco minutos depois.</p>
       </div>
-      <figure class="evidence">
-        <div class="evidence-frame"><img src="../../assets/cases/sartec/crm/quem-esta-atendendo.webp" width="588" height="494" loading="lazy" decoding="async"
-          alt="Captura do CRM: janela “Quem está atendendo agora?”, com os nomes da equipe para escolher." data-i18n="d.b.alt" data-i18n-attr="alt" /></div>
-        <figcaption><span class="real" data-i18n="d.real">Captura real</span><span data-i18n="d.b.cap">Recortada para mostrar só a janela: o quadro ao fundo tem dados de clientes.</span></figcaption>
+      <!-- ck27 · S6: replaces the real capture of this window, which showed the team's real first names. Rebuilt from the panel
+           code (painel/index.html @ f7e7a84: attendant picker, renderActiveAttendantNotice); the names are fictitious. -->
+      <figure class="diagram duty" aria-labelledby="du-cap">
+        <figcaption id="du-cap" class="fig-cap"><span class="tag" data-i18n="k.rec">Reconstrução ilustrativa</span> <span data-i18n="du.cap">Textos do painel em produção, nomes fictícios</span></figcaption>
+        <div class="du-pick">
+          <p class="du-pt" data-i18n="du.pick">Quem está atendendo agora?</p>
+          <ul class="du-grid">
+            <li><i class="c1" aria-hidden="true">CA</i>Carla</li><li><i class="c2" aria-hidden="true">MA</i>Marcos</li>
+            <li><i class="c3" aria-hidden="true">RI</i>Rita</li><li><i class="c4" aria-hidden="true">BR</i>Bruno</li>
+          </ul>
+        </div>
+        <ol class="du-bars">
+          <li><span class="du-when" data-i18n="du.w1">Ao abrir a conversa</span><p class="du-bar none"><span data-i18n="du.b1">Nenhum atendente assumiu esta conversa.</span> <span class="du-btn"><span class="sr-only" data-i18n="du.btn">Botão:</span> <span data-i18n="du.b1b">Assumir atendimento</span></span></p></li>
+          <li><span class="du-when" data-i18n="du.w2">Depois de assumir</span><p class="du-bar self"><span data-i18n="du.b2">Você está atendendo esta conversa</span> <span class="du-btn"><span class="sr-only" data-i18n="du.btn">Botão:</span> <span data-i18n="du.b2b">Liberar atendimento</span></span></p></li>
+          <li><span class="du-when" data-i18n="du.w3">Se outra pessoa já está nela</span><p class="du-bar other"><span data-i18n="du.b3">⚠ Carla está cuidando desta conversa</span> <span class="du-btn"><span class="sr-only" data-i18n="du.btn">Botão:</span> <span data-i18n="du.b3b">Assumir mesmo assim</span></span></p></li>
+        </ol>
       </figure>
     </div>
+
+    <!-- ck27 · S6: the handoff as production runs it (agente-triagem-crm-sartec @ f7e7a84, live since 2026-10-22: api/webhook.js
+         handlePjInstantHandoff, handlePfGreeting, applyAgentDecision, commitHandoff, shouldRespond; lib/agent/handoff.js;
+         api/send.js; painel/index.html autoAdvanceAfterHumanReply). Steps are states, not consecutive screens. The PF
+         record-before-confirm is new in production, so it is flagged as under watch, never as solved. -->
+    <figure class="relay reveal" id="d-handoff" aria-labelledby="rl-h">
+      <figcaption class="fig-cap"><span class="tag dia" data-i18n="k.dia">Diagrama explicativo</span> <span data-i18n="rl.cap">A partir do código em produção · cada etapa é um estado, não uma tela</span></figcaption>
+      <div class="anat-head">
+        <h4 class="anat-h" id="rl-h" data-i18n="rl.h">Quem responde pelo atendimento, em cada momento.</h4>
+        <p class="anat-lede" data-i18n="rl.lede">O cliente só recebe a confirmação depois que o sistema registra o atendimento, e a equipe assume com um ato próprio.</p>
+      </div>
+      <ol class="rl-steps">
+        <li>
+          <p class="rl-top"><span class="rl-n">01</span><span class="who" data-i18n="rl.sys">Sistema</span></p>
+          <h5 data-i18n="rl.s1t">Identifica o tipo de cliente</h5>
+          <p data-i18n="rl.s1p">Saudação fixa com dois botões, sem IA. Quem pede atendente, reclama ou cita urgência já na primeira mensagem pula a pergunta.</p>
+        </li>
+        <li>
+          <p class="rl-top"><span class="rl-n">02</span></p>
+          <h5 data-i18n="rl.s2t">Triagem ou encaminhamento direto</h5>
+          <div class="rl-branch"><p class="rl-bt"><b data-i18n="d.a.pj">PJ</b><span class="who" data-i18n="rl.sys">Sistema</span></p><p data-i18n="rl.s2pj">Mensagem fixa e encaminhamento na hora, sem passar pelo agente.</p></div>
+          <div class="rl-branch"><p class="rl-bt"><b data-i18n="d.a.pf">PF</b><span class="who ai" data-i18n="rl.ai">Agente de IA</span></p><p data-i18n="rl.s2pf">Reúne o pedido. Quando o cliente diz o que precisa, o card já aparece em Novo com o selo “Em triagem”. A cada mensagem, o agente registra uma decisão: responder, perguntar ou encaminhar, com motivo e resumo.</p></div>
+        </li>
+        <li class="rl-gate">
+          <p class="rl-top"><span class="rl-n">03</span><span class="who" data-i18n="rl.sys">Sistema</span></p>
+          <h5 data-i18n="rl.s3t">Registra, depois confirma</h5>
+          <p data-i18n="rl.s3p">Grava o encaminhamento e confere a gravação; só então envia o aviso ao cliente, um texto fixo para cada motivo. Se não conseguir gravar, responde sem prometer nada. O card fica em Novo, com o motivo e o resumo do agente.</p>
+          <p class="rl-watch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><span data-i18n-html="rl.watch">No fluxo PF, este registro foi publicado em 22/10/2026 e está <a href="#estado">em acompanhamento</a>.</span></p>
+        </li>
+        <li>
+          <p class="rl-top"><span class="rl-n">04</span><span class="who human" data-i18n="rl.team">Equipe</span></p>
+          <h5 data-i18n="rl.s4t">Identifica quem atende</h5>
+          <p data-i18n="rl.s4p">O perfil do aparelho diz quem está no painel. Abrir a conversa só observa; assumir é um botão ou a primeira resposta. Para o resto da equipe, o nome aparece no card.</p>
+        </li>
+        <li>
+          <p class="rl-top"><span class="rl-n">05</span><span class="who human" data-i18n="rl.team">Equipe</span></p>
+          <h5 data-i18n="rl.s5t">Responde e conduz</h5>
+          <p data-i18n="rl.s5p">A primeira resposta leva o card de Novo para Em atendimento ou Em cotação, e cada mensagem leva o nome de quem a enviou. O agente sai da conversa: com pessoa física, só responde a dúvidas de endereço, horário, pagamento ou entrega nos primeiros cinco minutos; com empresa, nem isso.</p>
+        </li>
+      </ol>
+    </figure>
 
     <div class="rule reveal">
       <div class="rule-text">
@@ -392,8 +446,57 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
         <div><span>F</span><h3 data-i18n="d.e.t">Orientar sem encerrar</h3><p data-i18n="d.e.p">“Falou xerox, encerra” parecia eficiente. O agente passou a orientar para o setor de cópias e manter a triagem aberta para o resto do pedido.</p></div>
         <div id="d-audio"><span>G</span><h3 data-i18n="d.f.t">Áudio virou requisito</h3><p data-i18n="d.f.p">No treinamento, a equipe mostrou que clientes mandam áudio o tempo todo, e a transcrição entrou antes do lançamento. Antes do encaminhamento, o agente transcreve o áudio para entender o pedido, e o texto alimenta o resumo do atendimento; o arquivo fica no Cloudflare R2, para a equipe ouvir no CRM.</p></div>
         <div><span>H</span><h3 data-i18n="d.g.t">Indicador que não orienta é ruído</h3><p data-i18n="d.g.p">Um alerta crítico no topo gerava urgência sem dizer o que fazer e saiu de lá. O contador passou a refletir a aba ativa, PF ou PJ.</p></div>
-        <div><span>I</span><h3 data-i18n="d.h.t">Erros que dizem o que fazer</h3><p data-i18n="d.h.p">Mensagens técnicas genéricas viraram textos com causa e próxima ação: tentar de novo, esperar ou chamar ajuda.</p></div>
+        <div><span>I</span><h3 data-i18n="d.h.t">Erros que dizem o que fazer</h3><p data-i18n-html="d.h.p">Mensagens técnicas genéricas viraram textos com causa e próxima ação: tentar de novo, aguardar ou seguir outro caminho. <a href="#d-erros">Três exemplos ↓</a></p></div>
       </div>
+
+      <!-- ck27 · S5: three failures as the production panel handles them (painel/index.html @ f7e7a84: getHumanErrorMsg,
+           restoreComposerText, removeLastOptimistic, updateWindowUI, lockComposer, getTemplateErrorText, resendTemplate, buildCard;
+           api/send.js callMetaWithRetry). "Até maio de 2026" = strings replaced by CRM commit 2ac673b (2026-05-30); example 2
+           compares the technical error with the readable message, not two versions in time. -->
+      <figure class="errs reveal" id="d-erros" aria-labelledby="er-h">
+        <figcaption class="fig-cap"><span class="tag" data-i18n="k.rec">Reconstrução ilustrativa</span> <span data-i18n="er.cap">Mensagens e comportamentos do painel em produção</span></figcaption>
+        <div class="anat-head">
+          <h4 class="anat-h" id="er-h" data-i18n="er.h">O erro diz o que aconteceu e o que fazer agora.</h4>
+          <p class="anat-lede" data-i18n="er.lede">A mensagem é metade da resposta. A outra metade é o que o painel faz: o card volta, o texto volta para o campo, o botão certo aparece.</p>
+        </div>
+        <ol class="er-list">
+          <li class="er">
+            <h5><span class="mk">1</span> <span data-i18n="er.1t">Mover um card de etapa</span></h5>
+            <dl>
+              <div><dt data-i18n="er.kTech">Falha técnica</dt><dd data-i18n="er.1a">O servidor não confirma a gravação da nova etapa, por erro HTTP ou de rede.</dd></div>
+              <div><dt data-i18n="er.kUi">Na tela</dt><dd><p class="toast-r"><span aria-hidden="true">✕</span><span><span class="sr-only" data-i18n="er.srErr">Aviso de erro:</span> <span data-i18n="er.1b">Não consegui mover o card agora. Ele voltou para a etapa anterior para evitar perda de informação.</span></span></p></dd></div>
+              <div><dt data-i18n="er.kNext">Recuperação</dt><dd data-i18n="er.1c">O card volta sozinho para a coluna de origem e o quadro é recarregado. Basta repetir o movimento.</dd></div>
+              <div class="er-why"><dt data-i18n="er.kWhy">Decisão de UX</dt><dd data-i18n="er.1d">O card já voltava, mas até maio de 2026 a mensagem dizia só “Erro ao mover card”. O texto atual explica o movimento que a pessoa vê: o card não pulou de volta por acaso.</dd></div>
+            </dl>
+          </li>
+          <li class="er">
+            <h5><span class="mk">2</span> <span data-i18n="er.2t">Retomada que não chega ao cliente</span></h5>
+            <dl>
+              <div><dt data-i18n="er.kTech">Falha técnica</dt><dd data-i18n="er.2a">A Meta devolve o status de entrega “failed” do template, com código e detalhe em inglês.</dd></div>
+              <div><dt data-i18n="er.kUi">Na tela</dt><dd class="er-ui">
+                <span class="er-where" data-i18n="er.onCard">No card</span>
+                <p class="er-chips"><span class="er-badge" data-i18n="er.2b1">Mensagem não entregue ⚠️</span><span class="er-cta" data-i18n="er.2b2">Abrir · falha no envio →</span></p>
+                <span class="er-where" data-i18n="er.onChat">Na conversa</span>
+                <p class="er-status"><i aria-hidden="true"></i><span data-i18n-html="er.2b3"><b>Falha no template.</b> O cliente não recebeu a mensagem de retomada. Motivo: este número não parece estar registrado no WhatsApp.</span></p>
+                <small data-i18n="er.2note">O motivo é um dos casos que o painel traduz; sem tradução prevista, mostra o detalhe recebido, encurtado.</small>
+              </dd></div>
+              <div><dt data-i18n="er.kNext">Recuperação</dt><dd>
+                <p class="er-lock"><span data-i18n="er.2c1">⚠️ Não foi possível entregar o template anterior. Tente novamente.</span> <span class="du-btn"><span class="sr-only" data-i18n="du.btn">Botão:</span> <span data-i18n="er.2c2">Tentar novamente</span></span></p>
+                <span data-i18n="er.2c">O campo de resposta trava e o botão envia um novo template, depois de uma confirmação e sem a espera de dois minutos do reenvio comum.</span></dd></div>
+              <div class="er-why"><dt data-i18n="er.kWhy">Decisão de UX</dt><dd data-i18n="er.2d">A falha aparece no card, onde a equipe olha primeiro, e o motivo chega em português. Assim, a equipe sabe se vale tentar de novo.</dd></div>
+            </dl>
+          </li>
+          <li class="er">
+            <h5><span class="mk">3</span> <span data-i18n="er.3t">Enviar uma resposta</span></h5>
+            <dl>
+              <div><dt data-i18n="er.kTech">Falha técnica</dt><dd data-i18n="er.3a">A API do WhatsApp recusa o envio ou a conexão cai. Até maio de 2026, um alerta mostrava “Erro ao enviar:” seguido do detalhe técnico.</dd></div>
+              <div><dt data-i18n="er.kUi">Na tela</dt><dd><p class="toast-r"><span aria-hidden="true">✕</span><span><span class="sr-only" data-i18n="er.srErr">Aviso de erro:</span> <span data-i18n="er.3b">Não foi possível enviar agora. Verifique se a janela do WhatsApp está aberta ou tente novamente em alguns segundos.</span></span></p></dd></div>
+              <div><dt data-i18n="er.kNext">Recuperação</dt><dd data-i18n="er.3c">A mensagem sai da conversa, para não parecer enviada, e o texto volta para o campo: tentar de novo não exige redigitar. Em falhas temporárias da Meta, o servidor faz até três tentativas antes de desistir.</dd></div>
+              <div class="er-why"><dt data-i18n="er.kWhy">Decisão de UX</dt><dd data-i18n="er.3d">Nunca mostrar como enviado o que não chegou ao cliente. A mensagem aponta a causa mais provável e a próxima ação.</dd></div>
+            </dl>
+          </li>
+        </ol>
+      </figure>
     </div>
   </div>
 </section>
@@ -472,9 +575,9 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
       <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><h3 data-i18n="st.f2">A equipe moldou o produto</h3><p data-i18n="st.f2p">O treinamento com a equipe mudou prioridades, como a transcrição de áudio. É retorno qualitativo, não pesquisa formal.</p></div></div>
       <div class="fact open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f3">Impacto ainda por medir</h3><p data-i18n="st.f3p">Ainda não há medição de impacto: nada comparou tempo de resposta, volume de atendimentos ou vendas antes e depois do sistema. Medir faz parte da próxima etapa.</p></div></div>
       <div class="fact open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f4">Telas completas, ainda não</h3><p data-i18n="st.f4p">As telas do quadro e do histórico mostram clientes reais. Até existirem versões anonimizadas, o case usa reconstruções sinalizadas.</p></div></div>
-      <!-- ck25: the handoff's real reliability, described qualitatively (no audit figures, no customer data). The fix lives on an
-           unpublished branch of the CRM, so it is named as "in development", never as a shipped feature. -->
-      <div class="fact open wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f5">Encaminhamento em revisão</h3><p data-i18n="st.f5p">Durante a validação da primeira fase assistida, identifiquei situações em que o agente confirmava o encaminhamento de um cliente, mas o atendimento não era registrado corretamente no CRM. Com empresas, o encaminhamento é feito pelo próprio sistema; as falhas estavam no fluxo de pessoas físicas, que depende do agente. A investigação mostrou que a confirmação enviada ao cliente precisa estar vinculada ao registro efetivo do atendimento. Uma correção estruturada está em desenvolvimento, mas ainda não foi publicada.</p></div></div>
+      <!-- ck25: the handoff's real reliability, described qualitatively (no audit figures, no customer data). ck27: the structured
+           fix reached CRM production on 2026-10-22 (f7e7a84); it is named as published and under watch, never as solved. -->
+      <div class="fact open wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f5">Encaminhamento em revisão</h3><p data-i18n="st.f5p">Durante a validação da primeira fase assistida, identifiquei situações em que o agente confirmava o encaminhamento de um cliente, mas o atendimento não era registrado corretamente no CRM. Com empresas, o encaminhamento é feito pelo próprio sistema; as falhas estavam no fluxo de pessoas físicas, que depende do agente. A investigação mostrou que a confirmação enviada ao cliente precisa estar vinculada ao registro efetivo do atendimento. Uma correção estruturada foi publicada em 22 de outubro de 2026: o sistema grava e confere o registro antes de enviar a confirmação. Ela está em acompanhamento na operação, e ainda não há dados suficientes para considerá-la resolvida.</p></div></div>
     </div>
     <div class="reflect reveal">
       <blockquote data-i18n-html="st.quote">O CRM precisa mostrar <em>o que o cliente viu</em>, não apenas o que o atendente digitou.</blockquote>

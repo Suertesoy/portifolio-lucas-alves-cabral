@@ -34,7 +34,7 @@
   'pesca.shotBuilder': 'Poke builder', 'pesca.shotBuilderAlt': 'Poke builder: extra proteins, the price of the bowl and the add-to-cart button.',
 
   'crm.kicker': 'Internal system · Applied AI', 'crm.badge': 'In use', 'crm.title': 'Operational CRM + AI Agent',
-  'crm.videoAlt': 'Sartec CRM: the “Who is attending now?” window, where each team member picks their own name before taking over conversations.',
+  'crm.videoAlt': 'Sartec CRM: a reconstruction of the “Who is attending now?” window, where each team member picks their own profile before taking over conversations. Fictitious names.',
   'crm.sum': 'An internal system that centralizes conversations, statuses and priorities, with a WhatsApp AI agent that handles first triage and hands the chat, with context, to a person on the team. I designed the product and guided its AI-assisted implementation.',
   'crm.t1': 'Operations observation', 'crm.t2': 'Flow states', 'crm.t3': 'Human handoff', 'crm.cta': 'View full case study',
 
