@@ -31,3 +31,6 @@ assets/cases/sartec/crm/media/screenshots/*
 !assets/cases/sartec/crm/media/screenshots/*.webp
 assets/cases/sartec/crm/media/videos/*
 !assets/cases/sartec/crm/media/videos/*.mp4
+
+# ck29 — Pesca Panel captures (Ciclo 3C): the raw PNGs show the admin account e-mail; only the treated .webp beside them is published
+assets/cases/pesca/app/operacao/*.png

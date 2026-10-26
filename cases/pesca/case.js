@@ -7,7 +7,13 @@
   var lbImg = document.getElementById('lb-img');
   var lbCap = document.getElementById('lb-cap');
   var lbCount = document.getElementById('lb-count');
-  var shots = Array.prototype.slice.call(document.querySelectorAll('#gallery .shot'));
+  var lbNav = lb && lb.querySelector('.lb-nav');
+  // Each trigger opens the lightbox inside its own set: the prototype gallery, or (ck29) the [data-zoom] buttons of one [data-lb-group].
+  var sets = [Array.prototype.slice.call(document.querySelectorAll('#gallery .shot'))];
+  Array.prototype.forEach.call(document.querySelectorAll('[data-lb-group]'), function (g) {
+    sets.push(Array.prototype.slice.call(g.querySelectorAll('[data-zoom]')));
+  });
+  var shots = [];
   var current = 0;
 
   function fillLightbox() {
@@ -16,8 +22,9 @@
     lbImg.src = img.currentSrc || img.src;
     lbImg.alt = img.alt;
     var cap = shot.querySelector('.shot-cap');
-    lbCap.textContent = cap.querySelector('span').textContent;
-    lbCount.textContent = (current + 1) + ' / ' + shots.length;
+    lbCap.textContent = cap ? cap.querySelector('span').textContent : img.alt;
+    lbCount.textContent = shots.length > 1 ? (current + 1) + ' / ' + shots.length : '';
+    lbNav.hidden = shots.length < 2;
   }
   function openAt(i) {
     current = (i + shots.length) % shots.length;
@@ -25,7 +32,9 @@
     if (!lb.open) lb.showModal();
   }
   if (lb && typeof lb.showModal === 'function') {
-    shots.forEach(function (s, i) { s.addEventListener('click', function () { openAt(i); }); });
+    sets.forEach(function (set) {
+      set.forEach(function (s, i) { s.addEventListener('click', function () { shots = set; openAt(i); }); });
+    });
     document.getElementById('lb-close').addEventListener('click', function () { lb.close(); });
     document.getElementById('lb-prev').addEventListener('click', function () { openAt(current - 1); });
     document.getElementById('lb-next').addEventListener('click', function () { openAt(current + 1); });
@@ -39,8 +48,10 @@
     lb.addEventListener('close', function () { lbImg.removeAttribute('src'); });
   } else {
     // Old browsers without <dialog>: open the image itself in the same tab.
-    shots.forEach(function (s) {
-      s.addEventListener('click', function () { window.open(s.querySelector('img').src, '_blank', 'noopener'); });
+    sets.forEach(function (set) {
+      set.forEach(function (s) {
+        s.addEventListener('click', function () { window.open(s.querySelector('img').src, '_blank', 'noopener'); });
+      });
     });
   }
 

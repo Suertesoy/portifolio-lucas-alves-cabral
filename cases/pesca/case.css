@@ -232,20 +232,7 @@ details.deep div p+p{margin-top:.7em}
 .diagram{background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,30px);display:grid;gap:18px;align-content:center}
 .diagram figcaption{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 
-/* A: weight */
-.wbar{display:grid;gap:6px}
-.wbar .lbl{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-soft);gap:12px}
-.wbar .lbl strong{font-family:var(--font-mono);font-weight:500;color:var(--ink)}
-.track{height:34px;border-radius:8px;background:var(--paper-2);position:relative;overflow:hidden}
-.fill{position:absolute;inset:0 auto 0 0;border-radius:8px}
-.fill.req{width:87%;background:repeating-linear-gradient(135deg,var(--sage) 0 6px,#a8c3b1 6px 12px)}
-.fill.eff{width:100%;background:var(--green)}
-.wcalc{display:grid;gap:10px;border-top:1px dashed var(--line-strong);padding-top:16px}
-.wcalc .row{display:flex;justify-content:space-between;gap:12px;font-size:14px}
-.wcalc .row span:first-child{color:var(--muted)}
-.wcalc .row b{font-weight:500;text-align:right}
-.wcalc .total{padding:12px 14px;border-radius:10px;background:var(--sage-soft);font-weight:500}
-.wcalc .total span:first-child{color:var(--ink)}
+/* A: weight — the demo order's three moments reuse the .tl timeline of B (ck29) */
 
 /* B: price lock + availability */
 .tl{list-style:none;display:grid;gap:0;position:relative}
@@ -373,6 +360,38 @@ details.deep div p+p{margin-top:.7em}
 .osm-pay .pick{border-style:dashed}
 .osm-pay .paid{background:var(--sage-soft);border-color:var(--sage)}
 
+/* ck29 · Ciclo 3C — real Panel captures (DEV, fictitious data). Any [data-zoom] button opens the lightbox (case.js),
+   with prev/next inside its [data-lb-group]. Screens keep their own ratio: width 100%, height auto, never cropped by CSS. */
+.zoom{display:block;position:relative;width:100%;padding:0;border-radius:14px;cursor:zoom-in}
+.zoom img{width:100%;height:auto;border-radius:inherit}
+.zoom .zoom-hint{right:12px;top:12px;bottom:auto;transition:transform .25s var(--ease)}   /* top: the values sit bottom-right in these screens */
+.zoom:hover .zoom-hint{transform:scale(1.08)}
+.dev-screen .zoom{height:100%;border-radius:calc(var(--dev-w,240px)*.135)}
+.dev-screen .zoom img{height:100%}
+.pv-desk,.wg-shot .zoom,.wg-phone{overflow:hidden;border:1px solid var(--line-strong);background:#fff;box-shadow:0 34px 60px -42px rgba(16,20,18,.5)}
+
+/* the Panel, in section 06 */
+.pv{margin:clamp(40px,6vw,72px) 0 0;display:grid;gap:clamp(20px,3vw,28px);padding-top:clamp(28px,4vw,44px);border-top:1px solid var(--line-strong)}
+.pv-head{display:grid;gap:10px;max-width:62ch}
+.pv-head p:last-child{color:var(--ink-soft);font-size:15.5px}
+.pv-desk{border-radius:16px}
+.pv-row{display:grid;gap:28px}
+.pv-row .dev{--dev-w:clamp(196px,56vw,248px)}
+.pv-notes{display:grid;gap:14px;align-content:start;max-width:52ch}
+
+/* weighing → customer page, inside rule A (spans both columns, after the cart) */
+.wg{grid-column:1/-1;order:4;margin:0;display:grid;gap:clamp(24px,3vw,32px);padding-top:clamp(24px,4vw,40px);border-top:1px dashed var(--line-strong)}
+.wg-head{display:grid;gap:12px;max-width:60ch}
+.wg-head h4{font-family:var(--font-display);font-size:clamp(21px,2.4vw,28px);font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.wg-pair{display:grid;gap:28px}
+.wg-shot{display:grid;gap:12px;align-content:start}
+.wg-cap{font-size:14.5px;color:var(--ink-soft);line-height:1.45;max-width:52ch}
+.wg-client{display:grid;gap:24px;padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--line)}
+.wg-phone{max-width:300px;border-radius:22px;background:#161513}
+.wg-ctext{display:grid;gap:12px;align-content:start;max-width:52ch}
+.wg-t{font-family:var(--font-display);font-size:clamp(19px,2.2vw,24px);font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.wg-ctext .wg-t+p{font-size:15px;color:var(--ink-soft)}
+
 footer.cfoot{padding-block:36px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .cfoot .shell{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
 
@@ -388,6 +407,7 @@ footer.cfoot{padding-block:36px;border-top:1px solid var(--line);font-size:13px;
   .pair{grid-template-columns:1fr 1fr}
   .wire-cats{grid-template-columns:1fr 1fr}
   .osm-pay{grid-template-columns:repeat(3,1fr)}
+  .wg-pair{grid-template-columns:1fr 1fr}
 }
 
 /* ---------- ≥ 900 ---------- */
@@ -427,6 +447,8 @@ footer.cfoot{padding-block:36px;border-top:1px solid var(--line);font-size:13px;
   .audit-foot{grid-column:1/-1;border-top:1px solid var(--line-dark);padding-top:20px}
   .evid{grid-template-columns:auto 1fr;gap:56px;align-items:center}
   .osm-groups{grid-template-columns:repeat(3,1fr)}
+  .pv-row,.wg-client{grid-template-columns:auto 1fr;gap:56px;align-items:center}
+  .wg-phone{width:300px}
 }
 @media (min-width:1200px){
   .persp .lane{padding:36px 32px}

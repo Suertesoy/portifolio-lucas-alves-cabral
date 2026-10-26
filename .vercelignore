@@ -23,5 +23,8 @@ assets/hero/kinetic-lab.js
 assets/home/portrait/*.png
 assets/portrait/
 
+# ck29 — raw Pesca Panel captures (admin e-mail visible); the page serves the treated .webp
+assets/cases/pesca/app/operacao/*.png
+
 # ck20 — local preview server
 scripts/dev-server.mjs

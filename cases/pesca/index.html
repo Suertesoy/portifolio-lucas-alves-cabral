@@ -352,6 +352,40 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
     </div>
     <span class="tag illus-tag" data-i18n="p.illus">Fluxo ilustrativo e simplificado · sem dados reais</span>
 
+    <!-- ck29 · Ciclo 3C: the Panel itself. Real captures of the interface in the Pesca DEV environment with fictitious orders
+         (Ciclo 3B/3B.1, produced in the Pesca project). The admin e-mail was removed from the file's pixels; the tab counters
+         count test orders. Treated files: assets/cases/pesca/app/operacao/*.webp (raw PNGs are never committed). -->
+    <figure class="pv reveal" id="p-painel" aria-labelledby="pv-h" data-lb-group>
+      <figcaption class="pv-head">
+        <p class="ev-cap"><span class="ev-kind real" data-i18n="ev.kind">Captura real</span> <span data-i18n="pv.src">Painel operacional · ambiente de demonstração · dados fictícios</span></p>
+        <h3 class="osm-h" id="pv-h" data-i18n="pv.h">O que a equipe precisa fazer agora?</h3>
+        <p data-i18n="pv.p">O Painel organiza o trabalho em filas e coloca a próxima ação em destaque no pedido aberto. É a terceira perspectiva, vista como a equipe a usa.</p>
+      </figcaption>
+      <button type="button" class="zoom pv-desk" data-zoom>
+        <span class="sr-only" data-i18n="zoom">Ampliar:</span>
+        <img src="../../assets/cases/pesca/app/operacao/painel-operacional-desktop.webp" width="2880" height="1800" loading="lazy" decoding="async"
+          alt="Painel operacional no desktop: menu lateral, aba Agora com os pedidos em três filas, Para fazer, Aguardando e Em andamento, e à direita o pedido aberto, Em preparo, com a próxima ação Marcar como pronto, o botão Registrar pagamento e o Poke com bases, proteínas, acompanhamentos e molhos." data-i18n="pv.alt" data-i18n-attr="alt" />
+        <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </button>
+      <div class="pv-row">
+        <div class="dev"><div class="dev-screen">
+          <button type="button" class="zoom" data-zoom>
+            <span class="sr-only" data-i18n="zoom">Ampliar:</span>
+            <img src="../../assets/cases/pesca/app/operacao/painel-operacional-mobile.webp" width="780" height="1688" loading="lazy" decoding="async"
+              alt="Painel operacional no celular: o menu vira uma barra no topo e a lista de pedidos ocupa a tela, com as mesmas filas, valores e estados do desktop." data-i18n="pv.altM" data-i18n-attr="alt" />
+          </button>
+        </div></div>
+        <div class="pv-notes">
+          <ul class="ev-list">
+            <li><b data-i18n="pv.k1">Três filas na aba Agora</b><span data-i18n="pv.v1">Para fazer, Aguardando e Em andamento. Cada linha mostra número, cliente, forma de recebimento, total e o estado do pedido.</span></li>
+            <li><b data-i18n="pv.k2">Uma próxima ação por vez</b><span data-i18n="pv.v2">O pedido aberto diz em que estado está e o que fazer em seguida. Registrar pagamento aparece à parte: na retirada, preparo e pagamento seguem eixos diferentes.</span></li>
+            <li><b data-i18n="pv.k3">No celular</b><span data-i18n="pv.v3">O menu lateral vira uma barra no topo e a lista ocupa a largura da tela, com os mesmos rótulos, valores e filas.</span></li>
+          </ul>
+          <p class="ev-note" data-i18n="pv.note">Captura real da interface em ambiente de demonstração, com dados fictícios. Os números das abas contam pedidos de teste, não volume de operação. O e-mail da conta administrativa foi removido da imagem.</p>
+        </div>
+      </div>
+    </figure>
+
     <!-- ck28 · P4: the order as production code runs it (pesca-delivery @ d230d3d: domain/order/types.ts, initial-state.ts,
          application/commands/* guards, application/queries/panel-order-operational-projection.ts and panel-order-read-model.ts,
          app/painel/_components/orders-queue.tsx). Section names, status labels and next actions are the Panel's own strings. -->
@@ -430,20 +464,21 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
       <div class="rule-text">
         <span class="id">A</span>
         <h3 data-i18n="r.a.t">Peso pedido não é peso separado</h3>
-        <p data-i18n="r.a.p">Uma pessoa pede 300 g; a peça separada pesa 345 g. O sistema distingue o que foi pedido do que foi pesado, e o valor acompanha o peso efetivo. Transparência antes da surpresa. Se houver discordância, a conversa continua entre pessoas, pelo WhatsApp.</p>
+        <p data-i18n="r.a.p">No pedido de demonstração abaixo, o cliente pede 400 g de filé de salmão e a peça separada pesa 430 g. O sistema distingue o que foi pedido do que foi pesado, e o valor acompanha o peso efetivo. Transparência antes da surpresa. Se houver discordância, a conversa continua entre pessoas, pelo WhatsApp.</p>
         <details class="deep"><summary data-i18n="r.deep">Aprofundar</summary><div>
           <p data-i18n="r.a.d1">Intenção de compra e forma de precificação são conceitos diferentes. Em peixes inteiros, o cliente escolhe unidades; o valor sai do peso real multiplicado pelo preço por kg.</p>
           <p data-i18n="r.a.d2">Pedidos antigos não são reinterpretados quando o catálogo muda: histórico comercial permanece histórico.</p>
         </div></details>
       </div>
-      <figure class="diagram" aria-label="Diagrama: peso solicitado de 300 gramas, peso separado de 345 gramas, valor final calculado sobre o peso efetivo." data-i18n="r.a.fig" data-i18n-attr="aria-label">
-        <figcaption data-i18n="r.a.cap">Exemplo ilustrativo</figcaption>
-        <div class="wbar"><div class="lbl"><span data-i18n="r.a.req">Peso solicitado</span><strong>300 g</strong></div><div class="track"><div class="fill req"></div></div></div>
-        <div class="wbar"><div class="lbl"><span data-i18n="r.a.eff">Peso efetivo (separado)</span><strong>345 g</strong></div><div class="track"><div class="fill eff"></div></div></div>
-        <div class="wcalc">
-          <div class="row"><span data-i18n="r.a.r1">Diferença</span><b>+45 g</b></div>
-          <div class="row total"><span data-i18n="r.a.r2">Valor final</span><b data-i18n="r.a.r3">peso efetivo × preço por kg</b></div>
-        </div>
+      <!-- ck29 · Ciclo 3C: the real demo sequence replaces the old illustrative 300 g / 345 g example. Text first, so the story
+           does not depend on the captures below (1 = #p-carrinho, 2 and 3 = #p-pesagem). -->
+      <figure class="diagram">
+        <figcaption data-i18n="r.a.cap">Um pedido de demonstração, do carrinho ao valor final</figcaption>
+        <ol class="tl">
+          <li><span class="dot" aria-hidden="true">1</span><div><h4 data-i18n="r.a.s1">Intenção de compra</h4><p data-i18n="r.a.s1p">Na Loja: 400 g solicitados, cerca de R$ 44,00 estimado.</p></div></li>
+          <li><span class="dot lock" aria-hidden="true">2</span><div><h4 data-i18n="r.a.s2">Pesagem pela equipe</h4><p data-i18n="r.a.s2p">No Painel: 430 g registrados, 30 g (7,5%) acima do pedido.</p></div></li>
+          <li><span class="dot check" aria-hidden="true">3</span><div><h4 data-i18n="r.a.s3">Valor definitivo</h4><p data-i18n="r.a.s3p">R$ 47,30, ou 0,430 kg × R$ 110,00/kg. A equipe e o cliente veem o mesmo valor.</p></div></li>
+        </ol>
       </figure>
 
       <!-- ck28 · P2: real capture of the published store's cart (pescadelivery.vercel.app/carrinho = pesca-delivery @ d230d3d,
@@ -463,6 +498,53 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
           </ul>
           <p class="ev-note" data-i18n="ev.note">Item adicionado só para a captura, num navegador isolado: nenhum pedido foi criado.</p>
         </figcaption>
+      </figure>
+
+      <!-- ck29 · Ciclo 3C: weighing in the Panel (before / after saving, same crop of the order detail) and the customer's tracking
+           page for the same demo order #14469. Pesca DEV, fictitious data; the crops leave out the sidebar (admin e-mail), the
+           demo phone number and, on the tracking page, the pickup address and buttons below the values. -->
+      <figure class="wg" id="p-pesagem" aria-labelledby="wg-h" data-lb-group>
+        <figcaption class="wg-head">
+          <p class="ev-cap"><span class="ev-kind real" data-i18n="ev.kind">Captura real</span> <span data-i18n="wg.src">Painel e página do pedido · ambiente de demonstração · dados fictícios</span></p>
+          <h4 id="wg-h" data-i18n="wg.h">Na pesagem, a estimativa vira valor definitivo.</h4>
+          <p class="ev-lede" data-i18n="wg.p">A equipe registra o peso efetivo no Painel, o sistema recalcula o item e o pedido, e a página de acompanhamento passa a mostrar ao cliente os mesmos valores.</p>
+        </figcaption>
+        <div class="wg-pair">
+          <div class="wg-shot">
+            <p class="osm-k"><span>2</span> <span data-i18n="wg.k1">Painel · antes de salvar</span></p>
+            <button type="button" class="zoom" data-zoom>
+              <span class="sr-only" data-i18n="zoom">Ampliar:</span>
+              <img src="../../assets/cases/pesca/app/operacao/pesagem-pendente.webp" width="1296" height="1184" loading="lazy" decoding="async"
+                alt="Detalhe do pedido no Painel com Finalização pendente: o Filé de salmão mostra 400 g solicitados, peso final Aguardando pesagem, R$ 110,00 por kg e R$ 44,00 estimado. No campo Peso final foram digitados 430 g, com a prévia Variação +30 g (+7,5%) e Estimado → Final R$ 44,00 → R$ 47,30, e o botão Salvar peso final: 430 g." data-i18n="wg.alt1" data-i18n-attr="alt" />
+              <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+            </button>
+            <p class="wg-cap" data-i18n="wg.c1">O item segue “Aguardando pesagem” e o pedido, em Finalização pendente. Ao digitar 430 g, o Painel mostra a variação e o novo valor antes de salvar.</p>
+          </div>
+          <div class="wg-shot">
+            <p class="osm-k"><span>2</span> <span data-i18n="wg.k2">Painel · depois de salvar</span></p>
+            <button type="button" class="zoom" data-zoom>
+              <span class="sr-only" data-i18n="zoom">Ampliar:</span>
+              <img src="../../assets/cases/pesca/app/operacao/pesagem-concluida.webp" width="1296" height="1184" loading="lazy" decoding="async"
+                alt="O mesmo pedido depois de salvar: estado Confirmado, próxima ação Iniciar preparo e o botão Registrar pagamento. O Filé de salmão mostra peso solicitado 400 g, peso final 430 g, variação +30 g (+7,5%), Estimado → Final R$ 44,00 → R$ 47,30, e o total final é R$ 47,30." data-i18n="wg.alt2" data-i18n-attr="alt" />
+              <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+            </button>
+            <p class="wg-cap" data-i18n="wg.c2">O item passa a R$ 47,30, sem “estimado”, e o total final acompanha. Resolvida a pendência, o pedido passa a Confirmado, com a próxima ação Iniciar preparo.</p>
+          </div>
+        </div>
+        <div class="wg-client">
+          <button type="button" class="zoom wg-phone" data-zoom>
+            <span class="sr-only" data-i18n="zoom">Ampliar:</span>
+            <img src="../../assets/cases/pesca/app/operacao/acompanhamento-cliente.webp" width="780" height="1165" loading="lazy" decoding="async"
+              alt="Página de acompanhamento do pedido 14469 no celular, em tema escuro: Pedido confirmado; o Filé de salmão com peso solicitado 400 g, peso final 430 g e Estimado R$ 44,00 → Final R$ 47,30; nos valores, Produtos estimados R$ 44,00, Produtos finais R$ 47,30 e Total final R$ 47,30; e o convite Fale com o Pesca para dúvidas sobre o valor." data-i18n="wg.alt3" data-i18n-attr="alt" />
+            <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          </button>
+          <div class="wg-ctext">
+            <p class="osm-k"><span>3</span> <span data-i18n="wg.k3">Página do cliente</span></p>
+            <p class="wg-t" data-i18n="wg.t">O cliente vê o que a equipe registrou.</p>
+            <p data-i18n="wg.c3">Depois da pesagem, a página de acompanhamento mostra o valor efetivo: peso solicitado e peso final, estimado e final lado a lado, e o total final. Se o valor gerar dúvida, o link leva à conversa com o Pesca.</p>
+            <p class="ev-note" data-i18n="wg.note">Captura real da interface em ambiente de demonstração, com dados fictícios. O pedido #14469 foi criado só para esta demonstração; o carrinho acima vem da loja publicada e não gerou pedido. As capturas usam o mesmo produto e o mesmo peso para mostrar a sequência completa.</p>
+          </div>
+        </div>
       </figure>
     </div>
 
