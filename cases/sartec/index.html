@@ -257,7 +257,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
       </figure>
     </div>
 
-    <!-- ck26 · S3: the card as the production panel builds it (painel/index.html @ 0ed6693: buildCard, resumoOperacional,
+    <!-- ck26 · S3: the card as the production panel builds it (painel/index.html @ 0ed6693: buildCard, generateCardTitle (api/webhook.js @ f7e7a84), resumoOperacional,
          cardWindowTimeText). Structure and labels from the code; name, phone and attendant are fictitious. The markers are
          numbers, not colours, and the card is one image for assistive tech: the notes carry the meaning. -->
     <figure class="anatomy reveal" id="d-card" aria-labelledby="an-h">
@@ -269,14 +269,14 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
       <div class="anat-grid">
         <div class="anat-stage">
           <p class="anat-col" aria-hidden="true"><span data-i18n="d.a.pf">Pessoa Física</span> · <b data-i18n="d.a.c3">Orçamento enviado</b></p>
-          <div class="acard" role="img" aria-label="Card ilustrativo na coluna Orçamento enviado: cliente Joana Exemplo, outra atendente com a conversa aberta, situação Aguardando aprovação do orçamento, categoria Produtos, botão Abrir com duas mensagens novas, tipo PF e janela com 5 horas e 40 minutos." data-i18n="an.card" data-i18n-attr="aria-label">
+          <div class="acard" role="img" aria-label="Card ilustrativo na coluna Orçamento enviado: cliente Joana Exemplo, outra atendente com a conversa aberta, título Produtos — 2 cadernos universitários e caneta azul, categoria Produtos, botão Abrir com duas mensagens novas, tipo PF e janela com 5 horas e 40 minutos." data-i18n="an.card" data-i18n-attr="aria-label">
             <div class="ac-top">
               <span class="ac-dot"></span><span class="mk">1</span>
               <span class="ac-k" data-i18n="an.client">Cliente:</span> <b class="ac-name">Joana Exemplo</b>
             </div>
             <p class="ac-phone">(12) 90000-0000</p>
             <p class="ac-att"><span class="ac-chip">Carla</span><span class="mk">2</span></p>
-            <p class="ac-sum"><span data-i18n="an.sum">Aguardando aprovação do orçamento</span><span class="mk">3</span></p>
+            <p class="ac-sum"><span data-i18n="an.sum">Produtos — 2 cadernos universitários e caneta azul</span><span class="mk">3</span></p>
             <p class="ac-cat"><span class="ac-k" data-i18n="an.cat">Categoria:</span> <span class="ac-sel"><span data-i18n="an.catv">Produtos</span> ▾</span></p>
             <p class="ac-cta"><span class="ac-open"><span data-i18n="an.open">Abrir →</span><i>2</i></span><span class="mk">4</span></p>
             <div class="ac-foot"><span class="ac-tgl"><b>PF</b><span>PJ</span></span><span class="ac-time">⏳ 5h40</span><span class="ac-done" data-i18n="an.done">✓ Finalizar</span></div>
@@ -285,7 +285,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
         <ol class="anat-notes">
           <li><span class="mk">1</span><div><h4 data-i18n="an.n1t">Prioridade é decisão da equipe</h4><p data-i18n="an.n1p">O círculo do card marca Alta, Média, Baixa ou Concluindo. Sem marcação, o card fica neutro e a coluna se ordena por uma prioridade calculada (espera, sinais de irritação, empresa). A cor do card só muda por estado: etapa final, template à espera ou prioridade marcada, nunca por um alarme de tempo.</p></div></li>
           <li><span class="mk">2</span><div><h4 data-i18n="an.n2t">Quem está com a conversa</h4><p data-i18n="an.n2p">Se outra pessoa da equipe está com o atendimento aberto, o nome dela aparece no card. Dois atendentes respondendo ao mesmo cliente era um dos problemas de origem.</p></div></li>
-          <li><span class="mk">3</span><div><h4 data-i18n="an.n3t">A situação, em uma linha</h4><p data-i18n="an.n3p">Sem um resumo escrito pela equipe, o card mostra a situação derivada da etapa e dos dados: “Aguardando aprovação do orçamento”, “Falta endereço de entrega”, “Revisar — cliente não informou o pedido”.</p></div></li>
+          <li><span class="mk">3</span><div><h4 data-i18n="an.n3t">O pedido, em uma linha</h4><p data-i18n="an.n3p">No encaminhamento, o sistema cria um título com a categoria e o pedido: o resumo do agente ou, sem ele, a mensagem mais detalhada do cliente. A equipe pode reescrevê-lo com um duplo clique. Sem título, o card mostra a situação derivada da etapa e dos dados, como “Aguardando aprovação do orçamento” ou “Falta endereço de entrega”.</p></div></li>
           <li><span class="mk">4</span><div><h4 data-i18n="an.n4t">A próxima ação no botão</h4><p data-i18n="an.n4p">O botão principal muda com o estado: “Abrir →”, “Reabrir conversa →” quando a janela de 24 horas fechou, “Abrir · falha no envio →” quando um template não chegou. O número indica mensagens novas; no rodapé ficam o tipo de cliente e o tempo da janela.</p></div></li>
         </ol>
       </div>
@@ -577,7 +577,7 @@ if(/\/cases\/sartec$/.test(location.pathname))location.replace(location.pathname
       <div class="fact open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f4">Telas completas, ainda não</h3><p data-i18n="st.f4p">As telas do quadro e do histórico mostram clientes reais. Até existirem versões anonimizadas, o case usa reconstruções sinalizadas.</p></div></div>
       <!-- ck25: the handoff's real reliability, described qualitatively (no audit figures, no customer data). ck27: the structured
            fix reached CRM production on 2026-10-22 (f7e7a84); it is named as published and under watch, never as solved. -->
-      <div class="fact open wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f5">Encaminhamento em revisão</h3><p data-i18n="st.f5p">Durante a validação da primeira fase assistida, identifiquei situações em que o agente confirmava o encaminhamento de um cliente, mas o atendimento não era registrado corretamente no CRM. Com empresas, o encaminhamento é feito pelo próprio sistema; as falhas estavam no fluxo de pessoas físicas, que depende do agente. A investigação mostrou que a confirmação enviada ao cliente precisa estar vinculada ao registro efetivo do atendimento. Uma correção estruturada foi publicada em 22 de outubro de 2026: o sistema grava e confere o registro antes de enviar a confirmação. Ela está em acompanhamento na operação, e ainda não há dados suficientes para considerá-la resolvida.</p></div></div>
+      <div class="fact open wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/></svg><div><h3 data-i18n="st.f5">Confiabilidade do encaminhamento</h3><p data-i18n="st.f5p">Durante a validação da primeira fase assistida, identifiquei situações em que o agente confirmava o encaminhamento de um cliente, mas o atendimento não era registrado corretamente no CRM. Com empresas, o encaminhamento é feito pelo próprio sistema; as falhas estavam no fluxo de pessoas físicas, que depende do agente. A investigação mostrou que a confirmação enviada ao cliente precisa estar vinculada ao registro efetivo do atendimento. Uma correção estruturada entrou em produção em 22 de outubro de 2026: o sistema grava e confere o registro antes de enviar a confirmação. Ela está em acompanhamento na operação, e ainda não há dados suficientes para considerá-la resolvida.</p></div></div>
     </div>
     <div class="reflect reveal">
       <blockquote data-i18n-html="st.quote">O CRM precisa mostrar <em>o que o cliente viu</em>, não apenas o que o atendente digitou.</blockquote>

@@ -351,7 +351,66 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
       </section>
     </div>
     <span class="tag illus-tag" data-i18n="p.illus">Fluxo ilustrativo e simplificado · sem dados reais</span>
-    <p class="note reveal" style="margin-top:16px" data-i18n="p.note">Os agrupamentos do Painel, como Agora ou Hoje, ajudam as pessoas a trabalhar. Não são estados do pedido: o estado continua sendo definido pelo domínio.</p>
+
+    <!-- ck28 · P4: the order as production code runs it (pesca-delivery @ d230d3d: domain/order/types.ts, initial-state.ts,
+         application/commands/* guards, application/queries/panel-order-operational-projection.ts and panel-order-read-model.ts,
+         app/painel/_components/orders-queue.tsx). Section names, status labels and next actions are the Panel's own strings. -->
+    <figure class="osm reveal" id="p-estados" aria-labelledby="osm-h">
+      <figcaption class="ev-cap"><span class="ev-kind dia" data-i18n="osm.kind">Diagrama explicativo</span> <span data-i18n="osm.src">A partir do código em produção · nomes e ações do Painel</span></figcaption>
+      <div class="osm-head">
+        <h3 class="osm-h" id="osm-h" data-i18n="osm.h">Dez estados no domínio. Três perguntas no Painel.</h3>
+        <p data-i18n="p.note">Os agrupamentos do Painel, como Agora ou Hoje, ajudam as pessoas a trabalhar. Não são estados do pedido: o estado continua sendo definido pelo domínio.</p>
+      </div>
+
+      <div class="osm-block">
+        <p class="osm-k"><span>1</span> <span data-i18n="osm.k1">Estados do domínio</span></p>
+        <div class="osm-flow">
+          <ol class="osm-row"><li data-i18n="osm.s1">Aguardando finalização</li><li data-i18n="osm.s2">Aguardando pagamento</li><li data-i18n="osm.s3">Confirmado</li><li data-i18n="osm.s4">Em preparo</li></ol>
+          <ol class="osm-row branch"><li class="osm-tag" data-i18n="osm.pick">Retirada</li><li data-i18n="osm.s5">Pronto para retirada</li><li class="end" data-i18n="osm.s9">Concluído</li></ol>
+          <ol class="osm-row branch"><li class="osm-tag" data-i18n="osm.deli">Entrega</li><li data-i18n="osm.s6">Pronto para entrega</li><li data-i18n="osm.s7">Aguardando entregador</li><li data-i18n="osm.s8">Em entrega</li><li class="end" data-i18n="osm.s9">Concluído</li></ol>
+        </div>
+        <p class="osm-note" data-i18n="osm.flowNote">Sem pendência, o pedido já nasce em Aguardando pagamento ou Confirmado. Cancelado vale a partir de qualquer estado não final.</p>
+      </div>
+
+      <div class="osm-block">
+        <p class="osm-k"><span>2</span> <span data-i18n="osm.k2">Agrupamentos da aba Agora</span></p>
+        <div class="osm-groups">
+          <section class="osm-g todo" aria-labelledby="osm-g1">
+            <h4 id="osm-g1" data-i18n="osm.g1">Para fazer</h4><p class="osm-q" data-i18n="osm.g1q">A operação age agora.</p>
+            <ul>
+              <li class="osm-blk"><b data-i18n="osm.blk">Qualquer pedido ativo com pendência</b><span class="osm-pend"><span data-i18n="osm.p1">Peso pendente</span><span data-i18n="osm.p2">Frete pendente</span><span data-i18n="osm.p3">Pendência aberta</span></span><span class="osm-next" data-i18n="osm.a0">→ Resolver pendências</span></li>
+              <li><b data-i18n="osm.s3">Confirmado</b> <small data-i18n="osm.asap">ASAP</small><span class="osm-next" data-i18n="osm.a3">→ Iniciar preparo</span></li>
+              <li><b data-i18n="osm.s6">Pronto para entrega</b><span class="osm-next" data-i18n="osm.a6">→ Solicitar motorista</span></li>
+            </ul>
+          </section>
+          <section class="osm-g wait" aria-labelledby="osm-g2">
+            <h4 id="osm-g2" data-i18n="osm.g2">Aguardando</h4><p class="osm-q" data-i18n="osm.g2q">Depende de outra pessoa.</p>
+            <ul>
+              <li><b data-i18n="osm.s2">Aguardando pagamento</b><span class="osm-next" data-i18n="osm.a2">→ Confirmar pagamento</span></li>
+              <li><b data-i18n="osm.s5">Pronto para retirada</b><span class="osm-next" data-i18n="osm.a5">→ Registrar pagamento ou Concluir ao retirar</span></li>
+              <li><b data-i18n="osm.s7">Aguardando entregador</b><span class="osm-next" data-i18n="osm.a7">→ Saiu para entrega</span></li>
+            </ul>
+          </section>
+          <section class="osm-g doing" aria-labelledby="osm-g3">
+            <h4 id="osm-g3" data-i18n="osm.g3">Em andamento</h4><p class="osm-q" data-i18n="osm.g3q">Já está acontecendo.</p>
+            <ul>
+              <li><b data-i18n="osm.s4">Em preparo</b><span class="osm-next" data-i18n="osm.a4">→ Marcar como pronto</span></li>
+              <li><b data-i18n="osm.s8">Em entrega</b><span class="osm-next" data-i18n="osm.a8">→ Concluir entrega</span></li>
+            </ul>
+          </section>
+        </div>
+        <p class="osm-note" data-i18n="osm.out">Ficam fora de Agora: pedidos concluídos ou cancelados e pedidos agendados sem pendência, que aparecem em Hoje ou Próximos. Uma pendência vence o agendamento: o pedido aparece em Para fazer antes do horário.</p>
+      </div>
+
+      <div class="osm-block">
+        <p class="osm-k"><span>3</span> <span data-i18n="osm.k3">Pagamento é outro eixo</span></p>
+        <ul class="osm-pay">
+          <li class="pend"><b data-i18n="osm.pay1">Pendente</b><span data-i18n="osm.pay1p">Enquanto o valor depende de pesagem ou frete, o Painel mostra “Aguardando valor final”. Copiar o código Pix registra intenção, nunca pagamento.</span></li>
+          <li class="pick"><b data-i18n="osm.pay2">Pagamento na retirada</b><span data-i18n="osm.pay2p">O pedido pode estar Confirmado sem ter sido pago. Só conclui depois de “Registrar pagamento”.</span></li>
+          <li class="paid"><b data-i18n="osm.pay3">Pago</b><span data-i18n="osm.pay3p">Só a operação confirma. O rótulo de pagamento nunca se mistura ao estado do pedido.</span></li>
+        </ul>
+      </div>
+    </figure>
   </div>
 </section>
 
@@ -385,6 +444,25 @@ if(/\/cases\/pesca$/.test(location.pathname))location.replace(location.pathname+
           <div class="row"><span data-i18n="r.a.r1">Diferença</span><b>+45 g</b></div>
           <div class="row total"><span data-i18n="r.a.r2">Valor final</span><b data-i18n="r.a.r3">peso efetivo × preço por kg</b></div>
         </div>
+      </figure>
+
+      <!-- ck28 · P2: real capture of the published store's cart (pescadelivery.vercel.app/carrinho = pesca-delivery @ d230d3d,
+           26/10/2026), one item sold by grams. Taken in an isolated browser with analytics requests blocked; the price lock is
+           stateless (ADR 012), no checkout, no order. Rule: AC-CART-009/010 in app/_components/cart-view.tsx. -->
+      <figure class="evid" id="p-carrinho" aria-labelledby="ev-h">
+        <div class="dev"><div class="dev-screen"><img src="../../assets/cases/pesca/app/carrinho-peso.webp" width="780" height="1688" loading="lazy" decoding="async"
+          alt="Carrinho da loja publicada com um Filé de salmão: 400 g solicitados, R$ 110 por kg, cerca de R$ 44,00 estimado, e o resumo com Total estimado e o aviso de que o valor final considera o peso real." data-i18n="ev.alt" data-i18n-attr="alt" /></div></div>
+        <figcaption class="ev-text">
+          <p class="ev-cap"><span class="ev-kind real" data-i18n="ev.kind">Captura real</span> <span data-i18n="ev.src">Loja publicada · carrinho · 26/10/2026</span></p>
+          <h4 id="ev-h" data-i18n="ev.h">Antes da pesagem, o total é uma estimativa.</h4>
+          <p class="ev-lede" data-i18n="ev.p">O sistema diferencia o peso solicitado do peso efetivamente separado, evitando apresentar um valor provisório como definitivo.</p>
+          <ul class="ev-list">
+            <li><b data-i18n="ev.k1">“400 g solicitados”</b><span data-i18n="ev.v1">é a intenção de compra, não o peso final.</span></li>
+            <li><b data-i18n="ev.k2">“≈ R$ 44,00 estimado”</b><span data-i18n="ev.v2">vem do peso solicitado vezes o preço por kg protegido no carrinho.</span></li>
+            <li><b data-i18n="ev.k3">“Total estimado”</b><span data-i18n="ev.v3">só aparece quando algum item tem valor estimado pelo peso. Com itens de preço fechado, o rótulo é “Total”.</span></li>
+          </ul>
+          <p class="ev-note" data-i18n="ev.note">Item adicionado só para a captura, num navegador isolado: nenhum pedido foi criado.</p>
+        </figcaption>
       </figure>
     </div>
 
