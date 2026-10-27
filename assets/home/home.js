@@ -68,13 +68,18 @@
     addEventListener('resize', fit, { passive: true });
     stacked.addEventListener('change', fit);
 
+    // the act's curtains (CSS) can be dark over the index while the entry act is still on screen, or over the last card while the exit
+    // act begins: focus arriving there brings the element to where the curtain has lifted
+    const actIn = room.querySelector('.room-act--in'), actOut = room.querySelector('.room-act--out'), index = room.querySelector('.room-index');
     room.addEventListener('focusin', e => {
       const card = e.target.closest('.ficha');
-      if (!card || !stacked.matches) return;
+      if (!stacked.matches || !(card || index.contains(e.target))) return;
       requestAnimationFrame(() => {   // after the browser's own scroll-into-view
+        const ch = root0.clientHeight;
+        if (!card) { if (actIn.getBoundingClientRect().bottom > ch * 0.3) index.scrollIntoView({ block: 'start' }); return; }
         const i = cards.indexOf(card), r = e.target.getBoundingClientRect();
         const covered = cards.slice(i + 1).some(n => { const q = n.getBoundingClientRect(); return q.top < r.bottom && q.bottom > r.top; });
-        if (covered || r.top < navH() || r.bottom > root0.clientHeight) anchors[i].scrollIntoView({ block: 'start' });
+        if (covered || r.top < navH() || r.bottom > ch || actOut.getBoundingClientRect().top < ch) anchors[i].scrollIntoView({ block: 'start' });
       });
     });
 
@@ -86,15 +91,19 @@
     }), { rootMargin: '-20% 0px 0px 0px' });
     anchors.forEach(a => covIO.observe(a));
 
-    // the nav over the dark: the room's body under the middle of the nav bar
-    const body = room.querySelector('.room-body');
+    // the nav over the dark: the entry act or the room's body under the middle of the nav bar. With the act, the atmosphere turns at
+    // the entry act's top and at the exit act's top, both while the screen is black — the exit act itself is already light.
+    const darkZones = [room.querySelector('.room-act--in'), room.querySelector('.room-body')], under = new Set();
     let darkIO;
     const watchDark = () => {
       if (darkIO) darkIO.disconnect();
+      under.clear();
       const mid = Math.round(navH() / 2);
-      darkIO = new IntersectionObserver(([en]) => nav.classList.toggle('on-dark', en.isIntersecting),
-        { rootMargin: `-${mid}px 0px -${Math.max(0, root0.clientHeight - mid - 1)}px 0px` });
-      darkIO.observe(body);
+      darkIO = new IntersectionObserver(entries => {
+        entries.forEach(en => { en.isIntersecting ? under.add(en.target) : under.delete(en.target); });
+        nav.classList.toggle('on-dark', under.size > 0);
+      }, { rootMargin: `-${mid}px 0px -${Math.max(0, root0.clientHeight - mid - 1)}px 0px` });
+      darkZones.forEach(z => darkIO.observe(z));
     };
     watchDark(); addEventListener('resize', watchDark, { passive: true });
   }

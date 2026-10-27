@@ -34,7 +34,7 @@
 <meta name="theme-color" content="#F3F1EC" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@800&family=Archivo:wght@800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/home/home.css" />
 <script>document.documentElement.classList.add('js');
 /* ck20: the portrait is grey only while the clover can lead its colour (motion allowed). hero.js clears kx-want when WebGL is missing or fails; home.js does it if the module never starts. */
@@ -158,13 +158,15 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
 
   </div>
 
-  <!-- Ciclo 4B.1 — "sala escura, telas acesas". The page dims as it is scrolled (a static gradient in the flow: the scroll itself
-       is the transition), the five projects sit in the dark as lit cards that rise and stack, and the light comes back before
-       "Como eu penso". The darkening starts below the work header, where the clover rests: its glass only ever refracts the light page.
-       Stacking is native CSS sticky (no per-frame script); home.js only keeps keyboard focus visible, fits a card taller than the
-       screen and pauses a covered video. Reduced motion, low screens and landscape phones get a plain list. -->
+  <!-- Ciclo 4B.1 — "sala escura, telas acesas", as a change of act. Two empty stretches of scroll (.room-act) drive, in CSS only
+       (scroll-driven animations), two fixed layers: a shadow rises over the light page and puts the light out; while the screen is
+       black the atmosphere behind the content turns dark (.atmo); the shadow lifts and the room is there. On the way out the same
+       blackout brings the light back before "Como eu penso". The act starts below the work header, where the clover rests.
+       Each card wears its own project's identity (.ficha--*). Stacking is native CSS sticky (no per-frame script); home.js only
+       keeps keyboard focus visible, fits a card taller than the screen and pauses a covered video. Reduced motion, browsers without
+       scroll-driven animations, low screens and landscape phones get a plain dark section and a plain list. -->
   <div class="room" id="room">
-    <div class="room-fade room-fade--in" aria-hidden="true"></div>
+    <div class="room-act room-act--in" aria-hidden="true"></div>
     <div class="room-body">
       <div class="wrap">
         <nav class="room-index" aria-labelledby="room-index-t">
@@ -182,7 +184,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
              fragment URL and the focus helper all land on the card in its resting place. -->
         <div class="stack">
           <span class="stk-anchor" id="projeto-pesca" style="--i:0"></span>
-          <article class="ficha" style="--i:0" aria-labelledby="h-pesca">
+          <article class="ficha ficha--pesca" style="--i:0" aria-labelledby="h-pesca">
             <div class="ficha-card">
               <div class="ficha-copy">
                 <p class="micro ficha-meta"><span class="ficha-n">01</span><span data-i18n="pesca.cat">Product Design · Design Engineering</span></p>
@@ -200,6 +202,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
               </div>
               <!-- the store as delivered: real captures of the public store (390 × 844 @2x) in CSS phones that keep the capture's ratio -->
               <div class="ficha-media ficha-media--phones">
+                <img class="ficha-logo" src="assets/cases/pesca/brand/pesca-delivery-logo-1000.png" alt="" width="1000" height="436" loading="lazy" decoding="async" />
                 <div class="devices">
                   <figure class="device">
                     <div class="device-screen"><img src="assets/cases/pesca/app/loja-inicio.webp" width="780" height="1688" loading="lazy" decoding="async"
@@ -218,7 +221,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
           </article>
 
           <span class="stk-anchor" id="projeto-crm" style="--i:1"></span>
-          <article class="ficha" style="--i:1" aria-labelledby="h-crm">
+          <article class="ficha ficha--crm" style="--i:1" aria-labelledby="h-crm">
             <div class="ficha-card">
               <div class="ficha-copy">
                 <p class="micro ficha-meta"><span class="ficha-n">02</span><span data-i18n="crm.kicker">Sistema interno · IA aplicada</span></p>
@@ -237,15 +240,18 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
               <!-- ck15C/ck27: no real CRM recording or capture is published (customer data, real first names): a reconstruction of the
                    "who is attending now?" window with fictitious names, rendered from the panel's layout (painel/index.html @ f7e7a84) -->
               <div class="ficha-media ficha-media--shot">
-                <img src="assets/cases/sartec/crm/quem-esta-atendendo-reconstrucao.webp" width="588" height="494" loading="lazy" decoding="async"
-                  alt="CRM Sartec: reconstrução da janela “Quem está atendendo agora?”, em que cada atendente escolhe o próprio perfil antes de assumir as conversas. Nomes fictícios." data-i18n="crm.videoAlt" data-i18n-attr="alt" />
+                <div class="app-window">
+                  <span class="app-bar" aria-hidden="true"><i></i><i></i><i></i><span>CRM Sartec</span></span>
+                  <img src="assets/cases/sartec/crm/quem-esta-atendendo-reconstrucao.webp" width="588" height="494" loading="lazy" decoding="async"
+                    alt="CRM Sartec: reconstrução da janela “Quem está atendendo agora?”, em que cada atendente escolhe o próprio perfil antes de assumir as conversas. Nomes fictícios." data-i18n="crm.videoAlt" data-i18n-attr="alt" />
+                </div>
                 <p class="micro ficha-note" data-i18n="crm.note">Reconstrução da tela do CRM com nomes fictícios</p>
               </div>
             </div>
           </article>
 
           <span class="stk-anchor" id="projeto-uniedu" style="--i:2"></span>
-          <article class="ficha" style="--i:2" aria-labelledby="h-uniedu">
+          <article class="ficha ficha--uniedu" style="--i:2" aria-labelledby="h-uniedu">
             <div class="ficha-card">
               <div class="ficha-copy">
                 <p class="micro ficha-meta"><span class="ficha-n">03</span><span data-i18n="uniedu.kicker">UX Research · Design System</span></p>
@@ -271,7 +277,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
           </article>
 
           <span class="stk-anchor" id="projeto-papelaria" style="--i:3"></span>
-          <article class="ficha" style="--i:3" aria-labelledby="h-papelaria">
+          <article class="ficha ficha--papelaria" style="--i:3" aria-labelledby="h-papelaria">
             <div class="ficha-card">
               <div class="ficha-copy">
                 <p class="micro ficha-meta"><span class="ficha-n">04</span><span data-i18n="papelaria.kicker">Site + ecossistema digital</span></p>
@@ -298,7 +304,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
           </article>
 
           <span class="stk-anchor" id="projeto-almeida" style="--i:4"></span>
-          <article class="ficha" style="--i:4" aria-labelledby="h-almeida">
+          <article class="ficha ficha--almeida" style="--i:4" aria-labelledby="h-almeida">
             <div class="ficha-card">
               <div class="ficha-copy">
                 <p class="micro ficha-meta"><span class="ficha-n">05</span><span data-i18n="almeida.kicker">Site institucional · PT/EN</span></p>
@@ -327,7 +333,14 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
         </div>
       </div>
     </div>
-    <div class="room-fade room-fade--out" aria-hidden="true"></div>
+    <div class="room-act room-act--out" aria-hidden="true"></div>
+    <!-- the layers the acts drive: decorative, never in the way of a pointer (aria-hidden: the intertitle repeats the section's kicker) -->
+    <div class="atmo" aria-hidden="true"><div class="atmo-fill"></div></div>
+    <div class="curtain curtain--in" aria-hidden="true">
+      <div class="curtain-shade"></div>
+      <p class="curtain-title"><span class="micro" data-i18n="work.kicker">Trabalho selecionado</span><span class="curtain-big" data-i18n="work.act">Cinco projetos. Cinco universos.</span></p>
+    </div>
+    <div class="curtain curtain--out" aria-hidden="true"></div>
   </div>
 </section>
 

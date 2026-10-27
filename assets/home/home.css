@@ -263,11 +263,10 @@ ol, ul { padding: 0; list-style: none; }
 .sec-count { white-space: nowrap; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 
-/* Ciclo 4B.1 — "sala escura, telas acesas". The room is part of the flow: a static gradient band darkens the page while it is
-   scrolled through (the scroll is the transition), the projects sit on a near-neutral dark with a trace of the mineral green,
-   and a second band brings the light back before "Como eu penso". Nothing here is recomputed while scrolling. */
+/* Ciclo 4B.1 — "sala escura, telas acesas", as a change of act (see index.html). The room itself is a near-neutral dark: the colour
+   belongs to the cards, each in its own project's world. */
 .room {
-  --room: #0D1310; --room-line: rgba(233, 238, 230, .11); --room-soft: rgba(233, 238, 230, .7);
+  --room: #0B0D0C; --room-line: rgba(236, 236, 232, .11); --room-soft: rgba(236, 236, 232, .68);
   --stk-top: calc(var(--nav-h) + 20px);   /* where the first card rests */
   --stk-step: 10px;                        /* each later card rests a little lower: the deck's edges stay in view */
   --stk-hold: 24svh;                       /* scroll during which a card rests before the next one appears */
@@ -275,94 +274,199 @@ ol, ul { padding: 0; list-style: none; }
   --media-h: clamp(150px, 30svh, 280px);   /* single column: the evidence's height */
   position: relative; margin-top: clamp(40px, 5vw, 72px); color: var(--on-deep);
 }
-.room-fade { height: clamp(240px, 52svh, 560px); }
-.room-fade--in { background: linear-gradient(180deg, rgba(243, 241, 236, 0) 0%, var(--bg) 16%, 60%, var(--room)); }   /* the page grid fades out instead of being cut */
-.room-fade--out { height: clamp(220px, 46svh, 520px); background: linear-gradient(180deg, var(--room), 42%, var(--bg) 92%); }
-.room-body {
-  padding-bottom: clamp(56px, 7vw, 112px);
-  background: radial-gradient(70% 100% at 50% 0%, rgba(62, 90, 74, .2), rgba(62, 90, 74, 0) 70%) 50% 0 / 100% 900px no-repeat, var(--room);
-}
-.room :focus-visible { outline-color: var(--sage-soft); }
+/* Without the act (reduced motion, no scroll-driven animations): the section is simply dark, with a short shadow at its edges. */
+.room-act--in { height: clamp(64px, 9svh, 110px); background: linear-gradient(180deg, rgba(11, 13, 12, 0), var(--room)); }
+.room-act--out { height: clamp(64px, 9svh, 110px); background: linear-gradient(180deg, var(--room), rgba(11, 13, 12, 0)); }
+.room-body { padding-bottom: clamp(56px, 7vw, 112px); background: var(--room); }
+.atmo, .curtain { display: none; }
 
-/* the index: one row of five on wide screens, a list on small ones */
+/* The act. Two empty stretches of scroll drive four fixed layers, entirely in CSS (scroll-driven animations: compositor only —
+   transform and opacity — so nothing runs on the main thread while scrolling, and nothing at all while the page rests):
+     in:   a shadow rises from below over the light page (2.4 × the scroll's speed, soft leading edge) → black, with a short intertitle
+           → behind the black the atmosphere turns dark → the shadow lifts and the room is there;
+     out:  the room fades to black → the atmosphere turns light → the black lifts on "Como eu penso".
+   The atmosphere (.atmo, behind the content) only ever changes while the screen is black, so there is no edge to see anywhere.
+   Every state is a function of the scroll position: it plays backwards just the same, and stops wherever the reader stops. */
+@supports (animation-timeline: view()) and (timeline-scope: --a) {
+  @media (prefers-reduced-motion: no-preference) and (min-height: 650px) {   /* = the stacking: a landscape phone gets the plain section */
+    .room { timeline-scope: --act-in, --act-out; }
+    .room-act--in { height: 120svh; background: none; view-timeline: --act-in block; }
+    .room-act--out { height: 100svh; background: none; view-timeline: --act-out block; }
+    .room-body { background: none; }
+    .atmo, .curtain { display: block; position: fixed; left: 0; top: 0; width: 100%; height: 100lvh; pointer-events: none; }
+    .atmo { z-index: -1; animation: act-on linear both; animation-timeline: --act-in; animation-range: cover 44% cover 46%; }
+    .atmo-fill { position: absolute; inset: 0; background: radial-gradient(80% 60% at 50% 0%, rgba(236, 236, 232, .05), rgba(236, 236, 232, 0) 70%), var(--room);
+      animation: act-off linear both; animation-timeline: --act-out; animation-range: cover 44% cover 46%; }
+    .curtain { z-index: 60; }   /* over the nav too: for a moment the light is out everywhere */
+    .curtain--in { animation: curtain-in linear both; animation-timeline: --act-in; }
+    .curtain-shade { position: absolute; left: 0; top: 0; width: 100%; height: 200%;
+      background: linear-gradient(180deg, rgba(5, 6, 6, 0) 0%, rgba(5, 6, 6, .55) 10%, rgba(5, 6, 6, .93) 24%, #050606 38%);
+      animation: shade-rise linear both; animation-timeline: --act-in; animation-range: cover 0% cover 38%; }
+    .curtain-title { position: absolute; left: var(--m); right: var(--m); top: 50%; transform: translateY(-50%); display: grid; justify-items: center; gap: 14px; text-align: center;
+      color: var(--on-deep); animation: title-in linear both; animation-timeline: --act-in; }
+    .curtain-title .micro { color: rgba(236, 236, 232, .6); }
+    .curtain-big { font: 600 clamp(28px, 4.4vw, 64px)/1.04 "Inter Tight", sans-serif; letter-spacing: -.035em; max-width: 16ch; }
+    .curtain--out { background: #050606; animation: curtain-out linear both; animation-timeline: --act-out; }
+  }
+}
+@keyframes act-on { from { opacity: 0; } to { opacity: 1; } }
+@keyframes act-off { from { opacity: 1; } to { opacity: 0; } }
+@keyframes shade-rise { from { transform: translateY(50%); } to { transform: translateY(-50%); } }
+@keyframes curtain-in { 0%, 56% { opacity: 1; } 78%, 100% { opacity: 0; } }
+@keyframes title-in { 0%, 37% { opacity: 0; transform: translateY(-50%) translateY(14px); } 45%, 50% { opacity: 1; transform: translateY(-50%); } 60%, 100% { opacity: 0; transform: translateY(-50%) translateY(-10px); } }
+@keyframes curtain-out { 0%, 12% { opacity: 0; } 34%, 54% { opacity: 1; } 78%, 100% { opacity: 0; } }
+
+/* the index: one row of five on wide screens, a list on small ones; each number in its project's accent */
 .room-index > .micro { color: var(--room-soft); }
 .room-index ol { margin-top: 16px; display: grid; grid-template-columns: repeat(5, 1fr); column-gap: var(--gutter); }
+.room-index li:nth-child(1) { --c: #E4B724; } .room-index li:nth-child(2) { --c: #8EA2E0; } .room-index li:nth-child(3) { --c: #F48FB1; }
+.room-index li:nth-child(4) { --c: #F0605A; } .room-index li:nth-child(5) { --c: #E2B024; }
 .room-index a {
   display: grid; align-content: start; gap: 6px; height: 100%; padding: 14px 0 16px; border-top: 1px solid var(--room-line);
   text-decoration: none; color: var(--on-deep); transition: border-color .3s var(--ease);
 }
-.room-index .n { font: 400 11px/1.2 "JetBrains Mono", monospace; letter-spacing: .06em; color: var(--sage); }
+.room-index .n { font: 500 11px/1.2 "JetBrains Mono", monospace; letter-spacing: .06em; color: var(--c); }
 .room-index .t { font: 600 17px/1.2 "Inter Tight", sans-serif; letter-spacing: -.012em; }
 .room-index .c { font-size: 13px; line-height: 1.4; color: var(--room-soft); }
-.room-index a:hover { border-top-color: var(--sage); }
+.room-index a:hover { border-top-color: var(--c); }
 .room-index a:hover .t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.room :focus-visible { outline-color: var(--sage-soft); }
 
-/* the cards. Without stacking (reduced motion, low screens, landscape phones) they are a plain list. */
+/* The cards: one structure, five identities. Everything a card shows is drawn from these properties (set per project below, from
+   each product's own tokens): surface, ink, rules, accent, evidence backdrop, button, title face, corners. */
+.ficha {
+  --f-bg: linear-gradient(180deg, #1A1C1B, #121413); --f-ink: var(--on-deep); --f-soft: var(--room-soft); --f-line: var(--room-line);
+  --f-accent: var(--sage); --f-media: #0F1110; --f-note: var(--f-soft); --f-focus: var(--sage-soft);
+  --f-btn: var(--on-deep); --f-btn-ink: var(--mineral-deep); --f-btn-hover: #fff; --f-btn-r: 999px; --f-glow: rgba(0, 0, 0, .5);
+  --f-title: 700 clamp(30px, 3.3vw, 52px)/1 "Inter Tight", sans-serif; --f-track: -.04em; --f-r: 10px;
+  color: var(--f-ink);
+}
 .stack { margin-top: clamp(40px, 5vw, 72px); }
 .stk-anchor, .stk-end { display: block; height: 0; }
 .ficha + .stk-anchor { margin-top: clamp(20px, 2.4vw, 32px); }
+.ficha :focus-visible { outline-color: var(--f-focus); }
 .ficha-card {
-  position: relative; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); overflow: hidden; border-radius: 10px;
-  background: linear-gradient(180deg, #19221D 0%, #131A16 100%); transform-origin: 50% 0;
-  box-shadow: inset 0 1px 0 rgba(233, 238, 230, .1), 0 0 0 1px var(--room-line), 0 -22px 48px -26px rgba(0, 0, 0, .75), 0 40px 80px -44px rgba(0, 0, 0, .7);
+  position: relative; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); overflow: hidden; border-radius: var(--f-r);
+  background: var(--f-bg); transform-origin: 50% 0;
+  box-shadow: inset 0 1px 0 var(--f-line), 0 0 0 1px var(--f-line), 0 -22px 48px -26px rgba(0, 0, 0, .75), 0 40px 80px -44px rgba(0, 0, 0, .7);
 }
-.ficha-card::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; background: #050806; opacity: 0; pointer-events: none; }
+.ficha-card::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; background: #050606; opacity: 0; pointer-events: none; }
 .ficha-copy { grid-column: 1 / span 5; position: relative; z-index: 1; min-width: 0; display: flex; flex-direction: column; padding: clamp(26px, 3.2vw, 50px) 0 clamp(26px, 3.2vw, 50px) clamp(26px, 3.2vw, 50px); }
-.ficha-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--room-soft); }
-.ficha-n { color: var(--sage); }
-.ficha-title { margin-top: clamp(14px, 1.5vw, 22px); font: 700 clamp(30px, 3.3vw, 52px)/1 "Inter Tight", sans-serif; letter-spacing: -.04em; }
-.ficha .credit { margin-top: 10px; font-size: 13.5px; color: var(--room-soft); }
-.ficha .credit a { color: var(--on-deep); text-decoration-color: rgba(233, 238, 230, .35); }
+.ficha-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--f-soft); }
+.ficha-n { color: var(--f-accent); font-weight: 500; }
+.ficha-title { margin-top: clamp(14px, 1.5vw, 22px); font: var(--f-title); letter-spacing: var(--f-track); }
+.ficha .credit { margin-top: 10px; font-size: 13.5px; color: var(--f-soft); }
+.ficha .credit a { color: var(--f-ink); text-decoration-color: var(--f-line); }
 .ficha .credit a:hover { text-decoration-color: currentColor; }
-.ficha-problem { margin-top: 14px; max-width: 46ch; font-size: 15px; line-height: 1.55; color: var(--room-soft); }
-.ficha-points { margin-top: 18px; border-top: 1px solid var(--room-line); }
-.ficha-points li { position: relative; padding: 9px 0 9px 22px; border-bottom: 1px solid var(--room-line); font-size: 14px; line-height: 1.45; }
-.ficha-points li::before { content: ""; position: absolute; left: 3px; top: calc(9px + .725em - 3.5px); width: 7px; height: 7px; border-radius: 50% 0; background: var(--sage); }   /* a leaf */
+.ficha-problem { margin-top: 14px; max-width: 46ch; font-size: 15px; line-height: 1.55; color: var(--f-soft); }
+.ficha-points { margin-top: 18px; border-top: 1px solid var(--f-line); }
+.ficha-points li { position: relative; padding: 9px 0 9px 22px; border-bottom: 1px solid var(--f-line); font-size: 14px; line-height: 1.45; }
+.ficha-points li::before { content: ""; position: absolute; left: 3px; top: calc(9px + .725em - 3.5px); width: 7px; height: 7px; border-radius: 50%; background: var(--f-accent); }
 .ficha-foot { margin-top: auto; padding-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; }
 .ficha-state { flex: 1 0 100%; display: inline-flex; align-items: center; gap: 9px; font: 400 11.5px/1.4 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
-.ficha-state .dot { animation: none; }   /* still: the page's pulse animates box-shadow on the main thread, five of them would keep it busy */
-.ficha-state--wait .dot { background: transparent; box-shadow: inset 0 0 0 1.5px var(--sage); }   /* not live yet: a hollow dot */
+.ficha-state .dot { animation: none; background: var(--f-accent); }   /* still: the page's pulse animates box-shadow on the main thread */
+.ficha-state--wait .dot { background: transparent; box-shadow: inset 0 0 0 1.5px var(--f-accent); }   /* not live yet: a hollow dot */
 
-/* the CTA: a link, drawn as a filled button */
+/* the CTA: a link, drawn as a filled button in the project's own colour */
 .btn-ficha {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px;
-  background: var(--on-deep); border: 1px solid var(--on-deep); color: var(--mineral-deep); font: 600 14.5px/1.1 "Inter", sans-serif; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: var(--f-btn-r);
+  background: var(--f-btn); border: 1px solid var(--f-btn); color: var(--f-btn-ink); font: 600 14.5px/1.1 "Inter", sans-serif; text-decoration: none;
   transition: background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
 }
 .btn-ficha span:last-child { display: inline-block; font-family: system-ui, sans-serif; transition: transform .25s var(--ease); }
-.btn-ficha:hover { background: #fff; border-color: #fff; transform: translateY(-1px); box-shadow: 0 12px 26px -12px rgba(143, 165, 138, .7); }
+.btn-ficha:hover { background: var(--f-btn-hover); border-color: var(--f-btn-hover); transform: translateY(-1px); box-shadow: 0 12px 26px -12px var(--f-glow); }
 .btn-ficha:hover span:last-child { transform: translateX(3px); }
 .btn-ficha[target]:hover span:last-child { transform: translate(2px, -2px); }
-.btn-ficha:focus-visible { border-radius: 999px; outline: 2px solid var(--sage-soft); outline-offset: 3px; }
-.btn-ficha--line { background: transparent; border-color: rgba(233, 238, 230, .42); color: var(--on-deep); }
-.btn-ficha--line:hover { background: rgba(233, 238, 230, .1); border-color: var(--on-deep); box-shadow: none; }
+.btn-ficha:focus-visible { border-radius: var(--f-btn-r); outline: 2px solid var(--f-focus); outline-offset: 3px; }
+.btn-ficha--line { background: transparent; border-color: currentColor; color: var(--f-ink); }
+.btn-ficha--line:hover { background: rgba(255, 255, 255, .1); border-color: var(--f-ink); box-shadow: none; }
 
 /* the evidence: the lit screen of the card */
 .ficha-media {
   grid-column: 6 / span 7; position: relative; z-index: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
-  padding: clamp(24px, 3vw, 48px); border-left: 1px solid var(--room-line); container-type: size;
-  background: radial-gradient(90% 80% at 60% 32%, rgba(62, 90, 74, .34), rgba(62, 90, 74, 0) 72%), #0F1512;
+  padding: clamp(24px, 3vw, 48px); border-left: 1px solid var(--f-line); container-type: size; background: var(--f-media);
 }
-.ficha-note { color: var(--room-soft); text-align: center; }
+.ficha-note { color: var(--f-note); text-align: center; }
 /* phones: real captures in CSS device frames whose screen keeps the capture's ratio (390 : 844, content-box): nothing is cropped */
 .devices { --phone-w: clamp(90px, min(30cqw, calc((100cqh - 64px) / 2.5)), 200px); display: flex; justify-content: center; align-items: flex-start; gap: clamp(16px, 2.4vw, 36px); }
 .device { margin: 0; display: grid; justify-items: center; gap: 12px; }
 .device:nth-child(2) { margin-top: calc(var(--phone-w) * .22); }
 .device-screen {
   box-sizing: content-box; width: var(--phone-w); aspect-ratio: 390 / 844; padding: calc(var(--phone-w) * .036); border-radius: calc(var(--phone-w) * .17);
-  background: linear-gradient(150deg, #3A433D 0%, #141816 34%, #090B0A 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07), 0 0 0 1px rgba(233, 238, 230, .08), 0 44px 70px -34px rgba(0, 0, 0, .75);
+  background: linear-gradient(150deg, #3A3630 0%, #151310 34%, #0A0908 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07), 0 0 0 1px rgba(255, 240, 210, .1), 0 44px 70px -34px rgba(0, 0, 0, .8);
 }
 .device-screen img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--phone-w) * .135); background: #161513; }
-.device figcaption { color: var(--room-soft); }
-.ficha-media--shot img { width: 100%; max-height: calc(var(--card-h) - 150px); object-fit: contain; border-radius: 6px; background: #77797e; }   /* the modal's grey backdrop */
-.ficha-media--video video { width: 100%; aspect-ratio: 16 / 10; max-height: calc(var(--card-h) - 100px); object-fit: cover; border-radius: 8px; background: #0A0E0C; }
-.browser { width: 100%; overflow: hidden; border-radius: 8px; background: var(--paper); box-shadow: 0 0 0 1px rgba(233, 238, 230, .12), 0 40px 70px -36px rgba(0, 0, 0, .85); }
+.device figcaption { color: var(--f-note); }
+.ficha-media--video video { width: 100%; aspect-ratio: 16 / 10; max-height: calc(var(--card-h) - 100px); object-fit: cover; border-radius: 8px; background: #0A0A0A; }
+.browser { width: 100%; overflow: hidden; border-radius: 8px; background: var(--paper); box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 40px 70px -36px rgba(0, 0, 0, .6); }
 .browser-bar { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-bottom: 1px solid var(--line); background: var(--bg-2); }
 .browser-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(29, 32, 30, .16); }
 .browser-url { margin-left: 10px; flex: 0 1 320px; min-width: 0; height: 20px; padding: 0 10px; border-radius: 999px; background: var(--paper);
   font: 400 11px/20px "JetBrains Mono", monospace; color: var(--muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .browser img { display: block; width: 100%; height: auto; max-height: calc(var(--card-h) - 140px); object-fit: cover; object-position: 50% 0; }
+/* an application window (the CRM): the product's own navy bar over the screen */
+.app-window { width: 100%; display: flex; flex-direction: column; overflow: hidden; border-radius: 8px; background: #77797e;   /* the modal's grey backdrop */
+  box-shadow: 0 0 0 1px rgba(26, 42, 94, .22), 0 34px 60px -30px rgba(12, 19, 38, .55); }
+.app-bar { flex: none; display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: #1A2A5E; color: #DCE2F2; font: 500 11px/1 "JetBrains Mono", monospace; letter-spacing: .04em; }
+.app-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(220, 226, 242, .3); }
+.app-bar span { margin-left: 8px; }
+.app-window img { display: block; width: 100%; max-height: calc(var(--card-h) - 190px); object-fit: contain; }
+.ficha-logo { width: min(150px, 34cqw); height: auto; flex: none; }
+
+/* 01 · Pesca Delivery — premium food at night: warm dark, amber light, the product and its operation */
+.ficha--pesca {
+  --f-bg: radial-gradient(110% 80% at 0% 0%, #2B2113 0%, rgba(43, 33, 19, 0) 62%), linear-gradient(180deg, #1C1610, #100D09);
+  --f-ink: #F7F0E3; --f-soft: rgba(247, 240, 227, .72); --f-line: rgba(228, 183, 36, .2); --f-accent: #E4B724;
+  --f-media: radial-gradient(70% 62% at 52% 44%, rgba(228, 183, 36, .3), rgba(228, 183, 36, 0) 72%), #120E0A; --f-focus: #F2CD4F;
+  --f-btn: #E4B724; --f-btn-ink: #161513; --f-btn-hover: #F2CD4F; --f-glow: rgba(228, 183, 36, .55);
+}
+.ficha--pesca .devices { --phone-w: clamp(90px, min(30cqw, calc((100cqh - 120px) / 2.5)), 200px); }
+.ficha--pesca .ficha-points li::before { border-radius: 2px; transform: rotate(45deg); width: 6px; height: 6px; }
+
+/* 02 · CRM Sartec + AI agent — operational software: navy, a working grid, the panel's light surface, square controls */
+.ficha--crm {
+  --f-bg: linear-gradient(180deg, #131C36, #0C1327); --f-ink: #EEF1F8; --f-soft: rgba(238, 241, 248, .72); --f-line: rgba(160, 176, 224, .18);
+  --f-accent: #8EA2E0; --f-media: linear-gradient(180deg, #E9ECF4, #DCE1EC); --f-note: #4D5A78; --f-focus: #C9D3F0;
+  --f-btn: #F0F2F7; --f-btn-ink: #1A2A5E; --f-btn-hover: #fff; --f-btn-r: 6px; --f-glow: rgba(142, 162, 224, .5);
+  --f-title: 600 clamp(28px, 3vw, 46px)/1.05 "Inter", sans-serif; --f-track: -.03em; --f-r: 8px;
+}
+.ficha--crm .ficha-copy { background-image: linear-gradient(rgba(160, 176, 224, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(160, 176, 224, .05) 1px, transparent 1px);
+  background-size: 24px 24px; }
+.ficha--crm .ficha-points li::before { border-radius: 2px; width: 8px; height: 8px; top: calc(9px + .725em - 4px); background: none; box-shadow: inset 0 0 0 1.5px var(--f-accent); }
+.ficha--crm .ficha-state .dot { background: #3DCB83; }   /* a running system */
+
+/* 03 · UNIEDU — young, digital, the product's magenta: bright surface, round shapes, its own typeface */
+.ficha--uniedu {
+  --f-bg: radial-gradient(90% 80% at 0% 0%, #C81F5C 0%, rgba(200, 31, 92, 0) 60%), linear-gradient(160deg, #A31545 0%, #6C0F33 52%, #2B0A18 100%);
+  --f-ink: #FFF5F8; --f-soft: rgba(255, 245, 248, .84); --f-line: rgba(255, 220, 232, .24); --f-accent: #F48FB1;
+  --f-media: radial-gradient(68% 68% at 50% 46%, rgba(244, 143, 177, .34), rgba(244, 143, 177, 0) 70%), #120E10; --f-focus: #FFD1E0;
+  --f-btn: #F48FB1; --f-btn-ink: #120E10; --f-btn-hover: #FFB8CF; --f-glow: rgba(244, 143, 177, .6);
+  --f-title: 800 clamp(30px, 3.4vw, 54px)/1 "Plus Jakarta Sans", "Inter Tight", sans-serif; --f-track: -.035em; --f-r: 24px;
+}
+.ficha--uniedu .ficha-media--video video { aspect-ratio: 4 / 3; width: auto; height: min(100%, calc(var(--card-h) - 140px)); max-width: 100%; border-radius: 18px; box-shadow: 0 0 0 1px rgba(244, 143, 177, .35), 0 30px 70px -30px rgba(244, 143, 177, .45); }
+.ficha--uniedu .ficha-points li::before { width: 8px; height: 8px; top: calc(9px + .725em - 4px); box-shadow: 0 0 0 3px rgba(244, 143, 177, .22); }
+
+/* 04 · Sartec Papelaria — the shop's own site: daylight, the brand's blue and red, commercial and familiar */
+.ficha--papelaria {
+  --f-bg: linear-gradient(180deg, #FFFFFF 0%, #F1F5FC 100%); --f-ink: #14245A; --f-soft: #46516E; --f-line: rgba(30, 58, 138, .14);
+  --f-accent: #DC2626; --f-media: linear-gradient(160deg, #E8EEFC, #D6E1F8); --f-note: #46516E; --f-focus: #1E3A8A;
+  --f-btn: #1E3A8A; --f-btn-ink: #fff; --f-btn-hover: #2949A6; --f-btn-r: 12px; --f-glow: rgba(30, 58, 138, .45);
+  --f-title: 800 clamp(30px, 3.3vw, 52px)/1 "Archivo", "Inter Tight", sans-serif; --f-track: -.03em; --f-r: 14px;
+}
+.ficha--papelaria .ficha-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; z-index: 3; background: linear-gradient(90deg, #1E3A8A 0 72%, #DC2626 72%); }
+.ficha--papelaria .ficha-points li::before { border-radius: 2px; }
+
+/* 05 · Grupo Almeida — institutional: forest green, a gold hairline, a serif, square corners, a clean stone backdrop for the site */
+.ficha--almeida {
+  --f-bg: linear-gradient(180deg, #1B2E26, #12201A); --f-ink: #F2EFE6; --f-soft: rgba(242, 239, 230, .74); --f-line: rgba(226, 176, 36, .24);
+  --f-accent: #E2B024; --f-media: #ECE8DE; --f-note: #4A5249; --f-focus: #EEC54E;
+  --f-btn: #E2B024; --f-btn-ink: #172922; --f-btn-hover: #EEC54E; --f-btn-r: 2px; --f-glow: rgba(226, 176, 36, .45);
+  --f-title: 600 clamp(30px, 3.2vw, 50px)/1.05 "Playfair Display", Georgia, serif; --f-track: -.01em; --f-r: 3px;
+}
+.ficha--almeida .ficha-meta { padding-bottom: 12px; border-bottom: 1px solid var(--f-line); }
+.ficha--almeida .ficha-points li::before { border-radius: 0; width: 10px; height: 1.5px; top: calc(9px + .725em - .75px); }
+.ficha--almeida .browser { border-radius: 2px; }
 
 /* Stacking: native sticky, in the document flow. Each card rests a step lower than the one before and the next one rises over it
    with the page; scrolling back uncovers them in the same order. Nothing is hidden from assistive tech or the keyboard: home.js
@@ -396,11 +500,11 @@ ol, ul { padding: 0; list-style: none; }
   }
 }
 @keyframes ficha-recede { to { transform: translateY(-12px) scale(.955); } }
-@keyframes ficha-dim { to { opacity: .5; } }
+@keyframes ficha-dim { to { opacity: .55; } }
 
 /* the nav over the room (home.js: .on-dark) */
 .nav.on-dark:not(.open) { color: var(--on-deep); }
-.nav.on-dark.scrolled:not(.open) { background: rgba(13, 19, 16, .84); box-shadow: 0 1px 0 var(--room-line, rgba(233, 238, 230, .11)); }
+.nav.on-dark.scrolled:not(.open) { background: rgba(11, 13, 12, .84); box-shadow: 0 1px 0 var(--room-line, rgba(233, 238, 230, .11)); }
 .nav.on-dark:not(.open) .brand-mark { fill: var(--sage); }
 .nav.on-dark:not(.open) .nav-links a, .nav.on-dark:not(.open) .lang a, .nav.on-dark:not(.open) .nav-links a .n { color: rgba(233, 238, 230, .68); }
 .nav.on-dark:not(.open) .nav-links a:hover, .nav.on-dark:not(.open) .nav-links a.active,
@@ -527,7 +631,7 @@ ol, ul { padding: 0; list-style: none; }
   .room-index .n { grid-row: 1 / span 2; padding-top: 4px; }
   .room-index li:last-child a { border-bottom: 1px solid var(--room-line); }
   .ficha-card { display: flex; flex-direction: column; }
-  .ficha-media { order: -1; flex: 1 1 var(--media-h); padding: 12px 12px 10px; gap: 8px; border-left: 0; border-bottom: 1px solid var(--room-line); }
+  .ficha-media { order: -1; flex: 1 1 var(--media-h); padding: 12px 12px 10px; gap: 8px; border-left: 0; border-bottom: 1px solid var(--f-line); }
   .ficha-copy { padding: 18px 18px 20px; }
   .ficha-title { margin-top: 10px; font-size: clamp(26px, 7.4vw, 34px); }
   .ficha-problem { margin-top: 10px; font-size: 14px; line-height: 1.5; }
@@ -540,7 +644,10 @@ ol, ul { padding: 0; list-style: none; }
   .device:nth-child(2) { margin-top: 0; }
   .device figcaption { display: none; }
   .ficha-note { font-size: 10px; letter-spacing: .04em; }
-  .ficha-media--shot img, .ficha-media--video video { flex: 1 1 0; min-height: 0; max-height: none; height: 100%; aspect-ratio: auto; }
+  .ficha-media--shot .app-window, .app-window img, .ficha-media--video video { flex: 1 1 0; min-height: 0; max-height: none; height: 100%; aspect-ratio: auto; }
+  .app-bar { height: 24px; }
+  .ficha-logo { display: none; }
+  .ficha--pesca .devices { --phone-w: min(40cqw, calc((100cqh - 22px) / 2.24), 200px); }
   .ficha-media--site .browser { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
   .browser-bar { flex: none; height: 24px; }
   .browser img { flex: 1 1 0; min-height: 0; height: 100%; max-height: none; }

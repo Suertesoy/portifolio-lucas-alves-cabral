@@ -21,7 +21,7 @@
   'person.f3k': 'Idiomas', 'person.f3v': '<span>Portugués — nativo</span> <span>Inglés — fluido</span> <span>Español — intermedio</span>',
 
   'work.kicker': 'Trabajo seleccionado', 'work.count': '05 proyectos', 'work.title': 'Del problema real a una interfaz que funciona.',
-  'work.index': 'Índice de proyectos', 'work.state': 'Estado del proyecto:',
+  'work.act': 'Cinco proyectos. Cinco universos.', 'work.index': 'Índice de proyectos', 'work.state': 'Estado del proyecto:',
 
   'pesca.idx': 'Tienda online y operación', 'pesca.cat': 'Product Design · Design Engineering', 'pesca.badge': 'En producción',
   'pesca.problem': 'Los pedidos personalizados llegaban por WhatsApp y se montaban a mano. El reto: una compra estructurada, integrada con la operación.',
