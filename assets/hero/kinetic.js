@@ -425,7 +425,14 @@ export function createExperiment(ctx) {
       G.P = { x: px, y: py - heroTop, w: pw, h: ph };
       G.A = { x: px + CHOREO.anchor[0] * pw, y: py - heroTop + CHOREO.anchor[1] * ph };
       G.hArr = (CHOREO.lensR * pw) / R_MAX;
-      G.sEnd = Math.max(0.5 * vh, G.A.y - CHOREO.focus * vh);   // scroll (from the hero top) at which the clover reaches the face
+      const sFocus = Math.max(0.5 * vh, G.A.y - CHOREO.focus * vh);   // scroll (from the hero top) at which the clover reaches the face
+      // Ciclo 4D — side by side, the photo's frame comes whole into view (its bottom at the viewport's bottom) a little after the face
+      // reaches `focus`, and the smaller the photo, the sooner: the arrival is brought forward so that, by then, the colour is whole and
+      // the clover gone (with 5 % of a screen to spare). Only the arrival moves: G.lead keeps the rest of the timeline (the colour taken
+      // back, the crossing) where the approved timing puts it. Where that timing already gets there, nothing changes.
+      const sWhole = G.P.y + ph - vh - Math.max(CHOREO.bloomEnd, CHOREO.fadeA + 0.02, CHOREO.fadeB) * vh - 0.05 * vh;
+      G.sEnd = smallScreen.matches ? sFocus : Math.max(0.5 * vh, Math.min(sFocus, sWhole));
+      G.lead = sFocus - G.sEnd;
       G.arc = Math.abs(G.A.x - L.clover.cx) < 0.1 * L.W ? -0.07 * L.W : 0;   // single column: a gentle lateral arc instead of a straight drop
       G.C = { x: px + CHOREO.retX * pw, yv: CHOREO.retY * vh };   // where it waits, in the viewport, while it takes the colour back
       // colour: the clover silhouette grows until its notches pass the portrait's farthest corner
@@ -445,7 +452,7 @@ export function createExperiment(ctx) {
     if (photo) {
       const V = x => x * vh, work = G.slots.find(sl => sl.key === 'work'), T = G.T = {};
       T.bloom = V(CHOREO.bloomEnd); T.fadeA = V(CHOREO.fadeA); T.fadeB = Math.max(T.fadeA + V(0.02), V(CHOREO.fadeB));
-      T.retA = Math.max(T.fadeB + V(0.02), V(CHOREO.retA)); T.retB = Math.max(T.retA + V(0.06), V(CHOREO.retB)); T.retFade = V(CHOREO.retFade);
+      T.retA = Math.max(T.fadeB + V(0.02), V(CHOREO.retA) + G.lead); T.retB = Math.max(T.retA + V(0.06), V(CHOREO.retB) + G.lead); T.retFade = V(CHOREO.retFade);
       // the colour's withdrawal has to happen while the photo is still on screen: a short photo (single column) leaves sooner
       const dLim = G.P.y + G.P.h - 0.35 * vh - G.sEnd;
       if (T.retB > dLim) { T.retB = Math.max(T.fadeB + V(0.08), dLim); T.retA = Math.max(T.fadeB + V(0.02), Math.min(T.retA, T.retB - V(0.12))); }
