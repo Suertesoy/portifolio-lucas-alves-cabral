@@ -29,14 +29,85 @@
   document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
 
   /* ------------------------------------------------------------------ case videos: load when near, play only while visible */
+  // a video in a project card that another card covers (the stacked room below) stays paused: on screen is not the same as visible
+  const playIfShown = v => { if (v.dataset.seen && !reduce.matches && !v.closest('.is-covered')) v.play().catch(() => {}); else v.pause(); };
   const vidIO = new IntersectionObserver(entries => entries.forEach(en => {
     const v = en.target;
     if (en.isIntersecting) {
       if (!v.src) { v.src = v.dataset.src; v.preload = 'metadata'; }
-      if (!reduce.matches) v.play().catch(() => {});
-    } else v.pause();
+      v.dataset.seen = '1';
+    } else delete v.dataset.seen;
+    playIfShown(v);
   }), { rootMargin: '200px 0px', threshold: 0.2 });
   document.querySelectorAll('video.lazy-video').forEach(v => vidIO.observe(v));
+
+  /* ------------------------------------------------------------------ the projects' dark room (Ciclo 4B.1)
+     The stacking is CSS (position: sticky; the recede is a scroll-driven animation where supported) and needs none of this to work.
+     This only covers what CSS cannot know, on events, never per frame:
+     - focus: a sticky card can rest under the next one, so when focus enters a card that is covered (or off screen), the page goes
+       back to that card's resting place (its anchor in the flow) — the focused element is never left hidden behind another card;
+     - fit: a card taller than the screen would stick with its button below the fold; it then sticks by its bottom edge instead;
+     - covered: a card under the next one is marked .is-covered (its video pauses);
+     - the nav turns dark while it sits over the room. */
+  const room = document.getElementById('room');
+  if (room) {
+    const stacked = matchMedia('(prefers-reduced-motion: no-preference) and (min-height: 650px)');   // = the CSS
+    const cards = [...room.querySelectorAll('.ficha')], anchors = cards.map(c => c.previousElementSibling);
+    const navH = () => nav.offsetHeight;
+
+    const fit = () => {
+      cards.forEach(c => c.style.removeProperty('--fit'));
+      if (!stacked.matches) return;
+      const limit = root0.clientHeight - 12;   // the layout viewport: stable while a mobile toolbar slides in and out
+      cards.forEach(c => {
+        const top = parseFloat(getComputedStyle(c).top) || 0, h = c.offsetHeight;
+        if (top + h > limit) c.style.setProperty('--fit', Math.round(limit - h) + 'px');
+      });
+    };
+    const ro = new ResizeObserver(fit); cards.forEach(c => ro.observe(c));
+    addEventListener('resize', fit, { passive: true });
+    stacked.addEventListener('change', fit);
+
+    // the act's curtains (CSS) can be dark over the index while the entry act is still on screen, or over the last card while the exit
+    // act begins: focus arriving there brings the element to where the curtain has lifted
+    const actIn = room.querySelector('.room-act--in'), actOut = room.querySelector('.room-act--out'), index = room.querySelector('.room-index');
+    room.addEventListener('focusin', e => {
+      const card = e.target.closest('.ficha');
+      // keyboard focus only: a click on an index link focuses it too, and must be left to follow its anchor
+      if (!stacked.matches || !(card || index.contains(e.target)) || !e.target.matches(':focus-visible')) return;
+      requestAnimationFrame(() => {   // after the browser's own scroll-into-view
+        const ch = root0.clientHeight;
+        if (!card) { if (actIn.getBoundingClientRect().bottom > ch * 0.3) index.scrollIntoView({ block: 'start' }); return; }
+        const i = cards.indexOf(card), r = e.target.getBoundingClientRect();
+        const covered = cards.slice(i + 1).some(n => { const q = n.getBoundingClientRect(); return q.top < r.bottom && q.bottom > r.top; });
+        if (covered || r.top < navH() || r.bottom > ch || actOut.getBoundingClientRect().top < ch) anchors[i].scrollIntoView({ block: 'start' });
+      });
+    });
+
+    // card i is covered once the next card's anchor has risen past the upper fifth of the screen
+    const covIO = new IntersectionObserver(entries => entries.forEach(en => {
+      const prev = cards[anchors.indexOf(en.target) - 1]; if (!prev) return;
+      prev.classList.toggle('is-covered', stacked.matches && !en.isIntersecting && en.boundingClientRect.top < en.rootBounds.top);
+      prev.querySelectorAll('video.lazy-video').forEach(playIfShown);
+    }), { rootMargin: '-20% 0px 0px 0px' });
+    anchors.forEach(a => covIO.observe(a));
+
+    // the nav over the dark: the entry act or the room's body under the middle of the nav bar. With the act, the atmosphere turns at
+    // the entry act's top and at the exit act's top, both while the screen is black — the exit act itself is already light.
+    const darkZones = [room.querySelector('.room-act--in'), room.querySelector('.room-body')], under = new Set();
+    let darkIO;
+    const watchDark = () => {
+      if (darkIO) darkIO.disconnect();
+      under.clear();
+      const mid = Math.round(navH() / 2);
+      darkIO = new IntersectionObserver(entries => {
+        entries.forEach(en => { en.isIntersecting ? under.add(en.target) : under.delete(en.target); });
+        nav.classList.toggle('on-dark', under.size > 0);
+      }, { rootMargin: `-${mid}px 0px -${Math.max(0, root0.clientHeight - mid - 1)}px 0px` });
+      darkZones.forEach(z => darkIO.observe(z));
+    };
+    watchDark(); addEventListener('resize', watchDark, { passive: true });
+  }
 
   /* ------------------------------------------------------------------ four-leaf marks: the leaf a column stands for, highlighted */
   document.querySelectorAll('.leaf').forEach(li => {

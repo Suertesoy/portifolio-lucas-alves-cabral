@@ -34,7 +34,7 @@
 <meta name="theme-color" content="#F3F1EC" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@800&family=Archivo:wght@800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/home/home.css" />
 <script>document.documentElement.classList.add('js');
 /* ck20: the portrait is grey only while the clover can lead its colour (motion allowed). hero.js clears kx-want when WebGL is missing or fails; home.js does it if the module never starts. */
@@ -156,146 +156,193 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
       <div class="clover-slot" data-clover-slot="work" aria-hidden="true"><img class="slot-poster" src="assets/hero/data/poster.png" alt="" width="900" height="900" loading="lazy" decoding="async" /></div>
     </div>
 
-    <!-- ck13: two editorial groups — products & systems (Pesca leads) / websites -->
-    <section class="work-group" aria-labelledby="g-products">
-      <header class="group-head reveal">
-        <p class="micro group-key"><b>(A)</b></p>
-        <h3 class="group-title" id="g-products" data-i18n="work.gA">Produtos e sistemas</h3>
-        <p class="group-desc" data-i18n="work.gAdesc">Interfaces com regras, estados e operação por trás — do pedido ao painel.</p>
-      </header>
+  </div>
 
-    <!-- Pesca Delivery — the lead case, full width -->
-    <article class="feature reveal" aria-labelledby="h-pesca">
-      <a class="feature-link" href="cases/pesca/" aria-labelledby="h-pesca"></a>
-      <div class="feature-copy">
-        <p class="micro feature-meta"><span>01</span><span data-i18n="pesca.kicker">Case principal · 2026</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="pesca.badge">Em operação</span></span></p>
-        <h4 class="feature-title" id="h-pesca">Pesca Delivery</h4>
-        <p class="feature-sub" data-i18n="pesca.sub">Além da loja.</p>
-        <p class="feature-lede" data-i18n="pesca.lede">Da personalização de um Poke pelo WhatsApp a uma experiência digital que conecta compra e operação.</p>
-        <dl class="feature-dl">
-          <div><dt data-i18n="pesca.m1">Papel</dt><dd>Product Designer &amp; Design Engineer</dd></div>
-          <div><dt data-i18n="pesca.m2">Disciplinas</dt><dd>Product Design · UX/UI · Design Engineering</dd></div>
-          <div><dt data-i18n="pesca.m3">Processo</dt><dd data-i18n="pesca.m3v">Desenvolvimento assistido por IA</dd></div>
-        </dl>
-        <div class="sysmap" aria-label="Mapa do sistema" data-i18n="pesca.mapAria" data-i18n-attr="aria-label">
-          <div><span data-i18n="pesca.n1k">Loja</span><p data-i18n="pesca.n1t">Onde o cliente decide</p></div>
-          <div class="core"><span data-i18n="pesca.n2k">Regras compartilhadas</span><p data-i18n="pesca.n2t">A fonte da verdade</p></div>
-          <div><span data-i18n="pesca.n3k">Painel</span><p data-i18n="pesca.n3t">Onde a operação age</p></div>
+  <!-- Ciclo 4B.1 — "sala escura, telas acesas", as a change of act. Two empty stretches of scroll (.room-act) drive, in CSS only
+       (scroll-driven animations), fixed layers: once the clover has left the work header, the scene closes like an iris, from the four
+       corners to the centre, down to black; "5 projetos, 5 universos." on the black, while the atmosphere behind the content turns
+       dark (.atmo); the black lifts and the room is there. On the way out the same
+       blackout brings the light back before "Como eu penso". The act starts below the work header, where the clover rests.
+       Each card wears its own project's identity (.ficha--*). Stacking is native CSS sticky (no per-frame script); home.js only
+       keeps keyboard focus visible, fits a card taller than the screen and pauses a covered video. Reduced motion, browsers without
+       scroll-driven animations, low screens and landscape phones get a plain dark section and a plain list. -->
+  <div class="room" id="room">
+    <div class="room-act room-act--in" aria-hidden="true"></div>
+    <div class="room-body">
+      <div class="wrap">
+        <nav class="room-index" aria-labelledby="room-index-t">
+          <p class="micro" id="room-index-t" data-i18n="work.index">Índice dos projetos</p>
+          <ol>
+            <li><a href="#projeto-pesca"><span class="n">01</span><span class="t">Pesca Delivery</span><span class="c" data-i18n="pesca.idx">Loja digital e operação</span></a></li>
+            <li><a href="#projeto-crm"><span class="n">02</span><span class="t" data-i18n="crm.idxT">CRM Sartec + Agente de IA</span><span class="c" data-i18n="crm.idx">Sistema interno com IA</span></a></li>
+            <li><a href="#projeto-uniedu"><span class="n">03</span><span class="t">UNIEDU</span><span class="c" data-i18n="uniedu.idx">Pesquisa e design system</span></a></li>
+            <li><a href="#projeto-papelaria"><span class="n">04</span><span class="t">Sartec Papelaria</span><span class="c" data-i18n="papelaria.idx">Site e ecossistema digital</span></a></li>
+            <li><a href="#projeto-almeida"><span class="n">05</span><span class="t">Grupo Almeida</span><span class="c" data-i18n="almeida.idx">Site institucional bilíngue</span></a></li>
+          </ol>
+        </nav>
+
+        <!-- Each anchor sits in the flow exactly where its card starts (a sticky card is not where it is drawn), so the index, the
+             fragment URL and the focus helper all land on the card in its resting place. -->
+        <div class="stack">
+          <span class="stk-anchor" id="projeto-pesca" style="--i:0"></span>
+          <article class="ficha ficha--pesca" style="--i:0" aria-labelledby="h-pesca">
+            <div class="ficha-card">
+              <div class="ficha-copy">
+                <p class="micro ficha-meta"><span class="ficha-n">01</span><span data-i18n="pesca.cat">Product Design · Design Engineering</span></p>
+                <h3 class="ficha-title" id="h-pesca">Pesca Delivery</h3>
+                <p class="ficha-problem" data-i18n="pesca.problem">Pedidos personalizados chegavam pelo WhatsApp e eram montados à mão. O desafio: uma compra estruturada, integrada à operação.</p>
+                <ul class="ficha-points">
+                  <li data-i18n="pesca.b1">Builder de Poke em composição contínua: qualquer escolha é revista sem recomeçar</li>
+                  <li data-i18n="pesca.b2">Itens por peso com preço protegido no carrinho e disponibilidade revalidada ao finalizar</li>
+                  <li data-i18n="pesca.b3">Loja e Painel com as mesmas regras de peso, preço e pagamento, do carrinho à separação</li>
+                </ul>
+                <div class="ficha-foot">
+                  <p class="ficha-state"><span class="dot" aria-hidden="true"></span><span class="sr" data-i18n="work.state">Estado do projeto:</span> <span data-i18n="pesca.badge">Em operação</span></p>
+                  <a class="btn-ficha" href="cases/pesca/"><span data-i18n="pesca.cta">Ver case completo</span><span aria-hidden="true">→</span></a>
+                </div>
+              </div>
+              <!-- the store as delivered: real captures of the public store (390 × 844 @2x) in CSS phones that keep the capture's ratio -->
+              <div class="ficha-media ficha-media--phones">
+                <img class="ficha-logo" src="assets/cases/pesca/brand/pesca-delivery-logo-1000.png" alt="" width="1000" height="436" loading="lazy" decoding="async" />
+                <div class="devices">
+                  <figure class="device">
+                    <div class="device-screen"><img src="assets/cases/pesca/app/loja-inicio.webp" width="780" height="1688" loading="lazy" decoding="async"
+                      alt="Tela inicial da loja do Pesca Delivery, com os caminhos Do mar e Poke." data-i18n="pesca.shotStoreAlt" data-i18n-attr="alt" /></div>
+                    <figcaption class="micro" data-i18n="pesca.shotStore">Loja</figcaption>
+                  </figure>
+                  <figure class="device">
+                    <div class="device-screen"><img src="assets/cases/pesca/app/builder-poke.webp" width="780" height="1688" loading="lazy" decoding="async"
+                      alt="Builder de Poke: proteínas adicionais, valor do prato e botão de adicionar ao carrinho." data-i18n="pesca.shotBuilderAlt" data-i18n-attr="alt" /></div>
+                    <figcaption class="micro" data-i18n="pesca.shotBuilder">Builder de Poke</figcaption>
+                  </figure>
+                </div>
+                <p class="micro ficha-note" data-i18n="pesca.note">Capturas da loja pública em produção (interface em português) · out. 2026</p>
+              </div>
+            </div>
+          </article>
+
+          <span class="stk-anchor" id="projeto-crm" style="--i:1"></span>
+          <article class="ficha ficha--crm" style="--i:1" aria-labelledby="h-crm">
+            <div class="ficha-card">
+              <div class="ficha-copy">
+                <p class="micro ficha-meta"><span class="ficha-n">02</span><span data-i18n="crm.kicker">Sistema interno · IA aplicada</span></p>
+                <h3 class="ficha-title" id="h-crm" data-i18n="crm.idxT">CRM Sartec + Agente de IA</h3>
+                <p class="ficha-problem" data-i18n="crm.problem">Atendimentos de pessoas e de empresas chegavam juntos pelo WhatsApp. O desafio: separar os fluxos, preservar o contexto e deixar claro quem responde.</p>
+                <ul class="ficha-points">
+                  <li data-i18n="crm.b1">Pessoa física e empresa em quadros próprios, cada um com as suas etapas</li>
+                  <li data-i18n="crm.b2">Handoff explícito: o agente de IA faz a triagem e assumir a conversa é um ato da equipe</li>
+                  <li data-i18n="crm.b3">Transcrição de áudio priorizada a partir do treinamento com quem atende</li>
+                </ul>
+                <div class="ficha-foot">
+                  <p class="ficha-state"><span class="dot" aria-hidden="true"></span><span class="sr" data-i18n="work.state">Estado do projeto:</span> <span data-i18n="crm.badge">Em uso</span></p>
+                  <a class="btn-ficha" href="cases/sartec/"><span data-i18n="crm.cta">Ver case completo</span><span aria-hidden="true">→</span></a>
+                </div>
+              </div>
+              <!-- ck15C/ck27: no real CRM recording or capture is published (customer data, real first names): a reconstruction of the
+                   "who is attending now?" window with fictitious names, rendered from the panel's layout (painel/index.html @ f7e7a84) -->
+              <div class="ficha-media ficha-media--shot">
+                <div class="app-window">
+                  <span class="app-bar" aria-hidden="true"><i></i><i></i><i></i><span>CRM Sartec</span></span>
+                  <img src="assets/cases/sartec/crm/quem-esta-atendendo-reconstrucao.webp" width="588" height="494" loading="lazy" decoding="async"
+                    alt="CRM Sartec: reconstrução da janela “Quem está atendendo agora?”, em que cada atendente escolhe o próprio perfil antes de assumir as conversas. Nomes fictícios." data-i18n="crm.videoAlt" data-i18n-attr="alt" />
+                </div>
+                <p class="micro ficha-note" data-i18n="crm.note">Reconstrução da tela do CRM com nomes fictícios</p>
+              </div>
+            </div>
+          </article>
+
+          <span class="stk-anchor" id="projeto-uniedu" style="--i:2"></span>
+          <article class="ficha ficha--uniedu" style="--i:2" aria-labelledby="h-uniedu">
+            <div class="ficha-card">
+              <div class="ficha-copy">
+                <p class="micro ficha-meta"><span class="ficha-n">03</span><span data-i18n="uniedu.kicker">UX Research · Design System</span></p>
+                <h3 class="ficha-title" id="h-uniedu">UNIEDU</h3>
+                <p class="credit"><span data-i18n="uniedu.credit">Em coautoria com</span> <a href="https://www.linkedin.com/in/najme-simon-al%C3%A9-b08b6221" target="_blank" rel="noopener noreferrer">Najme Simon Alé</a></p>
+                <p class="ficha-problem" data-i18n="uniedu.problem">Estudantes de cursos online perdem a constância. O desafio: um produto gamificado que transforme estudo frequente em progresso real.</p>
+                <ul class="ficha-points">
+                  <li data-i18n="uniedu.b1">Entrevistas em profundidade com 8 estudantes de cursos online</li>
+                  <li data-i18n="uniedu.b2">Testes de usabilidade com 5 participantes, que apontaram atritos na comunidade e no resgate de pontos</li>
+                  <li data-i18n="uniedu.b3">Da pesquisa à interface: o ranking é opcional, porque a competição motivava uns e pressionava outros</li>
+                </ul>
+                <div class="ficha-foot">
+                  <p class="ficha-state"><span class="dot" aria-hidden="true"></span><span class="sr" data-i18n="work.state">Estado do projeto:</span> <span data-i18n="uniedu.state">Protótipo testado</span></p>
+                  <!-- the full case (root route) until the internal case exists (Ciclo 4C); /recrutamento is the short recruiter version and is not linked -->
+                  <a class="btn-ficha" href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta">Ver case completo</span><span aria-hidden="true">↗</span></a>
+                  <a class="btn-ficha btn-ficha--line" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta2">Abrir protótipo</span><span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+              <div class="ficha-media ficha-media--video">
+                <video class="lazy-video" muted loop playsinline preload="none" data-src="video%20app%20uniedu%20-%20portifolio.mp4" aria-label="Prévia do aplicativo UNIEDU" data-i18n="uniedu.videoAlt" data-i18n-attr="aria-label"></video>
+              </div>
+            </div>
+          </article>
+
+          <span class="stk-anchor" id="projeto-papelaria" style="--i:3"></span>
+          <article class="ficha ficha--papelaria" style="--i:3" aria-labelledby="h-papelaria">
+            <div class="ficha-card">
+              <div class="ficha-copy">
+                <p class="micro ficha-meta"><span class="ficha-n">04</span><span data-i18n="papelaria.kicker">Site + ecossistema digital</span></p>
+                <h3 class="ficha-title" id="h-papelaria">Sartec Papelaria</h3>
+                <p class="ficha-problem" data-i18n="papelaria.problem">A papelaria da minha família, com mais de 30 anos em São José dos Campos. O desafio: levar cada motivo de visita a um único canal de atendimento.</p>
+                <ul class="ficha-points">
+                  <li data-i18n="papelaria.b1">Arquitetura da informação pelos motivos reais de visita, com a lista escolar em destaque</li>
+                  <li data-i18n="papelaria.b2">Identidade da marca aplicada à web, com a fachada da loja como imagem de abertura</li>
+                  <li data-i18n="papelaria.b3">Um único canal de WhatsApp, porta de entrada da operação atendida pelo CRM</li>
+                </ul>
+                <div class="ficha-foot">
+                  <p class="ficha-state"><span class="dot" aria-hidden="true"></span><span class="sr" data-i18n="work.state">Estado do projeto:</span> <span data-i18n="papelaria.badge">Publicado</span></p>
+                  <a class="btn-ficha" href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer"><span data-i18n="papelaria.cta">Visitar o site</span><span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+              <div class="ficha-media ficha-media--site">
+                <div class="browser">
+                  <span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser-url">sartecpapelaria.com.br</span></span>
+                  <img src="assets/cases/sites/sartec-papelaria-inicio.jpg" width="1600" height="900" loading="lazy" decoding="async"
+                    alt="Página inicial do site da Sartec Papelaria: chamada principal, botões para explorar produtos e enviar lista escolar, e a fachada ilustrada da loja." data-i18n="papelaria.alt" data-i18n-attr="alt" />
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <span class="stk-anchor" id="projeto-almeida" style="--i:4"></span>
+          <article class="ficha ficha--almeida" style="--i:4" aria-labelledby="h-almeida">
+            <div class="ficha-card">
+              <div class="ficha-copy">
+                <p class="micro ficha-meta"><span class="ficha-n">05</span><span data-i18n="almeida.kicker">Site institucional · PT/EN</span></p>
+                <h3 class="ficha-title" id="h-almeida">Grupo Almeida</h3>
+                <p class="ficha-problem" data-i18n="almeida.problem">Almeida Ambiental, Almeida Equipamentos e Saturno Ambiental. O desafio: apresentar o grupo sem fragmentar a navegação nem apagar a identidade de cada empresa.</p>
+                <ul class="ficha-points">
+                  <li data-i18n="almeida.b1">Arquitetura que apresenta três empresas como partes de um mesmo grupo</li>
+                  <li data-i18n="almeida.b2">Direção visual de solidez e escala: fotografia da operação e tipografia institucional</li>
+                  <li data-i18n="almeida.b3">Implementação bilíngue, em português e inglês</li>
+                </ul>
+                <div class="ficha-foot">
+                  <p class="ficha-state ficha-state--wait"><span class="dot" aria-hidden="true"></span><span class="sr" data-i18n="work.state">Estado do projeto:</span> <span data-i18n="almeida.badge">Em homologação</span></p>
+                  <a class="btn-ficha" href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="almeida.cta">Ver em homologação</span><span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+              <div class="ficha-media ficha-media--site">
+                <div class="browser">
+                  <span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser-url">almeidaambiental.vercel.app</span></span>
+                  <img src="assets/cases/sites/grupo-almeida-inicio.jpg" width="1600" height="1000" loading="lazy" decoding="async"
+                    alt="Página inicial do site do Grupo Almeida: foto aérea da sede, o título Transformando resíduo em resultado e o seletor de idioma PT/EN." data-i18n="almeida.alt" data-i18n-attr="alt" />
+                </div>
+              </div>
+            </div>
+          </article>
+          <span class="stk-end" aria-hidden="true"></span>
         </div>
-        <span class="cta-arrow"><span data-i18n="pesca.cta">Ver case completo</span><span aria-hidden="true">→</span></span>
       </div>
-      <!-- ck13: the product as delivered — real captures of the public store (390 × 844 @2x, same captures the
-           L A Cabral case uses) in CSS device frames whose screen keeps the capture's exact ratio: nothing is cropped.
-           ck29: the Panel's DEV captures (fictitious data) live in the case, section 06, not here: a third phone does not fit
-           at 360 px without shrinking every capture, and the note below speaks for production captures only. -->
-      <div class="feature-media">
-        <img class="feature-logo" src="assets/cases/pesca/brand/pesca-delivery-logo-1000.png" alt="" width="1000" height="436" loading="lazy" />
-        <div class="devices">
-          <figure class="device">
-            <div class="device-screen"><img src="assets/cases/pesca/app/loja-inicio.webp" width="780" height="1688" loading="lazy" decoding="async"
-              alt="Tela inicial da loja do Pesca Delivery, com os caminhos Do mar e Poke." data-i18n="pesca.shotStoreAlt" data-i18n-attr="alt" /></div>
-            <figcaption class="micro" data-i18n="pesca.shotStore">Loja</figcaption>
-          </figure>
-          <figure class="device">
-            <div class="device-screen"><img src="assets/cases/pesca/app/builder-poke.webp" width="780" height="1688" loading="lazy" decoding="async"
-              alt="Builder de Poke: proteínas adicionais, valor do prato e botão de adicionar ao carrinho." data-i18n="pesca.shotBuilderAlt" data-i18n-attr="alt" /></div>
-            <figcaption class="micro" data-i18n="pesca.shotBuilder">Builder de Poke</figcaption>
-          </figure>
-        </div>
-        <p class="micro feature-note" data-i18n="pesca.note">Capturas da loja pública em produção (interface em português) · out. 2026</p>
-      </div>
-    </article>
-
-    <!-- CRM + UNIEDU — large cards -->
-    <div class="cards">
-      <article class="card reveal" aria-labelledby="h-crm">
-        <!-- ck15C: the CRM recording showed customer names, phone numbers and conversations (a CSS crop does not
-             anonymise a file that is served whole), so it is no longer published. ck27: the "who is attending now?" capture
-             showed the team's real first names, so the card now shows a reconstruction of that window with fictitious names
-             (rendered from the panel's layout, painel/index.html @ f7e7a84). -->
-        <div class="card-media card-media--crop">
-          <img src="assets/cases/sartec/crm/quem-esta-atendendo-reconstrucao.webp" width="588" height="494" loading="lazy" decoding="async"
-            alt="CRM Sartec: reconstrução da janela “Quem está atendendo agora?”, em que cada atendente escolhe o próprio perfil antes de assumir as conversas. Nomes fictícios." data-i18n="crm.videoAlt" data-i18n-attr="alt" />
-        </div>
-        <p class="micro card-meta"><span>02</span><span data-i18n="crm.kicker">Sistema interno · IA aplicada</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="crm.badge">Em uso</span></span></p>
-        <h4 class="card-title" id="h-crm" data-i18n="crm.title">CRM Operacional + Agente de IA</h4>
-        <p class="card-sum" data-i18n="crm.sum">Sistema interno que centraliza atendimentos, estados e prioridades, com um agente de IA no WhatsApp que faz a triagem inicial e encaminha a conversa, com contexto, para uma pessoa da equipe. Desenhei o produto e conduzi a implementação com apoio de IA.</p>
-        <ul class="tags"><li data-i18n="crm.t1">Observação da operação</li><li data-i18n="crm.t2">Estados do fluxo</li><li data-i18n="crm.t3">Handoff humano</li></ul>
-        <div class="card-ctas"><a class="cta-arrow" href="cases/sartec/"><span data-i18n="crm.cta">Ver case completo</span><span aria-hidden="true">→</span></a></div>
-      </article>
-
-      <article class="card reveal" aria-labelledby="h-uniedu">
-        <div class="card-media">
-          <video class="lazy-video" muted loop playsinline preload="none" data-src="video%20app%20uniedu%20-%20portifolio.mp4" aria-label="Prévia do aplicativo UNIEDU" data-i18n="uniedu.videoAlt" data-i18n-attr="aria-label"></video>
-        </div>
-        <p class="micro card-meta"><span>03</span><span data-i18n="uniedu.kicker">UX Research · Design System</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="uniedu.badge">Case completo</span></span></p>
-        <h4 class="card-title" id="h-uniedu" data-i18n="uniedu.title">Plataforma UNIEDU</h4>
-        <p class="credit"><span data-i18n="uniedu.credit">Em coautoria com</span> <a href="https://www.linkedin.com/in/najme-simon-al%C3%A9-b08b6221" target="_blank" rel="noopener noreferrer">Najme Simon Alé</a></p>
-        <p class="card-sum" data-i18n="uniedu.sum">Produto educacional gamificado para transformar constância de estudo em progresso real. Cada decisão de interface partiu de um achado da pesquisa.</p>
-        <!-- ck23: the research evidence in three steps (numbers from the external case: 8 interviews, 5 usability-test participants),
-             and one research → interface decision. The full process stays in the external case; the old tags repeated the kicker. -->
-        <ol class="proof" aria-label="Processo do projeto" data-i18n="uniedu.proofLabel" data-i18n-attr="aria-label">
-          <li><span class="proof-k" data-i18n="uniedu.p1k">Investigar</span><span data-i18n="uniedu.p1">Entrevistas em profundidade com 8 estudantes de cursos online</span></li>
-          <li><span class="proof-k" data-i18n="uniedu.p2k">Prototipar</span><span data-i18n="uniedu.p2">Dos esboços em papel ao protótipo navegável em alta fidelidade</span></li>
-          <li><span class="proof-k" data-i18n="uniedu.p3k">Validar</span><span data-i18n="uniedu.p3">Testes de usabilidade com 5 participantes, que apontaram atritos na comunidade e no resgate de pontos</span></li>
-        </ol>
-        <p class="card-decision" data-i18n-html="uniedu.dec"><b>Da pesquisa à interface:</b> a competição motivava alguns estudantes e pressionava outros, por isso o ranking é opcional.</p>
-        <div class="card-ctas">
-          <!-- the full case (root route); /recrutamento is the short recruiter version and is not linked -->
-          <a class="cta-arrow" href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta">Ver case completo</span> <span aria-hidden="true">↗</span></a>
-          <a class="btn-action btn-action--sm" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta2">Abrir protótipo</span> <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
     </div>
-
-    </section>
-
-    <section class="work-group" aria-labelledby="g-web">
-      <header class="group-head reveal">
-        <p class="micro group-key"><b>(B)</b></p>
-        <h3 class="group-title" id="g-web" data-i18n="work.gB">Sites e experiências web</h3>
-        <p class="group-desc" data-i18n="work.gBdesc">Arquitetura da informação, direção visual e implementação web para negócios reais.</p>
-      </header>
-      <!-- ck13: websites get a wide editorial row each (browser frame + what was decided), alternating sides.
-           Captures: the sites' real home pages (same captures as the L A Cabral cases). -->
-      <article class="site reveal" aria-labelledby="h-papelaria">
-        <a class="browser" href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer" data-i18n="papelaria.open" data-i18n-attr="aria-label" aria-label="Abrir o site da Sartec Papelaria em nova aba">
-          <span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser-url">sartecpapelaria.com.br</span></span>
-          <img src="assets/cases/sites/sartec-papelaria-inicio.jpg" width="1600" height="900" loading="lazy" decoding="async"
-            alt="Página inicial do site da Sartec Papelaria: chamada principal, botões para explorar produtos e enviar lista escolar, e a fachada ilustrada da loja." data-i18n="papelaria.alt" data-i18n-attr="alt" />
-        </a>
-        <div class="site-copy">
-          <p class="micro card-meta"><span>04</span><span data-i18n="papelaria.kicker">Site + ecossistema digital</span><span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="papelaria.badge">Publicado</span></span></p>
-          <h4 class="site-title" id="h-papelaria">Sartec Papelaria</h4>
-          <p class="site-sum" data-i18n="papelaria.sum">Site da papelaria da minha família, com mais de 30 anos em São José dos Campos. Organiza o que o visitante procura — produtos, lista escolar, empresas, cópias — e leva tudo para um único canal de WhatsApp, a porta de entrada da mesma operação atendida pelo CRM + Agente de IA.</p>
-          <dl class="site-dl">
-            <div><dt data-i18n="site.ia">Arquitetura da informação</dt><dd data-i18n="papelaria.ia">Navegação pelos motivos reais de visita, com a lista escolar em destaque</dd></div>
-            <div><dt data-i18n="site.visual">Direção visual</dt><dd data-i18n="papelaria.visual">Identidade da marca aplicada à web, com a fachada da loja como imagem de abertura</dd></div>
-            <div><dt data-i18n="site.build">Implementação</dt><dd data-i18n="papelaria.build">Site publicado e integrado ao WhatsApp</dd></div>
-          </dl>
-          <a class="btn-action" href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer"><span data-i18n="papelaria.cta">Visitar o site</span> <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-
-      <article class="site site--flip reveal" aria-labelledby="h-almeida">
-        <a class="browser" href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="almeida.open" data-i18n-attr="aria-label" aria-label="Abrir o ambiente de homologação do site do Grupo Almeida em nova aba">
-          <span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser-url">almeidaambiental.vercel.app</span></span>
-          <img src="assets/cases/sites/grupo-almeida-inicio.jpg" width="1600" height="1000" loading="lazy" decoding="async"
-            alt="Página inicial do site do Grupo Almeida: foto aérea da sede, o título Transformando resíduo em resultado e o seletor de idioma PT/EN." data-i18n="almeida.alt" data-i18n-attr="alt" />
-        </a>
-        <div class="site-copy">
-          <p class="micro card-meta"><span>05</span><span data-i18n="almeida.kicker">Site institucional · PT/EN</span><span class="state" data-i18n="almeida.badge">Em homologação</span></p>
-          <h4 class="site-title" id="h-almeida">Grupo Almeida</h4>
-          <p class="site-sum" data-i18n="almeida.sum">Site institucional de um grupo do setor ambiental que reúne Almeida Ambiental, Almeida Equipamentos e Saturno Ambiental. Apresenta o grupo sem fragmentar a navegação e sem apagar a identidade de cada empresa. Está em ambiente de homologação para validação do cliente.</p>
-          <dl class="site-dl">
-            <div><dt data-i18n="site.ia">Arquitetura da informação</dt><dd data-i18n="almeida.ia">Três empresas como partes de um mesmo grupo</dd></div>
-            <div><dt data-i18n="site.visual">Direção visual</dt><dd data-i18n="almeida.visual">Solidez e escala: fotografia da operação e tipografia institucional</dd></div>
-            <div><dt data-i18n="site.build">Implementação</dt><dd data-i18n="almeida.build">Site bilíngue, português e inglês</dd></div>
-          </dl>
-          <a class="btn-action" href="https://almeidaambiental.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="almeida.cta">Ver em homologação</span> <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-    </section>
+    <div class="room-act room-act--out" aria-hidden="true"></div>
+    <!-- the layers the acts drive: decorative, never in the way of a pointer (aria-hidden: the intertitle repeats the section's kicker) -->
+    <div class="atmo" aria-hidden="true"><div class="atmo-fill"></div></div>
+    <div class="curtain curtain--in" aria-hidden="true">
+      <div class="curtain-iris"></div>
+      <div class="curtain-black"></div>
+      <p class="curtain-title" data-i18n="work.act">5 projetos, 5 universos.</p>
+    </div>
+    <div class="curtain curtain--out" aria-hidden="true"></div>
   </div>
 </section>
 
