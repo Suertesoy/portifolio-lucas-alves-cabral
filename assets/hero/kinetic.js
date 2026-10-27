@@ -158,7 +158,7 @@ export function createKineticField(F = FIELD) {
 
 // ------------------------------------------------------------------------------------------------ B. choreography
 export const CHOREO = {
-  focus: 0.5,            // the portrait's anchor reaches this viewport height when the travel ends
+  focus: 0.62,           // the portrait's anchor reaches this viewport height when the travel ends (Ciclo 4B.1: 0.5 → 0.62, the arrival a little earlier)
   anchor: [0.47, 0.42],  // the face in the portrait box (ck20: the transparent 3 : 4 cut-out; ck15C had 0.53 for the old photo)
   lensR: 0.27,           // clover radius over the face, × portrait width
   lift: 0,               // × vh: optional rise with the exiting hero before the descent (ck15C, approved: none)
@@ -180,8 +180,9 @@ export const CHOREO = {
   //   C  retA → retB             the clover is back near the photo and takes the colour back into itself (the entrance, reversed)
   //   D  retB → the slot         it comes loose, swings a little in 3D and crosses to the free area beside "Do problema real…"
   //   E  (stage "work")          it rests there, kinetic like the hero, and fades before the cards
-  bloomEnd: 0.15,        // colour whole
-  fadeA: 0.1, fadeB: 0.22,   // the clover fades out over this stretch
+  bloomEnd: 0.1,         // colour whole (Ciclo 4B.1: 0.15 → 0.1)
+  fadeA: 0.06, fadeB: 0.12,   // the clover fades out over this stretch (Ciclo 4B.1: 0.1/0.22 → 0.06/0.12: with the photo whole on screen, it is
+                             // already in colour and the clover is gone — the hero's scene ends before the projects' act begins)
   retA: 0.41,            // the clover starts coming back and the colour starts leaving
   retB: 0.58,            // the colour is back in the clover (and the photo grey)
   retFade: 0.05,         // the clover's fade-in at retA
@@ -672,7 +673,9 @@ export function createExperiment(ctx) {
           } else { out.h = G.hArr * lerp(1, 0.8, st.e); out.fade = 1 - st.e; }
         }
       }
-      if (G.travel && d >= T.end) out.fade = 0;   // handed over to the work stage (or gone, if that has left too)
+      // handed over to the work stage (or gone, if that has left too). Ciclo 4B.1: its contact shadow goes with it — it used to stay at
+      // full strength (shadowK from the crossing) and left a clover-shaped shadow on the page once the work stage had faded
+      if (G.travel && d >= T.end) { out.fade = 0; out.shadowK = 0; }
     }
     st.fade = out.fade;
     return out;

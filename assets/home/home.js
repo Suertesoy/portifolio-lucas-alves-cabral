@@ -73,7 +73,8 @@
     const actIn = room.querySelector('.room-act--in'), actOut = room.querySelector('.room-act--out'), index = room.querySelector('.room-index');
     room.addEventListener('focusin', e => {
       const card = e.target.closest('.ficha');
-      if (!stacked.matches || !(card || index.contains(e.target))) return;
+      // keyboard focus only: a click on an index link focuses it too, and must be left to follow its anchor
+      if (!stacked.matches || !(card || index.contains(e.target)) || !e.target.matches(':focus-visible')) return;
       requestAnimationFrame(() => {   // after the browser's own scroll-into-view
         const ch = root0.clientHeight;
         if (!card) { if (actIn.getBoundingClientRect().bottom > ch * 0.3) index.scrollIntoView({ block: 'start' }); return; }

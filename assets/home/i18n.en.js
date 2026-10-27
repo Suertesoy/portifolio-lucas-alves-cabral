@@ -21,7 +21,7 @@
   'person.f3k': 'Languages', 'person.f3v': '<span>Portuguese — native</span> <span>English — fluent</span> <span>Spanish — intermediate</span>',
 
   'work.kicker': 'Selected work', 'work.count': '05 projects', 'work.title': 'From the real problem to a working interface.',
-  'work.act': 'Five projects. Five worlds.', 'work.index': 'Project index', 'work.state': 'Project status:',
+  'work.act': '5 projects, 5 worlds.', 'work.index': 'Project index', 'work.state': 'Project status:',
 
   'pesca.idx': 'Online store and operations', 'pesca.cat': 'Product Design · Design Engineering', 'pesca.badge': 'Live',
   'pesca.problem': 'Custom orders arrived over WhatsApp and were put together by hand. The challenge: a structured purchase, connected to operations.',

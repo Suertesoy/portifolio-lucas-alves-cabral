@@ -280,40 +280,45 @@ ol, ul { padding: 0; list-style: none; }
 .room-body { padding-bottom: clamp(56px, 7vw, 112px); background: var(--room); }
 .atmo, .curtain { display: none; }
 
-/* The act. Two empty stretches of scroll drive four fixed layers, entirely in CSS (scroll-driven animations: compositor only —
+/* The act. Two empty stretches of scroll drive fixed layers, entirely in CSS (scroll-driven animations: compositor only —
    transform and opacity — so nothing runs on the main thread while scrolling, and nothing at all while the page rests):
-     in:   a shadow rises from below over the light page (2.4 × the scroll's speed, soft leading edge) → black, with a short intertitle
-           → behind the black the atmosphere turns dark → the shadow lifts and the room is there;
+     in:   once the clover has left the work header, an iris closes over the light page from the four corners to the centre
+           (a still radial "hole" in a black field, scaled down: no gradient is ever recomputed) → black, "5 projetos, 5 universos."
+           → behind the black the atmosphere turns dark → the black lifts and the room is there;
+   The ranges are lengths of scroll from the moment the entry act's top enters the screen (cover 0) — one screen = 100svh.
      out:  the room fades to black → the atmosphere turns light → the black lifts on "Como eu penso".
    The atmosphere (.atmo, behind the content) only ever changes while the screen is black, so there is no edge to see anywhere.
    Every state is a function of the scroll position: it plays backwards just the same, and stops wherever the reader stops. */
 @supports (animation-timeline: view()) and (timeline-scope: --a) {
   @media (prefers-reduced-motion: no-preference) and (min-height: 650px) {   /* = the stacking: a landscape phone gets the plain section */
     .room { timeline-scope: --act-in, --act-out; }
-    .room-act--in { height: 120svh; background: none; view-timeline: --act-in block; }
+    .room-act--in { height: 140svh; background: none; view-timeline: --act-in block; }
     .room-act--out { height: 100svh; background: none; view-timeline: --act-out block; }
     .room-body { background: none; }
     .atmo, .curtain { display: block; position: fixed; left: 0; top: 0; width: 100%; height: 100lvh; pointer-events: none; }
-    .atmo { z-index: -1; animation: act-on linear both; animation-timeline: --act-in; animation-range: cover 44% cover 46%; }
+    .atmo { z-index: -1; animation: act-on linear both; animation-timeline: --act-in; animation-range: cover 122svh cover 126svh; }
     .atmo-fill { position: absolute; inset: 0; background: radial-gradient(80% 60% at 50% 0%, rgba(236, 236, 232, .05), rgba(236, 236, 232, 0) 70%), var(--room);
       animation: act-off linear both; animation-timeline: --act-out; animation-range: cover 44% cover 46%; }
     .curtain { z-index: 60; }   /* over the nav too: for a moment the light is out everywhere */
-    .curtain--in { animation: curtain-in linear both; animation-timeline: --act-in; }
-    .curtain-shade { position: absolute; left: 0; top: 0; width: 100%; height: 200%;
-      background: linear-gradient(180deg, rgba(5, 6, 6, 0) 0%, rgba(5, 6, 6, .55) 10%, rgba(5, 6, 6, .93) 24%, #050606 38%);
-      animation: shade-rise linear both; animation-timeline: --act-in; animation-range: cover 0% cover 38%; }
-    .curtain-title { position: absolute; left: var(--m); right: var(--m); top: 50%; transform: translateY(-50%); display: grid; justify-items: center; gap: 14px; text-align: center;
-      color: var(--on-deep); animation: title-in linear both; animation-timeline: --act-in; }
-    .curtain-title .micro { color: rgba(236, 236, 232, .6); }
-    .curtain-big { font: 600 clamp(28px, 4.4vw, 64px)/1.04 "Inter Tight", sans-serif; letter-spacing: -.035em; max-width: 16ch; }
+    .curtain--in { animation: act-off linear both; animation-timeline: --act-in; animation-range: cover 150svh cover 192svh; }   /* the black lifts */
+    /* the iris: a square 150vmax wide, transparent at its centre (10 % of its half side, feathered to black by 21 %), black to its edges.
+       At scale 9.5 the hole is wider than any screen's diagonal; at scale 1 it is a small light in the middle, and the black reaches past
+       every corner (half side 75vmax > half diagonal ≤ 71vmax). Between the two the corners go dark first, then the edges, then the centre. */
+    .curtain-iris { position: absolute; left: 50%; top: 50%; width: 150vmax; height: 150vmax; margin: -75vmax 0 0 -75vmax;
+      background: radial-gradient(circle closest-side, rgba(5, 6, 6, 0) 0 10%, rgba(5, 6, 6, .62) 15%, #050606 21%);
+      animation: iris-close linear both; animation-timeline: --act-in; animation-range: cover 52svh cover 110svh; }
+    .curtain-black { position: absolute; inset: 0; background: #050606;   /* closes the last point of light */
+      animation: act-on linear both; animation-timeline: --act-in; animation-range: cover 100svh cover 112svh; }
+    .curtain-title { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 var(--m); text-align: center;
+      font: 600 clamp(30px, 5vw, 72px)/1.04 "Inter Tight", sans-serif; letter-spacing: -.035em; color: var(--on-deep);
+      animation: title-in linear both; animation-timeline: --act-in; animation-range: cover 108svh cover 158svh; }
     .curtain--out { background: #050606; animation: curtain-out linear both; animation-timeline: --act-out; }
   }
 }
 @keyframes act-on { from { opacity: 0; } to { opacity: 1; } }
 @keyframes act-off { from { opacity: 1; } to { opacity: 0; } }
-@keyframes shade-rise { from { transform: translateY(50%); } to { transform: translateY(-50%); } }
-@keyframes curtain-in { 0%, 56% { opacity: 1; } 78%, 100% { opacity: 0; } }
-@keyframes title-in { 0%, 37% { opacity: 0; transform: translateY(-50%) translateY(14px); } 45%, 50% { opacity: 1; transform: translateY(-50%); } 60%, 100% { opacity: 0; transform: translateY(-50%) translateY(-10px); } }
+@keyframes iris-close { from { transform: scale(9.5); } to { transform: scale(1); } }
+@keyframes title-in { 0% { opacity: 0; transform: translateY(12px) scale(.985); } 28%, 66% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(-8px); } }
 @keyframes curtain-out { 0%, 12% { opacity: 0; } 34%, 54% { opacity: 1; } 78%, 100% { opacity: 0; } }
 
 /* the index: one row of five on wide screens, a list on small ones; each number in its project's accent */

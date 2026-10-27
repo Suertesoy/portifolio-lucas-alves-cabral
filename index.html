@@ -159,8 +159,9 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
   </div>
 
   <!-- Ciclo 4B.1 — "sala escura, telas acesas", as a change of act. Two empty stretches of scroll (.room-act) drive, in CSS only
-       (scroll-driven animations), two fixed layers: a shadow rises over the light page and puts the light out; while the screen is
-       black the atmosphere behind the content turns dark (.atmo); the shadow lifts and the room is there. On the way out the same
+       (scroll-driven animations), fixed layers: once the clover has left the work header, the scene closes like an iris, from the four
+       corners to the centre, down to black; "5 projetos, 5 universos." on the black, while the atmosphere behind the content turns
+       dark (.atmo); the black lifts and the room is there. On the way out the same
        blackout brings the light back before "Como eu penso". The act starts below the work header, where the clover rests.
        Each card wears its own project's identity (.ficha--*). Stacking is native CSS sticky (no per-frame script); home.js only
        keeps keyboard focus visible, fits a card taller than the screen and pauses a covered video. Reduced motion, browsers without
@@ -337,8 +338,9 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
     <!-- the layers the acts drive: decorative, never in the way of a pointer (aria-hidden: the intertitle repeats the section's kicker) -->
     <div class="atmo" aria-hidden="true"><div class="atmo-fill"></div></div>
     <div class="curtain curtain--in" aria-hidden="true">
-      <div class="curtain-shade"></div>
-      <p class="curtain-title"><span class="micro" data-i18n="work.kicker">Trabalho selecionado</span><span class="curtain-big" data-i18n="work.act">Cinco projetos. Cinco universos.</span></p>
+      <div class="curtain-iris"></div>
+      <div class="curtain-black"></div>
+      <p class="curtain-title" data-i18n="work.act">5 projetos, 5 universos.</p>
     </div>
     <div class="curtain curtain--out" aria-hidden="true"></div>
   </div>
