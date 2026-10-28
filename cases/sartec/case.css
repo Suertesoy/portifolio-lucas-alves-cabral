@@ -1,22 +1,79 @@
 /* =========================================================
    CASE — SARTEC · CRM operacional + Agente de IA no WhatsApp (checkpoint 14)
    Base: ../pesca/case.css (portfolio case system) + ../case-shell.css (shared nav, type, frames).
-   Skin: the Sartec identity as project content — navy for the dark chapters, blue as accent on paper,
-   red only where a decision changes hands (handoff, the active attendant, a state that demands action).
+   Skin (Ciclo 4E): the CRM's own interface, not the shop's commercial brand. Tokens from the production panel
+   (SARTEC - CRM_AGENTE/PAINEL, AGENTE/painel/index.html :root): brand-navy #1A2A5E for the header bar → nav, hero and dark
+   chapters; bg-main #F0F2F7 with white cards; text #1A1A2E / #5A6380; navy-mid #243880 as accent on paper; brand-red
+   #CC2222 only where a decision changes hands; the status palette (novo #3B82F6, confirmado emerald) for marks only.
+   Type: Inter instead of the portfolio's Inter Tight (the panel runs on system-ui), labels in the panel's uppercase
+   tracked style, 8–12px radii like its cards and controls.
+   Contrast (WCAG 2.x formula): #5A6380 on #E4E8F1 4.85:1 · #243880 on #F0F2F7 9.60:1 · #93C5FD on #243880 5.96:1 ·
+   #FCA5A5 on #1A2A5E 7.20:1 · #CC2222 on #FFFFFF 5.50:1 · #3B82F6 on #F0F2F7 3.28:1 (non-text only).
    ========================================================= */
 :root {
-  --green: #2B3990;          /* accent on paper → Sartec blue */
-  --green-deep: #151C4D;     /* buttons, active toggles, system lane → navy */
-  --carbon: #10163D;         /* dark chapters */
-  --carbon-2: #18204F;
-  --sage: #A9B6F2;           /* accent on dark → light blue */
-  --sage-soft: #E4E8F6;
-  --red: #D7262E;            /* the Sartec red: handoff / decision only */
-  --red-soft: #FBE3E2;
-  --ok: #1F7A4A; --warn: #B7791F; --off: #7A8094;
+  --paper: #F0F2F7;          /* bg-main */
+  --paper-2: #E4E8F1;        /* tinted chapters */
+  --paper-3: #D9DEEA;
+  --ink: #1A1A2E;            /* text-primary */
+  --ink-soft: #3D4463;
+  --muted: #5A6380;          /* text-secondary */
+  --line: rgba(26, 42, 94, .12);
+  --line-strong: rgba(26, 42, 94, .24);
+  --green: #243880;          /* accent on paper → navy-mid */
+  --green-deep: #1A2A5E;     /* buttons, active toggles, the attendant → brand-navy */
+  --carbon: #1A2A5E;         /* dark chapters = the panel's header bar */
+  --carbon-2: #243880;
+  --sage: #93C5FD;           /* accent on dark → light tint of the "novo" blue */
+  --sage-soft: #DBEAFE;
+  --on-dark: #FFFFFF;
+  --on-dark-soft: rgba(255, 255, 255, .78);
+  --on-dark-faint: rgba(255, 255, 255, .64);
+  --line-dark: rgba(255, 255, 255, .14);
+  --blue: #3B82F6;           /* interface blue (status "novo"): borders and marks, never text */
+  --red: #CC2222;            /* brand-red: handoff / decision only */
+  --red-soft: #FDECEC;
+  --ok: #047857; --warn: #B7791F; --off: #6B7280;
+  --font-display: "Inter", system-ui, sans-serif;
+  --nav-bg: rgba(26, 42, 94, .97);
+  --lb-backdrop: rgba(12, 19, 39, .97);
+  --dev-frame: linear-gradient(150deg, #3A4566 0%, #161D33 34%, #0B1020 100%);
 }
-.cnav .brand svg { fill: #3E5A4A; }   /* the portfolio's mark keeps the portfolio's colour */
-.hero h1 { font-size: clamp(50px, 13.6vw, 184px); }
+h1, h2, h3 { letter-spacing: -.035em; }
+.hero h1 { font-size: clamp(50px, 13.6vw, 184px); letter-spacing: -.05em; }
+.eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: .13em; }   /* the panel's labels */
+
+/* ---------- the panel's navy header: nav + hero re-point the reading tokens to dark ---------- */
+.cnav, .hero {
+  --ink: #FFFFFF;
+  --ink-soft: rgba(255, 255, 255, .82);
+  --muted: rgba(255, 255, 255, .66);
+  --line: var(--line-dark);
+  --line-strong: rgba(255, 255, 255, .24);
+  --paper-2: rgba(255, 255, 255, .1);
+  --green: var(--sage);
+  --red: #FCA5A5;
+  --mark: #8FB09A;           /* the portfolio's clover, in the portfolio's on-dark green */
+  color: var(--ink);
+}
+.cnav :focus-visible, .hero :focus-visible { outline-color: var(--sage); }
+.lang-btn[aria-current="true"] { background: var(--paper); color: var(--green-deep); }
+/* the same 24px working grid as the CRM card on the Home */
+.hero { background: linear-gradient(rgba(160, 176, 224, .06) 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(90deg, rgba(160, 176, 224, .06) 1px, transparent 1px) 0 0 / 24px 24px, var(--carbon); }
+/* white cards on the header, as in the panel: they keep the light reading tokens */
+.hero :is(.brief, .eco-node, .client) {
+  --ink: #1A1A2E; --ink-soft: #3D4463; --muted: #5A6380; --line: rgba(26, 42, 94, .12); --line-strong: rgba(26, 42, 94, .24); --green: #243880; --red: #CC2222;
+  color: var(--ink);
+}
+.hero .brief { background: #FFFFFF; }
+.hero .brief :focus-visible { outline-color: var(--green-deep); }
+
+/* ---------- the panel's geometry: cards 10–12px, controls 8px ---------- */
+.brief, .inbox, .anat-stage, .acard, .er, .audit, .diagram, .du-pick, .rl-branch, .persp { border-radius: 12px; }
+.eco-node, .wstate, .msg, .can-col li, .hist li { border-radius: 10px; }
+.btn { border-radius: 8px; }
+.btn-primary:hover { background: var(--carbon-2); }
+.eco-node.agent { border-color: var(--blue); }
+.cnav-mid { font-family: var(--font-body); font-weight: 600; letter-spacing: .13em; }
 
 /* client identification */
 .client { display: inline-flex; align-items: center; gap: 14px; margin-top: 18px; padding: 8px 16px 8px 8px; border: 1px solid var(--line-strong); border-radius: 999px; background: #fff; }
@@ -34,6 +91,7 @@
 .eco-node.human { background: var(--green-deep); border-color: var(--green-deep); color: #fff; }
 .eco-node.human .k { color: var(--sage); }
 .eco-node.human p { color: rgba(255, 255, 255, .74); }
+.hero .eco-node.human { background: var(--carbon-2); border-color: rgba(255, 255, 255, .24); }   /* navy-mid on the navy header */
 .eco-arrow { display: grid; place-items: center; color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; gap: 2px; padding: 2px 0; }
 .eco-arrow.handoff { color: var(--red); }
 .eco-arrow svg { width: 18px; height: 18px; transform: rotate(90deg); }
@@ -206,7 +264,7 @@
 .rl-branch { display: grid; gap: 6px; padding: 10px 12px; border-radius: 12px; background: var(--paper); border: 1px solid var(--line); }
 .rl-bt { display: flex; align-items: center; gap: 8px; }
 .rl-bt b { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--ink); }
-.rl-gate .rl-n, .rl-gate h5 { color: var(--red); }
+.rl-gate .rl-n, .rl-gate h5 { color: #A31B1B; }   /* brand-red-dark: #CC2222 is 4.48:1 on the tinted chapter */
 .rl-steps .rl-watch { display: flex; gap: 8px; align-items: flex-start; padding: 8px 10px; border-radius: 10px; border: 1px dashed var(--line-strong); font-size: 13px; }
 .rl-watch svg { flex: none; width: 18px; height: 18px; color: var(--muted); margin-top: 1px; }
 .rl-watch a { color: var(--green); text-underline-offset: 3px; }

@@ -255,24 +255,42 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
           <article class="ficha ficha--uniedu" style="--i:2" aria-labelledby="h-uniedu">
             <div class="ficha-card">
               <div class="ficha-copy">
-                <p class="micro ficha-meta"><span class="ficha-n">03</span><span data-i18n="uniedu.kicker">UX Research · Design System</span></p>
+                <p class="micro ficha-meta"><span class="ficha-n">03</span><span data-i18n="uniedu.kicker">UX Research · UI Design · Design System</span></p>
                 <h3 class="ficha-title" id="h-uniedu">UNIEDU</h3>
-                <p class="credit"><span data-i18n="uniedu.credit">Em coautoria com</span> <a href="https://www.linkedin.com/in/najme-simon-al%C3%A9-b08b6221" target="_blank" rel="noopener noreferrer">Najme Simon Alé</a></p>
                 <p class="ficha-problem" data-i18n="uniedu.problem">Estudantes de cursos online perdem a constância. O desafio: um produto gamificado que transforme estudo frequente em progresso real.</p>
+                <!-- Ciclo 4C.1 audit: 9 interview synthesis boards (the screener's 8 responses are a different activity, never added up), 5 test
+                     participants, redeeming points (task 6) the biggest friction -->
                 <ul class="ficha-points">
-                  <li data-i18n="uniedu.b1">Entrevistas em profundidade com 8 estudantes de cursos online</li>
-                  <li data-i18n="uniedu.b2">Testes de usabilidade com 5 participantes, que apontaram atritos na comunidade e no resgate de pontos</li>
-                  <li data-i18n="uniedu.b3">Da pesquisa à interface: o ranking é opcional, porque a competição motivava uns e pressionava outros</li>
+                  <li data-i18n="uniedu.b1">9 entrevistas: a competição motivava uns e afastava outros, e o ranking virou opcional</li>
+                  <li data-i18n="uniedu.b2">Teste de usabilidade com 5 participantes: o resgate de pontos foi a maior fricção</li>
+                  <li data-i18n="uniedu.b3">Design System com temas claro e escuro, do Figma ao protótipo navegável em React</li>
                 </ul>
                 <div class="ficha-foot">
                   <p class="ficha-state"><span class="dot" aria-hidden="true"></span><span class="sr" data-i18n="work.state">Estado do projeto:</span> <span data-i18n="uniedu.state">Protótipo testado</span></p>
-                  <!-- the full case (root route) until the internal case exists (Ciclo 4C); /recrutamento is the short recruiter version and is not linked -->
-                  <a class="btn-ficha" href="https://case-app-uniedu.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta">Ver case completo</span><span aria-hidden="true">↗</span></a>
-                  <a class="btn-ficha btn-ficha--line" href="https://projeto-uniedu.vercel.app" target="_blank" rel="noopener noreferrer"><span data-i18n="uniedu.cta2">Abrir protótipo</span><span aria-hidden="true">↗</span></a>
+                  <a class="btn-ficha" href="cases/uniedu/"><span data-i18n="uniedu.cta">Ver case completo</span><span aria-hidden="true">→</span></a>
                 </div>
               </div>
-              <div class="ficha-media ficha-media--video">
-                <video class="lazy-video" muted loop playsinline preload="none" data-src="video%20app%20uniedu%20-%20portifolio.mp4" aria-label="Prévia do aplicativo UNIEDU" data-i18n="uniedu.videoAlt" data-i18n-attr="aria-label"></video>
+              <!-- the app as built: real captures of the published prototype (600 × 1298, a phone screen's 390 : 844) in the same CSS phones
+                   as Pesca's, nothing cropped. The Home leads; Lessons (dark theme) and the optional Ranking stand beside it -->
+              <div class="ficha-media ficha-media--phones">
+                <div class="devices devices--trio">
+                  <figure class="device device--lead">
+                    <div class="device-screen"><img src="assets/cases/uniedu/atual/home-light.webp" width="600" height="1298" loading="lazy" decoding="async"
+                      alt="Home do protótipo UNIEDU no tema claro: a aula em andamento com o botão Continuar e a jornada de aprendizado do dia, com 1 de 4 etapas concluída." data-i18n="uniedu.shotHomeAlt" data-i18n-attr="alt" /></div>
+                    <figcaption class="micro" data-i18n="uniedu.shotHome">Home e jornada</figcaption>
+                  </figure>
+                  <figure class="device device--side">
+                    <div class="device-screen"><img src="assets/cases/uniedu/atual/aulas-dark.webp" width="600" height="1298" loading="lazy" decoding="async"
+                      alt="Tela de Aulas no tema escuro: o módulo UX Strategy com 19 aulas, 3 concluídas e barra de progresso; cada aula terminada tem um check." data-i18n="uniedu.shotAulasAlt" data-i18n-attr="alt" /></div>
+                    <figcaption class="micro" data-i18n="uniedu.shotAulas">Aulas e progresso</figcaption>
+                  </figure>
+                  <figure class="device device--side">
+                    <div class="device-screen"><img src="assets/cases/uniedu/decisao/ranking-on-light.webp" width="600" height="1298" loading="lazy" decoding="async"
+                      alt="Tela Ranking com o controle de exibição ligado no topo: sua posição, 10º, e o pódio dos três primeiros. Nomes fictícios do protótipo." data-i18n="uniedu.shotRankAlt" data-i18n-attr="alt" /></div>
+                    <figcaption class="micro" data-i18n="uniedu.shotRank">Ranking opcional</figcaption>
+                  </figure>
+                </div>
+                <p class="micro ficha-note" data-i18n="uniedu.note">Capturas reais do protótipo · out. 2026</p>
               </div>
             </div>
           </article>

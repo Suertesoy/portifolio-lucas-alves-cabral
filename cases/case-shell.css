@@ -4,6 +4,7 @@
    the portfolio type (Inter Tight, as on the Home), the portfolio nav (brand · ← Trabalho · PT/EN),
    the device frame (real captures at their own aspect ratio, as on the Home), the Before/After
    switcher and the "other work" navigation. Colours, images and narrative stay with each case.
+   Hooks a case skin may set (Ciclo 4E): --mark (the portfolio's clover, kept in the portfolio's green), --dev-frame.
    ========================================================= */
 :root { --font-display: "Inter Tight", system-ui, sans-serif; }
 h1, h2, h3 { letter-spacing: -.03em; }
@@ -12,7 +13,7 @@ h1, h2, h3 { letter-spacing: -.03em; }
 /* ---------- nav: the portfolio's, not the client's ---------- */
 .cnav-in { gap: 10px; }
 .cnav .brand { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; text-decoration: none; font: 600 15px/1 var(--font-display); letter-spacing: -.01em; color: var(--ink); }
-.cnav .brand svg { width: 18px; height: 18px; fill: var(--green); transition: transform .6s var(--ease); flex-shrink: 0; }
+.cnav .brand svg { width: 18px; height: 18px; fill: var(--mark, #3E5A4A); transition: transform .6s var(--ease); flex-shrink: 0; }
 .cnav .brand:hover svg { transform: rotate(90deg); }
 .cnav .brand span { display: none; }
 .cnav-end { display: flex; align-items: center; gap: 6px; margin-left: auto; }
@@ -25,7 +26,7 @@ h1, h2, h3 { letter-spacing: -.03em; }
 .dev-screen {
   box-sizing: content-box; width: var(--dev-w, 240px); aspect-ratio: var(--ar, 390 / 844);
   padding: calc(var(--dev-w, 240px) * .036); border-radius: calc(var(--dev-w, 240px) * .17);
-  background: linear-gradient(150deg, #3A433D 0%, #141816 34%, #090B0A 100%);
+  background: var(--dev-frame, linear-gradient(150deg, #3A433D 0%, #141816 34%, #090B0A 100%));
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07), 0 0 0 1px rgba(20, 26, 21, .12), 0 40px 64px -34px rgba(16, 20, 18, .6);
 }
 .dev-screen img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--dev-w, 240px) * .135); background: #161513; }
@@ -90,4 +91,10 @@ h1, h2, h3 { letter-spacing: -.03em; }
 .mw-list .next a { background: var(--sage-soft); padding-inline: 14px; border-bottom-color: transparent; margin-bottom: 1px; }
 .mw-list .next .mw-go { color: var(--green); }
 .mw-list .here { opacity: .55; }
+/* ≤ 400px (Ciclo 4E): the longer EN/ES labels overflowed at 320px — the link label drops under the title, the tabs tighten */
+@media (max-width: 400px) {
+  .mw-list a { grid-template-columns: 2.4em minmax(0, 1fr); }
+  .mw-go { grid-row: auto; grid-column: 2; }
+  .cmp-tab { padding: 0 12px; gap: 6px; }
+}
 @media (prefers-reduced-motion: reduce) { .js .cmp-panel:not([hidden]) { animation: none; } }

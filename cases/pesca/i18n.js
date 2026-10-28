@@ -174,10 +174,10 @@
   "o.quote": "Design doesn't end at the interface. It ends when <em>operations</em> can deliver what the interface promises.",
   "o.after": "The product entered a phase of operation and observation, and its evolution is now guided by real use, not assumption.",
   "o.cta1": "Next case study: Sartec", "o.cta2": "Back to selected work", "o.cta3": "Back to top",
-  "mw.h": "Other work", "mw.all": "See all selected work", "mw.next": "Next case study →", "mw.prev": "← Previous case study", "mw.ext": "External case study ↗", "mw.site": "Website ↗", "mw.staging": "In staging ↗",
+  "mw.h": "Other work", "mw.all": "See all selected work", "mw.next": "Next case study →", "mw.prev": "← Previous case study", "mw.case": "Case study →", "mw.site": "Website ↗", "mw.staging": "In staging ↗",
   "mw.uniedu": "UNIEDU Platform",
   "mw.crm": "Operational CRM + AI Agent", "mw.crmD": "Sartec · internal system, WhatsApp and applied AI",
-  "mw.unieduD": "UX Research · Design System · co-created with Najme Simon Alé · PT/EN",
+  "mw.unieduD": "UX Research · usability testing · Design System",
   "mw.papD": "Website + digital ecosystem", "mw.almD": "Institutional website · PT/EN",
   "foot": "Pesca Delivery case study · version 1",
 
