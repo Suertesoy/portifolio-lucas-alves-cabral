@@ -29,12 +29,14 @@
   --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
   --u-glow: radial-gradient(60% 50% at 70% 30%, rgba(163, 21, 69, .45), transparent 70%);
+  --nav-bg: rgba(249, 250, 251, .9);
+  --lb-backdrop: rgba(18, 14, 16, .97);    /* Ciclo 4E: the DS neutrals instead of the base's green-black */
+  --shot-bg: #1E1A1D;
+  --dev-frame: linear-gradient(150deg, #3A3338 0%, #1E1A1D 34%, #120E10 100%);
 }
 body { background: var(--paper); }
 .lb-nav[hidden] { display: none; }   /* single-image groups: the base .lb-nav display:flex would override [hidden] */
-.cnav { background: rgba(249, 250, 251, .9); }
 .cnav .brand { font-family: "Inter Tight", system-ui, sans-serif; }
-.cnav .brand svg { fill: #3E5A4A; }   /* the portfolio's mark keeps the portfolio's colour */
 h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -.015em; }
 h2.statement { letter-spacing: -.025em; }
 .on-dark .tag { color: var(--on-dark-soft); }
@@ -76,7 +78,7 @@ h2.statement { letter-spacing: -.025em; }
 .u-hero-vis .dev-b { margin-left: calc(var(--dev-w) * -.18); margin-top: calc(var(--dev-w) * .22); transform: rotate(3deg); }
 .u-hero-vis .dev-screen { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08), 0 40px 70px -30px rgba(0, 0, 0, .8), 0 0 80px -20px rgba(244, 143, 177, .25); }
 .u-hero-vis figcaption { flex-basis: 100%; margin-top: 20px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--on-dark-faint); text-align: center; }
-.hero .brief { background: var(--sage-soft); color: var(--ink); }
+.hero .brief { background: #FFFFFF; color: var(--ink); }   /* a light-mode card (surfaces #ffffff), not another pink block */
 .hero .brief .brief-h { color: var(--green); }
 .hero .brief :focus-visible { outline-color: var(--green); }
 
@@ -296,7 +298,7 @@ h2.statement { letter-spacing: -.025em; }
 .stc ul { list-style: none; display: grid; gap: 6px; }
 .stc li { font-size: 14.5px; line-height: 1.45; color: var(--ink-soft); }
 .u-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(40px, 6vw, 64px); }
-.u-ctas .btn { min-height: 52px; padding: 0 24px; font-weight: 600; }
+.u-ctas .btn { min-height: 52px; padding: 0 24px; font-weight: 600; border-radius: 12px; letter-spacing: .01em; }   /* the app's button shape (see .ct-btn) */
 .u-ctas .btn-primary { background: var(--green); }
 .u-ctas .btn-primary:hover { background: var(--green-deep); }
 .btn-line { border: 1.5px solid var(--green); color: var(--green); background: #fff; }

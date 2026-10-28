@@ -1,0 +1,88 @@
+/* =========================================================
+   CASE — PESCA DELIVERY · skin (Ciclo 4E)
+   Loaded by this page only, after ../case-shell.css. case.css is the shared case system, so the Pesca identity lives here,
+   tokens first, taken from the product's own code (pesca-delivery, feature/scaffold-golden-001):
+   - Loja, app/globals.css ("dark premium"): #161513 bg, #1F1E1C surface, #262523 elevated, #F4EFE6 text, #AAA59C muted,
+     #E4B724 gold (accent, active state, focus; never a large fill), #17130A text on gold, a serif for brand moments only.
+   - Painel, app/painel/painel-theme.css: #FAF8F3 canvas, warm neutrals (#F1ECE0, #6A6250, #3F3A2E, #17130A),
+     gold-700 #6E5000 for text on cream, a 2px ink focus ring; emerald / amber keep their operational meaning.
+   Dark = the Loja (nav, hero, dark chapters). Light = the Painel (the reading sections).
+   Contrast (WCAG 2.x formula): #6E5000 on #F1ECE0 6.34:1 · #6A6250 on #F1ECE0 5.13:1 · #E4B724 on #161513 9.64:1 ·
+   #AAA59C on #1F1E1C 6.80:1 · #17130A on #E4B724 9.79:1 · #047857 on #FFFFFF 5.48:1.
+   ========================================================= */
+:root {
+  --paper: #FAF8F3;            /* Painel canvas */
+  --paper-2: #F1ECE0;          /* Painel slate-100 */
+  --paper-3: #E7E0CF;
+  --ink: #17130A;
+  --ink-soft: #3F3A2E;
+  --muted: #6A6250;
+  --line: rgba(23, 19, 10, .13);
+  --line-strong: rgba(23, 19, 10, .26);
+  --green: #6E5000;            /* accent on paper → gold-700 */
+  --green-deep: #161513;       /* filled pills, toggles, the system lane → the Loja's ground */
+  --carbon: #161513;
+  --carbon-2: #1F1E1C;
+  --sage: #E4B724;             /* accent on dark → the brand gold */
+  --sage-soft: #FBF4D9;        /* gold-50 */
+  --on-dark: #F4EFE6;
+  --on-dark-soft: rgba(244, 239, 230, .76);
+  --on-dark-faint: #AAA59C;
+  --line-dark: rgba(255, 255, 255, .1);
+  --amber: #E4B724;
+  --on-gold: #17130A;
+  --ok: #047857;               /* done / paid: emerald, as in the Painel */
+  --ok-soft: #ECFDF5;
+  --ok-line: #6EE7B7;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;   /* the Loja's own stack */
+  --nav-bg: rgba(22, 21, 19, .92);
+  --lb-backdrop: rgba(14, 13, 11, .97);
+  --shot-bg: #0F0E0C;
+  --dev-frame: linear-gradient(150deg, #3A3732 0%, #1A1917 34%, #0C0B0A 100%);
+}
+:focus-visible { outline-color: var(--ink); }
+
+/* ---------- the Loja: nav + hero re-point the reading tokens to dark ---------- */
+.cnav, .hero {
+  --ink: var(--on-dark);
+  --ink-soft: var(--on-dark-soft);
+  --muted: var(--on-dark-faint);
+  --line: var(--line-dark);
+  --line-strong: rgba(255, 255, 255, .18);
+  --paper: var(--carbon);
+  --paper-2: #262523;
+  --green: var(--sage);
+  --mark: #8FB09A;             /* the portfolio's clover, in the portfolio's on-dark green */
+  color: var(--ink);
+}
+.cnav :focus-visible, .hero :focus-visible { outline-color: var(--sage); }
+.lang-btn[aria-current="true"] { background: var(--amber); color: var(--on-gold); }
+.hero { background: var(--carbon); }
+.hero h1 { font-family: var(--serif); font-weight: 400; letter-spacing: -.035em; line-height: .9; }
+/* the summary is the Painel inside the Loja: a light card, readable at length */
+.hero .brief {
+  --ink: #17130A; --ink-soft: #3F3A2E; --muted: #6A6250; --line: rgba(23, 19, 10, .13); --line-strong: rgba(23, 19, 10, .26); --green: #6E5000;
+  background: #FAF8F3; color: var(--ink);
+}
+.hero .brief :focus-visible { outline-color: var(--ink); }
+
+/* ---------- display accents on paper: gold-700 is a text colour for small type in the Painel; at display size it reads
+   olive, so the big words stay ink and carry the brand gold as a rule underneath (on dark they are gold, as in the Loja) ---------- */
+h2.statement em, .trio-item.result h3, .reflect blockquote em {
+  color: var(--ink); text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: .08em;
+  text-underline-offset: .1em; text-decoration-skip-ink: none;
+}
+.on-dark h2.statement em { color: var(--sage); text-decoration: none; }
+
+/* ---------- brand moments in the Loja's serif ---------- */
+.uni .big, .reflect blockquote { font-family: var(--serif); font-weight: 400; letter-spacing: -.03em; }
+
+/* ---------- actions: gold fill, ink text (the Loja's and the Painel's primary button) ---------- */
+.btn-primary { background: var(--amber); color: var(--on-gold); font-weight: 600; }
+.btn-primary:hover { background: #D4A717; }
+.ba-label.after b, .dot.lock { background: var(--amber); border-color: var(--amber); color: var(--on-gold); }
+
+/* ---------- operational semantics stay emerald / amber, never the brand gold ---------- */
+.chip.ok { color: var(--ok); border-color: var(--ok); }
+.state.done, .osm-row li.end, .osm-pay .paid { background: var(--ok-soft); border-color: var(--ok-line); }
+.state.done .s i { background: var(--ok); }
