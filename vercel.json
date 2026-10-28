@@ -62,6 +62,30 @@
       ],
       "destination": "/:l/cases/sartec/",
       "permanent": true
+    },
+    {
+      "source": "/cases/uniedu",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "(?<l>en|es)"
+        }
+      ],
+      "destination": "/:l/cases/uniedu/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/uniedu/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "(?<l>en|es)"
+        }
+      ],
+      "destination": "/:l/cases/uniedu/",
+      "permanent": true
     }
   ]
 }

@@ -48,6 +48,9 @@ const PAGES = [
   { id: 'sartec', src: 'cases/sartec/index.html', url: '/cases/sartec/', ogType: 'article', dicts: ['cases/sartec/i18n.js', 'cases/sartec/i18n.es.js'],
     pt: { title: 'Sartec — CRM operacional e Agente de IA · Lucas Cabral',
           desc: 'Case de Product Design: um CRM integrado ao WhatsApp, com um agente de IA que organiza a entrada e encaminha o atendimento a uma pessoa da equipe, numa papelaria real.' } },
+  { id: 'uniedu', src: 'cases/uniedu/index.html', url: '/cases/uniedu/', ogType: 'article', dicts: ['cases/uniedu/i18n.js', 'cases/uniedu/i18n.es.js'],
+    pt: { title: 'UNIEDU — Pesquisa, usabilidade e Design System · Lucas Cabral',
+          desc: 'Case de UX Research e Product Design: entrevistas, testes de usabilidade e um Design System no Figma conectado ao protótipo em código de um app de estudos gamificado.' } },
 ];
 
 const HEAD_START = '<!-- i18n:head:start -->';
