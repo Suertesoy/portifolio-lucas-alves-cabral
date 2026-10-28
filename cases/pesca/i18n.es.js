@@ -173,10 +173,10 @@
   "o.quote": "El diseño no termina en la interfaz. Termina cuando la <em>operación</em> puede cumplir lo que la interfaz promete.",
   "o.after": "El producto entró en una fase de operación y observación, y su evolución la guía ahora el uso real, no las suposiciones.",
   "o.cta1": "Siguiente caso: Sartec", "o.cta2": "Volver a los proyectos", "o.cta3": "Volver arriba",
-  "mw.h": "Otros trabajos", "mw.all": "Ver todos los proyectos", "mw.next": "Siguiente caso →", "mw.prev": "← Caso anterior", "mw.ext": "Caso externo ↗", "mw.site": "Sitio web ↗", "mw.staging": "En validación ↗",
+  "mw.h": "Otros trabajos", "mw.all": "Ver todos los proyectos", "mw.next": "Siguiente caso →", "mw.prev": "← Caso anterior", "mw.case": "Caso →", "mw.site": "Sitio web ↗", "mw.staging": "En validación ↗",
   "mw.uniedu": "Plataforma UNIEDU",
   "mw.crm": "CRM operativo + agente de IA", "mw.crmD": "Sartec · sistema interno, WhatsApp e IA aplicada",
-  "mw.unieduD": "UX Research · Design System · en coautoría con Najme Simon Alé · PT/EN",
+  "mw.unieduD": "UX Research · pruebas de usabilidad · Design System",
   "mw.papD": "Sitio web + ecosistema digital", "mw.almD": "Sitio institucional · PT/EN",
   "foot": "Caso Pesca Delivery · versión 1",
 

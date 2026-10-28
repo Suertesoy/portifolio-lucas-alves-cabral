@@ -256,8 +256,8 @@
   "pt.s4b": "Uso con teclado y lectores de pantalla en dispositivos reales",
   "pt.s4c": "Si la app ayuda a mantener la constancia: hoy es una hipótesis, sin medición",
   "pt.cta1": "Explorar el prototipo", "k.newTab": "(se abre en una pestaña nueva)",
-  "pt.cta2": "Ver el caso completo", "pt.cta3": "Explorar el Design System en Figma",
-  "pt.ctaNote": "El caso completo, externo, profundiza en el proceso y está en portugués e inglés. El prototipo y el archivo de Figma están en portugués.",
+  "pt.cta2": "Ver el caso completo original", "pt.cta3": "Explorar el Design System en Figma",
+  "pt.ctaNote": "El caso original, externo, profundiza en el proceso y está en portugués e inglés. El prototipo y el archivo de Figma están en portugués.",
 
   "mw.h": "Otros proyectos", "mw.all": "Ver todos los proyectos seleccionados",
   "mw.case": "Caso →", "mw.pescaD": "Caso principal · tienda, reglas y panel de operación",

@@ -257,8 +257,8 @@
   "pt.s4b": "Use with a keyboard and screen readers on real devices",
   "pt.s4c": "Whether the app helps people stay consistent: today it is a hypothesis, not measured",
   "pt.cta1": "Explore the prototype", "k.newTab": "(opens in a new tab)",
-  "pt.cta2": "See the full case study", "pt.cta3": "Explore the Design System in Figma",
-  "pt.ctaNote": "The full external case study goes deeper into the process and is available in Portuguese and English. The prototype and the Figma file are in Portuguese.",
+  "pt.cta2": "See the original full case study", "pt.cta3": "Explore the Design System in Figma",
+  "pt.ctaNote": "The original external case study goes deeper into the process and is available in Portuguese and English. The prototype and the Figma file are in Portuguese.",
 
   "mw.h": "More work", "mw.all": "See all selected work",
   "mw.case": "Case study →", "mw.pescaD": "Main case study · store, rules and operations panel",

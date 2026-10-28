@@ -133,10 +133,10 @@
   "st.after": "Internal tools need strong UX too: it is where the team spends the day.",
   "st.cta1": "Back to selected work", "st.cta2": "Previous case study: Pesca Delivery", "st.cta3": "Back to top",
 
-  "mw.h": "Other work", "mw.all": "See all selected work", "mw.next": "Next case study →", "mw.prev": "← Previous case study", "mw.ext": "External case study ↗", "mw.site": "Website ↗", "mw.staging": "In staging ↗",
+  "mw.h": "Other work", "mw.all": "See all selected work", "mw.next": "Next case study →", "mw.prev": "← Previous case study", "mw.site": "Website ↗", "mw.staging": "In staging ↗",
   "mw.uniedu": "UNIEDU Platform",
   "mw.pescaD": "Featured case · storefront, rules and operations panel",
-  "mw.unieduD": "UX Research · Design System · co-created with Najme Simon Alé · PT/EN",
+  "mw.unieduD": "UX Research · usability testing · Design System",
   "mw.papD": "Website + digital ecosystem", "mw.almD": "Institutional website · PT/EN",
   "foot": "Sartec case study · version 1"
 };

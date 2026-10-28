@@ -132,10 +132,10 @@
   "st.after": "Las herramientas internas también necesitan una UX sólida: es donde el equipo pasa el día.",
   "st.cta1": "Volver a los proyectos", "st.cta2": "Caso anterior: Pesca Delivery", "st.cta3": "Volver arriba",
 
-  "mw.h": "Otros trabajos", "mw.all": "Ver todos los proyectos", "mw.next": "Siguiente caso →", "mw.prev": "← Caso anterior", "mw.ext": "Caso externo ↗", "mw.site": "Sitio web ↗", "mw.staging": "En validación ↗",
+  "mw.h": "Otros trabajos", "mw.all": "Ver todos los proyectos", "mw.next": "Siguiente caso →", "mw.prev": "← Caso anterior", "mw.site": "Sitio web ↗", "mw.staging": "En validación ↗",
   "mw.uniedu": "Plataforma UNIEDU",
   "mw.pescaD": "Caso principal · tienda, reglas y panel de operaciones",
-  "mw.unieduD": "UX Research · Design System · en coautoría con Najme Simon Alé · PT/EN",
+  "mw.unieduD": "UX Research · pruebas de usabilidad · Design System",
   "mw.papD": "Sitio web + ecosistema digital", "mw.almD": "Sitio institucional · PT/EN",
   "foot": "Caso Sartec · versión 1"
 };
