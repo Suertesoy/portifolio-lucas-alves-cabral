@@ -315,7 +315,7 @@ const CSS = `
 .kx-on .hb-canvas { z-index: 1; pointer-events: none; will-change: transform; }
 .kx-input { position: absolute; inset: 0; z-index: 1; touch-action: pan-y; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
 .kx-input.grab { cursor: grab; } .kx-input.grabbing { cursor: grabbing; }
-.kx-on .person .sec-head, .kx-on .statement, .kx-on .person-body, .kx-on .facts, .kx-on .person-photo figcaption { position: relative; z-index: 2; }
+.kx-on .person .sec-head, .kx-on .statement, .kx-on .person-body, .kx-on .person-close, .kx-on .person-photo figcaption { position: relative; z-index: 2; }
 .kx-reveal { position: absolute; inset: 0; pointer-events: none; opacity: 0; isolation: isolate;
   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
 .kx-reveal img { width: 100%; height: 100%; filter: none !important; transition: none; }
@@ -492,15 +492,20 @@ export function createExperiment(ctx) {
     for (let i = 0; i < L.cols; i++) for (const x0 of [L.padX + i * (colW + L.gutter), L.padX + i * (colW + L.gutter) + colW - 1]) {
       const x = Math.round(x0) + 0.5; g.beginPath(); g.moveTo(x, 0); g.lineTo(x, Hh); g.stroke();
     }
-    // below the portrait the glass has little to bend: the module's rows (the Living Grid's, through the clover's centre) and a
-    // sage wash under it. Only the glass ever sees this layer — nothing here is painted on the page.
+    // below the portrait the glass has little to bend: the module's rows (the Living Grid's, through the clover's centre).
+    // Only the glass ever sees this layer — nothing here is painted on the page.
+    // Ciclo 5: no sage wash under the clover any more. The glass transmits (and, through kxITM, lifts) whatever this layer holds, so a
+    // 40 % sage disc read as a milky green body on every stage while the hero's clover, over the neutral plate, reads as clear crystal.
+    // Instead, like the hero (where the glass bends the dark name), it gets neutral ink to bend: the page's own grid, columns and rows,
+    // drawn a little firmer in the slot's band so the refraction reads through the leaves. A uniform ink mass was tried and turned the
+    // clover grey; nothing at all left it a milky white body.
     for (const slot of G.slots) {
       if (zone.photo ? slot !== zone.work : slot.key !== zone.key) continue;
-      const cx = slot.x, cy = slot.cy - zone.top, R = slot.R, mod = colW + L.gutter, a0 = Math.max(0, cy - slot.half), a1 = Math.min(Hh, cy + slot.half);
-      const wash = g.createRadialGradient(cx, cy, 0, cx, cy, R * 1.5);
-      wash.addColorStop(0, 'rgba(143,165,138,.40)'); wash.addColorStop(0.65, 'rgba(143,165,138,.18)'); wash.addColorStop(1, 'rgba(143,165,138,0)');
-      g.fillStyle = wash; g.fillRect(0, a0, W, a1 - a0);
-      g.strokeStyle = 'rgba(29,32,30,.13)';
+      const cy = slot.cy - zone.top, mod = colW + L.gutter, a0 = Math.max(0, cy - slot.half), a1 = Math.min(Hh, cy + slot.half);
+      g.strokeStyle = 'rgba(29,32,30,.24)';
+      for (let i = 0; i < L.cols; i++) for (const x0 of [L.padX + i * (colW + L.gutter), L.padX + i * (colW + L.gutter) + colW - 1]) {
+        const x = Math.round(x0) + 0.5; g.beginPath(); g.moveTo(x, a0); g.lineTo(x, a1); g.stroke();
+      }
       for (let k = -Math.ceil(cy / mod) - 1; k <= Math.ceil((Hh - cy) / mod) + 1; k++) for (const y0 of [cy + k * mod, cy + k * mod + colW]) {
         if (y0 < a0 || y0 > a1) continue;
         const y = Math.round(y0) + 0.5; g.beginPath(); g.moveTo(L.padX, y); g.lineTo(L.padR, y); g.stroke();

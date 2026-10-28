@@ -92,13 +92,12 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
   </div>
 
   <div class="wrap hb-bottom">
+    <!-- Ciclo 5: only the gesture is named here (the four leaves are told further down the page) -->
     <div class="hb-fig" aria-hidden="true">
-      <p class="micro hb-caption"><span data-i18n="hero.fig">Fig. 01 — Trevo de quatro folhas</span><br><span data-i18n="hero.figLeaves">UX · UI · IA · Empatia</span></p>
       <p class="micro hb-hint"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 8a5.5 5.5 0 0 1 9.6-3.7M13.5 8a5.5 5.5 0 0 1-9.6 3.7"/><path d="M12.6 1.8v2.9H9.7M3.4 14.2v-2.9h2.9"/></svg><span class="fine" data-i18n="hero.hint">Arraste para girar</span><span class="touch" data-i18n="hero.hintTouch">Deslize para girar</span></p>
     </div>
     <div class="hb-intro">
       <p class="hb-role">Product Designer &amp; Design Engineer</p>
-      <p class="hb-desc" data-i18n="hero.desc">Desenho produtos digitais junto de quem os usa e os opera, da pesquisa à interface funcionando. A IA me ajuda a implementar; eu reviso e testo o resultado.</p>
     </div>
     <div class="hb-ctas">
       <a class="btn btn-solid" href="#cases"><span data-i18n="hero.ctaWork">Ver cases</span><span aria-hidden="true">↓</span></a>
@@ -107,35 +106,32 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
   </div>
 </section>
 
-<!-- ================= 02 · THE PERSON ================= -->
+<!-- ================= 02 · THE PERSON — how I see design (Ciclo 5: the story moved to the journey, 05) ================= -->
 <section class="sec person" id="person" aria-labelledby="h-person">
   <div class="wrap">
     <header class="sec-head reveal">
-      <p class="micro"><b>(02)</b>&nbsp;&nbsp;<span data-i18n="person.kicker">Quem desenha</span></p>
+      <p class="micro"><b>(02)</b>&nbsp;&nbsp;<span data-i18n="person.kicker">Visão de design</span></p>
       <span class="rule" aria-hidden="true"></span>
     </header>
     <!-- ck13: copy on the left, the portrait large on the right (desktop). DOM order = mobile reading order:
-         statement → portrait → story → facts.
+         statement → portrait → view → closing line.
          ck20: the portrait is a transparent cut-out (assets/home/portrait, PNG source kept beside the WebP). Its colour is not a
          control any more: the clover walks up to it, brings the colour in, and takes it away again as it leaves (kinetic.js).
          Without WebGL, with reduced motion, or without JS it simply stays in colour. -->
     <div class="person-grid">
-      <h2 class="statement reveal" id="h-person" data-i18n="person.statement">Gosto de criar com as pessoas, não só para elas.</h2>
+      <h2 class="statement reveal" id="h-person" data-i18n="person.statement">Um bom produto precisa fazer sentido para quem usa e para quem investe nele.</h2>
       <figure class="person-photo reveal" id="person-photo">
         <div class="photo-frame">
           <img src="assets/home/portrait/lucas-cabral-portrait-2026.webp" alt="Retrato de Lucas Cabral sorrindo, de camisa branca" width="1086" height="1448" decoding="async" data-i18n="person.photoAlt" data-i18n-attr="alt" />
         </div>
-        <figcaption class="micro">Lucas Cabral — Product Designer &amp; Design Engineer</figcaption>
+        <figcaption class="micro" data-i18n="person.cap">Lucas Cabral — Product Designer &amp; Design Engineer | Bacharel em Ciências Biológicas | Empresário</figcaption>
       </figure>
       <div class="person-body reveal">
-        <p data-i18n="person.lead">Cresci acompanhando a rotina da Sartec, empresa da minha família, onde vi de perto o atendimento, os pedidos, os clientes e as vendas acontecerem todos os dias.</p>
-        <p data-i18n="person.body">Esse contato com problemas reais moldou meu olhar para produto antes mesmo de eu trabalhar formalmente com design. Hoje desenho produtos e conduzo a implementação com apoio de IA, do problema à interface funcionando. Gosto de conversar com quem usa e opera o que desenho, entender cada ponto de vista e construir junto.</p>
+        <p data-i18n="person.lead">Não acredito em escolher um lado. Um bom design atende às necessidades reais das pessoas e, ao mesmo tempo, gera valor para quem investe no desenvolvimento e na operação do produto. Para mim, essas duas coisas andam juntas.</p>
+        <p data-i18n="person.body">Por isso, antes de desenhar, procuro entender as duas pontas: a rotina, as dúvidas e as frustrações de quem usa, e também o contexto do negócio, os recursos disponíveis e o resultado que a solução precisa entregar.</p>
+        <p data-i18n="person.research">Gosto de conversar com as pessoas e ouvir como elas vivem o problema. Minha formação científica me ensinou a investigar com método e a questionar hipóteses antes de tratá-las como certas. Pesquisa, para mim, não é uma etapa a cumprir: é o que reduz incertezas, evita investir em soluções que ninguém precisa e revela oportunidades que a interface sozinha não mostra.</p>
       </div>
-      <dl class="facts reveal">
-        <div><dt data-i18n="person.f1k">Papel</dt><dd>Product Designer &amp; Design Engineer</dd></div>
-        <div><dt data-i18n="person.f2k">Disciplinas</dt><dd data-i18n="person.f2v">Product Design · UX Research · UX/UI · Design Systems · IA aplicada</dd></div>
-        <div><dt data-i18n="person.f3k">Idiomas</dt><dd class="langs" data-i18n-html="person.f3v"><span>Português — nativo</span> <span>Inglês — fluente</span> <span>Espanhol — intermediário</span></dd></div>
-      </dl>
+      <p class="person-close reveal" data-i18n="person.close">É essa visão que orienta o que construo: decisões que consigo explicar tanto para quem usa quanto para quem investe.</p>
     </div>
   </div>
 </section>
@@ -152,7 +148,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
     <!-- ck20B: the clover walks down from the portrait and rests in the free area beside this title (assets/hero/kinetic.js reads
          the slot's box); it is gone before the cards. Same renderer as the hero; the still poster only loads where it cannot run. -->
     <div class="work-head">
-      <h2 class="sec-title reveal" id="h-work" data-i18n="work.title">Do problema real à interface funcionando.</h2>
+      <h2 class="sec-title reveal" id="h-work" data-i18n="work.title">Do problema à interface funcionando…</h2>
       <div class="clover-slot" data-clover-slot="work" aria-hidden="true"><img class="slot-poster" src="assets/hero/data/poster.png" alt="" width="900" height="900" loading="lazy" decoding="async" /></div>
     </div>
 
@@ -208,15 +204,12 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
                   <figure class="device">
                     <div class="device-screen"><img src="assets/cases/pesca/app/loja-inicio.webp" width="780" height="1688" loading="lazy" decoding="async"
                       alt="Tela inicial da loja do Pesca Delivery, com os caminhos Do mar e Poke." data-i18n="pesca.shotStoreAlt" data-i18n-attr="alt" /></div>
-                    <figcaption class="micro" data-i18n="pesca.shotStore">Loja</figcaption>
                   </figure>
                   <figure class="device">
                     <div class="device-screen"><img src="assets/cases/pesca/app/builder-poke.webp" width="780" height="1688" loading="lazy" decoding="async"
                       alt="Builder de Poke: proteínas adicionais, valor do prato e botão de adicionar ao carrinho." data-i18n="pesca.shotBuilderAlt" data-i18n-attr="alt" /></div>
-                    <figcaption class="micro" data-i18n="pesca.shotBuilder">Builder de Poke</figcaption>
                   </figure>
                 </div>
-                <p class="micro ficha-note" data-i18n="pesca.note">Capturas da loja pública em produção (interface em português) · out. 2026</p>
               </div>
             </div>
           </article>
@@ -238,15 +231,13 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
                   <a class="btn-ficha" href="cases/sartec/"><span data-i18n="crm.cta">Ver case completo</span><span aria-hidden="true">→</span></a>
                 </div>
               </div>
-              <!-- ck15C/ck27: no real CRM recording or capture is published (customer data, real first names): a reconstruction of the
-                   "who is attending now?" window with fictitious names, rendered from the panel's layout (painel/index.html @ f7e7a84) -->
-              <div class="ficha-media ficha-media--shot">
-                <div class="app-window">
-                  <span class="app-bar" aria-hidden="true"><i></i><i></i><i></i><span>CRM Sartec</span></span>
-                  <img src="assets/cases/sartec/crm/quem-esta-atendendo-reconstrucao.webp" width="588" height="494" loading="lazy" decoding="async"
-                    alt="CRM Sartec: reconstrução da janela “Quem está atendendo agora?”, em que cada atendente escolhe o próprio perfil antes de assumir as conversas. Nomes fictícios." data-i18n="crm.videoAlt" data-i18n-attr="alt" />
-                </div>
-                <p class="micro ficha-note" data-i18n="crm.note">Reconstrução da tela do CRM com nomes fictícios</p>
+              <!-- Ciclo 5: the panel's real front-end (painel/index.html @ f7e7a84, the production commit) rendered locally with FICTITIOUS
+                   data — no login to production, no real customer, phone or attendant (phones use the non-existent area code 00). Two real
+                   screens, composed into one image: the PF board (triage and handoff tags, active attendant) and a conversation in which the
+                   AI agent logs the request and a team member takes over. The window bar says "dados fictícios". -->
+              <div class="ficha-media ficha-media--cover">
+                <img class="ficha-cover" src="assets/cases/sartec/crm/capa-crm-painel.webp" width="1600" height="1280" loading="lazy" decoding="async"
+                  alt="Interface real do CRM Sartec com dados fictícios: o quadro de Pessoa Física com as colunas Novo, Em atendimento, Orçamento enviado e Pedido aprovado, cards com selos como Orçamento/lista e Estoque/preço e, à frente, uma conversa em que o agente de IA registra o pedido e uma atendente da equipe assume o atendimento." data-i18n="crm.coverAlt" data-i18n-attr="alt" />
               </div>
             </div>
           </article>
@@ -255,7 +246,8 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
           <article class="ficha ficha--uniedu" style="--i:2" aria-labelledby="h-uniedu">
             <div class="ficha-card">
               <div class="ficha-copy">
-                <p class="micro ficha-meta"><span class="ficha-n">03</span><span data-i18n="uniedu.kicker">UX Research · UI Design · Design System</span></p>
+                <!-- Ciclo 5: the original project ran 2024–2025; the usability test (April 2026) and the prototype/Design System evolution are 2026 -->
+                <p class="micro ficha-meta"><span class="ficha-n">03</span><span data-i18n="uniedu.kicker">UX Research · UI Design · Design System</span><span data-i18n="uniedu.period">2024–2025 · testes e evolução em 2026</span></p>
                 <h3 class="ficha-title" id="h-uniedu">UNIEDU</h3>
                 <p class="ficha-problem" data-i18n="uniedu.problem">Estudantes de cursos online perdem a constância. O desafio: um produto gamificado que transforme estudo frequente em progresso real.</p>
                 <!-- Ciclo 4C.1 audit: 9 interview synthesis boards (the screener's 8 responses are a different activity, never added up), 5 test
@@ -277,20 +269,16 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
                   <figure class="device device--lead">
                     <div class="device-screen"><img src="assets/cases/uniedu/atual/home-light.webp" width="600" height="1298" loading="lazy" decoding="async"
                       alt="Home do protótipo UNIEDU no tema claro: a aula em andamento com o botão Continuar e a jornada de aprendizado do dia, com 1 de 4 etapas concluída." data-i18n="uniedu.shotHomeAlt" data-i18n-attr="alt" /></div>
-                    <figcaption class="micro" data-i18n="uniedu.shotHome">Home e jornada</figcaption>
                   </figure>
                   <figure class="device device--side">
                     <div class="device-screen"><img src="assets/cases/uniedu/atual/aulas-dark.webp" width="600" height="1298" loading="lazy" decoding="async"
                       alt="Tela de Aulas no tema escuro: o módulo UX Strategy com 19 aulas, 3 concluídas e barra de progresso; cada aula terminada tem um check." data-i18n="uniedu.shotAulasAlt" data-i18n-attr="alt" /></div>
-                    <figcaption class="micro" data-i18n="uniedu.shotAulas">Aulas e progresso</figcaption>
                   </figure>
                   <figure class="device device--side">
                     <div class="device-screen"><img src="assets/cases/uniedu/decisao/ranking-on-light.webp" width="600" height="1298" loading="lazy" decoding="async"
                       alt="Tela Ranking com o controle de exibição ligado no topo: sua posição, 10º, e o pódio dos três primeiros. Nomes fictícios do protótipo." data-i18n="uniedu.shotRankAlt" data-i18n-attr="alt" /></div>
-                    <figcaption class="micro" data-i18n="uniedu.shotRank">Ranking opcional</figcaption>
                   </figure>
                 </div>
-                <p class="micro ficha-note" data-i18n="uniedu.note">Capturas reais do protótipo · out. 2026</p>
               </div>
             </div>
           </article>
@@ -303,7 +291,7 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
                 <h3 class="ficha-title" id="h-papelaria">Sartec Papelaria</h3>
                 <p class="ficha-problem" data-i18n="papelaria.problem">A papelaria da minha família, com mais de 30 anos em São José dos Campos. O desafio: levar cada motivo de visita a um único canal de atendimento.</p>
                 <ul class="ficha-points">
-                  <li data-i18n="papelaria.b1">Arquitetura da informação pelos motivos reais de visita, com a lista escolar em destaque</li>
+                  <li data-i18n="papelaria.b1">Lista escolar por foto ou PDF: os itens são lidos automaticamente e revisados um a um antes do WhatsApp</li>
                   <li data-i18n="papelaria.b2">Identidade da marca aplicada à web, com a fachada da loja como imagem de abertura</li>
                   <li data-i18n="papelaria.b3">Um único canal de WhatsApp, porta de entrada da operação atendida pelo CRM</li>
                 </ul>
@@ -312,12 +300,12 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
                   <a class="btn-ficha" href="https://www.sartecpapelaria.com.br/" target="_blank" rel="noopener noreferrer"><span data-i18n="papelaria.cta">Visitar o site</span><span aria-hidden="true">↗</span></a>
                 </div>
               </div>
-              <div class="ficha-media ficha-media--site">
-                <div class="browser">
-                  <span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser-url">sartecpapelaria.com.br</span></span>
-                  <img src="assets/cases/sites/sartec-papelaria-inicio.jpg" width="1600" height="900" loading="lazy" decoding="async"
-                    alt="Página inicial do site da Sartec Papelaria: chamada principal, botões para explorar produtos e enviar lista escolar, e a fachada ilustrada da loja." data-i18n="papelaria.alt" data-i18n-attr="alt" />
-                </div>
+              <!-- Ciclo 5: three real captures of the live site (sartecpapelaria.com.br), composed into one image: the home on a desktop, the
+                   school-list review in the browser and the same step on a phone. The list is a fictitious demo ("Escola Demonstração", no
+                   personal data); the WhatsApp send was never triggered. -->
+              <div class="ficha-media ficha-media--cover">
+                <img class="ficha-cover" src="assets/cases/sites/sartec-papelaria-capa.webp" width="1600" height="1280" loading="lazy" decoding="async"
+                  alt="Site da Sartec Papelaria em três telas reais: a página inicial no computador; a revisão de uma lista escolar de demonstração, com os itens lidos automaticamente, a quantidade e as opções Quero comprar e Não quero; e a mesma etapa no celular, no passo 3 de 4, antes de seguir para o WhatsApp." data-i18n="papelaria.alt" data-i18n-attr="alt" />
               </div>
             </div>
           </article>
@@ -418,7 +406,9 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
   </div>
 </section>
 
-<!-- ================= 05 · JOURNEY ================= -->
+<!-- ================= 05 · JOURNEY — Ciclo 5: a timeline read from the present backwards, then the kit (skills, tools, languages) =================
+     Each step: a time reference, a short title, an objective description and what it left in today's work. No LinkedIn button and no
+     availability line here: both live in the contact section right below. -->
 <section class="sec journey" id="journey" aria-labelledby="h-journey">
   <div class="wrap">
     <header class="sec-head reveal">
@@ -426,77 +416,89 @@ try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.docu
       <span class="rule" aria-hidden="true"></span>
     </header>
     <div class="journey-grid">
-      <div class="journey-story reveal">
-        <h2 class="sec-title" id="h-journey" data-i18n="journey.title">Repertório multidisciplinar e foco no problema real.</h2>
-        <p data-i18n="journey.p1">Minha trajetória conecta ciência, operação comercial e tecnologia. Na formação em Ciências Biológicas pela UFSC, desenvolvi olhar sistêmico, rigor investigativo e atenção a contextos complexos. Na rotina operacional e no atendimento ao cliente da papelaria da família, aprendi que nenhum produto se sustenta sem resolver a dor real de quem o opera todos os dias.</p>
-        <p data-i18n="journey.p2">No Product Design e no Design Engineering essa base se transformou em método: entrevistar pessoas, estruturar jornadas, desenhar sistemas visuais consistentes e conduzir a implementação assistida por IA com olhar crítico e colaborativo.</p>
-        <figure class="journey-figure">
-          <img src="mergulhador_lucas.jpeg" alt="Lucas Cabral mergulhando na Ilha do Arvoredo, Santa Catarina" loading="lazy" data-i18n="journey.photoAlt" data-i18n-attr="alt" />
-          <figcaption class="micro" data-i18n="journey.cap">Ilha do Arvoredo — Santa Catarina, Brasil</figcaption>
-        </figure>
+      <div class="journey-intro reveal">
+        <h2 class="sec-title" id="h-journey" data-i18n="journey.title">Do que faço hoje ao que me trouxe até aqui.</h2>
+        <p data-i18n="journey.lede">Operação comercial, ciência, design e tecnologia: cada etapa deixou algo que uso no meu trabalho hoje.</p>
       </div>
-      <div class="journey-curriculum reveal">
-        <div class="cv-section">
-          <p class="micro cv-label" data-i18n="journey.expLabel">Atuação &amp; Experiência</p>
-          <ul class="cv-list">
-            <li>
-              <div class="cv-head">
-                <b class="cv-title" data-i18n="journey.exp1Title">L A Cabral</b>
-                <span class="cv-tag" data-i18n="journey.exp1Tag">Estúdio &amp; Projetos</span>
-              </div>
-              <p class="cv-role" data-i18n="journey.exp1Role">Product Design &amp; Design Engineering</p>
-              <p class="cv-desc" data-i18n="journey.exp1Desc">Soluções digitais de ponta a ponta: pesquisa, UX/UI, arquitetura de sistemas e implementação assistida por IA para produtos em operação e sites institucionais.</p>
-            </li>
-            <li>
-              <div class="cv-head">
-                <b class="cv-title" data-i18n="journey.exp2Title">Sartec Papelaria</b>
-                <span class="cv-tag" data-i18n="journey.exp2Tag">Operação real</span>
-              </div>
-              <p class="cv-role" data-i18n="journey.exp2Role">Operação Comercial &amp; Atendimento</p>
-              <p class="cv-desc" data-i18n="journey.exp2Desc">Vivência prática em balcão, processos de venda, organização de rotinas e contato direto com clientes, base para o desenho de sistemas e fluxos de atendimento.</p>
-            </li>
+      <ol class="timeline reveal">
+        <li class="tl tl--now">
+          <p class="tl-when" data-i18n="journey.t1When">Hoje</p>
+          <h3 class="tl-title" data-i18n="journey.t1Title">Product Design e Design Engineering</h3>
+          <p class="tl-desc" data-i18n="journey.t1Desc">Conecto pesquisa, design de interfaces e Design Systems ao desenvolvimento de produtos digitais e às integrações que os fazem funcionar. Uso IA para organizar informações, explorar soluções, prototipar, implementar e apoiar a validação; a análise, a revisão e a responsabilidade pelas decisões continuam comigo.</p>
+          <p class="tl-link"><span class="tl-k" data-i18n="journey.t1LinkK">Em uso</span> <span data-i18n="journey.t1Link">Pesca Delivery · CRM Sartec + Agente de IA · site da Sartec Papelaria</span></p>
+        </li>
+        <li class="tl">
+          <p class="tl-when">2024 – 2026</p>
+          <h3 class="tl-title" data-i18n="journey.t2Title">A descoberta do UX Design</h3>
+          <p class="tl-desc" data-i18n="journey.t2Desc">Depois da graduação, encontrei no UX Design a área em que pesquisa, pessoas e negócio se encontram. Foram cerca de dois anos de estudo e prática intensiva, com projetos próprios, ferramentas e pesquisa. Nesse caminho aprendi a integrar IA aos workflows de Product Design, e essa combinação virou o meu método.</p>
+          <p class="tl-link"><span class="tl-k" data-i18n="journey.t2LinkK">Parte do caminho</span> <span data-i18n="journey.t2Link">Programa UX Unicórnio · cerca de 200 horas oficiais</span></p>
+        </li>
+        <li class="tl">
+          <p class="tl-when">2024</p>
+          <h3 class="tl-title" data-i18n="journey.t3Title">Ciências Biológicas na UFSC</h3>
+          <p class="tl-desc" data-i18n="journey.t3Desc">Concluí o bacharelado na Universidade Federal de Santa Catarina aos 25 anos. A ciência me deu ferramentas que uso todos os dias: observar, investigar, interpretar dados, questionar hipóteses e reconhecer a complexidade dos problemas reais.</p>
+          <ul class="tl-tags" aria-label="Áreas da formação" data-i18n="journey.t3TagsLabel" data-i18n-attr="aria-label">
+            <li data-i18n="journey.t3a">Ecologia</li><li data-i18n="journey.t3b">Bioestatística</li><li data-i18n="journey.t3c">Análise de dados</li><li data-i18n="journey.t3d">Divulgação científica</li><li data-i18n="journey.t3e">Pesquisa científica</li>
           </ul>
-        </div>
+        </li>
+        <li class="tl">
+          <p class="tl-when" data-i18n="journey.t4When">Desde os 16</p>
+          <h3 class="tl-title" data-i18n="journey.t4Title">Operação comercial</h3>
+          <dl class="tl-ages">
+            <div><dt data-i18n="journey.t4a16">16 anos</dt><dd data-i18n="journey.t4a16v">Atendimento ao público</dd></div>
+            <div><dt data-i18n="journey.t4a18">18 anos</dt><dd data-i18n="journey.t4a18v">Compras, fornecedores, marketing e rotinas operacionais</dd></div>
+            <div><dt data-i18n="journey.t4a20">20 anos</dt><dd data-i18n="journey.t4a20v">Também financeiro e representação comercial em licitações públicas</dd></div>
+          </dl>
+          <p class="tl-desc" data-i18n="journey.t4Desc">Foi ali que vi custos, processos, prazos e clientes se conectarem — e por que um bom design precisa funcionar para as pessoas e para o resultado.</p>
+        </li>
+      </ol>
+      <figure class="journey-figure reveal">
+        <img src="mergulhador_lucas.jpeg" alt="Lucas Cabral mergulhando na Ilha do Arvoredo, Santa Catarina" loading="lazy" data-i18n="journey.photoAlt" data-i18n-attr="alt" />
+        <figcaption class="micro" data-i18n="journey.cap">Ilha do Arvoredo — Santa Catarina, Brasil</figcaption>
+      </figure>
+    </div>
 
-        <div class="cv-section">
-          <p class="micro cv-label" data-i18n="journey.eduLabel">Formação Acadêmica &amp; Cursos Complementares</p>
-          <ul class="cv-list">
-            <li>
-              <div class="cv-head">
-                <b class="cv-title" data-i18n="journey.edu1Title">Universidade Federal de Santa Catarina (UFSC)</b>
-                <span class="cv-tag" data-i18n="journey.edu1Tag">Graduação · 2024</span>
-              </div>
-              <p class="cv-role" data-i18n="journey.edu1Role">Bacharelado em Ciências Biológicas</p>
-              <p class="cv-desc" data-i18n="journey.edu1Desc">Formação científica com ênfase em observação empírica, dinâmica de sistemas complexos e relações ecológicas.</p>
-            </li>
-            <li>
-              <div class="cv-head">
-                <b class="cv-title" data-i18n="journey.edu2Title">UX Unicórnio</b>
-                <span class="cv-tag" data-i18n="journey.edu2Tag">Formação complementar · 2026</span>
-              </div>
-              <p class="cv-role" data-i18n="journey.edu2Role">Formação complementar em UX/UI Design · aproximadamente 200h</p>
-              <p class="cv-desc" data-i18n="journey.edu2Desc">Imersão em pesquisa com usuários, estratégia de produto, design systems, prototipagem avançada e testes de usabilidade.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="cv-section">
-          <p class="micro cv-label" data-i18n="journey.skillsLabel">Competências Principais</p>
-          <div class="cv-skills">
-            <p><b data-i18n="journey.skillsDesignKey">Design:</b> <span data-i18n="journey.skillsDesign">Product Design · UX Research · UX/UI · Design Systems · Arquitetura da Informação · Testes de Usabilidade</span></p>
-            <p><b data-i18n="journey.skillsTechKey">Tecnologia &amp; IA:</b> <span data-i18n="journey.skillsTech">Design Engineering · HTML/CSS/JS · Agentes de IA aplicados a produtos · Triagem e automação de fluxos</span></p>
+    <!-- the kit: what I work with. Tool marks are local SVG symbols (sprite below): Simple Icons 16.36.0 (CC0) for Figma, Claude, Gemini,
+         ElevenLabs, GitHub, Vercel, Supabase; Lobe Icons 1.101.0 (MIT) for OpenAI and Antigravity. Each mark carries its name as text:
+         a tooltip with a mouse, a label under it on touch screens, always read by assistive tech. -->
+    <div class="kit reveal">
+      <div class="kit-block kit-skills">
+        <p class="micro kit-label" data-i18n="journey.skillsLabel">Competências principais</p>
+        <div class="skill-groups">
+          <div>
+            <p class="skill-k" data-i18n="journey.skillsDesignKey">Design e produto</p>
+            <ul class="skill-list">
+              <li>Product Design</li><li>UX Research</li><li>UI Design</li><li>Design Systems</li><li data-i18n="journey.sProto">Prototipação</li>
+            </ul>
+          </div>
+          <div>
+            <p class="skill-k" data-i18n="journey.skillsTechKey">Tecnologia e IA</p>
+            <ul class="skill-list">
+              <li>Design Engineering</li><li data-i18n="journey.sReact">React e TypeScript</li><li data-i18n="journey.sApi">Integrações com APIs</li><li data-i18n="journey.sAi">Automações e agentes de IA</li>
+            </ul>
           </div>
         </div>
-
-        <div class="tools">
-          <p class="micro" data-i18n="journey.tools">Ferramentas</p>
-          <p>Figma · Figma Make · Claude Code · ChatGPT · Antigravity · Notion · Google Workspace · Gemini</p>
-        </div>
-
-        <div class="cv-cta-wrap">
-          <a class="btn-action" href="https://www.linkedin.com/in/laclucascabral/" target="_blank" rel="noopener noreferrer"><span data-i18n="journey.ctaLinkedin">Ver perfil completo no LinkedIn</span> <span aria-hidden="true">↗</span></a>
-          <p class="micro cv-note" data-i18n="journey.cvNote">Disponível para posições remotas internacionais e projetos como Product Designer &amp; Design Engineer.</p>
-        </div>
+      </div>
+      <div class="kit-block kit-tools">
+        <p class="micro kit-label" data-i18n="journey.tools">Ferramentas</p>
+        <svg class="sprite" aria-hidden="true" focusable="false"><defs><symbol id="ti-figma" viewBox="0 0 24 24"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></symbol><symbol id="ti-claude" viewBox="0 0 24 24"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></symbol><symbol id="ti-chatgpt" viewBox="0 0 24 24" fill-rule="evenodd"><path d="M9.205 8.658v-2.26c0-.19.072-.333.238-.428l4.543-2.616c.619-.357 1.356-.523 2.117-.523 2.854 0 4.662 2.212 4.662 4.566 0 .167 0 .357-.024.547l-4.71-2.759a.797.797 0 00-.856 0l-5.97 3.473zm10.609 8.8V12.06c0-.333-.143-.57-.429-.737l-5.97-3.473 1.95-1.118a.433.433 0 01.476 0l4.543 2.617c1.309.76 2.189 2.378 2.189 3.948 0 1.808-1.07 3.473-2.76 4.163zM7.802 12.703l-1.95-1.142c-.167-.095-.239-.238-.239-.428V5.899c0-2.545 1.95-4.472 4.591-4.472 1 0 1.927.333 2.712.928L8.23 5.067c-.285.166-.428.404-.428.737v6.898zM12 15.128l-2.795-1.57v-3.33L12 8.658l2.795 1.57v3.33L12 15.128zm1.796 7.23c-1 0-1.927-.332-2.712-.927l4.686-2.712c.285-.166.428-.404.428-.737v-6.898l1.974 1.142c.167.095.238.238.238.428v5.233c0 2.545-1.974 4.472-4.614 4.472zm-5.637-5.303l-4.544-2.617c-1.308-.761-2.188-2.378-2.188-3.948A4.482 4.482 0 014.21 6.327v5.423c0 .333.143.571.428.738l5.947 3.449-1.95 1.118a.432.432 0 01-.476 0zm-.262 3.9c-2.688 0-4.662-2.021-4.662-4.519 0-.19.024-.38.047-.57l4.686 2.71c.286.167.571.167.856 0l5.97-3.448v2.26c0 .19-.07.333-.237.428l-4.543 2.616c-.619.357-1.356.523-2.117.523zm5.899 2.83a5.947 5.947 0 005.827-4.756C22.287 18.339 24 15.84 24 13.296c0-1.665-.713-3.282-1.998-4.448.119-.5.19-.999.19-1.498 0-3.401-2.759-5.947-5.946-5.947-.642 0-1.26.095-1.88.31A5.962 5.962 0 0010.205 0a5.947 5.947 0 00-5.827 4.757C1.713 5.447 0 7.945 0 10.49c0 1.666.713 3.283 1.998 4.448-.119.5-.19 1-.19 1.499 0 3.401 2.759 5.946 5.946 5.946.642 0 1.26-.095 1.88-.309a5.96 5.96 0 004.162 1.713z"/></symbol><symbol id="ti-gemini" viewBox="0 0 24 24"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></symbol><symbol id="ti-antigravity" viewBox="0 0 24 24" fill-rule="evenodd"><path d="M21.751 22.607c1.34 1.005 3.35.335 1.508-1.508C17.73 15.74 18.904 1 12.037 1 5.17 1 6.342 15.74.815 21.1c-2.01 2.009.167 2.511 1.507 1.506 5.192-3.517 4.857-9.714 9.715-9.714 4.857 0 4.522 6.197 9.714 9.715z"/></symbol><symbol id="ti-elevenlabs" viewBox="0 0 24 24"><path d="M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z"/></symbol><symbol id="ti-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol><symbol id="ti-vercel" viewBox="0 0 24 24"><path d="m12 1.608 12 20.784H0Z"/></symbol><symbol id="ti-supabase" viewBox="0 0 24 24"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"/></symbol></defs></svg>
+        <ul class="tool-grid">
+          <li class="tool"><svg aria-hidden="true" focusable="false"><use href="#ti-figma"/></svg><span class="tool-name">Figma</span></li>
+          <li class="tool"><svg aria-hidden="true" focusable="false"><use href="#ti-claude"/></svg><span class="tool-name">Claude · Claude Code</span></li>
+          <li class="tool"><svg aria-hidden="true" focusable="false"><use href="#ti-chatgpt"/></svg><span class="tool-name">ChatGPT</span></li>
+          <li class="tool"><svg aria-hidden="true" focusable="false"><use href="#ti-gemini"/></svg><span class="tool-name">Gemini</span></li>
+          <li class="tool"><svg aria-hidden="true" focusable="false"><use href="#ti-antigravity"/></svg><span class="tool-name">Antigravity</span></li>
+          <li class="tool"><svg aria-hidden="true" focusable="false"><use href="#ti-elevenlabs"/></svg><span class="tool-name">ElevenLabs</span></li>
+          <li class="tool"><svg aria-hidden="true" focusable="false"><use href="#ti-github"/></svg><span class="tool-name">GitHub</span></li>
+          <li class="tool"><svg aria-hidden="true" focusable="false"><use href="#ti-vercel"/></svg><span class="tool-name">Vercel</span></li>
+          <li class="tool"><svg aria-hidden="true" focusable="false"><use href="#ti-supabase"/></svg><span class="tool-name">Supabase</span></li>
+        </ul>
+      </div>
+      <div class="kit-block kit-langs">
+        <p class="micro kit-label" data-i18n="journey.langsLabel">Idiomas</p>
+        <ul class="lang-list">
+          <li data-i18n="journey.lPt">Português</li><li data-i18n="journey.lEn">Inglês</li><li data-i18n="journey.lEs">Espanhol</li>
+        </ul>
       </div>
     </div>
   </div>

@@ -65,7 +65,7 @@
   "b.cmpLabel": "Compare the Builder versions", "b.beforeK": "Prototype", "b.afterK": "Product",
   "b.beforeCap": "Figma Make · early prototype", "b.afterCap": "Live store · /poke/monte",
   "b.afterAlt": "The builder in the live product: categories on one page, “Want more protein?” right next to the protein choice, and a fixed summary with the price of the bowl and what is still missing.",
-  "b.afterSource": "A real capture of the public store in production, October 2026 (interface in Portuguese). Items marked as unavailable reflect that moment.",
+  "b.afterSource": "A real capture of the public store in production (interface in Portuguese). Items marked as unavailable reflect the moment it was taken.",
   "b.w1": "Base", "b.wr1": "always reachable",
   "b.w2": "Protein", "b.wr2": "+ add-on here",
   "b.w3": "Sides", "b.wr3": "always reachable",

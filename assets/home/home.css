@@ -162,12 +162,11 @@ ol, ul { padding: 0; list-style: none; }
 .hb-top, .hb-bottom { position: relative; z-index: 2; pointer-events: none; width: 100%; }   /* .wrap in a flex column: auto margins would shrink it */
 .hb a, .hb button { pointer-events: auto; }
 .hb-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.hb-bottom { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 24px; }
+.hb-bottom { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }   /* Ciclo 5: role, gesture and CTAs on one line */
 .hb-intro { grid-column: 1; grid-row: 1; max-width: 460px; }
 .hb-fig { grid-column: 2; grid-row: 1; text-align: center; display: grid; gap: 10px; justify-items: center; }
 .hb-ctas { grid-column: 3; grid-row: 1; justify-self: end; display: flex; gap: 12px; }
 .hb-role { font: 600 clamp(19px, 1.5vw, 24px)/1.15 "Inter Tight", sans-serif; letter-spacing: -.015em; }
-.hb-desc { margin-top: 10px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
 .hb-hint { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-soft); transition: opacity .6s var(--ease); }
 .hb-hint svg { width: 14px; height: 14px; flex: none; }
 .hb-hint .touch { display: none; }
@@ -224,12 +223,10 @@ ol, ul { padding: 0; list-style: none; }
 @media (prefers-reduced-motion: reduce) { .kx-want .person-photo img { filter: none; } }
 .person-photo figcaption { margin-top: 12px; }
 .person-body { grid-column: 1 / span 5; grid-row: 2; margin-top: clamp(24px, 2.4vw, 36px); display: grid; gap: 14px; max-width: 54ch; font-size: 16.5px; color: var(--ink-soft); }
-.facts { grid-column: 1 / span 6; grid-row: 3; align-self: end; margin-top: clamp(32px, 3vw, 48px); display: grid; grid-template-columns: 1fr 1.35fr 1.15fr; column-gap: var(--gutter); }
-.facts div { border-top: 1px solid var(--ink); padding-top: 12px; }
-.facts dt { font: 400 11px/1.4 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-.facts dd { margin-top: 6px; font-size: 14px; line-height: 1.45; }
-.facts .langs { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
-.facts .langs span { display: block; font-size: 13.5px; line-height: 1.4; color: var(--ink-soft); }
+/* Ciclo 5: role, disciplines and languages left this section (languages and skills are in the journey); the closing line takes their
+   place on the grid's ground line, level with the portrait's */
+.person-close { grid-column: 1 / span 6; grid-row: 3; align-self: end; margin-top: clamp(32px, 3vw, 48px); padding-top: 14px; border-top: 1px solid var(--ink);
+  max-width: 34ch; font: 500 clamp(18px, 1.55vw, 23px)/1.3 "Inter Tight", sans-serif; letter-spacing: -.012em; color: var(--ink); }
 
 /* The clover's other two appearances (ck20): an empty box in the layout that assets/hero/kinetic.js reads — the hero's
    renderer draws the sculpture there. Where it cannot run (no WebGL, reduced motion) the still poster takes the box. */
@@ -260,7 +257,7 @@ ol, ul { padding: 0; list-style: none; }
 .work-head { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); align-items: stretch; }
 .work-head .sec-title { grid-column: 1 / span 8; }
 .work-head .clover-slot { grid-column: 9 / span 4; margin-top: clamp(26px, 3vw, 40px); min-height: 190px; }
-.work .sec-title { max-width: 15ch; }
+.work .sec-title { max-width: 22ch; text-wrap: balance; }   /* Ciclo 5: "Do problema à / interface funcionando…" in two lines, as before */
 .sec-count { white-space: nowrap; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 
@@ -389,10 +386,10 @@ ol, ul { padding: 0; list-style: none; }
   grid-column: 6 / span 7; position: relative; z-index: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
   padding: clamp(24px, 3vw, 48px); border-left: 1px solid var(--f-line); container-type: size; background: var(--f-media);
 }
-.ficha-note { color: var(--f-note); text-align: center; }
-/* phones: real captures in CSS device frames whose screen keeps the capture's ratio (390 : 844, content-box): nothing is cropped */
+/* phones: real captures in CSS device frames whose screen keeps the capture's ratio (390 : 844, content-box): nothing is cropped.
+   Ciclo 5: no captions under the evidence (the alt texts carry what each screen shows) */
 .devices { --phone-w: clamp(90px, min(30cqw, calc((100cqh - 64px) / 2.5)), 200px); display: flex; justify-content: center; align-items: flex-start; gap: clamp(16px, 2.4vw, 36px); }
-.device { margin: 0; display: grid; justify-items: center; gap: 12px; }
+.device { margin: 0; display: grid; justify-items: center; }
 .device:nth-child(2) { margin-top: calc(var(--phone-w) * .22); }
 .device-screen {
   --dw: var(--phone-w);   /* a phone drawn smaller than the row's (the UNIEDU trio's side phones) only changes this */
@@ -401,21 +398,15 @@ ol, ul { padding: 0; list-style: none; }
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07), 0 0 0 1px rgba(255, 240, 210, .1), 0 44px 70px -34px rgba(0, 0, 0, .8);
 }
 .device-screen img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--dw) * .135); background: #161513; }
-.device figcaption { color: var(--f-note); }
-.ficha-media--video video { width: 100%; aspect-ratio: 16 / 10; max-height: calc(var(--card-h) - 100px); object-fit: cover; border-radius: 8px; background: #0A0A0A; }
+/* a cover: real screens composed into one transparent image (CRM, Papelaria) — it sits on the card's own backdrop, never cropped */
+.ficha-media--cover { padding: clamp(18px, 2.2vw, 36px); }
+.ficha-cover { display: block; width: 100%; height: 100%; max-height: calc(var(--card-h) - 48px); object-fit: contain; }
 .browser { width: 100%; overflow: hidden; border-radius: 8px; background: var(--paper); box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 40px 70px -36px rgba(0, 0, 0, .6); }
 .browser-bar { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-bottom: 1px solid var(--line); background: var(--bg-2); }
 .browser-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(29, 32, 30, .16); }
 .browser-url { margin-left: 10px; flex: 0 1 320px; min-width: 0; height: 20px; padding: 0 10px; border-radius: 999px; background: var(--paper);
   font: 400 11px/20px "JetBrains Mono", monospace; color: var(--muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .browser img { display: block; width: 100%; height: auto; max-height: calc(var(--card-h) - 140px); object-fit: cover; object-position: 50% 0; }
-/* an application window (the CRM): the product's own navy bar over the screen */
-.app-window { width: 100%; display: flex; flex-direction: column; overflow: hidden; border-radius: 8px; background: #77797e;   /* the modal's grey backdrop */
-  box-shadow: 0 0 0 1px rgba(26, 42, 94, .22), 0 34px 60px -30px rgba(12, 19, 38, .55); }
-.app-bar { flex: none; display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: #1A2A5E; color: #DCE2F2; font: 500 11px/1 "JetBrains Mono", monospace; letter-spacing: .04em; }
-.app-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(220, 226, 242, .3); }
-.app-bar span { margin-left: 8px; }
-.app-window img { display: block; width: 100%; max-height: calc(var(--card-h) - 190px); object-fit: contain; }
 .ficha-logo { width: min(150px, 34cqw); height: auto; flex: none; }
 
 /* 01 · Pesca Delivery — premium food at night: warm dark, amber light, the product and its operation */
@@ -425,7 +416,7 @@ ol, ul { padding: 0; list-style: none; }
   --f-media: radial-gradient(70% 62% at 52% 44%, rgba(228, 183, 36, .3), rgba(228, 183, 36, 0) 72%), #120E0A; --f-focus: #F2CD4F;
   --f-btn: #E4B724; --f-btn-ink: #161513; --f-btn-hover: #F2CD4F; --f-glow: rgba(228, 183, 36, .55);
 }
-.ficha--pesca .devices { --phone-w: clamp(90px, min(30cqw, calc((100cqh - 120px) / 2.5)), 200px); }
+.ficha--pesca .devices { --phone-w: clamp(90px, min(30cqw, calc((100cqh - 90px) / 2.5)), 200px); }   /* the logo above (captions and note gone) */
 .ficha--pesca .ficha-points li::before { border-radius: 2px; transform: rotate(45deg); width: 6px; height: 6px; }
 
 /* 02 · CRM Sartec + AI agent — operational software: navy, a working grid, the panel's light surface, square controls */
@@ -450,16 +441,14 @@ ol, ul { padding: 0; list-style: none; }
 }
 /* three phones: the Home in the middle, Lessons and Ranking a size smaller beside it, in a plum frame. They never overlap: the edges
    of a screen carry its labels (Concluída, the Ranking switch's name). One width sizes them all, the largest the evidence box allows
-   on both axes: the row is lead + 2 sides + 2 spaces wide and a lead phone (2.24 × its width) plus its caption and the note tall.
+   on both axes: the row is lead + 2 sides + 2 spaces wide and a lead phone (2.24 × its width) tall (Ciclo 5: no captions, no note).
    Still images, so the screens can be read; captures as they are, no filter. */
 .ficha--uniedu .devices { --side: .8; --space: .05; --row: calc(1 + 2 * var(--side) + 2 * var(--space));
-  --phone-w: clamp(84px, min(100cqw / var(--row), (100cqh - 64px) / 2.24), 236px); align-items: center; gap: 0; }
+  --phone-w: clamp(84px, min(100cqw / var(--row), (100cqh - 16px) / 2.24), 236px); align-items: center; gap: 0; }
 .ficha--uniedu .device--side .device-screen { --dw: calc(var(--phone-w) * var(--side)); }
 .ficha--uniedu .device--side:nth-child(2) { order: -1; margin-right: calc(var(--phone-w) * var(--space)); }
 .ficha--uniedu .device--side:nth-child(3) { margin-left: calc(var(--phone-w) * var(--space)); }
 .ficha--uniedu .device:nth-child(2) { margin-top: 0; }
-.ficha--uniedu .device figcaption { max-width: var(--phone-w); text-align: center; }
-.ficha--uniedu .device--side figcaption { max-width: calc(var(--phone-w) * var(--side)); }
 .ficha--uniedu .device-screen { background: linear-gradient(150deg, #43303A 0%, #1C1318 34%, #0E0A0C 100%);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07), 0 0 0 1px rgba(255, 209, 224, .12), 0 40px 64px -34px rgba(0, 0, 0, .85); }
 .ficha--uniedu .device--lead .device-screen { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08), 0 0 0 1px rgba(255, 209, 224, .16), 0 30px 70px -26px rgba(244, 143, 177, .42), 0 44px 70px -34px rgba(0, 0, 0, .85); }
@@ -557,32 +546,65 @@ ol, ul { padding: 0; list-style: none; }
 .step-title { display: block; margin-top: 14px; font: 600 17.5px/1.25 "Inter Tight", sans-serif; letter-spacing: -.015em; color: var(--ink); }
 .step-desc { margin-top: 8px; font-size: 14px; line-height: 1.5; color: var(--ink-soft); max-width: 32ch; }
 
-/* 05 · journey curriculum */
-.journey-grid { margin-top: clamp(26px, 3vw, 40px); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); row-gap: 48px; }
-.journey-story { grid-column: 1 / span 6; }
-.journey-story .sec-title { margin-top: 0; }
-.journey-story > p { margin-top: 20px; max-width: 54ch; color: var(--ink-soft); font-size: 16px; line-height: 1.6; }
-.journey-figure { margin-top: 32px; max-width: 420px; }
+/* 05 · journey — Ciclo 5: a timeline read from the present backwards. Title and the diving photo on the left (the photo stays in view
+   beside the science years on wide screens), the steps on a vertical line on the right; one column on phones (title, steps, photo). */
+.journey-grid { margin-top: clamp(26px, 3vw, 40px); display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr; column-gap: var(--gutter); row-gap: 32px; align-items: start; }
+.journey-intro { grid-column: 1 / span 5; grid-row: 1; }
+.journey-intro .sec-title { margin-top: 0; max-width: 14ch; }
+.journey-intro > p { margin-top: 20px; max-width: 42ch; color: var(--ink-soft); font-size: 16px; line-height: 1.6; }
+.journey-figure { grid-column: 1 / span 4; grid-row: 2; position: sticky; top: calc(var(--nav-h) + 28px); max-width: 420px; }
 .journey-figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; filter: grayscale(.25) contrast(1.02); }
 .journey-figure figcaption { margin-top: 10px; }
 
-.journey-curriculum { grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 32px; }
-.cv-section { display: flex; flex-direction: column; gap: 14px; }
-.cv-label { color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; font-weight: 500; }
-.cv-list { display: flex; flex-direction: column; gap: 16px; }
-.cv-list li { display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid var(--line-soft); padding-bottom: 14px; }
-.cv-list li:last-child { border-bottom: 0; padding-bottom: 0; }
-.cv-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.cv-title { font: 600 16.5px/1.25 "Inter Tight", sans-serif; letter-spacing: -.01em; color: var(--ink); }
-.cv-tag { font: 400 10.5px/1.3 "JetBrains Mono", monospace; letter-spacing: .05em; text-transform: uppercase; color: var(--mineral); white-space: nowrap; }
-.cv-role { font-size: 14px; font-weight: 500; color: var(--ink-soft); }
-.cv-desc { font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); margin-top: 2px; }
-.cv-skills { display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
-.cv-skills b { font-weight: 600; color: var(--ink); font-size: 13.5px; }
-.cv-cta-wrap { margin-top: 4px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-.cv-note { color: var(--muted); font-size: 12px; line-height: 1.45; max-width: 44ch; }
-.tools { margin-top: 0; }
-.tools p:last-child { margin-top: 8px; font-size: 14px; color: var(--ink-soft); }
+.timeline { grid-column: 6 / span 7; grid-row: 1 / span 2; position: relative; display: grid; gap: clamp(18px, 2vw, 26px); padding-left: 34px; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: 22px; bottom: 22px; width: 1px; background: linear-gradient(180deg, var(--mineral), var(--line) 30%, var(--line)); }
+.tl { position: relative; padding: clamp(18px, 2vw, 26px); border: 1px solid var(--line); border-radius: 8px; background: rgba(248, 247, 243, .78); }
+.tl::before { content: ""; position: absolute; left: -34px; top: clamp(22px, calc(2vw + 4px), 30px); width: 13px; height: 13px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 1.5px var(--mineral); }
+.tl-when { font: 500 11.5px/1.3 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--mineral); }
+.tl-title { margin-top: 8px; font: 600 clamp(19px, 1.6vw, 24px)/1.2 "Inter Tight", sans-serif; letter-spacing: -.018em; color: var(--ink); }
+.tl-desc { margin-top: 10px; max-width: 60ch; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.tl-link { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 14px; line-height: 1.5; color: var(--ink); }
+.tl-k { margin-right: 8px; font: 500 10.5px/1 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.tl-tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.tl-tags li { padding: 5px 10px; border-radius: 999px; background: var(--sage-soft); color: var(--mineral-deep); font-size: 12.5px; line-height: 1.2; }
+.tl-ages { margin-top: 12px; display: grid; gap: 6px; }
+.tl-ages div { display: grid; grid-template-columns: 6.2em 1fr; gap: 12px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--line-soft); }
+.tl-ages dt { font: 500 11.5px/1.3 "JetBrains Mono", monospace; letter-spacing: .04em; text-transform: uppercase; color: var(--mineral); }
+.tl-ages dd { font-size: 14.5px; line-height: 1.45; color: var(--ink); }
+/* the present: the one lit step */
+.tl--now { border-color: transparent; background: var(--mineral-deep); color: var(--on-deep); }
+.tl--now::before { background: var(--sage); box-shadow: 0 0 0 4px rgba(143, 165, 138, .28); }
+.tl--now .tl-when { color: var(--sage); }
+.tl--now .tl-title, .tl--now .tl-link { color: var(--on-deep); }
+.tl--now .tl-desc { color: var(--on-deep-soft); }
+.tl--now .tl-link { border-top-color: var(--on-deep-line); }
+.tl--now .tl-k { color: var(--sage); }
+
+/* the kit: skills, tools and languages in one row under the timeline */
+.kit { margin-top: clamp(56px, 6vw, 88px); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); row-gap: 36px; }
+.kit-label { padding-bottom: 10px; border-bottom: 1px solid var(--ink); color: var(--muted); }
+.kit-skills { grid-column: 1 / span 6; }
+.kit-tools { grid-column: 7 / span 4; }
+.kit-langs { grid-column: 11 / span 2; }
+.skill-groups { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gutter); row-gap: 20px; }
+.skill-k { font: 600 15px/1.3 "Inter Tight", sans-serif; letter-spacing: -.01em; color: var(--ink); }
+.skill-list { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-list li { padding: 6px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; line-height: 1.2; color: var(--ink-soft); }
+.lang-list { margin-top: 16px; display: grid; gap: 8px; font-size: 15px; color: var(--ink); }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+/* tools: marks, each with its name as real text — a tooltip with a mouse, a label under the mark on touch screens */
+.tool-grid { margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 14px 8px; }
+.tool { position: relative; display: grid; justify-items: center; align-content: start; gap: 6px; }
+.tool svg { box-sizing: border-box; width: 48px; height: 48px; padding: 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); fill: var(--ink); transition: border-color .25s var(--ease), transform .25s var(--ease); }
+.tool-name { font: 400 10px/1.25 "JetBrains Mono", monospace; letter-spacing: .02em; text-align: center; color: var(--ink-soft); }
+@media (hover: hover) and (pointer: fine) {
+  .tool-grid { grid-template-columns: repeat(auto-fill, 48px); gap: 10px; }
+  .tool-name { position: absolute; bottom: calc(100% + 8px); left: 50%; z-index: 3; width: max-content; max-width: 200px; padding: 6px 9px; border-radius: 6px;
+    background: var(--ink); color: var(--bg); font-size: 11px; opacity: 0; transform: translate(-50%, 4px); pointer-events: none;
+    transition: opacity .2s var(--ease), transform .2s var(--ease); }
+  .tool:hover .tool-name { opacity: 1; transform: translate(-50%, 0); }
+  .tool:hover svg { border-color: var(--ink); transform: translateY(-2px); }
+}
 
 /* 06 · contact */
 .contact { padding-bottom: clamp(80px, 10vw, 140px); }
@@ -608,7 +630,9 @@ ol, ul { padding: 0; list-style: none; }
   .ficha-copy { grid-column: 1 / span 6; }
   .ficha-media { grid-column: 7 / span 6; }
   .room-index .t { font-size: 15.5px; }
-  .journey-curriculum { grid-column: 7 / span 6; }
+  .kit-skills { grid-column: 1 / -1; }
+  .kit-tools { grid-column: 1 / span 8; }
+  .kit-langs { grid-column: 9 / span 4; }
 }
 @media (max-width: 899px) {
   .nav-links { position: fixed; inset: var(--nav-h) 0 auto 0; margin: 0; padding: 18px var(--m) 30px; flex-direction: column; gap: 4px;
@@ -627,21 +651,18 @@ ol, ul { padding: 0; list-style: none; }
   .hb-top > .micro:first-child { display: none; }
   .hb-bottom { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 14px; }
   .hb-fig { grid-column: 1; grid-row: 1; }
-  .hb-fig .hb-caption { display: none; }
   .hb-intro { grid-column: 1; grid-row: 2; max-width: 40ch; }
   .hb-ctas { grid-column: 1; grid-row: 3; justify-self: center; }
   .hb-role { font-size: 17px; }
-  .hb-desc { font-size: 13.5px; margin-top: 6px; }
   .btn { height: 46px; padding: 0 18px; font-size: 14px; }
 
   /* person: one column in reading order — statement, portrait (mid-scroll, reachable by either thumb), story, facts */
   .person-grid, .journey-grid, .contact-grid, .method-head, .contact-head, .work-head { grid-template-columns: 1fr; }
   .method-copy, .contact-head .contact-title, .work-head .sec-title { grid-column: 1; }
   .person-grid { grid-template-rows: none; }
-  .statement, .person-photo, .person-body, .facts { grid-column: 1; grid-row: auto; }
+  .statement, .person-photo, .person-body, .person-close { grid-column: 1; grid-row: auto; }
   .person-photo { width: 100%; max-width: 480px; margin: 28px 0 0; }   /* Ciclo 4D: 560 → 480 (tablet; phones keep the full column) */
   .person-body { margin-top: 32px; }
-  .facts { grid-template-columns: 1fr; row-gap: 16px; }
   /* the room in one column: the evidence first (it takes whatever height the card has left), then title, skills and the button */
   .room { --stk-top: calc(var(--nav-h) + 10px); --stk-step: 6px; --stk-hold: 16svh; --card-h: calc(100svh - var(--nav-h) - 48px); --media-h: clamp(170px, 30svh, 260px); }
   .room-index ol { grid-template-columns: 1fr; }
@@ -658,16 +679,14 @@ ol, ul { padding: 0; list-style: none; }
   .ficha-points li::before { top: calc(8px + .725em - 3.5px); }
   .ficha-foot { padding-top: 16px; gap: 8px; }
   .btn-ficha { flex: 1 1 auto; padding: 0 14px; font-size: 14px; }
-  .devices { --phone-w: min(40cqw, calc((100cqh - 22px) / 2.24), 200px); gap: 14px; }
+  .devices { --phone-w: min(40cqw, calc((100cqh - 4px) / 2.24), 200px); gap: 14px; }
   .device:nth-child(2) { margin-top: 0; }
-  .device figcaption { display: none; }
-  .ficha-note { font-size: 10px; letter-spacing: .04em; }
-  .ficha-media--shot .app-window, .app-window img, .ficha-media--video video { flex: 1 1 0; min-height: 0; max-height: none; height: 100%; aspect-ratio: auto; }
-  .app-bar { height: 24px; }
+  .ficha-media--cover { padding: 8px 10px; }
+  .ficha-cover { flex: 1 1 0; min-height: 0; max-height: none; }
   .ficha-logo { display: none; }
-  .ficha--pesca .devices { --phone-w: min(40cqw, calc((100cqh - 22px) / 2.24), 200px); }
+  .ficha--pesca .devices { --phone-w: min(40cqw, calc((100cqh - 4px) / 2.24), 200px); }
   /* the trio on a phone: height is the limit, not width, so the three come closer to one size */
-  .ficha--uniedu .devices { --side: .88; --space: .04; --phone-w: min(100cqw / var(--row), (100cqh - 22px) / 2.24, 220px); }
+  .ficha--uniedu .devices { --side: .88; --space: .04; --phone-w: min(100cqw / var(--row), (100cqh - 4px) / 2.24, 220px); }
   .ficha--uniedu { --media-h: clamp(220px, 40svh, 360px); }   /* not stacked, the card can grow: room to read three screens */
   .ficha-media--site .browser { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
   .browser-bar { flex: none; height: 24px; }
@@ -677,8 +696,16 @@ ol, ul { padding: 0; list-style: none; }
   .flow-track::before { display: none; }
   .flow-step { border-top: 1px solid var(--line); padding-top: 16px; }
   .step-marker { padding-right: 0; }
-  .journey-story, .journey-curriculum, .contact-grid > p, .contact-actions { grid-column: 1; }
-  .cv-head { flex-wrap: wrap; gap: 4px 10px; }
+  .contact-grid > p, .contact-actions { grid-column: 1; }
+  .journey-grid { grid-template-rows: none; }
+  .journey-intro, .timeline, .journey-figure { grid-column: 1; grid-row: auto; }
+  .journey-figure { position: static; }
+  .timeline { padding-left: 26px; }
+  .timeline::before { left: 5px; }
+  .tl::before { left: -26px; width: 11px; height: 11px; }
+  .kit { grid-template-columns: 1fr; }
+  .kit-skills, .kit-tools, .kit-langs { grid-column: 1; }
+  .lang-list { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 }
 /* short desktop screens (a 1366 × 768 laptop with the browser's own bars): a tighter card, so the deck still fits the screen */
 @media (min-width: 900px) and (max-height: 760px) {
@@ -698,7 +725,6 @@ ol, ul { padding: 0; list-style: none; }
 }
 @media (max-width: 899px) and (prefers-reduced-motion: no-preference) and (min-height: 650px) and (max-height: 760px) {
   .ficha-problem { display: none; }
-  .ficha--uniedu .ficha-note { display: none; }   /* three screens need the height more than their source line (the case page has it) */
   .ficha--uniedu .devices { --phone-w: min(100cqw / var(--row), 100cqh / 2.24, 220px); }
 }
 @media (max-width: 559px) {
@@ -713,6 +739,8 @@ ol, ul { padding: 0; list-style: none; }
   .step-title { margin-top: 0; }
   .foot-row { flex-direction: column; gap: 6px; }
   .sec-count { display: none; }
+  .skill-groups { grid-template-columns: 1fr; }
+  .tl-ages div { grid-template-columns: 5.4em 1fr; gap: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

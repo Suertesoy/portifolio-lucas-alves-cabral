@@ -64,7 +64,7 @@
   "b.cmpLabel": "Comparar las versiones del constructor", "b.beforeK": "Prototipo", "b.afterK": "Producto",
   "b.beforeCap": "Figma Make · prototipo inicial", "b.afterCap": "Tienda publicada · /poke/monte",
   "b.afterAlt": "El constructor en el producto publicado: categorías en la misma página, «¿Quieres más proteína?» junto a la elección de proteína, y un resumen fijo con el precio del plato y lo que aún falta por elegir.",
-  "b.afterSource": "Captura real de la tienda pública en producción, octubre de 2026 (interfaz en portugués). Los artículos marcados como no disponibles reflejan ese momento.",
+  "b.afterSource": "Captura real de la tienda pública en producción (interfaz en portugués). Los artículos marcados como no disponibles reflejan el momento de la captura.",
   "b.w1": "Base", "b.wr1": "siempre accesible",
   "b.w2": "Proteína", "b.wr2": "+ adicional aquí",
   "b.w3": "Acompañamientos", "b.wr3": "siempre accesible",

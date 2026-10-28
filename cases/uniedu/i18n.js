@@ -7,7 +7,7 @@
   "skip": "Skip to content",
   "nav.home": "Lucas Cabral — portfolio", "nav.mid": "Case study 03 · UNIEDU", "nav.back": "Work", "nav.lang": "Idioma / Language",
 
-  "hero.eyebrow": "Case study · UNIEDU · 2025–2026", "hero.client": "Gamified study app · prototype",
+  "hero.eyebrow": "Case study · UNIEDU · 2024–2025 · evolved in 2026", "hero.client": "Gamified study app · prototype",
   "hero.h1a": "Starting is easy.", "hero.h1b": "Keeping going isn’t.",
   "hero.lede": "I looked into why online learners lose their rhythm and designed a study app that makes progress visible, makes competition optional and turns points into something useful, with a Figma Design System that reaches the code.",
   "hero.m1": "Role", "hero.m1v": "Lucas Cabral · Product Designer & Design Engineer",
